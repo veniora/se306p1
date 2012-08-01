@@ -5,7 +5,6 @@ Create a file named .bashrc (if does not exist, can check with 'ls -a') in your 
 NOTE: Replace ~/ros/stacks with PATH_TO_YOUR_REPO/ros/stacks. For example mine is ~/se306p1/ros/stacks
 
 source /opt/ros/electric/setup.bash
-
 export ROS_PACKAGE_PATH=~/ros/stacks:$ROS_PACKAGE_PATH
 
 

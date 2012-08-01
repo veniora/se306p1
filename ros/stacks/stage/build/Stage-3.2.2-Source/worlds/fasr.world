@@ -1,0 +1,133 @@
+# FASR demo world 
+# Authors: Richard Vaughan
+# $Id: fasr.world,v 1.4 2008-04-01 23:57:41 rtv Exp $
+
+include "pioneer.inc"
+include "map.inc"
+include "sick.inc"
+
+speedup 10
+paused 1
+
+# time at which to pause (in GUI mode) or quit (in headless mode) the simulation
+quit_time 3600 # 1 hour of simulated time
+#quit_time 1800 # hour of simulated time
+
+resolution 0.02
+
+threads 2
+
+# configure the GUI window
+window
+( 
+  size [ 683.000 713.000 ] 
+
+  center [ -0.180 -1.009 ] 
+  rotate [ 0 0 ]
+  scale 35.284 
+  
+  show_data 1
+  show_flags 1
+
+  # interval 50
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "cave"
+  pose [0 0 0 0]
+  size [16.000 16.000 0.600]
+  bitmap "bitmaps/cave.png"
+)
+
+zone
+(
+  color "green"
+  pose [ -7.000 -7.000 0 0 ]
+  name "source"
+  ctrl "source"
+)
+
+zone
+(
+  color "red"
+  pose [ 7.000 7.000 0 0 ]
+  name "sink"
+  ctrl "sink"
+)
+
+
+define charging_bump model
+(
+  pose [0.240 0 -0.100 0 ] 
+  size [0.120 0.050 0.100] 
+  take_watts 1000.0 
+  color "orange" 
+  obstacle_return 0
+)
+
+define charge_station model
+(  
+  size [ 0.100 0.300 0.100 ]
+  color "purple"
+  
+  # side blocks to restrict view angle
+  model( color "purple" size [0.100 0.050 0.250] pose [ 0 0.100 0 0 ] )
+  model( color "purple" size [0.100 0.050 0.250] pose [ 0 -0.100 0 0 ] ) 
+
+  # the charging block
+  model( 
+    pose [ 0.010 0 0 0 ]
+    color "yellow"
+    size [ 0.050 0.200 0.100 ]
+    joules -1  # provides infinite energy
+    give_watts 1000 
+    fiducial_return 2 # look for this in the fiducial sensor
+	 
+	 alwayson 1 # so we give charge without any explicit subscriber
+   )
+
+)
+
+charge_station(  pose [ 7.940 -2.000 0 0 ] )
+charge_station(  pose [ 7.940 -3.000 0 0 ] )
+charge_station(  pose [ 7.940 -4.000 0 0 ] )
+
+define autorob pioneer2dx		  
+(		 
+ sicklaser( samples 32 range_max 5 laser_return 2 watts 30 )
+ ctrl "fasr"
+ joules 100000 
+ joules_capacity 400000 
+ fiducial_return 0
+ charging_bump( fiducial( range_max 5 pose [ 0 0 -0.100 0 ] ) )
+
+ # small speed optimization
+ # trail_length 0
+)
+
+autorob( pose [7.062 -1.563 0 152.684] joules 300000 name "r0" )
+autorob( pose [-7.444 -7.348 0 125.831] joules 100000 name "r1" )
+autorob( pose [5.043 3.459 0 174.453] joules 200000 )
+autorob( pose [-3.501 -3.827 0 -117.456] joules 400000 )
+autorob( pose [-1.782 7.123 0 44.991] joules 100000 )
+autorob( pose [-6.224 4.313 0 35.145] joules 200000 )
+autorob( pose [-4.373 -4.515 0 -143.181] joules 300000 )
+autorob( pose [3.975 7.410 0 0] joules 400000 )
+autorob( pose [6.796 4.223 0 -89.994] joules 100000 )
+autorob( pose [-6.679 -4.488 0 90.003] joules 200000 )
+
+#autorob( pose [-5.333 -7.515 0 -1.811] )
+#autorob( pose [-1.496 1.724 0 -116.317]  )
+#autorob( pose [7.122 4.175 0 -31.440]  )
+#autorob( pose [5.944 6.951 0 2.937] )
+#autorob( pose [6.405 5.291 0 -103.060] )
+#autorob( pose [5.974 5.725 0 -103.060] )
+#autorob( pose [4.151 7.272 0 53.540] )
+#autorob( pose [6.545 7.459 0 2.937] )
+#autorob( pose [7.237 7.533 0 34.450] )
+#autorob( pose [3.875 6.533 0 134.717] )
+#autorob( pose [3.944 4.674 0 -103.060] )
+#autorob( pose [4.634 6.897 0 -103.060] )
+

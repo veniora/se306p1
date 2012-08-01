@@ -1,0 +1,157 @@
+# simple.world - basic world file example
+# Authors: Richard Vaughan
+# $Id$
+
+include "pioneer.inc"
+include "map.inc"
+include "sick.inc"
+
+interval_sim 100  # simulation timestep in milliseconds
+interval_real 0  # real-time interval between simulation updates in milliseconds 
+
+quit_time 1
+
+paused 0
+
+resolution 0.1
+
+threads 0
+
+# configure the GUI window
+window
+(
+  size [ 1460.000 1080.000 ] # in pixels
+  scale 5.931            
+  center [ -59.036  5.341 ]
+  rotate [ 0  0 ]
+  show_data 1              # 1=on 0=off
+)
+
+# load an environment bitmap
+#floorplan
+#( 
+#  name "cave"
+#  size [200 200 0.800]
+#  pose [0 0 0 0]
+#  bitmap "bitmaps/cave.png"  
+#)
+
+
+define wanderer pioneer2dx
+(		  
+  # sicklaser( samples 32 ) 
+  ctrl "pioneer_flocking"
+
+  # report error-free position in world coordinates
+  localization "gps"
+  localization_origin [ 0 0 0 0 ]
+
+  fiducial_return 1
+
+  fiducial()
+)
+
+#wanderer( pose [ 2.022 0.847 0 0 ] )
+#wanderer( pose [ -2.029 2.564 0 101.347 ] )
+#wanderer( pose [ -1.260 -1.107 0 -89.324 ] )
+#wanderer( pose [ 0.542 1.951 0 95.795 ] )
+#wanderer( pose [ 0.671 -1.257 0 -80.214 ] )
+#wanderer( pose [ 1.765 -0.661 0 -28.648 ] )
+#wanderer( pose [ -0.540 1.289 0 91.137 ] )
+#wanderer( pose [ -0.049 0.075 0 -37.638 ] )
+#wanderer( pose [ -0.324 2.660 0 85.587 ] )
+
+#wanderer( pose [ -0.138 -1.356 0 -66.311 ] )
+#wanderer( pose [ 0.970 0.575 0 44.546 ] )
+#wanderer( pose [ -1.322 2.029 0 96.175 ] )
+#wanderer( pose [ -3.228 0.692 0 166.404 ] )
+#wanderer( pose [ -1.879 1.261 0 141.300 ] )
+#wanderer( pose [ -1.922 -0.104 0 176.194 ] )
+#wanderer( pose [ -7.563 4.592 0 -146.872 ] )
+#wanderer( pose [ -10.264 5.570 0 -147.413 ] )
+#wanderer( pose [ -9.433 2.132 0 -139.527 ] )
+#wanderer( pose [ -7.841 2.739 0 -145.215 ] )
+
+#wanderer( pose [ -2.778 4.391 0 -140.419 ] )
+#wanderer( pose [ -3.131 -4.211 0 -140.043 ] )
+#wanderer( pose [ -6.677 0.642 0 -141.801 ] )
+#wanderer( pose [ -5.326 -4.463 0 -137.171 ] )
+#wanderer( pose [ -11.732 0.511 0 -143.239 ] )
+#wanderer( pose [ -10.696 -3.511 0 -143.239 ] )
+#wanderer( pose [ -8.397 -3.485 0 -140.344 ] )
+#wanderer( pose [ -5.313 -1.965 0 -146.396 ] )
+#wanderer( pose [ -9.624 0.438 0 -146.026 ] )
+#wanderer( pose [ -6.510 2.942 0 -141.717 ] )
+
+wanderer( pose [ -18.646 -12.227 0 -136.345 ] )
+wanderer( pose [ -28.148 -6.693 0 -154.426 ] )
+wanderer( pose [ -26.210 -4.687 0 -154.678 ] )
+wanderer( pose [ -23.827 -5.305 0 -154.646 ] )
+wanderer( pose [ -20.134 -9.244 0 -138.746 ] )
+wanderer( pose [ -23.598 -11.685 0 -136.113 ] )
+wanderer( pose [ -21.435 -15.234 0 -132.914 ] )
+wanderer( pose [ -19.855 -12.715 0 -135.463 ] )
+wanderer( pose [ -19.469 -10.461 0 -138.243 ] )
+wanderer( pose [ -26.846 -3.327 0 -154.674 ] )
+
+wanderer( pose [ -22.825 -3.908 0 -154.605 ] )
+wanderer( pose [ -22.463 -5.101 0 -154.629 ] )
+wanderer( pose [ -18.861 -9.188 0 -139.232 ] )
+wanderer( pose [ -30.051 -5.150 0 -154.426 ] )
+wanderer( pose [ -29.473 -6.740 0 -154.226 ] )
+wanderer( pose [ -28.032 -9.805 0 -154.226 ] )
+wanderer( pose [ -23.708 -14.534 0 -132.929 ] )
+wanderer( pose [ -21.850 -18.011 0 -131.557 ] )
+wanderer( pose [ -29.191 -10.680 0 -155.150 ] )
+wanderer( pose [ -19.748 -16.394 0 -132.939 ] )
+
+wanderer( pose [ -30.631 -7.658 0 -155.150 ] )
+wanderer( pose [ -31.043 -6.411 0 -154.226 ] )
+wanderer( pose [ -23.982 -13.483 0 -133.737 ] )
+wanderer( pose [ -22.534 -13.689 0 -134.865 ] )
+wanderer( pose [ -20.836 -13.700 0 -134.554 ] )
+wanderer( pose [ -22.786 -12.838 0 -135.578 ] )
+wanderer( pose [ -21.336 -12.912 0 -135.257 ] )
+wanderer( pose [ -22.677 -10.354 0 -136.964 ] )
+wanderer( pose [ -23.762 -10.582 0 -136.583 ] )
+
+wanderer( pose [ -27.259 -7.925 0 -154.672 ] )
+wanderer( pose [ -21.984 -14.563 0 -133.736 ] )
+wanderer( pose [ -23.005 -15.561 0 -131.990 ] )
+wanderer( pose [ -24.678 -15.598 0 -131.557 ] )
+wanderer( pose [ -23.907 -16.696 0 -130.896 ] )
+wanderer( pose [ -23.907 -17.784 0 -130.234 ] )
+wanderer( pose [ -22.955 -17.797 0 -130.896 ] )
+wanderer( pose [ -22.193 -16.477 0 -130.999 ] )
+wanderer( pose [ -21.201 -16.658 0 -131.981 ] )
+
+wanderer( pose [ -22.150 -11.625 0 -136.304 ] )
+wanderer( pose [ -19.741 -14.084 0 -134.388 ] )
+wanderer( pose [ -19.012 -11.350 0 -137.587 ] )
+wanderer( pose [ -20.621 -11.627 0 -136.086 ] )
+wanderer( pose [ -21.192 -10.543 0 -136.824 ] )
+wanderer( pose [ -26.085 -6.711 0 -154.674 ] )
+wanderer( pose [ -18.840 -14.444 0 -135.746 ] )
+wanderer( pose [ -27.743 -9.003 0 -154.440 ] )
+wanderer( pose [ -17.260 -15.767 0 -136.384 ] )
+
+wanderer( pose [ -18.032 -15.005 0 -136.073 ] )
+wanderer( pose [ -17.922 -13.236 0 -136.053 ] )
+wanderer( pose [ -17.439 -10.890 0 -138.105 ] )
+wanderer( pose [ -21.522 -9.479 0 -137.228 ] )
+wanderer( pose [ -25.187 -5.377 0 -154.674 ] )
+wanderer( pose [ -29.066 -5.705 0 -154.426 ] )
+wanderer( pose [ -23.065 -19.673 0 -129.572 ] )
+wanderer( pose [ -21.749 -20.197 0 -130.234 ] )
+wanderer( pose [ -20.475 -19.283 0 -130.896 ] )
+
+wanderer( pose [ -19.304 -18.401 0 -131.531 ] )
+wanderer( pose [ -18.125 -17.701 0 -132.118 ] )
+wanderer( pose [ -16.510 -9.846 0 -138.239 ] )
+wanderer( pose [ -24.567 -4.276 0 -154.660 ] )
+wanderer( pose [ -25.200 -3.645 0 -154.674 ] )
+wanderer( pose [ -30.426 -9.222 0 -156.108 ] )
+wanderer( pose [ -26.915 -6.023 0 -154.678 ] )
+wanderer( pose [ -27.597 -5.070 0 -154.629 ] )
+wanderer( pose [ -20.682 -15.283 0 -133.299 ] )
+

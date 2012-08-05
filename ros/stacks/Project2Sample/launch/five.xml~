@@ -6,14 +6,13 @@
     <node pkg="Project2Sample" name="sim2" type="R2"/>
     <node pkg="Project2Sample" name="sim3" type="R3"/>
     <node pkg="Project2Sample" name="sim4" type="R4"/>
-    <node pkg="Project2Sample" name="sim4" type="R5"/>
+    <node pkg="Project2Sample" name="sim5" type="R5"/>
   </group>-->
     <node pkg="Project2Sample" name="sim0" type="R0"/>
     <node pkg="Project2Sample" name="sim1" type="R1"/>
     <node pkg="Project2Sample" name="sim2" type="R2"/>
     <node pkg="Project2Sample" name="sim3" type="R3"/>
     <node pkg="Project2Sample" name="sim4" type="R4"/>
-    <node pkg="Project2Sample" name="sim4" type="R5"/>
 <!--  <group ns="R1">
     <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
   </group>

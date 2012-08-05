@@ -226,18 +226,6 @@ StageNode::cmdvelReceived5(int idx, const boost::shared_ptr<geometry_msgs::Twist
   this->base_last_cmd = this->sim_time;
 }
 
-//added for robot 6 node
-void
-StageNode::cmdvelReceived6(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg)
-{
-  boost::mutex::scoped_lock lock(msg_lock);
-  this->positionmodels[idx]->SetSpeed(msg->linear.x, 
-                                      msg->linear.y, 
-                                      msg->angular.z);
-  //ROS_INFO("cmdvelReceived6 %f", msg->linear.x);
-  //ROS_INFO("RobotID %i", idx);
-  this->base_last_cmd = this->sim_time;
-}
 
 StageNode::StageNode(int argc, char** argv, bool gui, const char* fname)
 {
@@ -368,19 +356,10 @@ StageNode::SubscribeModels()
         	odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot4_odo", 10));
 		ground_truth_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot4_truth", 10));			
 		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot4_vel", 10, boost::bind(&StageNode::cmdvelReceived5, this, r, _1)));
-		ROS_INFO("subscribed to Robot4_vel");
+		ROS_INFO("subscribed to cmd_vel3");
 		ROS_INFO("RobotID: %i", r);
 	}
 
-else if (r==5)
-	{
-		laser_pubs_.push_back(n_.advertise<sensor_msgs::LaserScan>("Robot5_laser", 10));
-        	odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_odo", 10));
-		ground_truth_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_truth", 10));			
-		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot5_vel", 10, boost::bind(&StageNode::cmdvelReceived6, this, r, _1)));
-		ROS_INFO("subscribed to cmd_vel4");
-		ROS_INFO("RobotID: %i", r);
-	}
   }
   clock_pub_ = n_.advertise<rosgraph_msgs::Clock>("/clock",10);
   return(0);

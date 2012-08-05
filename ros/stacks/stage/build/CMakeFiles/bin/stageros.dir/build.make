@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage
+CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/stage
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build
+CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/stage/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/bin/stageros.dir/depend.make
@@ -98,17 +98,17 @@ CMakeFiles/bin/stageros.dir/src/stageros.o: /opt/ros/electric/stacks/common_msgs
 CMakeFiles/bin/stageros.dir/src/stageros.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
 CMakeFiles/bin/stageros.dir/src/stageros.o: /opt/ros/electric/stacks/geometry/tf/msg_gen/generated
 CMakeFiles/bin/stageros.dir/src/stageros.o: /opt/ros/electric/stacks/geometry/tf/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/bin/stageros.dir/src/stageros.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/bin/stageros.dir/src/stageros.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/src/stageros.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/bin/stageros.dir/src/stageros.o -c /home/charu/se306p1/ros/stacks/stage/src/stageros.cpp
 
 CMakeFiles/bin/stageros.dir/src/stageros.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bin/stageros.dir/src/stageros.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/src/stageros.cpp > CMakeFiles/bin/stageros.dir/src/stageros.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/charu/se306p1/ros/stacks/stage/src/stageros.cpp > CMakeFiles/bin/stageros.dir/src/stageros.i
 
 CMakeFiles/bin/stageros.dir/src/stageros.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bin/stageros.dir/src/stageros.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/src/stageros.cpp -o CMakeFiles/bin/stageros.dir/src/stageros.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/charu/se306p1/ros/stacks/stage/src/stageros.cpp -o CMakeFiles/bin/stageros.dir/src/stageros.s
 
 CMakeFiles/bin/stageros.dir/src/stageros.o.requires:
 .PHONY : CMakeFiles/bin/stageros.dir/src/stageros.o.requires
@@ -144,6 +144,6 @@ CMakeFiles/bin/stageros.dir/clean:
 .PHONY : CMakeFiles/bin/stageros.dir/clean
 
 CMakeFiles/bin/stageros.dir/depend:
-	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/CMakeFiles/bin/stageros.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charu/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build/CMakeFiles/bin/stageros.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/bin/stageros.dir/depend
 

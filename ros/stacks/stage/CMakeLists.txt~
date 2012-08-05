@@ -33,11 +33,3 @@ rosbuild_add_link_flags(bin/stageros ${STAGE_LDFLAGS_OTHERS})
 
 
 rosbuild_add_rostest(test/hztest.xml)
-
-#added by Brett
-rosbuild_add_executable(bin/stageros_Project2 src/stageros_Project2.cpp)
-rosbuild_link_boost(bin/stageros_Project2 thread)
-add_dependencies(bin/stageros_Project2 build_stage)
-rosbuild_add_compile_flags(bin/stageros_Project2 ${STAGE_CFLAGS_OTHERS})
-target_link_libraries(bin/stageros_Project2 ${STAGE_LIBRARIES})
-rosbuild_add_link_flags(bin/stageros_Project2 ${STAGE_LDFLAGS_OTHERS})

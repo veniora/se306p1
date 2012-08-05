@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage
+CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/stage
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build
+CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/stage/build
 
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
@@ -54,6 +54,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend:
-	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charu/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 

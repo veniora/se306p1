@@ -32,15 +32,15 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
 
 # Utility rule file for clean-test-results.
 
 CMakeFiles/clean-test-results:
-	if ! rm -rf /home/ubuntu-11-10/.ros/test_results/Project2Sample; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
+	if ! rm -rf /home/charu/.ros/test_results/Project2Sample; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
 
 clean-test-results: CMakeFiles/clean-test-results
 clean-test-results: CMakeFiles/clean-test-results.dir/build.make
@@ -55,6 +55,6 @@ CMakeFiles/clean-test-results.dir/clean:
 .PHONY : CMakeFiles/clean-test-results.dir/clean
 
 CMakeFiles/clean-test-results.dir/depend:
-	cd /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charu/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean-test-results.dir/depend
 

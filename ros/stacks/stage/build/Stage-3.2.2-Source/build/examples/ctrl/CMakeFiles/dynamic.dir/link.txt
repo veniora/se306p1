@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC  -O3 -DNDEBUG -Wall     -shared -Wl,-soname,dynamic.so -o dynamic.so CMakeFiles/dynamic.dir/dynamic.o ../../libstage/libstage.so.3.2.2 -lGLU -lGL -lSM -lICE -lX11 -lXext -lltdl -Wl,-rpath,/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage: 
+/usr/bin/c++  -fPIC  -O3 -DNDEBUG -Wall     -shared -Wl,-soname,dynamic.so -o dynamic.so CMakeFiles/dynamic.dir/dynamic.o ../../libstage/libstage.so.3.2.2 -lGLU -lGL -lSM -lICE -lX11 -lXext -lltdl -Wl,-rpath,/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage: 

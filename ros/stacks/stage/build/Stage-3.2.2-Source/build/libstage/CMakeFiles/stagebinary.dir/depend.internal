@@ -3,5 +3,5 @@
 
 libstage/CMakeFiles/stagebinary.dir/main.o
  .././config.h
- /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/main.cc
- /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+ /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/main.cc
+ /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh

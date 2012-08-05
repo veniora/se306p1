@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
+# Install script for directory: /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu-11-10/se306p1/ros/stacks/stage")
+  SET(CMAKE_INSTALL_PREFIX "/home/charu/se306p1/ros/stacks/stage")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,15 +33,15 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/stage.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/stage.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/cmake_install.cmake")
-  INCLUDE("/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/examples/cmake_install.cmake")
-  INCLUDE("/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/assets/cmake_install.cmake")
-  INCLUDE("/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/cmake_install.cmake")
+  INCLUDE("/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/cmake_install.cmake")
+  INCLUDE("/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/examples/cmake_install.cmake")
+  INCLUDE("/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/assets/cmake_install.cmake")
+  INCLUDE("/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -51,7 +51,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
 
 # Utility rule file for rosbuild_premsgsrvgen.
 
@@ -54,6 +54,6 @@ CMakeFiles/rosbuild_premsgsrvgen.dir/clean:
 .PHONY : CMakeFiles/rosbuild_premsgsrvgen.dir/clean
 
 CMakeFiles/rosbuild_premsgsrvgen.dir/depend:
-	cd /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build /home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/rosbuild_premsgsrvgen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charu/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/rosbuild_premsgsrvgen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rosbuild_premsgsrvgen.dir/depend
 

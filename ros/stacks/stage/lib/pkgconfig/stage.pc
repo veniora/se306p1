@@ -1,4 +1,4 @@
-prefix=/home/ubuntu-11-10/se306p1/ros/stacks/stage
+prefix=/home/charu/se306p1/ros/stacks/stage
 
 Name: stage
 Description: Stage robot simulation program, C++ library and Player plugin - part of the Player/Stage Project

@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets
+# Install script for directory: /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu-11-10/se306p1/ros/stacks/stage")
+  SET(CMAKE_INSTALL_PREFIX "/home/charu/se306p1/ros/stacks/stage")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,21 +34,21 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/stage/assets" TYPE FILE FILES
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/stagelogo.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/mains.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/death.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/question_mark.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/logo.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/mainspower.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/red.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/green.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/stall.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/blue.png"
-    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/rgb.txt"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/blue.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/question_mark.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/death.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/mains.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/mainspower.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/red.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/stall.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/logo.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/green.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/stagelogo.png"
+    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/rgb.txt"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/stage" TYPE FILE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/rgb.txt")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/stage" TYPE FILE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/assets/rgb.txt")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

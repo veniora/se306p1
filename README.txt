@@ -8,7 +8,6 @@ SETUP:
 1.c. "vim .bashrc" will open .bashrc or create it if it doesnt exist.
 
 2. Append the following lines to .bashrc 
-(NOTE: Replace ~/ros/stacks with PATH_TO_YOUR_REPO/ros/stacks. For example mine is ~/se306p1/ros/stacks)
 
 source /opt/ros/electric/setup.bash
 export ROS_PACKAGE_PATH=PATH_TO_YOUR_REPO/ros/stacks:$ROS_PACKAGE_PATH
@@ -26,3 +25,13 @@ rosmake
 
 4. Setup is now complete
 
+RUN:
+
+1. Open a terminal and perform this command:
+
+roscore
+
+2. In a NEW terminal perform these commands:
+
+roscd stage/bin/
+rosrun stage stageros_Project2 Project2Sample.world

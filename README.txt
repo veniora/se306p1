@@ -11,7 +11,6 @@ SETUP:
 
 source /opt/ros/electric/setup.bash
 export ROS_PACKAGE_PATH=PATH_TO_YOUR_REPO/ros/stacks:$ROS_PACKAGE_PATH
-export STAGEPATH='rospack find stage'/share/stage
 
 2.a. IMPORTANT! Replace PATH_TO_YOUR_REPO with the path to your repo. For example my repo is in a folder called se306p1 in my home directory so I replace PATH_TO_YOUR_REPO with ~/se306p1
 2.b. "~" points to your home directory.

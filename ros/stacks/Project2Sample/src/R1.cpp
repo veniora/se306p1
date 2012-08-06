@@ -8,6 +8,7 @@
 
 #include <sstream>
 #include "math.h"
+#include "Project2Sample/returnPosition.h"
 
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
@@ -87,6 +88,9 @@ ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>("Robot1_msg",10
 //to stage
 ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_vel",1000); 
 
+//publish to topic associated with messages that contain x,y and theta positions
+ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>("Robot1_pos", 1000);
+
 //subscribe to listen to messages of other robots
 ros::Subscriber RobotNode1_sub = n.subscribe<Project2Sample::R_ID>("Robot0_msg",1000, RobotNode1_callback);
 
@@ -118,11 +122,13 @@ while (ros::ok())
 	msg.life = R1_life;
 	msg.x = px;
 	msg.y = py;
+	msg.theta = theta;
 	
 
 	//publish the message
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
+	RobotNode_position.publish(msg);
 	
 	//cluster head election (altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo

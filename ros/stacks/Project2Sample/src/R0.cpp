@@ -9,6 +9,7 @@
 #include <sstream>
 #include "math.h"
 #include <cmath>
+#include "Project2Sample/returnPosition.h"
 
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
@@ -44,8 +45,8 @@ void RobotNode1_callback(Project2Sample::R_ID msg)
 void StageOdom_callback(nav_msgs::Odometry msg)
 {
 	//This is the call back function to process odometry messages coming from Stage. 	
-	px = 5 + msg.pose.pose.position.x;
-	py =10 + msg.pose.pose.position.y;
+	px = msg.pose.pose.position.x;
+	py = msg.pose.pose.position.y;
 	ROS_INFO("Current x position is: %f", px);
 	ROS_INFO("Current y position is: %f", py);
 }
@@ -64,18 +65,17 @@ int main(int argc, char **argv)
 
  //initialize robot parameters
 	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
-	theta = M_PI/2.0;
-	px = 5;
-	py = 10;
+	//theta = M_PI/2.0;
+	//px = 5;
+	//py = 10;
 	
 	//Initial velocity
-	linear_x = 0.2;
-	angular_z = 0.2;
+	linear_x = 0.0;
+	angular_z = 0.0;
 	
 	//Batters life
 	R0_life = 80;
 	R1_life = -1;
-		
 
 //You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 ros::init(argc, argv, "RobotNode0");
@@ -87,13 +87,16 @@ ros::NodeHandle n;
 //for other robots
 ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>("Robot0_msg",1000); 
 //to stage
-ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot0_vel",1000); 
+ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot0_vel",1000);
+
+//publish to topic associated with messages that contain x,y and theta positions
+ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>("Robot0_pos", 1000); 
 
 //subscribe to listen to messages of other robots
 ros::Subscriber RobotNode1_sub = n.subscribe<Project2Sample::R_ID>("Robot1_msg",1000, RobotNode1_callback);
 
 //subscribe to listen to messages coming from stage
-ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot0_odo",1000, StageOdom_callback);
+ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000, StageOdom_callback);
 ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>("Robot0_laser",1000,StageLaser_callback);
 //ros::Subscriber StageTruth_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000,StageTruth_callback);
 
@@ -120,10 +123,12 @@ while (ros::ok())
 	msg.life = R0_life;
 	msg.x = px;
 	msg.y = py;
+	msg.theta = theta;
 
 	//publish the message
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
+	RobotNode_position.publish(msg);
 	
 	//cluster head election(altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo

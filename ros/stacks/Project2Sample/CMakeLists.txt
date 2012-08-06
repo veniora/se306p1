@@ -19,7 +19,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #uncomment if you have defined messages
 rosbuild_genmsg()
 #uncomment if you have defined services
-#rosbuild_gensrv()
+rosbuild_gensrv()
 
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
@@ -36,3 +36,4 @@ rosbuild_add_executable(R1 src/R1.cpp)
 #rosbuild_add_executable(R3 src/RobotNode3.cpp)
 #rosbuild_add_executable(R4 src/RobotNode4.cpp)
 #rosbuild_add_executable(R5 src/RobotNode5.cpp)
+rosbuild_add_executable(listener src/listener.cpp)

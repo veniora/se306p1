@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "../msg_gen"
   "../src/Project2Sample/msg"
+  "../msg_gen"
   "../msg_gen"
   "CMakeFiles/R1.dir/src/R1.o"
   "../bin/R1.pdb"

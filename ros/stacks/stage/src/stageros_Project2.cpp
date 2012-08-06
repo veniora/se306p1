@@ -472,7 +472,9 @@ StageNode::WorldCallback()
     // Get latest odometry data
     // Translate into ROS message format and publish
     this->odomMsgs[r].pose.pose.position.x = this->positionmodels[r]->est_pose.x;
+    //ROS_INFO("x: %f",this->positionmodels[r]->est_pose.x);
     this->odomMsgs[r].pose.pose.position.y = this->positionmodels[r]->est_pose.y;
+    //ROS_INFO("y: %f",this->positionmodels[r]->est_pose.y);
     this->odomMsgs[r].pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->positionmodels[r]->est_pose.a);
     Stg::Velocity v = this->positionmodels[r]->GetVelocity();
     this->odomMsgs[r].twist.twist.linear.x = v.x;
@@ -503,10 +505,10 @@ StageNode::WorldCallback()
     // Note that we correct for Stage's screwed-up coord system.
     tf::Quaternion q_gpose;
     q_gpose.setRPY(0.0, 0.0, gpose.a-M_PI/2.0);
-    tf::Transform gt(q_gpose, tf::Point(gpose.y, -gpose.x, 0.0));
+    tf::Transform gt(q_gpose, tf::Point(gpose.x, gpose.y, 0.0));
     tf::Quaternion q_gvel;
     q_gvel.setRPY(0.0, 0.0, gvel.a-M_PI/2.0);
-    tf::Transform gv(q_gvel, tf::Point(gvel.y, -gvel.x, 0.0));
+    tf::Transform gv(q_gvel, tf::Point(gvel.x, gvel.y, 0.0));
 
     this->groundTruthMsgs[r].pose.pose.position.x     = gt.getOrigin().x();
     this->groundTruthMsgs[r].pose.pose.position.y     = gt.getOrigin().y();

@@ -379,8 +379,8 @@ else if (r==5)
 		laser_pubs_.push_back(n_.advertise<sensor_msgs::LaserScan>("Robot5_laser", 10));
         	odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_odo", 10));
 		ground_truth_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_truth", 10));			
-		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot5_vel", 10, boost::bind(&StageNode::cmdvelReceived, this, r, _1)));
-		ROS_INFO("subscribed to cmd_vel4");6
+		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot5_vel", 10, boost::bind(&StageNode::cmdvelReceived6, this, r, _1)));
+		ROS_INFO("subscribed to cmd_vel4");
 		ROS_INFO("RobotID: %i", r);
 	}
 
@@ -472,7 +472,9 @@ StageNode::WorldCallback()
     // Get latest odometry data
     // Translate into ROS message format and publish
     this->odomMsgs[r].pose.pose.position.x = this->positionmodels[r]->est_pose.x;
+    //ROS_INFO("x: %f",this->positionmodels[r]->est_pose.x);
     this->odomMsgs[r].pose.pose.position.y = this->positionmodels[r]->est_pose.y;
+    //ROS_INFO("y: %f",this->positionmodels[r]->est_pose.y);
     this->odomMsgs[r].pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->positionmodels[r]->est_pose.a);
     Stg::Velocity v = this->positionmodels[r]->GetVelocity();
     this->odomMsgs[r].twist.twist.linear.x = v.x;

@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "../msg_gen"
   "../src/Project2Sample/msg"
+  "../msg_gen"
   "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/Project2Sample/R_ID.h"

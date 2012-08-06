@@ -12,7 +12,7 @@ define mylaser laser
 
 define myRobot position
 (
-  size [0.35 0.35 0.25]
+  size [0.35 0.35 0.2]
   drive "diff"
   mylaser(pose [ 0.050 0.000 0 0.000 ])
 )
@@ -51,10 +51,10 @@ floorplan
   pose [ -29.350 27.000 0 90.000 ]
 )
 # throw in a robot
-myRobot( pose [ 5 10 0 0 ] name "r0" color "blue")
-myRobot( pose [ 15 20 0 0 ] name "r1" color "green")
-myRobot( pose [ 10 30 0 0 ] name "r2" color "black")
-myRobot( pose [ 25 16 0 0 ] name "r3" color "yellow")
-myRobot( pose [ 5 28 0 0 ] name "r4" color "brown")
-myRobot( pose [ 10 10 0 0 ] name "r5" color "red")
+myRobot( pose [ 5 10 0 45 ] name "r0" color "blue")
+myRobot( pose [ 15 20 0 150 ] name "r1" color "green")
+myRobot( pose [ 10 30 0 28 ] name "r2" color "black")
+myRobot( pose [ 25 16 0 192 ] name "r3" color "yellow")
+myRobot( pose [ 5 28 0 250 ] name "r4" color "brown")
+myRobot( pose [ 10 10 0 210 ] name "r5" color "red")
 

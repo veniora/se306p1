@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build
 
 # Utility rule file for rospack_genmsg.
 
@@ -54,6 +54,6 @@ CMakeFiles/rospack_genmsg.dir/clean:
 .PHONY : CMakeFiles/rospack_genmsg.dir/clean
 
 CMakeFiles/rospack_genmsg.dir/depend:
-	cd /home/charu/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/rospack_genmsg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/rospack_genmsg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rospack_genmsg.dir/depend
 

@@ -32,69 +32,69 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build
 
 # Utility rule file for ROSBUILD_gensrv_py.
 
 CMakeFiles/ROSBUILD_gensrv_py: ../src/Project2Sample/srv/__init__.py
 
-../src/Project2Sample/srv/__init__.py: ../src/Project2Sample/srv/_ClosestDistance.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles $(CMAKE_PROGRESS_1)
+../src/Project2Sample/srv/__init__.py: ../src/Project2Sample/srv/_returnPosition.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Project2Sample/srv/__init__.py"
-	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py --initpy /home/charu/se306p1/ros/stacks/Project2Sample/srv/ClosestDistance.srv
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py --initpy /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/srv/returnPosition.srv
 
-../src/Project2Sample/srv/_ClosestDistance.py: ../srv/ClosestDistance.srv
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
-../src/Project2Sample/srv/_ClosestDistance.py: ../manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/core/roslib/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/core/roslang/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/srv_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
-../src/Project2Sample/srv/_ClosestDistance.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Project2Sample/srv/_ClosestDistance.py"
-	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py --noinitpy /home/charu/se306p1/ros/stacks/Project2Sample/srv/ClosestDistance.srv
+../src/Project2Sample/srv/_returnPosition.py: ../srv/returnPosition.srv
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../src/Project2Sample/srv/_returnPosition.py: ../manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/core/roslib/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/core/roslang/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/nav_msgs/srv_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../src/Project2Sample/srv/_returnPosition.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Project2Sample/srv/_returnPosition.py"
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/gensrv_py.py --noinitpy /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/srv/returnPosition.srv
 
 ROSBUILD_gensrv_py: CMakeFiles/ROSBUILD_gensrv_py
 ROSBUILD_gensrv_py: ../src/Project2Sample/srv/__init__.py
-ROSBUILD_gensrv_py: ../src/Project2Sample/srv/_ClosestDistance.py
+ROSBUILD_gensrv_py: ../src/Project2Sample/srv/_returnPosition.py
 ROSBUILD_gensrv_py: CMakeFiles/ROSBUILD_gensrv_py.dir/build.make
 .PHONY : ROSBUILD_gensrv_py
 
@@ -107,6 +107,6 @@ CMakeFiles/ROSBUILD_gensrv_py.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/clean
 
 CMakeFiles/ROSBUILD_gensrv_py.dir/depend:
-	cd /home/charu/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/ROSBUILD_gensrv_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/ROSBUILD_gensrv_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/depend
 

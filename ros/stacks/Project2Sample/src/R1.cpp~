@@ -118,9 +118,6 @@ while (ros::ok())
 	msg.life = R1_life;
 	msg.x = px;
 	msg.y = py;
-
-	//set the distance of the robot from origin in the msg
-	msg.distance = CalculateDistance(msg);
 	
 
 	//publish the message

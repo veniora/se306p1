@@ -21,3 +21,7 @@ bin/
 lib/
 msg_gen/
 srv_gen/
+
+#Exclusions
+!Project2Sample.world
+!swarm_world.pgm

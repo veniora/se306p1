@@ -137,6 +137,8 @@ class StageNode
     void cmdvelReceived3(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg3);
      void cmdvelReceived4(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg4);
       void cmdvelReceived5(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg5);
+	void cmdvelReceived6(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg6);
+
 
     // The main simulator object
     Stg::World* world;
@@ -223,6 +225,19 @@ StageNode::cmdvelReceived5(int idx, const boost::shared_ptr<geometry_msgs::Twist
   //ROS_INFO("cmdvelReceived5 %f", msg->linear.x);
   //ROS_INFO("RobotID %i", idx);
   this->base_last_cmd = this->sim_time;
+}
+
+void
+StageNode::cmdvelReceived6(int idx, const boost::shared_ptr<geometry_msgs::Twist const>& msg)
+{
+  boost::mutex::scoped_lock lock(msg_lock);
+  this->positionmodels[idx]->SetSpeed(msg->linear.x, 
+                                      msg->linear.y, 
+                                      msg->angular.z);
+  //ROS_INFO("cmdvelReceived6 %f", msg->linear.x);
+  //ROS_INFO("RobotID %i", idx);
+  this->base_last_cmd = this->sim_time;
+
 }
 
 
@@ -355,7 +370,17 @@ StageNode::SubscribeModels()
         	odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot4_odo", 10));
 		ground_truth_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot4_truth", 10));			
 		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot4_vel", 10, boost::bind(&StageNode::cmdvelReceived5, this, r, _1)));
-		ROS_INFO("subscribed to cmd_vel3");
+		ROS_INFO("subscribed to Robot4_vel");
+		ROS_INFO("RobotID: %i", r);
+	}
+
+else if (r==5)
+	{
+		laser_pubs_.push_back(n_.advertise<sensor_msgs::LaserScan>("Robot5_laser", 10));
+        	odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_odo", 10));
+		ground_truth_pubs_.push_back(n_.advertise<nav_msgs::Odometry>("Robot5_truth", 10));			
+		cmdvel_subs_.push_back(n_.subscribe<geometry_msgs::Twist>("Robot5_vel", 10, boost::bind(&StageNode::cmdvelReceived6, this, r, _1)));
+		ROS_INFO("subscribed to cmd_vel4");
 		ROS_INFO("RobotID: %i", r);
 	}
 
@@ -447,7 +472,9 @@ StageNode::WorldCallback()
     // Get latest odometry data
     // Translate into ROS message format and publish
     this->odomMsgs[r].pose.pose.position.x = this->positionmodels[r]->est_pose.x;
+    //ROS_INFO("x: %f",this->positionmodels[r]->est_pose.x);
     this->odomMsgs[r].pose.pose.position.y = this->positionmodels[r]->est_pose.y;
+    //ROS_INFO("y: %f",this->positionmodels[r]->est_pose.y);
     this->odomMsgs[r].pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->positionmodels[r]->est_pose.a);
     Stg::Velocity v = this->positionmodels[r]->GetVelocity();
     this->odomMsgs[r].twist.twist.linear.x = v.x;
@@ -478,10 +505,11 @@ StageNode::WorldCallback()
     // Note that we correct for Stage's screwed-up coord system.
     tf::Quaternion q_gpose;
     q_gpose.setRPY(0.0, 0.0, gpose.a-M_PI/2.0);
-    tf::Transform gt(q_gpose, tf::Point(gpose.y, -gpose.x, 0.0));
+    tf::Transform gt(q_gpose, tf::Point(gpose.x, gpose.y, gpose.a-M_PI/2.0));
     tf::Quaternion q_gvel;
     q_gvel.setRPY(0.0, 0.0, gvel.a-M_PI/2.0);
-    tf::Transform gv(q_gvel, tf::Point(gvel.y, -gvel.x, 0.0));
+    ROS_INFO("theta: %f", gpose.a);
+    tf::Transform gv(q_gvel, tf::Point(gvel.x, gvel.y, gvel.a-M_PI/2.0));
 
     this->groundTruthMsgs[r].pose.pose.position.x     = gt.getOrigin().x();
     this->groundTruthMsgs[r].pose.pose.position.y     = gt.getOrigin().y();
@@ -489,7 +517,7 @@ StageNode::WorldCallback()
     this->groundTruthMsgs[r].pose.pose.orientation.x  = gt.getRotation().x();
     this->groundTruthMsgs[r].pose.pose.orientation.y  = gt.getRotation().y();
     this->groundTruthMsgs[r].pose.pose.orientation.z  = gt.getRotation().z();
-    this->groundTruthMsgs[r].pose.pose.orientation.w  = gt.getRotation().w();
+    this->groundTruthMsgs[r].pose.pose.orientation.w  = gt.getRotation().w();	
     this->groundTruthMsgs[r].twist.twist.linear.x = gv.getOrigin().x();
     this->groundTruthMsgs[r].twist.twist.linear.y = gv.getOrigin().y();
     //this->groundTruthMsgs[r].twist.twist.angular.z = tf::getYaw(gv.getRotation());

@@ -497,8 +497,8 @@ clean: CMakeFiles/rostest_test_hztest.xml_result.dir/clean
 # Target rules for target CMakeFiles/test.dir
 
 # All Build rule for target.
-CMakeFiles/test.dir/all: CMakeFiles/rostest_test_hztest.xml.dir/all
 CMakeFiles/test.dir/all: CMakeFiles/tests.dir/all
+CMakeFiles/test.dir/all: CMakeFiles/rostest_test_hztest.xml.dir/all
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/CMakeFiles 

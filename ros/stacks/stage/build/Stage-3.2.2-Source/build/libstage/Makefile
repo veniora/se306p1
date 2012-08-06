@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
+CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build
+CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -98,7 +98,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && /usr/bin/cpack --config ./CPackConfig.cmake
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && /usr/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -108,7 +108,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CPackSourceConfig.cmake
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/CMakeFiles/progress.marks
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles 0
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/CMakeFiles/progress.marks
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/clean
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/clean
 .PHONY : clean
 
 # The main clean target
@@ -153,22 +153,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/preinstall
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/preinstall
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libstage/CMakeFiles/stage.dir/rule:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/CMakeFiles/stage.dir/rule
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/CMakeFiles/stage.dir/rule
 .PHONY : libstage/CMakeFiles/stage.dir/rule
 
 # Convenience name for target.
@@ -177,12 +177,12 @@ stage: libstage/CMakeFiles/stage.dir/rule
 
 # fast build rule for target.
 stage/fast:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/build
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/build
 .PHONY : stage/fast
 
 # Convenience name for target.
 libstage/CMakeFiles/stagebinary.dir/rule:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/CMakeFiles/stagebinary.dir/rule
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f CMakeFiles/Makefile2 libstage/CMakeFiles/stagebinary.dir/rule
 .PHONY : libstage/CMakeFiles/stagebinary.dir/rule
 
 # Convenience name for target.
@@ -191,547 +191,547 @@ stagebinary: libstage/CMakeFiles/stagebinary.dir/rule
 
 # fast build rule for target.
 stagebinary/fast:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/build
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/build
 .PHONY : stagebinary/fast
 
 # target to build an object file
 ancestor.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.o
 .PHONY : ancestor.o
 
 # target to preprocess a source file
 ancestor.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.i
 .PHONY : ancestor.i
 
 # target to generate assembly for a file
 ancestor.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/ancestor.s
 .PHONY : ancestor.s
 
 # target to build an object file
 block.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.o
 .PHONY : block.o
 
 # target to preprocess a source file
 block.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.i
 .PHONY : block.i
 
 # target to generate assembly for a file
 block.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/block.s
 .PHONY : block.s
 
 # target to build an object file
 blockgroup.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.o
 .PHONY : blockgroup.o
 
 # target to preprocess a source file
 blockgroup.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.i
 .PHONY : blockgroup.i
 
 # target to generate assembly for a file
 blockgroup.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/blockgroup.s
 .PHONY : blockgroup.s
 
 # target to build an object file
 camera.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.o
 .PHONY : camera.o
 
 # target to preprocess a source file
 camera.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.i
 .PHONY : camera.i
 
 # target to generate assembly for a file
 camera.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/camera.s
 .PHONY : camera.s
 
 # target to build an object file
 canvas.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.o
 .PHONY : canvas.o
 
 # target to preprocess a source file
 canvas.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.i
 .PHONY : canvas.i
 
 # target to generate assembly for a file
 canvas.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/canvas.s
 .PHONY : canvas.s
 
 # target to build an object file
 color.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.o
 .PHONY : color.o
 
 # target to preprocess a source file
 color.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.i
 .PHONY : color.i
 
 # target to generate assembly for a file
 color.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/color.s
 .PHONY : color.s
 
 # target to build an object file
 file_manager.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.o
 .PHONY : file_manager.o
 
 # target to preprocess a source file
 file_manager.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.i
 .PHONY : file_manager.i
 
 # target to generate assembly for a file
 file_manager.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/file_manager.s
 .PHONY : file_manager.s
 
 # target to build an object file
 gl.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.o
 .PHONY : gl.o
 
 # target to preprocess a source file
 gl.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.i
 .PHONY : gl.i
 
 # target to generate assembly for a file
 gl.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/gl.s
 .PHONY : gl.s
 
 # target to build an object file
 logentry.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.o
 .PHONY : logentry.o
 
 # target to preprocess a source file
 logentry.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.i
 .PHONY : logentry.i
 
 # target to generate assembly for a file
 logentry.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/logentry.s
 .PHONY : logentry.s
 
 # target to build an object file
 main.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.o
 .PHONY : main.o
 
 # target to preprocess a source file
 main.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.i
 .PHONY : main.i
 
 # target to generate assembly for a file
 main.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stagebinary.dir/build.make libstage/CMakeFiles/stagebinary.dir/main.s
 .PHONY : main.s
 
 # target to build an object file
 model.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.o
 .PHONY : model.o
 
 # target to preprocess a source file
 model.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.i
 .PHONY : model.i
 
 # target to generate assembly for a file
 model.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model.s
 .PHONY : model.s
 
 # target to build an object file
 model_actuator.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.o
 .PHONY : model_actuator.o
 
 # target to preprocess a source file
 model_actuator.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.i
 .PHONY : model_actuator.i
 
 # target to generate assembly for a file
 model_actuator.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_actuator.s
 .PHONY : model_actuator.s
 
 # target to build an object file
 model_blinkenlight.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.o
 .PHONY : model_blinkenlight.o
 
 # target to preprocess a source file
 model_blinkenlight.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.i
 .PHONY : model_blinkenlight.i
 
 # target to generate assembly for a file
 model_blinkenlight.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blinkenlight.s
 .PHONY : model_blinkenlight.s
 
 # target to build an object file
 model_blobfinder.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.o
 .PHONY : model_blobfinder.o
 
 # target to preprocess a source file
 model_blobfinder.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.i
 .PHONY : model_blobfinder.i
 
 # target to generate assembly for a file
 model_blobfinder.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_blobfinder.s
 .PHONY : model_blobfinder.s
 
 # target to build an object file
 model_callbacks.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.o
 .PHONY : model_callbacks.o
 
 # target to preprocess a source file
 model_callbacks.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.i
 .PHONY : model_callbacks.i
 
 # target to generate assembly for a file
 model_callbacks.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_callbacks.s
 .PHONY : model_callbacks.s
 
 # target to build an object file
 model_camera.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.o
 .PHONY : model_camera.o
 
 # target to preprocess a source file
 model_camera.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.i
 .PHONY : model_camera.i
 
 # target to generate assembly for a file
 model_camera.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_camera.s
 .PHONY : model_camera.s
 
 # target to build an object file
 model_draw.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.o
 .PHONY : model_draw.o
 
 # target to preprocess a source file
 model_draw.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.i
 .PHONY : model_draw.i
 
 # target to generate assembly for a file
 model_draw.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_draw.s
 .PHONY : model_draw.s
 
 # target to build an object file
 model_fiducial.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.o
 .PHONY : model_fiducial.o
 
 # target to preprocess a source file
 model_fiducial.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.i
 .PHONY : model_fiducial.i
 
 # target to generate assembly for a file
 model_fiducial.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_fiducial.s
 .PHONY : model_fiducial.s
 
 # target to build an object file
 model_getset.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.o
 .PHONY : model_getset.o
 
 # target to preprocess a source file
 model_getset.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.i
 .PHONY : model_getset.i
 
 # target to generate assembly for a file
 model_getset.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_getset.s
 .PHONY : model_getset.s
 
 # target to build an object file
 model_gripper.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.o
 .PHONY : model_gripper.o
 
 # target to preprocess a source file
 model_gripper.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.i
 .PHONY : model_gripper.i
 
 # target to generate assembly for a file
 model_gripper.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_gripper.s
 .PHONY : model_gripper.s
 
 # target to build an object file
 model_laser.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.o
 .PHONY : model_laser.o
 
 # target to preprocess a source file
 model_laser.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.i
 .PHONY : model_laser.i
 
 # target to generate assembly for a file
 model_laser.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_laser.s
 .PHONY : model_laser.s
 
 # target to build an object file
 model_lightindicator.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.o
 .PHONY : model_lightindicator.o
 
 # target to preprocess a source file
 model_lightindicator.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.i
 .PHONY : model_lightindicator.i
 
 # target to generate assembly for a file
 model_lightindicator.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_lightindicator.s
 .PHONY : model_lightindicator.s
 
 # target to build an object file
 model_load.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.o
 .PHONY : model_load.o
 
 # target to preprocess a source file
 model_load.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.i
 .PHONY : model_load.i
 
 # target to generate assembly for a file
 model_load.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_load.s
 .PHONY : model_load.s
 
 # target to build an object file
 model_position.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.o
 .PHONY : model_position.o
 
 # target to preprocess a source file
 model_position.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.i
 .PHONY : model_position.i
 
 # target to generate assembly for a file
 model_position.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_position.s
 .PHONY : model_position.s
 
 # target to build an object file
 model_ranger.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.o
 .PHONY : model_ranger.o
 
 # target to preprocess a source file
 model_ranger.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.i
 .PHONY : model_ranger.i
 
 # target to generate assembly for a file
 model_ranger.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/model_ranger.s
 .PHONY : model_ranger.s
 
 # target to build an object file
 option.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.o
 .PHONY : option.o
 
 # target to preprocess a source file
 option.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.i
 .PHONY : option.i
 
 # target to generate assembly for a file
 option.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/option.s
 .PHONY : option.s
 
 # target to build an object file
 options_dlg.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.o
 .PHONY : options_dlg.o
 
 # target to preprocess a source file
 options_dlg.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.i
 .PHONY : options_dlg.i
 
 # target to generate assembly for a file
 options_dlg.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/options_dlg.s
 .PHONY : options_dlg.s
 
 # target to build an object file
 powerpack.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.o
 .PHONY : powerpack.o
 
 # target to preprocess a source file
 powerpack.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.i
 .PHONY : powerpack.i
 
 # target to generate assembly for a file
 powerpack.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/powerpack.s
 .PHONY : powerpack.s
 
 # target to build an object file
 region.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.o
 .PHONY : region.o
 
 # target to preprocess a source file
 region.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.i
 .PHONY : region.i
 
 # target to generate assembly for a file
 region.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/region.s
 .PHONY : region.s
 
 # target to build an object file
 stage.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.o
 .PHONY : stage.o
 
 # target to preprocess a source file
 stage.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.i
 .PHONY : stage.i
 
 # target to generate assembly for a file
 stage.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/stage.s
 .PHONY : stage.s
 
 # target to build an object file
 texture_manager.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.o
 .PHONY : texture_manager.o
 
 # target to preprocess a source file
 texture_manager.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.i
 .PHONY : texture_manager.i
 
 # target to generate assembly for a file
 texture_manager.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/texture_manager.s
 .PHONY : texture_manager.s
 
 # target to build an object file
 typetable.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.o
 .PHONY : typetable.o
 
 # target to preprocess a source file
 typetable.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.i
 .PHONY : typetable.i
 
 # target to generate assembly for a file
 typetable.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/typetable.s
 .PHONY : typetable.s
 
 # target to build an object file
 vis_strip.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.o
 .PHONY : vis_strip.o
 
 # target to preprocess a source file
 vis_strip.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.i
 .PHONY : vis_strip.i
 
 # target to generate assembly for a file
 vis_strip.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/vis_strip.s
 .PHONY : vis_strip.s
 
 # target to build an object file
 world.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.o
 .PHONY : world.o
 
 # target to preprocess a source file
 world.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.i
 .PHONY : world.i
 
 # target to generate assembly for a file
 world.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/world.s
 .PHONY : world.s
 
 # target to build an object file
 worldfile.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.o
 .PHONY : worldfile.o
 
 # target to preprocess a source file
 worldfile.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.i
 .PHONY : worldfile.i
 
 # target to generate assembly for a file
 worldfile.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldfile.s
 .PHONY : worldfile.s
 
 # target to build an object file
 worldgui.o:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.o
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.o
 .PHONY : worldgui.o
 
 # target to preprocess a source file
 worldgui.i:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.i
 .PHONY : worldgui.i
 
 # target to generate assembly for a file
 worldgui.s:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(MAKE) -f libstage/CMakeFiles/stage.dir/build.make libstage/CMakeFiles/stage.dir/worldgui.s
 .PHONY : worldgui.s
 
 # Help Target
@@ -870,6 +870,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

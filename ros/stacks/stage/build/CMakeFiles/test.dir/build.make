@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/stage
+CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/stage/build
+CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build
 
 # Utility rule file for test.
 
@@ -54,6 +54,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /home/charu/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build /home/charu/se306p1/ros/stacks/stage/build/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 

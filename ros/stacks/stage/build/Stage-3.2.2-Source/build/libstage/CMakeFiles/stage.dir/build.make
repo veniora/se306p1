@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
+CMAKE_SOURCE_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build
+CMAKE_BINARY_DIR = /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build
 
 # Include any dependencies generated for this target.
 include libstage/CMakeFiles/stage.dir/depend.make
@@ -48,17 +48,17 @@ include libstage/CMakeFiles/stage.dir/flags.make
 
 libstage/CMakeFiles/stage.dir/block.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/block.o: ../libstage/block.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/block.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/block.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/block.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc
 
 libstage/CMakeFiles/stage.dir/block.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/block.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc > CMakeFiles/stage.dir/block.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc > CMakeFiles/stage.dir/block.i
 
 libstage/CMakeFiles/stage.dir/block.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/block.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc -o CMakeFiles/stage.dir/block.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc -o CMakeFiles/stage.dir/block.s
 
 libstage/CMakeFiles/stage.dir/block.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/block.o.requires
@@ -71,17 +71,17 @@ libstage/CMakeFiles/stage.dir/block.o.provides.build: libstage/CMakeFiles/stage.
 
 libstage/CMakeFiles/stage.dir/blockgroup.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/blockgroup.o: ../libstage/blockgroup.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/blockgroup.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/blockgroup.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/blockgroup.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc
 
 libstage/CMakeFiles/stage.dir/blockgroup.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/blockgroup.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc > CMakeFiles/stage.dir/blockgroup.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc > CMakeFiles/stage.dir/blockgroup.i
 
 libstage/CMakeFiles/stage.dir/blockgroup.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/blockgroup.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc -o CMakeFiles/stage.dir/blockgroup.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc -o CMakeFiles/stage.dir/blockgroup.s
 
 libstage/CMakeFiles/stage.dir/blockgroup.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/blockgroup.o.requires
@@ -94,17 +94,17 @@ libstage/CMakeFiles/stage.dir/blockgroup.o.provides.build: libstage/CMakeFiles/s
 
 libstage/CMakeFiles/stage.dir/camera.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/camera.o: ../libstage/camera.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/camera.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/camera.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/camera.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc
 
 libstage/CMakeFiles/stage.dir/camera.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/camera.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc > CMakeFiles/stage.dir/camera.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc > CMakeFiles/stage.dir/camera.i
 
 libstage/CMakeFiles/stage.dir/camera.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/camera.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc -o CMakeFiles/stage.dir/camera.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc -o CMakeFiles/stage.dir/camera.s
 
 libstage/CMakeFiles/stage.dir/camera.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/camera.o.requires
@@ -117,17 +117,17 @@ libstage/CMakeFiles/stage.dir/camera.o.provides.build: libstage/CMakeFiles/stage
 
 libstage/CMakeFiles/stage.dir/color.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/color.o: ../libstage/color.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/color.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/color.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/color.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc
 
 libstage/CMakeFiles/stage.dir/color.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/color.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc > CMakeFiles/stage.dir/color.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc > CMakeFiles/stage.dir/color.i
 
 libstage/CMakeFiles/stage.dir/color.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/color.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc -o CMakeFiles/stage.dir/color.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc -o CMakeFiles/stage.dir/color.s
 
 libstage/CMakeFiles/stage.dir/color.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/color.o.requires
@@ -140,17 +140,17 @@ libstage/CMakeFiles/stage.dir/color.o.provides.build: libstage/CMakeFiles/stage.
 
 libstage/CMakeFiles/stage.dir/file_manager.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/file_manager.o: ../libstage/file_manager.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/file_manager.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/file_manager.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/file_manager.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc
 
 libstage/CMakeFiles/stage.dir/file_manager.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/file_manager.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc > CMakeFiles/stage.dir/file_manager.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc > CMakeFiles/stage.dir/file_manager.i
 
 libstage/CMakeFiles/stage.dir/file_manager.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/file_manager.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc -o CMakeFiles/stage.dir/file_manager.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc -o CMakeFiles/stage.dir/file_manager.s
 
 libstage/CMakeFiles/stage.dir/file_manager.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/file_manager.o.requires
@@ -163,17 +163,17 @@ libstage/CMakeFiles/stage.dir/file_manager.o.provides.build: libstage/CMakeFiles
 
 libstage/CMakeFiles/stage.dir/gl.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/gl.o: ../libstage/gl.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/gl.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/gl.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/gl.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc
 
 libstage/CMakeFiles/stage.dir/gl.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/gl.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc > CMakeFiles/stage.dir/gl.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc > CMakeFiles/stage.dir/gl.i
 
 libstage/CMakeFiles/stage.dir/gl.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/gl.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc -o CMakeFiles/stage.dir/gl.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc -o CMakeFiles/stage.dir/gl.s
 
 libstage/CMakeFiles/stage.dir/gl.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/gl.o.requires
@@ -186,17 +186,17 @@ libstage/CMakeFiles/stage.dir/gl.o.provides.build: libstage/CMakeFiles/stage.dir
 
 libstage/CMakeFiles/stage.dir/logentry.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/logentry.o: ../libstage/logentry.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/logentry.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/logentry.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/logentry.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc
 
 libstage/CMakeFiles/stage.dir/logentry.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/logentry.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc > CMakeFiles/stage.dir/logentry.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc > CMakeFiles/stage.dir/logentry.i
 
 libstage/CMakeFiles/stage.dir/logentry.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/logentry.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc -o CMakeFiles/stage.dir/logentry.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc -o CMakeFiles/stage.dir/logentry.s
 
 libstage/CMakeFiles/stage.dir/logentry.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/logentry.o.requires
@@ -209,17 +209,17 @@ libstage/CMakeFiles/stage.dir/logentry.o.provides.build: libstage/CMakeFiles/sta
 
 libstage/CMakeFiles/stage.dir/model.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model.o: ../libstage/model.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc
 
 libstage/CMakeFiles/stage.dir/model.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc > CMakeFiles/stage.dir/model.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc > CMakeFiles/stage.dir/model.i
 
 libstage/CMakeFiles/stage.dir/model.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc -o CMakeFiles/stage.dir/model.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc -o CMakeFiles/stage.dir/model.s
 
 libstage/CMakeFiles/stage.dir/model.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model.o.requires
@@ -232,17 +232,17 @@ libstage/CMakeFiles/stage.dir/model.o.provides.build: libstage/CMakeFiles/stage.
 
 libstage/CMakeFiles/stage.dir/model_actuator.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_actuator.o: ../libstage/model_actuator.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_actuator.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_actuator.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_actuator.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc
 
 libstage/CMakeFiles/stage.dir/model_actuator.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_actuator.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc > CMakeFiles/stage.dir/model_actuator.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc > CMakeFiles/stage.dir/model_actuator.i
 
 libstage/CMakeFiles/stage.dir/model_actuator.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_actuator.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc -o CMakeFiles/stage.dir/model_actuator.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc -o CMakeFiles/stage.dir/model_actuator.s
 
 libstage/CMakeFiles/stage.dir/model_actuator.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_actuator.o.requires
@@ -255,17 +255,17 @@ libstage/CMakeFiles/stage.dir/model_actuator.o.provides.build: libstage/CMakeFil
 
 libstage/CMakeFiles/stage.dir/model_blinkenlight.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_blinkenlight.o: ../libstage/model_blinkenlight.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_blinkenlight.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_blinkenlight.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_blinkenlight.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc
 
 libstage/CMakeFiles/stage.dir/model_blinkenlight.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_blinkenlight.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc > CMakeFiles/stage.dir/model_blinkenlight.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc > CMakeFiles/stage.dir/model_blinkenlight.i
 
 libstage/CMakeFiles/stage.dir/model_blinkenlight.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_blinkenlight.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc -o CMakeFiles/stage.dir/model_blinkenlight.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc -o CMakeFiles/stage.dir/model_blinkenlight.s
 
 libstage/CMakeFiles/stage.dir/model_blinkenlight.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_blinkenlight.o.requires
@@ -278,17 +278,17 @@ libstage/CMakeFiles/stage.dir/model_blinkenlight.o.provides.build: libstage/CMak
 
 libstage/CMakeFiles/stage.dir/model_blobfinder.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_blobfinder.o: ../libstage/model_blobfinder.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_blobfinder.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_blobfinder.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_blobfinder.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc
 
 libstage/CMakeFiles/stage.dir/model_blobfinder.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_blobfinder.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc > CMakeFiles/stage.dir/model_blobfinder.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc > CMakeFiles/stage.dir/model_blobfinder.i
 
 libstage/CMakeFiles/stage.dir/model_blobfinder.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_blobfinder.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc -o CMakeFiles/stage.dir/model_blobfinder.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc -o CMakeFiles/stage.dir/model_blobfinder.s
 
 libstage/CMakeFiles/stage.dir/model_blobfinder.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_blobfinder.o.requires
@@ -301,17 +301,17 @@ libstage/CMakeFiles/stage.dir/model_blobfinder.o.provides.build: libstage/CMakeF
 
 libstage/CMakeFiles/stage.dir/model_callbacks.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_callbacks.o: ../libstage/model_callbacks.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_callbacks.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_callbacks.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_callbacks.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc
 
 libstage/CMakeFiles/stage.dir/model_callbacks.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_callbacks.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc > CMakeFiles/stage.dir/model_callbacks.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc > CMakeFiles/stage.dir/model_callbacks.i
 
 libstage/CMakeFiles/stage.dir/model_callbacks.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_callbacks.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc -o CMakeFiles/stage.dir/model_callbacks.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc -o CMakeFiles/stage.dir/model_callbacks.s
 
 libstage/CMakeFiles/stage.dir/model_callbacks.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_callbacks.o.requires
@@ -324,17 +324,17 @@ libstage/CMakeFiles/stage.dir/model_callbacks.o.provides.build: libstage/CMakeFi
 
 libstage/CMakeFiles/stage.dir/model_camera.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_camera.o: ../libstage/model_camera.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_camera.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_camera.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_camera.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc
 
 libstage/CMakeFiles/stage.dir/model_camera.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_camera.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc > CMakeFiles/stage.dir/model_camera.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc > CMakeFiles/stage.dir/model_camera.i
 
 libstage/CMakeFiles/stage.dir/model_camera.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_camera.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc -o CMakeFiles/stage.dir/model_camera.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc -o CMakeFiles/stage.dir/model_camera.s
 
 libstage/CMakeFiles/stage.dir/model_camera.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_camera.o.requires
@@ -347,17 +347,17 @@ libstage/CMakeFiles/stage.dir/model_camera.o.provides.build: libstage/CMakeFiles
 
 libstage/CMakeFiles/stage.dir/model_draw.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_draw.o: ../libstage/model_draw.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_draw.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_draw.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_draw.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc
 
 libstage/CMakeFiles/stage.dir/model_draw.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_draw.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc > CMakeFiles/stage.dir/model_draw.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc > CMakeFiles/stage.dir/model_draw.i
 
 libstage/CMakeFiles/stage.dir/model_draw.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_draw.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc -o CMakeFiles/stage.dir/model_draw.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc -o CMakeFiles/stage.dir/model_draw.s
 
 libstage/CMakeFiles/stage.dir/model_draw.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_draw.o.requires
@@ -370,17 +370,17 @@ libstage/CMakeFiles/stage.dir/model_draw.o.provides.build: libstage/CMakeFiles/s
 
 libstage/CMakeFiles/stage.dir/model_fiducial.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_fiducial.o: ../libstage/model_fiducial.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_fiducial.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_fiducial.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_fiducial.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc
 
 libstage/CMakeFiles/stage.dir/model_fiducial.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_fiducial.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc > CMakeFiles/stage.dir/model_fiducial.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc > CMakeFiles/stage.dir/model_fiducial.i
 
 libstage/CMakeFiles/stage.dir/model_fiducial.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_fiducial.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc -o CMakeFiles/stage.dir/model_fiducial.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc -o CMakeFiles/stage.dir/model_fiducial.s
 
 libstage/CMakeFiles/stage.dir/model_fiducial.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_fiducial.o.requires
@@ -393,17 +393,17 @@ libstage/CMakeFiles/stage.dir/model_fiducial.o.provides.build: libstage/CMakeFil
 
 libstage/CMakeFiles/stage.dir/model_getset.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_getset.o: ../libstage/model_getset.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_getset.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_getset.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_getset.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc
 
 libstage/CMakeFiles/stage.dir/model_getset.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_getset.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc > CMakeFiles/stage.dir/model_getset.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc > CMakeFiles/stage.dir/model_getset.i
 
 libstage/CMakeFiles/stage.dir/model_getset.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_getset.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc -o CMakeFiles/stage.dir/model_getset.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc -o CMakeFiles/stage.dir/model_getset.s
 
 libstage/CMakeFiles/stage.dir/model_getset.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_getset.o.requires
@@ -416,17 +416,17 @@ libstage/CMakeFiles/stage.dir/model_getset.o.provides.build: libstage/CMakeFiles
 
 libstage/CMakeFiles/stage.dir/model_gripper.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_gripper.o: ../libstage/model_gripper.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_gripper.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_gripper.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_gripper.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc
 
 libstage/CMakeFiles/stage.dir/model_gripper.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_gripper.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc > CMakeFiles/stage.dir/model_gripper.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc > CMakeFiles/stage.dir/model_gripper.i
 
 libstage/CMakeFiles/stage.dir/model_gripper.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_gripper.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc -o CMakeFiles/stage.dir/model_gripper.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc -o CMakeFiles/stage.dir/model_gripper.s
 
 libstage/CMakeFiles/stage.dir/model_gripper.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_gripper.o.requires
@@ -439,17 +439,17 @@ libstage/CMakeFiles/stage.dir/model_gripper.o.provides.build: libstage/CMakeFile
 
 libstage/CMakeFiles/stage.dir/model_laser.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_laser.o: ../libstage/model_laser.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_laser.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_laser.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_laser.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc
 
 libstage/CMakeFiles/stage.dir/model_laser.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_laser.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc > CMakeFiles/stage.dir/model_laser.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc > CMakeFiles/stage.dir/model_laser.i
 
 libstage/CMakeFiles/stage.dir/model_laser.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_laser.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc -o CMakeFiles/stage.dir/model_laser.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc -o CMakeFiles/stage.dir/model_laser.s
 
 libstage/CMakeFiles/stage.dir/model_laser.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_laser.o.requires
@@ -462,17 +462,17 @@ libstage/CMakeFiles/stage.dir/model_laser.o.provides.build: libstage/CMakeFiles/
 
 libstage/CMakeFiles/stage.dir/model_lightindicator.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_lightindicator.o: ../libstage/model_lightindicator.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_lightindicator.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_lightindicator.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_lightindicator.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc
 
 libstage/CMakeFiles/stage.dir/model_lightindicator.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_lightindicator.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc > CMakeFiles/stage.dir/model_lightindicator.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc > CMakeFiles/stage.dir/model_lightindicator.i
 
 libstage/CMakeFiles/stage.dir/model_lightindicator.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_lightindicator.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc -o CMakeFiles/stage.dir/model_lightindicator.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc -o CMakeFiles/stage.dir/model_lightindicator.s
 
 libstage/CMakeFiles/stage.dir/model_lightindicator.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_lightindicator.o.requires
@@ -485,17 +485,17 @@ libstage/CMakeFiles/stage.dir/model_lightindicator.o.provides.build: libstage/CM
 
 libstage/CMakeFiles/stage.dir/model_load.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_load.o: ../libstage/model_load.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_load.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_load.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_load.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc
 
 libstage/CMakeFiles/stage.dir/model_load.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_load.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc > CMakeFiles/stage.dir/model_load.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc > CMakeFiles/stage.dir/model_load.i
 
 libstage/CMakeFiles/stage.dir/model_load.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_load.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc -o CMakeFiles/stage.dir/model_load.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc -o CMakeFiles/stage.dir/model_load.s
 
 libstage/CMakeFiles/stage.dir/model_load.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_load.o.requires
@@ -508,17 +508,17 @@ libstage/CMakeFiles/stage.dir/model_load.o.provides.build: libstage/CMakeFiles/s
 
 libstage/CMakeFiles/stage.dir/model_position.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_position.o: ../libstage/model_position.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_position.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_position.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_position.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc
 
 libstage/CMakeFiles/stage.dir/model_position.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_position.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc > CMakeFiles/stage.dir/model_position.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc > CMakeFiles/stage.dir/model_position.i
 
 libstage/CMakeFiles/stage.dir/model_position.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_position.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc -o CMakeFiles/stage.dir/model_position.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc -o CMakeFiles/stage.dir/model_position.s
 
 libstage/CMakeFiles/stage.dir/model_position.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_position.o.requires
@@ -531,17 +531,17 @@ libstage/CMakeFiles/stage.dir/model_position.o.provides.build: libstage/CMakeFil
 
 libstage/CMakeFiles/stage.dir/model_ranger.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/model_ranger.o: ../libstage/model_ranger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/model_ranger.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_ranger.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/model_ranger.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc
 
 libstage/CMakeFiles/stage.dir/model_ranger.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/model_ranger.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc > CMakeFiles/stage.dir/model_ranger.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc > CMakeFiles/stage.dir/model_ranger.i
 
 libstage/CMakeFiles/stage.dir/model_ranger.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/model_ranger.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc -o CMakeFiles/stage.dir/model_ranger.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc -o CMakeFiles/stage.dir/model_ranger.s
 
 libstage/CMakeFiles/stage.dir/model_ranger.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/model_ranger.o.requires
@@ -554,17 +554,17 @@ libstage/CMakeFiles/stage.dir/model_ranger.o.provides.build: libstage/CMakeFiles
 
 libstage/CMakeFiles/stage.dir/option.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/option.o: ../libstage/option.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/option.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/option.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/option.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc
 
 libstage/CMakeFiles/stage.dir/option.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/option.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc > CMakeFiles/stage.dir/option.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc > CMakeFiles/stage.dir/option.i
 
 libstage/CMakeFiles/stage.dir/option.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/option.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc -o CMakeFiles/stage.dir/option.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc -o CMakeFiles/stage.dir/option.s
 
 libstage/CMakeFiles/stage.dir/option.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/option.o.requires
@@ -577,17 +577,17 @@ libstage/CMakeFiles/stage.dir/option.o.provides.build: libstage/CMakeFiles/stage
 
 libstage/CMakeFiles/stage.dir/powerpack.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/powerpack.o: ../libstage/powerpack.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/powerpack.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/powerpack.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/powerpack.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc
 
 libstage/CMakeFiles/stage.dir/powerpack.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/powerpack.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc > CMakeFiles/stage.dir/powerpack.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc > CMakeFiles/stage.dir/powerpack.i
 
 libstage/CMakeFiles/stage.dir/powerpack.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/powerpack.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc -o CMakeFiles/stage.dir/powerpack.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc -o CMakeFiles/stage.dir/powerpack.s
 
 libstage/CMakeFiles/stage.dir/powerpack.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/powerpack.o.requires
@@ -600,17 +600,17 @@ libstage/CMakeFiles/stage.dir/powerpack.o.provides.build: libstage/CMakeFiles/st
 
 libstage/CMakeFiles/stage.dir/region.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/region.o: ../libstage/region.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/region.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/region.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/region.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc
 
 libstage/CMakeFiles/stage.dir/region.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/region.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc > CMakeFiles/stage.dir/region.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc > CMakeFiles/stage.dir/region.i
 
 libstage/CMakeFiles/stage.dir/region.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/region.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc -o CMakeFiles/stage.dir/region.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc -o CMakeFiles/stage.dir/region.s
 
 libstage/CMakeFiles/stage.dir/region.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/region.o.requires
@@ -623,17 +623,17 @@ libstage/CMakeFiles/stage.dir/region.o.provides.build: libstage/CMakeFiles/stage
 
 libstage/CMakeFiles/stage.dir/stage.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/stage.o: ../libstage/stage.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/stage.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/stage.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/stage.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc
 
 libstage/CMakeFiles/stage.dir/stage.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/stage.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc > CMakeFiles/stage.dir/stage.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc > CMakeFiles/stage.dir/stage.i
 
 libstage/CMakeFiles/stage.dir/stage.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/stage.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc -o CMakeFiles/stage.dir/stage.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc -o CMakeFiles/stage.dir/stage.s
 
 libstage/CMakeFiles/stage.dir/stage.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/stage.o.requires
@@ -646,17 +646,17 @@ libstage/CMakeFiles/stage.dir/stage.o.provides.build: libstage/CMakeFiles/stage.
 
 libstage/CMakeFiles/stage.dir/texture_manager.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/texture_manager.o: ../libstage/texture_manager.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_27)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_27)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/texture_manager.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/texture_manager.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/texture_manager.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc
 
 libstage/CMakeFiles/stage.dir/texture_manager.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/texture_manager.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc > CMakeFiles/stage.dir/texture_manager.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc > CMakeFiles/stage.dir/texture_manager.i
 
 libstage/CMakeFiles/stage.dir/texture_manager.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/texture_manager.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc -o CMakeFiles/stage.dir/texture_manager.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc -o CMakeFiles/stage.dir/texture_manager.s
 
 libstage/CMakeFiles/stage.dir/texture_manager.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/texture_manager.o.requires
@@ -669,17 +669,17 @@ libstage/CMakeFiles/stage.dir/texture_manager.o.provides.build: libstage/CMakeFi
 
 libstage/CMakeFiles/stage.dir/typetable.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/typetable.o: ../libstage/typetable.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/typetable.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/typetable.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/typetable.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc
 
 libstage/CMakeFiles/stage.dir/typetable.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/typetable.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc > CMakeFiles/stage.dir/typetable.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc > CMakeFiles/stage.dir/typetable.i
 
 libstage/CMakeFiles/stage.dir/typetable.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/typetable.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc -o CMakeFiles/stage.dir/typetable.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc -o CMakeFiles/stage.dir/typetable.s
 
 libstage/CMakeFiles/stage.dir/typetable.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/typetable.o.requires
@@ -692,17 +692,17 @@ libstage/CMakeFiles/stage.dir/typetable.o.provides.build: libstage/CMakeFiles/st
 
 libstage/CMakeFiles/stage.dir/world.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/world.o: ../libstage/world.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/world.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/world.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/world.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc
 
 libstage/CMakeFiles/stage.dir/world.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/world.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc > CMakeFiles/stage.dir/world.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc > CMakeFiles/stage.dir/world.i
 
 libstage/CMakeFiles/stage.dir/world.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/world.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc -o CMakeFiles/stage.dir/world.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc -o CMakeFiles/stage.dir/world.s
 
 libstage/CMakeFiles/stage.dir/world.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/world.o.requires
@@ -715,17 +715,17 @@ libstage/CMakeFiles/stage.dir/world.o.provides.build: libstage/CMakeFiles/stage.
 
 libstage/CMakeFiles/stage.dir/worldfile.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/worldfile.o: ../libstage/worldfile.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/worldfile.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/worldfile.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/worldfile.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc
 
 libstage/CMakeFiles/stage.dir/worldfile.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/worldfile.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc > CMakeFiles/stage.dir/worldfile.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc > CMakeFiles/stage.dir/worldfile.i
 
 libstage/CMakeFiles/stage.dir/worldfile.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/worldfile.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc -o CMakeFiles/stage.dir/worldfile.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc -o CMakeFiles/stage.dir/worldfile.s
 
 libstage/CMakeFiles/stage.dir/worldfile.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/worldfile.o.requires
@@ -738,17 +738,17 @@ libstage/CMakeFiles/stage.dir/worldfile.o.provides.build: libstage/CMakeFiles/st
 
 libstage/CMakeFiles/stage.dir/canvas.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/canvas.o: ../libstage/canvas.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/canvas.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/canvas.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/canvas.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc
 
 libstage/CMakeFiles/stage.dir/canvas.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/canvas.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc > CMakeFiles/stage.dir/canvas.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc > CMakeFiles/stage.dir/canvas.i
 
 libstage/CMakeFiles/stage.dir/canvas.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/canvas.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc -o CMakeFiles/stage.dir/canvas.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc -o CMakeFiles/stage.dir/canvas.s
 
 libstage/CMakeFiles/stage.dir/canvas.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/canvas.o.requires
@@ -761,17 +761,17 @@ libstage/CMakeFiles/stage.dir/canvas.o.provides.build: libstage/CMakeFiles/stage
 
 libstage/CMakeFiles/stage.dir/options_dlg.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/options_dlg.o: ../libstage/options_dlg.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_32)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/options_dlg.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/options_dlg.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/options_dlg.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc
 
 libstage/CMakeFiles/stage.dir/options_dlg.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/options_dlg.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc > CMakeFiles/stage.dir/options_dlg.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc > CMakeFiles/stage.dir/options_dlg.i
 
 libstage/CMakeFiles/stage.dir/options_dlg.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/options_dlg.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc -o CMakeFiles/stage.dir/options_dlg.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc -o CMakeFiles/stage.dir/options_dlg.s
 
 libstage/CMakeFiles/stage.dir/options_dlg.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/options_dlg.o.requires
@@ -784,17 +784,17 @@ libstage/CMakeFiles/stage.dir/options_dlg.o.provides.build: libstage/CMakeFiles/
 
 libstage/CMakeFiles/stage.dir/vis_strip.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/vis_strip.o: ../libstage/vis_strip.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_33)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_33)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/vis_strip.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/vis_strip.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/vis_strip.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc
 
 libstage/CMakeFiles/stage.dir/vis_strip.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/vis_strip.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc > CMakeFiles/stage.dir/vis_strip.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc > CMakeFiles/stage.dir/vis_strip.i
 
 libstage/CMakeFiles/stage.dir/vis_strip.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/vis_strip.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc -o CMakeFiles/stage.dir/vis_strip.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc -o CMakeFiles/stage.dir/vis_strip.s
 
 libstage/CMakeFiles/stage.dir/vis_strip.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/vis_strip.o.requires
@@ -807,17 +807,17 @@ libstage/CMakeFiles/stage.dir/vis_strip.o.provides.build: libstage/CMakeFiles/st
 
 libstage/CMakeFiles/stage.dir/worldgui.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/worldgui.o: ../libstage/worldgui.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_34)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_34)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/worldgui.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/worldgui.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/worldgui.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc
 
 libstage/CMakeFiles/stage.dir/worldgui.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/worldgui.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc > CMakeFiles/stage.dir/worldgui.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc > CMakeFiles/stage.dir/worldgui.i
 
 libstage/CMakeFiles/stage.dir/worldgui.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/worldgui.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc -o CMakeFiles/stage.dir/worldgui.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc -o CMakeFiles/stage.dir/worldgui.s
 
 libstage/CMakeFiles/stage.dir/worldgui.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/worldgui.o.requires
@@ -830,17 +830,17 @@ libstage/CMakeFiles/stage.dir/worldgui.o.provides.build: libstage/CMakeFiles/sta
 
 libstage/CMakeFiles/stage.dir/ancestor.o: libstage/CMakeFiles/stage.dir/flags.make
 libstage/CMakeFiles/stage.dir/ancestor.o: ../libstage/ancestor.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_35)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/CMakeFiles $(CMAKE_PROGRESS_35)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libstage/CMakeFiles/stage.dir/ancestor.o"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/ancestor.o -c /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -o CMakeFiles/stage.dir/ancestor.o -c /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc
 
 libstage/CMakeFiles/stage.dir/ancestor.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stage.dir/ancestor.i"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc > CMakeFiles/stage.dir/ancestor.i
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -E /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc > CMakeFiles/stage.dir/ancestor.i
 
 libstage/CMakeFiles/stage.dir/ancestor.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stage.dir/ancestor.s"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc -o CMakeFiles/stage.dir/ancestor.s
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS)  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT -S /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc -o CMakeFiles/stage.dir/ancestor.s
 
 libstage/CMakeFiles/stage.dir/ancestor.o.requires:
 .PHONY : libstage/CMakeFiles/stage.dir/ancestor.o.requires
@@ -937,8 +937,8 @@ libstage/libstage.so.3.2.2: /usr/lib/libltdl.so
 libstage/libstage.so.3.2.2: libstage/CMakeFiles/stage.dir/build.make
 libstage/libstage.so.3.2.2: libstage/CMakeFiles/stage.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libstage.so"
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stage.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -E cmake_symlink_library libstage.so.3.2.2 libstage.so.3.2.2 libstage.so
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stage.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -E cmake_symlink_library libstage.so.3.2.2 libstage.so.3.2.2 libstage.so
 
 libstage/libstage.so: libstage/libstage.so.3.2.2
 
@@ -984,10 +984,10 @@ libstage/CMakeFiles/stage.dir/requires: libstage/CMakeFiles/stage.dir/ancestor.o
 .PHONY : libstage/CMakeFiles/stage.dir/requires
 
 libstage/CMakeFiles/stage.dir/clean:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -P CMakeFiles/stage.dir/cmake_clean.cmake
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage && $(CMAKE_COMMAND) -P CMakeFiles/stage.dir/cmake_clean.cmake
 .PHONY : libstage/CMakeFiles/stage.dir/clean
 
 libstage/CMakeFiles/stage.dir/depend:
-	cd /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/CMakeFiles/stage.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/CMakeFiles/stage.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libstage/CMakeFiles/stage.dir/depend
 

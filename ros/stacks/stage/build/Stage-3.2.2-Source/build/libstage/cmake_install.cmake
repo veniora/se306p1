@@ -1,8 +1,8 @@
-# Install script for directory: /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage
+# Install script for directory: /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/charu/se306p1/ros/stacks/stage")
+  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu-11-10/se306p1/ros/stacks/stage")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/stage"
          RPATH "")
   ENDIF()
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/stage")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/stage")
   IF(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/stage" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/stage")
     FILE(RPATH_REMOVE
@@ -63,8 +63,8 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     ENDIF()
   ENDFOREACH()
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/libstage.so.3.2.2"
-    "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/libstage.so"
+    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/libstage.so.3.2.2"
+    "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/libstage/libstage.so"
     )
   FOREACH(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libstage.so.3.2.2"
@@ -80,6 +80,6 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Stage-3.2" TYPE FILE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Stage-3.2" TYPE FILE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

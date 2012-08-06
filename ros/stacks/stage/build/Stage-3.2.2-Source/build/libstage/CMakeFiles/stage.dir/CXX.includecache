@@ -18,47 +18,47 @@ libgen.h
 libgen.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/ancestor.cc
 sstream
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/block.cc
 region.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/blockgroup.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 libgen.h
 -
 limits.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/camera.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 iostream
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 texture_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
 replace.h
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/replace.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/replace.h
 string
 -
 sstream
@@ -70,65 +70,65 @@ algorithm
 functional
 -
 region.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 options_dlg.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 map
 -
 stack
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/color.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 errno.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.cc
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 config.h
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
 sstream
 -
 fstream
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 string
 -
 vector
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/gl.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/logentry.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model.cc
 map
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_actuator.cc
 sys/time.h
 -
 math.h
@@ -136,89 +136,89 @@ math.h
 stdlib.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blinkenlight.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_blobfinder.cc
 sys/time.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_callbacks.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_camera.cc
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 sstream
 -
 iomanip
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_draw.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 texture_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_fiducial.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_getset.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_gripper.cc
 sys/time.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_laser.cc
 sys/time.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_lightindicator.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_load.cc
 limits.h
 -
 libgen.h
@@ -228,55 +228,55 @@ string.h
 ltdl.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_position.cc
 sys/time.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/model_ranger.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 string
 -
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 FL/Fl_Menu_Bar.H
 -
 FL/Fl_Menu_Item.H
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.cc
 options_dlg.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
 FL/Fl.H
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
 FL/Fl_Window.H
 -
 FL/Fl_Scroll.H
@@ -292,35 +292,35 @@ vector
 set
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/powerpack.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 texture_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.cc
 region.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.cc
 FL/Fl_Shared_Image.H
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 config.h
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 unistd.h
 -
 stdint.h
@@ -376,33 +376,33 @@ OpenGL/glu.h
 GL/glu.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.cc
 sstream
 -
 texture_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/texture_manager.hh
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 FL/Fl_Shared_Image.H
 -
 iostream
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/typetable.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/vis_strip.cc
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/world.cc
 stdlib.h
 -
 assert.h
@@ -416,17 +416,17 @@ limits.h
 libgen.h
 -
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 region.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 option.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/option.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.cc
 assert.h
 -
 ctype.h
@@ -446,19 +446,19 @@ unistd.h
 math.h
 -
 replace.h
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/replace.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/replace.h
 stage.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/stage.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 stdint.h
 -
 stdio.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldgui.cc
 FL/Fl_Image.H
 -
 FL/Fl_Shared_Image.H
@@ -480,17 +480,17 @@ iomanip
 algorithm
 -
 canvas.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/canvas.hh
 region.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/region.hh
 worldfile.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/worldfile.hh
 file_manager.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/file_manager.hh
 options_dlg.hh
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/options_dlg.hh
 config.h
-/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/libstage/config.h
 
 /usr/include/libpng12/png.h
 zlib.h

@@ -4,7 +4,7 @@
 #define PROJECT "Stage"
 #define VERSION "3.2.2"
 #define APIVERSION "3.2"
-#define INSTALL_PREFIX "/home/charu/se306p1/ros/stacks/stage"
+#define INSTALL_PREFIX "/home/ubuntu-11-10/se306p1/ros/stacks/stage"
 
 /* #undef BUILD_GUI */
 

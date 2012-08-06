@@ -3,7 +3,7 @@
 
 CMakeFiles/bin/stageros.dir/src/stageros.o
  ../include/Stage-3.2/stage.hh
- /home/charu/se306p1/ros/stacks/stage/src/stageros.cpp
+ /home/ubuntu-11-10/se306p1/ros/stacks/stage/src/stageros.cpp
  /opt/ros/electric/stacks/bullet/include/LinearMath/btMatrix3x3.h
  /opt/ros/electric/stacks/bullet/include/LinearMath/btMinMax.h
  /opt/ros/electric/stacks/bullet/include/LinearMath/btQuadWord.h

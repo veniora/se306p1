@@ -1,8 +1,8 @@
-# Install script for directory: /home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/worlds/benchmark
+# Install script for directory: /home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/worlds/benchmark
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/charu/se306p1/ros/stacks/stage")
+  SET(CMAKE_INSTALL_PREFIX "/home/ubuntu-11-10/se306p1/ros/stacks/stage")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_swarm.so"
          RPATH "")
   ENDIF()
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/benchmark/expand_swarm.so")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/benchmark/expand_swarm.so")
   IF(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_swarm.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_swarm.so")
     FILE(RPATH_REMOVE
@@ -57,7 +57,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_pioneer.so"
          RPATH "")
   ENDIF()
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/charu/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/benchmark/expand_pioneer.so")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/ubuntu-11-10/se306p1/ros/stacks/stage/build/Stage-3.2.2-Source/build/worlds/benchmark/expand_pioneer.so")
   IF(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_pioneer.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/expand_pioneer.so")
     FILE(RPATH_REMOVE

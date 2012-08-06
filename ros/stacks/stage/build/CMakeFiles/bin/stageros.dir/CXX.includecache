@@ -62,7 +62,7 @@ OpenGL/glu.h
 GL/glu.h
 -
 
-/home/charu/se306p1/ros/stacks/stage/src/stageros.cpp
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/src/stageros.cpp
 stdio.h
 -
 stdlib.h
@@ -94,7 +94,7 @@ geometry_msgs/Twist.h
 rosgraph_msgs/Clock.h
 -
 tf/transform_broadcaster.h
-/home/charu/se306p1/ros/stacks/stage/src/tf/transform_broadcaster.h
+/home/ubuntu-11-10/se306p1/ros/stacks/stage/src/tf/transform_broadcaster.h
 
 /opt/ros/electric/stacks/bullet/include/LinearMath/btMatrix3x3.h
 btVector3.h

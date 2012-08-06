@@ -56,6 +56,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg)
 	
 }
 
+
 int main(int argc, char **argv)
 {
 
@@ -123,9 +124,10 @@ while (ros::ok())
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 	
-	//cluster head election
+	//cluster head election (altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo
 	{
+
 		int highest = R1_life;
 		clusterHead = 1;
 		if (R0_life > highest) {highest = R0_life; clusterHead = 0;};

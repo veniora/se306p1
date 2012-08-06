@@ -8,6 +8,7 @@
 
 #include <sstream>
 #include "math.h"
+#include <cmath>
 
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
@@ -26,68 +27,19 @@ double theta;
 
 int R0_life;
 int R1_life;
-/*
-int R2_life;
-int R3_life;
-int R4_life;
-*/
 
 //cluster head
 int clusterHead;
-
-//parameters to go towards cluster head
-/*
-double distanceToHead;
-double previousDistanceToHead;
-double bestDistance;
-bool started;
-bool rotatingAway;
-bool stop;
-double x[5];
-double y[5];
-*/
-
 
 void RobotNode1_callback(Project2Sample::R_ID msg)
 {
 
 	R1_life = msg.life;
-	//x[1] = msg.x;
-	//y[1] = msg.y;	
 	
 
 }
 
-/*
-void RobotNode2_callback(chswarm::R_ID msg)
-{
 
-	R2_life = msg.life;
-	x[2] = msg.x;
-	y[2] = msg.y;
-	
-
-}
-
-void RobotNode3_callback(chswarm::R_ID msg)
-{
-
-	R3_life = msg.life;
-	x[3] = msg.x;
-	y[3] = msg.y;
-
-}
-
-void RobotNode4_callback(chswarm::R_ID msg)
-{
-
-	R4_life = msg.life;
-	x[4] = msg.x;
-	y[4] = msg.y;
-	
-
-}
-*/
 
 void StageOdom_callback(nav_msgs::Odometry msg)
 {
@@ -96,67 +48,6 @@ void StageOdom_callback(nav_msgs::Odometry msg)
 	py =10 + msg.pose.pose.position.y;
 	ROS_INFO("Current x position is: %f", px);
 	ROS_INFO("Current y position is: %f", py);
-	
-	
-
-/*
-if ((clusterHead == 1) ||(clusterHead == 2) ||(clusterHead == 3) ||(clusterHead == 4) )
-	{	
-		px = 5 + msg.pose.pose.position.x;
-		py =10 + msg.pose.pose.position.y;
-	
-		distanceToHead = sqrt(pow((px - x[clusterHead]),2) + pow((py - y[clusterHead]),2));
-		if (started == false) 
-		{
-			previousDistanceToHead = distanceToHead; 
-			started = true;
-		};
-	
-		ROS_INFO("Previous Distance to cluster head: %f", previousDistanceToHead);
-		ROS_INFO("Distance to cluster head: %f", distanceToHead);
-
-		if (distanceToHead < 3)
-		{
-			linear_x = 0.0;
-			angular_z = 0.0;
-		}	
-		else if (distanceToHead <=  previousDistanceToHead)
-		{
-			if(stop==false)
-			{
-				ROS_INFO("Going forward");		
-				linear_x = 1.0;
-				angular_z = 0.0;
-			}else
-			{
-				linear_x = 0.0;
-				angular_z = 0.1;
-			}
-		
-		}
-		else 
-		{
-			if(stop==false)
-			{
-				ROS_INFO("Rotating");
-				angular_z = 5.0;
-				linear_x = 0.5;
-			}else
-			{
-				linear_x = 0.0;
-				angular_z = 0.1;
-			}
-		}
-
-		previousDistanceToHead = distanceToHead;
-		
-		
-		ROS_INFO("Robot0 Px: %f", px);
-		ROS_INFO("Robot0 Py: %f", py);
-		//ROS_INFO("Distance to cluster head: %f", distanceToHead);
-	}
-
-  */
 }
 
 
@@ -164,22 +55,19 @@ void StageLaser_callback(sensor_msgs::LaserScan msg)
 {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
-	/*
-	for (int i=60; i<121 ; i++)
-	{
-		ROS_INFO("Distance to obstacles in front: %f", msg.ranges[i]);
-		if (msg.ranges[i]<2)
-		{
-			linear_x = 0.0;
-			angular_z = 0.0;
-			stop = true;
-		}
-		else
-		{
-			stop = false;
-		}
-	}
-	*/
+	
+}
+
+//function to calculate the distance of the robot from the origin.
+double CalculateDistance(Project2Sample::R_ID msg) 
+{
+
+double distance = pow(msg.x,2) + pow(msg.y,2);
+distance = sqrt(distance);
+return distance;
+
+
+
 }
 
 int main(int argc, char **argv)
@@ -198,18 +86,7 @@ int main(int argc, char **argv)
 	//Batters life
 	R0_life = 80;
 	R1_life = -1;
-	/*
-	R0_life = 80;
-	R1_life = -1;//value not yet updated
-	R2_life = -1;
-	R3_life = -1;
-	R4_life = -1;
-	clusterHead = -1;
-	started = false;
-	rotatingAway = false;
-	stop = false;
-	*/
-	
+		
 
 //You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 ros::init(argc, argv, "RobotNode0");
@@ -225,11 +102,6 @@ ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot0_v
 
 //subscribe to listen to messages of other robots
 ros::Subscriber RobotNode1_sub = n.subscribe<Project2Sample::R_ID>("Robot1_msg",1000, RobotNode1_callback);
-/*
-ros::Subscriber RobotNode2_sub = n.subscribe<chswarm::R_ID>("Robot2_msg",1000, RobotNode2_callback);
-ros::Subscriber RobotNode3_sub = n.subscribe<chswarm::R_ID>("Robot3_msg",1000, RobotNode3_callback);
-ros::Subscriber RobotNode4_sub = n.subscribe<chswarm::R_ID>("Robot4_msg",1000, RobotNode4_callback);
-*/
 
 //subscribe to listen to messages coming from stage
 ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot0_odo",1000, StageOdom_callback);
@@ -238,7 +110,7 @@ ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>("Robot0_las
 
 ros::Rate loop_rate(10);
 
-//a count of howmany messages we have sentP
+//a count of howmany messages we have sent
 int count = 0;
 
 ////messages
@@ -253,34 +125,25 @@ while (ros::ok())
 	//messages to stage
 	RobotNode_cmdvel.linear.x = linear_x;
 	RobotNode_cmdvel.angular.z = angular_z;
-        //ROS_INFO("To stage vx: %f", RobotNode_cmdvel.linear.x);
-        //ROS_INFO("To stage vy: %f", RobotNode_cmdvel.linear.y);
-
+        
 	//message to other robots
 	msg.R_ID = 0;
 	msg.life = R0_life;
 	msg.x = px;
 	msg.y = py;
-	
-
-	//display message on teminal (for debugging)
-	//ROS_INFO("Robot ID: %i", msg.R_ID);
-	//ROS_INFO("Robot Life: %i", msg.life);
+	//set the distance of the robot from origin in the msg
+	msg.distance = CalculateDistance(msg);
 
 	//publish the message
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 	
-	//cluster head election
-	//if((R0_life != -1) && (R1_life != -1) && (R2_life != -1) && (R3_life != -1) && (R4_life != -1))//if all life values are received
+	//cluster head election(altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo
 	{
 		int highest = R0_life;
 		clusterHead = 0;
 		if (R1_life > highest) {highest = R1_life; clusterHead = 1;};
-		//if (R2_life > highest) {highest = R2_life; clusterHead = 2;};
-		//if (R3_life > highest) {highest = R3_life; clusterHead = 3;};
-		//if (R4_life > highest) {highest = R4_life; clusterHead = 4;};
 		ROS_INFO("Cluster head is: %i", clusterHead);
 		if (clusterHead == 0)//self
 		{

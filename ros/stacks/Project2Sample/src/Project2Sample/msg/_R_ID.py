@@ -13,6 +13,7 @@ float64 x
 float64 y
 float64 theta
 
+
 """
   __slots__ = ['R_ID','life','x','y','theta']
   _slot_types = ['int64','int64','float64','float64','float64']

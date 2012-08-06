@@ -8,6 +8,7 @@
 
 #include <sstream>
 #include "math.h"
+#include <cmath>
 
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
@@ -56,6 +57,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg)
 	//you can access the range data from msg.ranges[i]. i = sample number
 	
 }
+
 
 int main(int argc, char **argv)
 {
@@ -118,13 +120,12 @@ while (ros::ok())
 	msg.life = R0_life;
 	msg.x = px;
 	msg.y = py;
-	
 
 	//publish the message
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 	
-	//cluster head election
+	//cluster head election(altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo
 	{
 		int highest = R0_life;

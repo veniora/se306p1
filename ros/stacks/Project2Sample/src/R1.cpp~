@@ -56,6 +56,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg)
 	
 }
 
+
 int main(int argc, char **argv)
 {
 
@@ -72,18 +73,7 @@ int main(int argc, char **argv)
 	//Batters life
 	R0_life = -1;
 	R1_life = 90;
-	/*
-	R0_life = 80;
-	R1_life = -1;//value not yet updated
-	R2_life = -1;
-	R3_life = -1;
-	R4_life = -1;
-	clusterHead = -1;
-	started = false;
-	rotatingAway = false;
-	stop = false;
-	*/
-	
+		
 
 //You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 ros::init(argc, argv, "RobotNode1");
@@ -99,11 +89,6 @@ ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_v
 
 //subscribe to listen to messages of other robots
 ros::Subscriber RobotNode1_sub = n.subscribe<Project2Sample::R_ID>("Robot0_msg",1000, RobotNode1_callback);
-/*
-ros::Subscriber RobotNode2_sub = n.subscribe<chswarm::R_ID>("Robot2_msg",1000, RobotNode2_callback);
-ros::Subscriber RobotNode3_sub = n.subscribe<chswarm::R_ID>("Robot3_msg",1000, RobotNode3_callback);
-ros::Subscriber RobotNode4_sub = n.subscribe<chswarm::R_ID>("Robot4_msg",1000, RobotNode4_callback);
-*/
 
 //subscribe to listen to messages coming from stage
 ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot1_odo",1000, StageOdom_callback);
@@ -127,34 +112,28 @@ while (ros::ok())
 	//messages to stage
 	RobotNode_cmdvel.linear.x = linear_x;
 	RobotNode_cmdvel.angular.z = angular_z;
-        //ROS_INFO("To stage vx: %f", RobotNode_cmdvel.linear.x);
-        //ROS_INFO("To stage vy: %f", RobotNode_cmdvel.linear.y);
-
+        
 	//message to other robots
 	msg.R_ID = 1;
 	msg.life = R1_life;
 	msg.x = px;
 	msg.y = py;
-	
 
-	//display message on teminal (for debugging)
-	//ROS_INFO("Robot ID: %i", msg.R_ID);
-	//ROS_INFO("Robot Life: %i", msg.life);
+	//set the distance of the robot from origin in the msg
+	msg.distance = CalculateDistance(msg);
+	
 
 	//publish the message
 	RobotNode_pub.publish(msg);
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 	
-	//cluster head election
-	//if((R0_life != -1) && (R1_life != -1) && (R2_life != -1) && (R3_life != -1) && (R4_life != -1))//if all life values are received
+	//cluster head election (altered logic)
 	if((R0_life != -1) && (R1_life != -1))//demo
 	{
+
 		int highest = R1_life;
 		clusterHead = 1;
 		if (R0_life > highest) {highest = R0_life; clusterHead = 0;};
-		//if (R2_life > highest) {highest = R2_life; clusterHead = 2;};
-		//if (R3_life > highest) {highest = R3_life; clusterHead = 3;};
-		//if (R4_life > highest) {highest = R4_life; clusterHead = 4;};
 		ROS_INFO("Cluster head is: %i", clusterHead);
 		if (clusterHead == 0)//self
 		{

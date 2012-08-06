@@ -184,10 +184,10 @@
   "68ae84a955e4de598c458bb110aab2e5")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<R_ID>)))
   "Returns full string definition for message of type '<R_ID>"
-  (cl:format cl:nil "int64 R_ID~%int64 life~%float64 x~%float64 y~%float64 theta~%~%~%"))
+  (cl:format cl:nil "int64 R_ID~%int64 life~%float64 x~%float64 y~%float64 theta~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'R_ID)))
   "Returns full string definition for message of type 'R_ID"
-  (cl:format cl:nil "int64 R_ID~%int64 life~%float64 x~%float64 y~%float64 theta~%~%~%"))
+  (cl:format cl:nil "int64 R_ID~%int64 life~%float64 x~%float64 y~%float64 theta~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <R_ID>))
   (cl:+ 0
      8

@@ -76,6 +76,7 @@ float64 x\n\
 float64 y\n\
 float64 theta\n\
 \n\
+\n\
 "; }
 public:
   ROS_DEPRECATED static const std::string __s_getMessageDefinition() { return __s_getMessageDefinition_(); }
@@ -170,6 +171,7 @@ int64 life\n\
 float64 x\n\
 float64 y\n\
 float64 theta\n\
+\n\
 \n\
 ";
   }

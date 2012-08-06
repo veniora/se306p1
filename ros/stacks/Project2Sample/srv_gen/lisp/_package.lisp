@@ -1,0 +1,10 @@
+(cl:defpackage Project2Sample-srv
+  (:use )
+  (:export
+   "CLOSESTDISTANCE"
+   "<CLOSESTDISTANCE-REQUEST>"
+   "CLOSESTDISTANCE-REQUEST"
+   "<CLOSESTDISTANCE-RESPONSE>"
+   "CLOSESTDISTANCE-RESPONSE"
+  ))
+

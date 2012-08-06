@@ -1,8 +1,0 @@
-prefix=/home/ubuntu-11-10/se306p1/ros/stacks/stage
-
-Name: stage
-Description: Stage robot simulation program, C++ library and Player plugin - part of the Player/Stage Project
-Version: 3.2.2
-Requires: 
-Libs: -L${prefix}/lib -lstage -L/usr/lib/x86_64-linux-gnu -Wl,-Bsymbolic-functions -lfltk_images -lfltk_gl -lfltk
-Cflags: -I${prefix}/include/Stage-3.2  -I/usr/include/freetype2   -D_THREAD_SAFE -D_REENTRANT 

@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "../src/Project2Sample/msg"
   "../msg_gen"
+  "../src/Project2Sample/msg"
   "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_lisp"
   "../msg_gen/lisp/R_ID.lisp"

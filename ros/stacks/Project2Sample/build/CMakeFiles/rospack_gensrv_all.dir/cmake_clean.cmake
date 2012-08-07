@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "../src/Project2Sample/msg"
   "../msg_gen"
+  "../src/Project2Sample/msg"
   "../msg_gen"
   "CMakeFiles/rospack_gensrv_all"
 )

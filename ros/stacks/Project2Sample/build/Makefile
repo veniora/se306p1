@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,9 +66,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -399,6 +399,24 @@ src/R1.s:
 .PHONY : src/R1.s
 
 # target to build an object file
+src/Robot.o:
+	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.o
+	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.o
+.PHONY : src/Robot.o
+
+# target to preprocess a source file
+src/Robot.i:
+	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.i
+	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.i
+.PHONY : src/Robot.i
+
+# target to generate assembly for a file
+src/Robot.s:
+	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.s
+	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.s
+.PHONY : src/Robot.s
+
+# target to build an object file
 src/listener.o:
 	$(MAKE) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/src/listener.o
 .PHONY : src/listener.o
@@ -448,6 +466,9 @@ help:
 	@echo "... src/R1.o"
 	@echo "... src/R1.i"
 	@echo "... src/R1.s"
+	@echo "... src/Robot.o"
+	@echo "... src/Robot.i"
+	@echo "... src/Robot.s"
 	@echo "... src/listener.o"
 	@echo "... src/listener.i"
 	@echo "... src/listener.s"

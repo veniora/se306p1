@@ -3,7 +3,5 @@
   (:export
    "<R_ID>"
    "R_ID"
-   "<RETURNPOSITION>"
-   "RETURNPOSITION"
   ))
 

@@ -45,9 +45,9 @@
 // %Tag(CALLBACK)%
 void chatterCallback(Project2Sample::R_ID msg)
 {
-  ROS_INFO("x = [%s]", msg.x.c_str());
-  ROS_INFO("y = [%s]", msg.y.c_str());
-  ROS_INFO("theta: [%s]", msg.theta.c_str());
+  ROS_INFO("x = [%f]", msg.x);
+  ROS_INFO("y = [%f]", msg.y);
+  ROS_INFO("theta: [%f]", msg.theta);
 }
 // %EndTag(CALLBACK)%
 

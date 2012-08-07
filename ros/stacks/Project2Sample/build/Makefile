@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charu/se306p1/ros/stacks/Project2Sample
+CMAKE_SOURCE_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/charu/se306p1/ros/stacks/Project2Sample/build
+CMAKE_BINARY_DIR = /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,9 +66,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/charu/se306p1/ros/stacks/Project2Sample/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -120,6 +120,19 @@ R1: cmake_check_build_system
 R1/fast:
 	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/build
 .PHONY : R1/fast
+
+#=============================================================================
+# Target rules for targets named R2
+
+# Build rule for target.
+R2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 R2
+.PHONY : R2
+
+# fast build rule for target.
+R2/fast:
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/build
+.PHONY : R2/fast
 
 #=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
@@ -399,21 +412,39 @@ src/R1.s:
 .PHONY : src/R1.s
 
 # target to build an object file
+src/R2.o:
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/R2.o
+.PHONY : src/R2.o
+
+# target to preprocess a source file
+src/R2.i:
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/R2.i
+.PHONY : src/R2.i
+
+# target to generate assembly for a file
+src/R2.s:
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/R2.s
+.PHONY : src/R2.s
+
+# target to build an object file
 src/Robot.o:
 	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.o
 	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.o
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/Robot.o
 .PHONY : src/Robot.o
 
 # target to preprocess a source file
 src/Robot.i:
 	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.i
 	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.i
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/Robot.i
 .PHONY : src/Robot.i
 
 # target to generate assembly for a file
 src/Robot.s:
 	$(MAKE) -f CMakeFiles/R0.dir/build.make CMakeFiles/R0.dir/src/Robot.s
 	$(MAKE) -f CMakeFiles/R1.dir/build.make CMakeFiles/R1.dir/src/Robot.s
+	$(MAKE) -f CMakeFiles/R2.dir/build.make CMakeFiles/R2.dir/src/Robot.s
 .PHONY : src/Robot.s
 
 # target to build an object file
@@ -439,6 +470,7 @@ help:
 	@echo "... depend"
 	@echo "... R0"
 	@echo "... R1"
+	@echo "... R2"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_genmsg_py"
@@ -466,6 +498,9 @@ help:
 	@echo "... src/R1.o"
 	@echo "... src/R1.i"
 	@echo "... src/R1.s"
+	@echo "... src/R2.o"
+	@echo "... src/R2.i"
+	@echo "... src/R2.s"
 	@echo "... src/Robot.o"
 	@echo "... src/Robot.i"
 	@echo "... src/Robot.s"

@@ -1,8 +1,9 @@
 FILE(REMOVE_RECURSE
-  "../msg_gen"
   "../src/Project2Sample/msg"
   "../msg_gen"
-  "CMakeFiles/R2.dir/src/RobotNode2.o"
+  "../msg_gen"
+  "CMakeFiles/R2.dir/src/R2.o"
+  "CMakeFiles/R2.dir/src/Robot.o"
   "../bin/R2.pdb"
   "../bin/R2"
 )

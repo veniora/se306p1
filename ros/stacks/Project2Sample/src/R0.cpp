@@ -8,6 +8,7 @@
 #include "math.h"
 #include <cmath>
 #include "robot.h"
+#include <string>
 
 
 /**
@@ -18,29 +19,37 @@
 int main(int argc, char **argv)
 {
 
+//instantiating the class here
 Robot r0(0);
 
 
 //You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
-ros::init(argc, argv, "RobotNode0");
+ros::init(argc, argv, argv[0]);
 
 //NodeHandle is the main access point to communicate with ros.
 ros::NodeHandle n;
 
 //advertise() function will tell ROS that you want to publish on a given topic_
 //for other robots
-ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>("Robot0_msg",1000); 
+
+stringstream s_msg << "Robot" << argv[0] << "_msg";
+stringstream s_vel << "Robot" << argv[0] << "_vel";
+stringstream s_pos << "Robot" << argv[0] << "_pos";
+stringstream s_truth << "Robot" << argv[0] << "_truth";
+stringstream s_laser << "Robot" << argv[0] << "_laser";
+
+ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>(s_msg.str(),1000); 
 //to stage
-ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot0_vel",1000);
+ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>(s_vel.str(),1000);
 
 //publish to topic associated with messages that contain x,y and theta positions
-ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>("Robot0_pos", 1000); 
+ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>(s_pos.str(), 1000); 
 
 
 //subscribe to listen to messages coming from stage
 //ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000, r0.StageOdom_callback);
-ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000, &Robot::StageOdom_callback, &r0);
-ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>("Robot0_laser",1000, &Robot::StageLaser_callback, &r0);
+ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(s_truth.str(),1000, &Robot::StageOdom_callback, &r0);
+ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(s_laser.str(),1000, &Robot::StageLaser_callback, &r0);
 //ros::Subscriber StageTruth_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000,StageTruth_callback);
 
 ros::Rate loop_rate(10);

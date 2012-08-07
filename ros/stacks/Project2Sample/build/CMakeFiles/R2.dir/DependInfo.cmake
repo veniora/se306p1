@@ -4,7 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/afs/ec.auckland.ac.nz/users/i/k/ikuo005/unixhome/ros/stacks/Project2Sample/src/RobotNode2.cpp" "/afs/ec.auckland.ac.nz/users/i/k/ikuo005/unixhome/ros/stacks/Project2Sample/build/CMakeFiles/R2.dir/src/RobotNode2.o"
+  "/home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/src/R2.cpp" "/home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/R2.dir/src/R2.o"
+  "/home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/src/Robot.cpp" "/home/pauline/Desktop/se306p1/ros/stacks/Project2Sample/build/CMakeFiles/R2.dir/src/Robot.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

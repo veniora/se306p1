@@ -59,6 +59,7 @@ int main(int argc, char **argv)
 // %Tag(SUBSCRIBER)%
   ros::Subscriber sub0 = n.subscribe("Robot0_pos", 1000, chatterCallback);
   ros::Subscriber sub1 = n.subscribe("Robot1_pos", 1000, chatterCallback);
+  ros::Subscriber sub2 = n.subscribe("Robot2_pos", 1000, chatterCallback);
 // %EndTag(SUBSCRIBER)%
 
   /**

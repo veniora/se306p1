@@ -11,9 +11,8 @@
 
 using namespace std;
 
-// This struct is to emulate the standard R_ID message format
 struct msg {
-  int id;
+	int id;
   float x;
   float y;
   float theta;
@@ -25,13 +24,12 @@ int findLeader(vector <msg> messages) {
 	int leaderID = -1;
 
 	for (int i = 0; i < messages.size(); i++){
-		msg m = messages[i]; // Corresponds to the info on a single robot
+		msg m = messages[i];
 		float distance = sqrt((m.x)^2 + (m.y)^2);
-		distance = abs(distance); // Confirm positive value
+		distance = abs(distance);
 
-		// Check if the robot distance is less than the current closest robot but not at the node itself
 		if (distance > 0 && distance < minDistance){
-			leaderID = m.id; // Set as new leader
+			leaderID = m.id;
 			minDistance = distance;
 		}
 	}

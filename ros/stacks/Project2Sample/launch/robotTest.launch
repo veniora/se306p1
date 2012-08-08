@@ -1,0 +1,4 @@
+<launch>
+  <!--<node pkg="Project2Sample" type="robotTest"/>-->
+  <test test-name="map_server_test" pkg="Project2Sample" type="robotTest"/>
+</launch> 

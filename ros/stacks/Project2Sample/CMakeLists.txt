@@ -40,5 +40,6 @@ rosbuild_add_executable(R1 src/R1.cpp src/Robot.cpp)
 rosbuild_add_executable(R2 src/R2.cpp src/Robot.cpp)
 
 #test
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 rosbuild_add_gtest(test/utest test/utest.cpp)
 

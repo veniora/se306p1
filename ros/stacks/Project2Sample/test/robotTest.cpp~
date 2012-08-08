@@ -1,6 +1,6 @@
 #include "/opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/LaserScan.h"
 #include "/opt/ros/electric/stacks/common_msgs/nav_msgs/msg_gen/cpp/include/nav_msgs/Odometry.h"
-#include "/home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/src/robot.h"
+#include "/se306p1/ros/stacks/Project2Sample/src/robot.h"
 
 // Bring in gtest
 #include <gtest/gtest.h>

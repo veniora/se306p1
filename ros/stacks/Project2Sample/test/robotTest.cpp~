@@ -1,9 +1,12 @@
-#include "/opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/LaserScan.h"
-#include "/opt/ros/electric/stacks/common_msgs/nav_msgs/msg_gen/cpp/include/nav_msgs/Odometry.h"
-#include "/se306p1/ros/stacks/Project2Sample/src/robot.h"
-
-// Bring in gtest
+//#include "/opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/LaserScan.h"
+#include "ros/ros.h"
+#include <Project2Sample/R_ID.h>
 #include <gtest/gtest.h>
+#include <sensor_msgs/LaserScan.h>
+#include <nav_msgs/Odometry.h>
+#include <src/robot.h>
+//#include "/home/ubuntu-11-10/se306p1/ros/stacks/Project2Sample/src/robot.h"
+
 
 // Declare a test
 TEST(TestSuite, testCase1)

@@ -38,3 +38,7 @@ rosbuild_add_executable(listener src/listener.cpp)
 rosbuild_add_executable(R0 src/R0.cpp src/Robot.cpp)
 rosbuild_add_executable(R1 src/R1.cpp src/Robot.cpp)
 rosbuild_add_executable(R2 src/R2.cpp src/Robot.cpp)
+
+#test
+rosbuild_add_gtest(test/utest test/utest.cpp)
+

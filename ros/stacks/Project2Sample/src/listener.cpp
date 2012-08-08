@@ -7,7 +7,6 @@
 #include <sstream>
 #include "math.h"
 #include <cmath>
-#include "Project2Sample/returnPosition.h"
 
 //need to send this to a service that will give the leader node back and the next
 //position for the robot to position to.

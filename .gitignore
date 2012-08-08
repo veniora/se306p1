@@ -25,3 +25,4 @@ srv_gen/
 #Exclusions
 !Project2Sample.world
 !swarm_world.pgm
+!bin/test

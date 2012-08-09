@@ -6,10 +6,21 @@
 #include <sensor_msgs/LaserScan.h>
 #include <sstream>
 #include "math.h"
+#include "Project2Sample/R_ID_Follow.h"
 #include "robot.h"
-#include <Project2Sample/DetermineLeader.h>
+#include "Project2Sample/DetermineLeader.h"
 
-
+Robot r2(2);
+void callback(Project2Sample::R_ID_Follow msg) {
+     r2.followID = msg.followID;
+     r2.newX = msg.x;
+     r2.newY = msg.y;
+     r2.newTheta = msg.theta;
+     ROS_INFO("x: %f", r2.newX);
+     ROS_INFO("y: %f", r2.newY);
+     ROS_INFO("theta: %f", r2.newTheta);
+     ROS_INFO("followid: %d", r2.followID);
+}
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
 **/
@@ -21,7 +32,6 @@ ros::init(argc, argv, "RobotNode2");
 ros::NodeHandle n;
 
 //instantiate an instance of the robot class.
-Robot r2(2);
 r2.px = 10.0;
 r2.py = 30.0;
 r2.theta = 28.0;
@@ -39,7 +49,8 @@ if (client.call(srv)) {
     
 } else {
 }
-
+ros::Subscriber newCoord_2 = n.subscribe<Project2Sample::R_ID_Follow>("Robot2_new",1000, callback);
+ros::spin();
 
 return 0;
 

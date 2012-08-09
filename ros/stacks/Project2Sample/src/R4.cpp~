@@ -6,8 +6,10 @@
 #include <sensor_msgs/LaserScan.h>
 #include <sstream>
 #include "math.h"
+#include "Project2Sample/R_ID_Follow.h"
 #include "robot.h"
-#include <Project2Sample/DetermineLeader.h>
+#include "Project2Sample/DetermineLeader.h"
+
 
 
 /**
@@ -33,13 +35,14 @@ Project2Sample::DetermineLeader srv;
 srv.request.R_ID = r4.R_Id;
 srv.request.x = r4.px;
 srv.request.y = r4.py;
+srv.request.theta = r4.theta;
 
 if (client.call(srv)) {	
     
 } else {
 }
-
-
+ros::Subscriber newCoord_4 = n.subscribe<Project2Sample::R_ID_Follow>("Robot4_new",1000, callback);
+ros::spin();
 return 0;
 
 }

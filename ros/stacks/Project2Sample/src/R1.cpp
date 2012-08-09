@@ -6,14 +6,25 @@
 #include <sensor_msgs/LaserScan.h>
 #include <sstream>
 #include "math.h"
+#include "Project2Sample/R_ID_Follow.h"
 #include "robot.h"
-#include <Project2Sample/DetermineLeader.h>
+#include "Project2Sample/DetermineLeader.h"
 
 
+Robot r1(1);
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
 **/
-
+void callback(Project2Sample::R_ID_Follow msg) {
+     r1.followID = msg.followID;
+     r1.newX = msg.x;
+     r1.newY = msg.y;
+     r1.newTheta = msg.theta;
+     ROS_INFO("x: %f", r1.newX);
+     ROS_INFO("y: %f", r1.newY);
+     ROS_INFO("theta: %f", r1.newTheta);
+     ROS_INFO("followid: %d", r1.followID);
+}
 int main(int argc, char **argv) {
 
 ros::init(argc, argv, "RobotNode1");
@@ -21,7 +32,7 @@ ros::init(argc, argv, "RobotNode1");
 ros::NodeHandle n;
 
 //instantiate an instance of the robot class.
-Robot r1(1);
+
 r1.px = 5.0;
 r1.py = 10.0;
 r1.theta = 315.0;
@@ -37,27 +48,11 @@ srv.request.y = r1.py;
 srv.request.theta = r1.theta;
 
 if (client.call(srv)) {	
-    //if((long int)srv.response.L_ID == r1.R_Id) {
-    //ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_vel",1000); 
-    //ros::Rate loop_rate(10);
-    
-//    while (ros::ok()) {
-//	
-        //messages to stage
-//	RobotNode_cmdvel.linear.x = 0.2;
-//	RobotNode_cmdvel.angular.z = 0.2;
-//        
-	//message to other robots
-//	RobotNode_stage_pub.publish(RobotNode_cmdvel);
-	
-//	ros::spinOnce();
 
-//	loop_rate.sleep();
-  //  }
-
-    //} 
 } else {
 }
+ros::Subscriber newCoord_1 = n.subscribe<Project2Sample::R_ID_Follow>("Robot1_new",1000, callback);
+ros::spin();
 return 0;
 
 }

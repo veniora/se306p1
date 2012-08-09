@@ -5,18 +5,7 @@
  *      Author: levipatel
  */
 
-#include <vector>
-#include <math.h>
-#include <cmath>
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include <Project2Sample/R_ID.h>
-#include <geometry_msgs/Twist.h>
-#include <nav_msgs/Odometry.h>
-#include <sensor_msgs/LaserScan.h>
-#include "Project2Sample/DetermineLeader.h"
-#include "Project2Sample/leader.h"
-#include "Project2Sample/array.h"
+
 
 using namespace std;
 
@@ -29,8 +18,6 @@ struct msg_item {
   float theta;
 } ;
 
-
-Project2Sample::array coord;
 vector<msg_item> coordinates;
 msg_item item;
 int leader = -1;
@@ -57,13 +44,13 @@ bool addCoordinates_callback(Project2Sample::DetermineLeader::Request &req, Proj
     item.theta = req.theta;
     coordinates.push_back(item);
     if (coordinates.size() == 6) {
-        //int i =0;
-        //for (i = 0; i < coordinates.size(); i++) {
-          //      coord.ID[i] = coordinates.at(i).id;
-        	//coord.X[i] = coordinates.at(i).x;
-        	//coord.Y[i] = coordinates.at(i).y;
-        	//coord.THETA[i] = coordinates.at(i).theta;
-	//}
+        int i =0;
+        for (i = 0; i < coordinates.size(); i++) {
+                coord.ID[i] = coordinates.at(i).id;
+        	coord.X[i] = coordinates.at(i).x;
+        	coord.Y[i] = coordinates.at(i).y;
+        	coord.THETA[i] = coordinates.at(i).theta;
+	}
 	res.L_ID = findLeader();
         leader = res.L_ID;
     }
@@ -77,13 +64,13 @@ int main(int argc, char **argv) {
     Project2Sample::leader BOSS;
     ros::Rate loop_rate(10);
     ros::Publisher robotLeader = n.advertise<Project2Sample::leader>("Robot_leader",1000); 
-   // ros::Publisher robotCoord = n.advertise<Project2Sample::array>("Robot_coordinates", 1000);
+    ros::Publisher robotCoord = n.advertise<Project2Sample::array>("Robot_coordinates", 1000);
     
     while (ros::ok()) {        
 	BOSS.leaderID= leader;
         //ROS_INFO("boss leader: %d", BOSS.leaderID);
 	robotLeader.publish(BOSS);
-        //robotCoord.publish(coord);
+        robotCoord.publish(coord);
 	ros::spinOnce();
 	loop_rate.sleep();
     }

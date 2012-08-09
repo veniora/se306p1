@@ -6,6 +6,6 @@
   :components ((:file "_package")
     (:file "R_ID" :depends-on ("_package_R_ID"))
     (:file "_package_R_ID" :depends-on ("_package"))
-    (:file "Coordinates" :depends-on ("_package_Coordinates"))
-    (:file "_package_Coordinates" :depends-on ("_package"))
+    (:file "leader" :depends-on ("_package_leader"))
+    (:file "_package_leader" :depends-on ("_package"))
   ))

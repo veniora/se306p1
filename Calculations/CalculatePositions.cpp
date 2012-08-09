@@ -18,10 +18,10 @@ using namespace std;
 
 struct msg {
 	int id;
+	int followID;
 	float x;
 	float y;
 	float theta;
-	float batteryLife;
 } ;
 
 // Similar to the find leader algorithm.
@@ -51,7 +51,7 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 	float currentX; // initialised as leader positions
 	float currentY;
 	float leaderTheta;
-	float leaderBattery;
+
 	float deltaX;
 	float deltaY;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
@@ -67,7 +67,7 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 		if (m.id == leaderID){
 			currentX = m.x;
 			currentY = m.y;
-			leaderBattery = m.batteryLife; // To conform to the batteryLife parameter in R_ID
+
 			newPositions[0] = m; // Add to output
 		}
 	}
@@ -119,8 +119,7 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 
 	//loop through positions and find the closest robot to give this position
 	for (int i = 0; i < messages.size(); i++){
-		//assign remaining fields, just giving them all the leader's battery life (for now)
-		newPositions[i].batteryLife = leaderBattery;
+
 		//find closest robot to the next available position to be filled
 		newPositions[i].id = findClosestRobot(newPositions[i].x, newPositions[i].y, messages);
 
@@ -131,6 +130,15 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 			}
 		}
 	}
+
+	//Loop through to add follow id
+	//Set leader to -1 first
+	newPositions[0].followID = -1;
+	//loop through remaining robots
+	for (int i = 1; i < newPositions.size() - 1; i++){
+		newPositions[i].followID = newPositions[i-1].id;
+	}
+
 
 	return newPositions;   //WORK OUT HOW TO TELL ROS ALL ABOUT IT
 
@@ -145,19 +153,19 @@ int main(int argc, const char* argv[]){
 	r0.x = -10;
 	r0.y = -10;
 	r0.theta = 45;
-	r0.batteryLife = 65.7;
+
 	msg r1;
 		r1.id = 1;
 		r1.x = -10;
 		r1.y = 50;
 		r1.theta = 123.7;
-		r1.batteryLife = 65.7;
+
 		msg r2;
 		r2.id = 2;
 		r2.x = 30;
 		r2.y = 30;
 		r2.theta = 13;
-		r2.batteryLife = 65.7;
+
 
 	vector<msg> testPosition;
 

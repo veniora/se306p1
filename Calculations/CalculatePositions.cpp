@@ -46,6 +46,24 @@ int findClosestRobot(float newX, float newY, vector <msg> messages) {
 }
 
 
+int findLeader(vector <msg> messages) {
+	int minDistance = 9999999; //make the biggest number
+	int leaderID = -1;
+
+	for (int i = 0; i < messages.size(); i++){
+		msg m = messages[i]; // Corresponds to the info on a single robot
+		float distance = sqrt(pow(m.x,2) + pow(m.y,2));
+		distance = abs(distance); // Confirm positive value
+
+		// Check if the robot distance is less than the current closest robot but not at the node itself
+		if (distance > 0 && distance < minDistance){
+			leaderID = m.id; // Set as new leader
+			minDistance = distance;
+		}
+	}
+	return leaderID;
+}
+
 // Function to be called once the list of current positions is known and the leader ID has been calculated
 vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 	float currentX; // initialised as leader positions
@@ -60,11 +78,13 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 	vector <msg> newPositions(messages.size());
 	//cout << messages.size() << "\n";
 
+	int first;
 	//loop through R_IDs to find which one matches the leader ID
 	for (int i = 0; i < messages.size(); i++){
 		msg m = messages[i];
 		//find leader's x,y
 		if (m.id == leaderID){
+			first = i;
 			currentX = m.x;
 			currentY = m.y;
 
@@ -100,7 +120,7 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 	newPositions[0].theta = leaderTheta; // store in output
 	//finished with leader so erase from vector of messages.
 	//use begin() + 1 for second element, etc.
-	messages.erase(messages.begin());
+	messages.erase(messages.begin()+first);
 
 	// Populates the position values in the output array. They are in order of distance from origin (but lack battery and id values as yet)
 	for (int i = 0; i < messages.size(); i++){
@@ -117,14 +137,15 @@ vector <msg> calculatePositions(vector <msg> messages, int leaderID) {
 	//assign robots to those positions
 
 
-	//loop through positions and find the closest robot to give this position
-	for (int i = 0; i < messages.size(); i++){
-
+	int size = messages.size();
+	for (int i = 1; i <= size; i++){
+		//assign remaining fields, just giving them all the leader's battery life (for now)
+		
 		//find closest robot to the next available position to be filled
 		newPositions[i].id = findClosestRobot(newPositions[i].x, newPositions[i].y, messages);
 
 		//find and erase finished robot from original vector of messages. This cleans up the vector which is passed each time to findClosestRobot
-		for (int j = 0; j < messages.size(); j++){
+		for (int j = 0; j <= messages.size(); j++){
 			if (messages[j].id == newPositions[i].id){
 				messages.erase(messages.begin()+j);
 			}
@@ -155,37 +176,57 @@ int main(int argc, const char* argv[]){
 	r0.theta = 45;
 
 	msg r1;
-		r1.id = 1;
-		r1.x = -10;
-		r1.y = 50;
-		r1.theta = 123.7;
+	r1.id = 1;
+	r1.x = -20;
+	r1.y = -20;
+	r1.theta = 123.7;
 
-		msg r2;
-		r2.id = 2;
-		r2.x = 30;
-		r2.y = 30;
-		r2.theta = 13;
+	msg r2;
+	r2.id = 2;
+	r2.x = 2;
+	r2.y = 2;
+	r2.theta = 13;
 
+	msg r3;
+	r3.id = 3;
+	r3.x = 1;
+	r3.y = 1;
+	r3.theta = 5;
 
+	msg r4;
+	r4.id = 4;
+	r4.x = 100;
+	r4.y = 1;
+	r4.theta = 5;
+	
 	vector<msg> testPosition;
 
 	testPosition.push_back(r0);
 	testPosition.push_back(r1);
 	testPosition.push_back(r2);
+	testPosition.push_back(r3);
+	testPosition.push_back(r4);
 
-	vector<msg> results = calculatePositions(testPosition, 1);
-	cout << results[0].id << "\n";
-	cout << results[0].x << "\n";
-	cout << results[0].y << "\n";
-	cout << results[0].theta << "\n";
-	cout << results[1].x << "\n";
-	cout << results[1].y << "\n";
-	cout << results[1].theta << "\n";
-	cout << results[2].x << "\n";
-		cout << results[2].y << "\n";
-		cout << results[2].theta << "\n";
-
-		// watch out for -x, -y giving angle greater than 360
+	vector<msg> results = calculatePositions(testPosition, findLeader(testPosition));
+	
+	
+	cout << "first: " << results[0].id << "\n";
+	cout << "first x: " << results[0].x << "\n";
+	cout << "first y: " << results[0].y << "\n";
+	cout << "first theta: " << results[0].theta << "\n";
+	cout << "second: " << results[1].id << "\n";
+	cout << "second x: " << results[1].x << "\n";
+	cout << "second y: " << results[1].y << "\n";
+	cout << "second theta: " << results[1].theta << "\n";
+	cout << "third: " << results[2].id << "\n";
+	cout << "third x: " << results[2].x << "\n";
+	cout << "third y: " << results[2].y << "\n";
+	cout << "third theta: " << results[2].theta << "\n";
+	cout << "fourth: " << results[3].id << "\n";
+	cout << "fourth x: " << results[3].x << "\n";
+	cout << "fourth y: " << results[3].y << "\n";
+	cout << "fourth theta: " << results[3].theta << "\n";
+	cout << "fifth: " << results[4].id << "\n";
 
 
 /*

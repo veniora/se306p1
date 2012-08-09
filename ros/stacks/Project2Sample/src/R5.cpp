@@ -33,6 +33,7 @@ Project2Sample::DetermineLeader srv;
 srv.request.R_ID = r5.R_Id;
 srv.request.x = r5.px;
 srv.request.y = r5.py;
+srv.request.theta = r5.theta;
 
 if (client.call(srv)) {	
     

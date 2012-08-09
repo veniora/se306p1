@@ -26,8 +26,6 @@ r5.px = 10.33;
 r5.py = 10.133;
 r5.theta = 110.00;
 
-10.333 10.133 0 110.000
-
 ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 
 Project2Sample::DetermineLeader srv;

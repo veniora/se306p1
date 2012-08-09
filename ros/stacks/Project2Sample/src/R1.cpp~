@@ -30,17 +30,33 @@ r1.theta = 315.0;
 ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 
 Project2Sample::DetermineLeader srv;
-
+geometry_msgs::Twist RobotNode_cmdvel;
 srv.request.R_ID = r1.R_Id;
 srv.request.x = r1.px;
 srv.request.y = r1.py;
 
 if (client.call(srv)) {	
+    //if((long int)srv.response.L_ID == r1.R_Id) {
+    //ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_vel",1000); 
+    //ros::Rate loop_rate(10);
     
+//    while (ros::ok()) {
+//	
+        //messages to stage
+//	RobotNode_cmdvel.linear.x = 0.2;
+//	RobotNode_cmdvel.angular.z = 0.2;
+//        
+	//message to other robots
+//	RobotNode_stage_pub.publish(RobotNode_cmdvel);
+	
+//	ros::spinOnce();
+
+//	loop_rate.sleep();
+  //  }
+
+    //} 
 } else {
 }
-
-
 return 0;
 
 }

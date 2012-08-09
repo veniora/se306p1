@@ -22,9 +22,9 @@ ros::NodeHandle n;
 
 //instantiate an instance of the robot class.
 Robot r0(0);
-r0.px = 15;
-r0.py = 20;
-r0.theta = 45;
+r0.px = 15.0;
+r0.py = 20.0;
+r0.theta = 45.0;
 
 ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 

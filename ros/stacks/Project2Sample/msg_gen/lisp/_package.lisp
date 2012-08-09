@@ -3,5 +3,7 @@
   (:export
    "<R_ID>"
    "R_ID"
+   "<COORDINATES>"
+   "COORDINATES"
   ))
 

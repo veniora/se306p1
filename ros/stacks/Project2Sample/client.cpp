@@ -9,40 +9,47 @@
 #include "robot.h"
 #include <Project2Sample/DetermineLeader.h>
 
-/**
-*This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
-**/
+struct my_item {
+  int id;
+  float x;
+  float y;
+  float theta;
+  float batteryLife;
+} ;
 
+my_item item;
 
-int main(int argc, char **argv)
+void Robot::my_callback(Project2Sample::R_ID msg) {
 
-{
+my_item.id = msg.R_ID;
+my_item.x = msg.x;
+my_item.y = msg.y;
 
-ros::init(argc, argv, "RobotNode2");
+}
+
+int main(int argc, char **argv) {
+
+ros::init(argc, argv, "Client");
 
 ros::NodeHandle n;
 
-//instantiate an instance of the robot class.
-Robot r2(2);
-r2.px = 2;
-r2.py = 3;
+ros::Subscriber try_sub = n.subscribe<Project2Sample::R_ID>("Robot0_pos",1000, my_callback);
 
 ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 
 Project2Sample::DetermineLeader srv;
 
-srv.request.R_ID = r2.R_Id;
-srv.request.x = r2.px;
-srv.request.y = r2.py;
+srv.request.R_ID = my_item.id;
+srv.request.x = my_item.x;
+srv.request.y = my_item.y;
 
 if (client.call(srv)) {	
-	r2.leader = (long int)srv.response.L_ID;
-    ROS_INFO("LeaderID-2: %d", r2.leader);
+    ROS_INFO("LeaderID: %d", (long int)srv.response.L_ID);
 } else {
     ROS_ERROR("Failed to call service");
 return 1;
-
 }
+
 return 0;
 
 }

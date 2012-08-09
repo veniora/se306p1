@@ -7,6 +7,7 @@
 #include <sstream>
 #include "math.h"
 #include "robot.h"
+#include <Project2Sample/DetermineLeader.h>
 
 /**
 *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
@@ -14,70 +15,34 @@
 
 
 int main(int argc, char **argv)
+
 {
 
-Robot r1(1);
-		
-
-//You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 ros::init(argc, argv, "RobotNode1");
 
-//NodeHandle is the main access point to communicate with ros.
 ros::NodeHandle n;
 
-//advertise() function will tell ROS that you want to publish on a given topic_
-//for other robots
-ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>("Robot1_msg",1000); 
-//to stage
-ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_vel",1000); 
+//instantiate an instance of the robot class.
+Robot r1(1);
+r1.px = 15;
+r1.py = 20;
 
-//publish to topic associated with messages that contain x,y and theta positions
-ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>("Robot1_pos", 1000);
+ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 
-//subscribe to listen to messages coming from stage
-//ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot1_truth",1000, r0.StageOdom_callback);
-ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>("Robot1_truth",1000, &Robot::StageOdom_callback, &r1);
-ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>("Robot1_laser",1000, &Robot::StageLaser_callback, &r1);
-//ros::Subscriber StageTruth_sub = n.subscribe<nav_msgs::Odometry>("Robot1_truth",1000,StageTruth_callback);
+Project2Sample::DetermineLeader srv;
 
+srv.request.R_ID = r1.R_Id;
+srv.request.x = r1.px;
+srv.request.y = r1.py;
 
-ros::Rate loop_rate(10);
+if (client.call(srv)) {	
+    r1.leader = (long int)srv.response.L_ID;
+    ROS_INFO("LeaderID-1: %d", r1.leader);
+} else {
+    ROS_ERROR("Failed to call service");
+return 1;
 
-//a count of howmany messages we have sentP
-int count = 0;
-
-////messages
-//velocity of this RobotNode
-geometry_msgs::Twist RobotNode_cmdvel;
-//message object to other robots
-Project2Sample::R_ID msg;
-
-while (ros::ok())
-{
-	
-//messages to stage
-	RobotNode_cmdvel.linear.x = r1.linear_x;
-	RobotNode_cmdvel.angular.z = r1.angular_z;
-        
-	//message to other robots
-	msg.R_ID = r1.R_Id;
-	msg.life = r1.batterylife;
-	msg.x = r1.px;
-	msg.y = r1.py;
-	msg.theta = r1.theta;
-
-	//publish the message
-	RobotNode_pub.publish(msg);
-	RobotNode_stage_pub.publish(RobotNode_cmdvel);
-	RobotNode_position.publish(msg);
-	
-
-	ros::spinOnce();
-
-	loop_rate.sleep();
-	++count;
 }
-
 return 0;
 
 }

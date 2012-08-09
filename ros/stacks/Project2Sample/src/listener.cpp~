@@ -7,18 +7,24 @@
 #include <sstream>
 #include "math.h"
 #include <cmath>
-#include "Project2Sample/returnPosition.h"
 
 //need to send this to a service that will give the leader node back and the next
 //position for the robot to position to.
 // %Tag(CALLBACK)%
-void chatterCallback(Project2Sample::R_ID msg)
+
+Project2Sample::R_ID coord;   
+
+void chatterCallback0(Project2Sample::R_ID msg)
 {
-  ROS_INFO("x = [%f]", msg.x);
-  ROS_INFO("y = [%f]", msg.y);
-  ROS_INFO("theta: [%f]", msg.theta);
+
+ cry(msg);
+
 }
-// %EndTag(CALLBACK)%
+
+Project2Sample::R_ID cry(Project2Sample::R_ID msg) {
+return msg;
+
+}
 
 int main(int argc, char **argv)
 {
@@ -32,14 +38,15 @@ int main(int argc, char **argv)
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  ros::init(argc, argv, "listener");
+   ros::init(argc, argv, "listener");
+   ros::NodeHandle n;
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
    * NodeHandle destructed will close down the node.
    */
-  ros::NodeHandle n;
+   ros::Publisher RobotNode_position = n.advertise<Project2Sample::R_ID>("Robot0_coord", 1000);
 
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
@@ -57,9 +64,8 @@ int main(int argc, char **argv)
    * away the oldest ones.
    */
 // %Tag(SUBSCRIBER)%
-  ros::Subscriber sub0 = n.subscribe("Robot0_pos", 1000, chatterCallback);
-  ros::Subscriber sub1 = n.subscribe("Robot1_pos", 1000, chatterCallback);
-  ros::Subscriber sub2 = n.subscribe("Robot1_pos", 1000, chatterCallback);
+  ros::Subscriber sub0 = n.subscribe("Robot0_pos", 1000, chatterCallback0);
+  RobotNode_position.publish(coord);
 // %EndTag(SUBSCRIBER)%
 
   /**

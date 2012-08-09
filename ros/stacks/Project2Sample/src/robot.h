@@ -16,9 +16,6 @@ public:
 	double py;
 	double theta;
 
-	//battery life
-	int batterylife;
-
 	Robot(int RobotId);
 	void StageOdom_callback(nav_msgs::Odometry msg);
 	void StageLaser_callback(sensor_msgs::LaserScan msg);

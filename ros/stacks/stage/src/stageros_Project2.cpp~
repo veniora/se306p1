@@ -508,6 +508,7 @@ StageNode::WorldCallback()
     tf::Transform gt(q_gpose, tf::Point(gpose.x, gpose.y, gpose.a-M_PI/2.0));
     tf::Quaternion q_gvel;
     q_gvel.setRPY(0.0, 0.0, gvel.a-M_PI/2.0);
+    ROS_INFO("theta: %f", gpose.a);
     tf::Transform gv(q_gvel, tf::Point(gvel.x, gvel.y, gvel.a-M_PI/2.0));
 
     this->groundTruthMsgs[r].pose.pose.position.x     = gt.getOrigin().x();

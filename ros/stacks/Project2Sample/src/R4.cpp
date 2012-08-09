@@ -16,24 +16,23 @@
 
 int main(int argc, char **argv) {
 
-ros::init(argc, argv, "RobotNode1");
+ros::init(argc, argv, "RobotNode4");
 
 ros::NodeHandle n;
 
 //instantiate an instance of the robot class.
-Robot r1(1);
-r1.px = 5.0;
-r1.py = 10.0;
-r1.theta = 315.0;
-
+Robot r4(4);
+r4.px = 5.0;
+r4.py = 28.0;
+r4.theta = 210.0;
 
 ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
 
 Project2Sample::DetermineLeader srv;
 
-srv.request.R_ID = r1.R_Id;
-srv.request.x = r1.px;
-srv.request.y = r1.py;
+srv.request.R_ID = r4.R_Id;
+srv.request.x = r4.px;
+srv.request.y = r4.py;
 
 if (client.call(srv)) {	
     

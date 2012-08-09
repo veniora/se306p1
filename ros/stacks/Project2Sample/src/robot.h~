@@ -6,6 +6,7 @@ class Robot{
 public:
 	//Robot_id
 	int R_Id;
+	int leader;
 	//velocity of the robot
 	double linear_x;
 	double angular_z;

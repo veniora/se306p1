@@ -15,6 +15,7 @@
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
 #include "Project2Sample/DetermineLeader.h"
+#include "Project2Sample/leader.h"
 
 using namespace std;
 
@@ -25,11 +26,11 @@ struct msg_item {
   float x;
   float y;
   float theta;
-  float batteryLife;
 } ;
 
 vector<msg_item> coordinates;
 msg_item item;
+int leader = -1;
 
 int findLeader() {
 	double minDistance = 9999999.00; //make the biggest number
@@ -48,18 +49,13 @@ int findLeader() {
 }
 
 bool addCoordinates_callback(Project2Sample::DetermineLeader::Request &req, Project2Sample::DetermineLeader::Response &res) {
-    ROS_INFO("hello-world");
     item.id = req.R_ID;
-    ROS_INFO("%d", item.id);
     item.x  =  req.x;
-    ROS_INFO("%f", item.x);
     item.y  =  req.y;
     coordinates.push_back(item);
-    while(true) {
-    if (coordinates.size() == 3) {
+    if (coordinates.size() == 6) {
 	res.L_ID = findLeader();
-	break;
-    }
+        leader = res.L_ID;
     }
     return true;
 }
@@ -68,6 +64,16 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "FindLeader");
     ros::NodeHandle n;
     ros::ServiceServer service = n.advertiseService("Determine_Leader", addCoordinates_callback);
+    Project2Sample::leader BOSS;
+    ros::Rate loop_rate(10);
+    ros::Publisher robotLeader = n.advertise<Project2Sample::leader>("Robot_leader",1000); 
+    while (ros::ok()) {        
+	BOSS.leaderID= leader;
+        ROS_INFO("boss leader: %d", BOSS.leaderID);
+	robotLeader.publish(BOSS);
+	ros::spinOnce();
+	loop_rate.sleep();
+    }
     ros::spin();
    
     return 0;

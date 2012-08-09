@@ -8,6 +8,7 @@
 #include "math.h"
 #include <cmath>
 #include "robot.h"
+
 #define PI 3.14159265
 
 	Robot::Robot(int RobotId) 
@@ -20,26 +21,27 @@
 	//initialise battery life
 	this->batterylife = 80;
 	this->theta = 0.0;
+	this->leader = -1;
 	}
 
-	void Robot::StageOdom_callback(nav_msgs::Odometry msg)
-	{
+	void Robot::StageOdom_callback(nav_msgs::Odometry msg) {
 	
 	//This is the call back function to process odometry messages coming from Stage. 	
-	this->px = msg.pose.pose.position.x;
-	this->py = msg.pose.pose.position.y;
-	double thetaRadians = msg.pose.pose.position.z+ PI/2;
-	if (fabs(thetaRadians) < 0.0001) { 
-	    this->theta = 0.0;
-	} else {
-	    if (thetaRadians < 0.0)  {
-	        this->theta = 360.0 - (fabs(thetaRadians) * 180.0/PI);
-	    } else {
-	        this->theta = thetaRadians * 180.0/PI;
-	    } 
+	//this->px = msg.pose.pose.position.x;
+	//this->py = msg.pose.pose.position.y;
+	//double thetaRadians = msg.pose.pose.position.z+ PI/2;
+	//if (fabs(thetaRadians) < 0.0001) { 
+	  //  this->theta = 0.0;
+	//} else {
+	  //  if (thetaRadians < 0.0)  {
+	    //    this->theta = 360.0 - (fabs(thetaRadians) * 180.0/PI);
+	    //} else {
+	      //  this->theta = thetaRadians * 180.0/PI;
+	    //} 
+	//}
+	
 	}
-
-	}
+       
 
 	void Robot::StageLaser_callback(sensor_msgs::LaserScan msg) 
 	{

@@ -18,9 +18,11 @@ Author: Charu Wadhwa + Pauline Santos
 #include "Project2Sample/R_ID_Follow.h"
 #include "robot.h"
 #include "Project2Sample/DetermineLeader.h"
+#include "Project2Sample/Rotation.h"
 
 //Creating an instance of class Robot by passing the ID = 1 to the constructor.  
 Robot r1(1);
+bool kp = true;
 
 //Callback function to essentially set the position of the robots on straight line formation.
 void callback(Project2Sample::R_ID_Follow msg) {
@@ -28,10 +30,11 @@ void callback(Project2Sample::R_ID_Follow msg) {
      r1.newX = msg.x;
      r1.newY = msg.y;
      r1.newTheta = msg.theta;
-     //ROS_INFO("x: %f", r1.newX);
-     //ROS_INFO("y: %f", r1.newY);
-     //ROS_INFO("theta: %f", r1.newTheta);
-     //ROS_INFO("followid: %d", r1.followID);
+     //ROS_INFO("x: %f", r0.newX);
+     //ROS_INFO("y: %f", r0.newY);
+     //ROS_INFO("theta: %f", r0.newTheta);
+     //ROS_INFO("followid: %d", r0.followID);
+     kp = false;
 }
 
 
@@ -63,10 +66,34 @@ if (client.call(srv)) {
 } else {
 }
 
-//Getting the robot node to subscribe to the topic "Robot1_new" in order to determine its new coordinates
-//in order to be in a straight line. 
+//Getting the robot node to subscribe to the topic "Robot0_new" in order to determine its new coordinates
+//in order to be in a straight line.  
 ros::Subscriber newCoord_1 = n.subscribe<Project2Sample::R_ID_Follow>("Robot1_new",1000, callback);
-ros::spin();
-return 0;
+while(kp) {
+ros::spinOnce();
+}
 
+ros::Publisher Robot1_Rotation = n.advertise<Project2Sample::Rotation>("Robot1_Rotation", 1000);
+Project2Sample::Rotation rotate;
+
+ros::Rate loop_rate(10);
+
+while (ros::ok())
+{
+	rotate.R_ID = r1.R_Id;
+	rotate.oldx = r1.px;
+	rotate.oldy = r1.py;
+	rotate.newx = r1.newX;
+	rotate.newy = r1.newY;
+        //ROS_INFO("x: %f", rotate.oldx);
+        //ROS_INFO("y: %f", rotate.oldy);
+        //ROS_INFO("theta: %f", rotate.newx);
+        //ROS_INFO("followid: %f", rotate.newy);
+        
+        Robot1_Rotation.publish(rotate);        
+	ros::spinOnce();
+	loop_rate.sleep();
+
+}
+return 0;
 }

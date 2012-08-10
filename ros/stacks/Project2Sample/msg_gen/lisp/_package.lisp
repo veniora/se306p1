@@ -7,9 +7,7 @@
    "R_ID"
    "<R_ID_FOLLOW>"
    "R_ID_FOLLOW"
-   "<ARRAY>"
-   "ARRAY"
-   "<LEADER>"
-   "LEADER"
+   "<ROTATION>"
+   "ROTATION"
   ))
 

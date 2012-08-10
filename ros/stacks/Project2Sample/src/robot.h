@@ -1,3 +1,7 @@
+#include <sensor_msgs/LaserScan.h>
+#include "Project2Sample/R_ID_Follow.h"
+
+
 #ifndef ROBOT
 #define ROBOT
 
@@ -23,7 +27,9 @@ public:
         int followID;
 
 	Robot(int RobotId);
+
 	void callback(Project2Sample::R_ID_Follow msg);
+
 	void StageLaser_callback(sensor_msgs::LaserScan msg);
 
 };

@@ -40,15 +40,16 @@ rosbuild_add_executable(R2 src/R2.cpp src/Robot.cpp)
 rosbuild_add_executable(R3 src/R3.cpp src/Robot.cpp)
 rosbuild_add_executable(R4 src/R4.cpp src/Robot.cpp)
 rosbuild_add_executable(R5 src/R5.cpp src/Robot.cpp)
+rosbuild_add_executable(RX src/RX.cpp src/Robot.cpp)
 rosbuild_add_executable(CalculatePositions src/CalculatePositions.cpp)
 rosbuild_add_executable(CalculateAngleToDestination src/CalculateAngleToDestination.cpp)
 
 #gtest
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I ${PROJECT_SOURCE_DIR}")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-#rosbuild_add_gtest(test/robotTest test/robotTest.cpp)
+rosbuild_add_gtest(test/robotTest test/robotTest.cpp)
 
 #rostest
-rosbuild_add_executable(test/robotTest test/robotTest.cpp)
+rosbuild_add_executable(test/robotTest test/robotTest.cpp src/Robot.cpp)
 rosbuild_add_gtest_build_flags(test/robotTest)
 rosbuild_add_rostest(launch/robotTest.launch)

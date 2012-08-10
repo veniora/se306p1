@@ -40,7 +40,6 @@ rosbuild_add_executable(R2 src/R2.cpp src/Robot.cpp)
 rosbuild_add_executable(R3 src/R3.cpp src/Robot.cpp)
 rosbuild_add_executable(R4 src/R4.cpp src/Robot.cpp)
 rosbuild_add_executable(R5 src/R5.cpp src/Robot.cpp)
-rosbuild_add_executable(FindLeader src/FindLeader.cpp)
 rosbuild_add_executable(CalculatePositions src/CalculatePositions.cpp)
 
 #gtest

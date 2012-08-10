@@ -4,62 +4,158 @@
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
+
 #include <sstream>
 #include "math.h"
-#include "robot.h"
-#include <Project2Sample/DetermineLeader.h>
-
 
 /**
-*This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
-**/
+ *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
+ **/
+
+//velocity of the robot
+double linear_x;
+double angular_z;
+
+//pose of the robot
+double px;
+double py;
+double theta;
+
+//battery lives
+
+int R0_life;
+int R1_life;
+
+//cluster head
+int clusterHead;
+
+void RobotNode_callback(Project2Sample::R_ID msg) {
+
+//	R1_life = msg.life;
+
+}
+
+void StageOdom_callback(nav_msgs::Odometry msg) {
+	//This is the call back function to process odometry messages coming from Stage.
+	px = 5 + msg.pose.pose.position.x;
+	py = 10 + msg.pose.pose.position.y;
+//	ROS_INFO("Current x position is: %f", px);
+//	ROS_INFO("Current y position is: %f", py);
+}
+
+void StageLaser_callback(sensor_msgs::LaserScan msg) {
+	//This is the callback function to process laser scan messages
+	//you can access the range data from msg.ranges[i]. i = sample number
+
+}
 
 int main(int argc, char **argv) {
+
+	//initialize robot parameters
+	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
+	theta = M_PI / 2.0;
+	px = 5;
+	py = 10;
+
+	//Initial velocity
+	linear_x = 0.2;
+	angular_z = 0.2;
+
+	//Batters life
+	R0_life = 80;
+	R1_life = -1;
+
+//You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 	std::stringstream ss;
 	ss << "RobotNode" << argv[1];
+	ros::init(argc, argv, ss.str());
+	ss << " running";
+	ROS_INFO(ss.str().c_str());
+//NodeHandle is the main access point to communicate with ros.
+	ros::NodeHandle n;
 
-ros::init(argc, argv, ss.str());
+//advertise() function will tell ROS that you want to publish on a given topic_
+//for other robots
+	ss.clear();
+	ss.str(std::string());
+	ss << "Robot" << argv[1] << "_msg";
+	ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>(ss.str(),
+			1000);
+//to stage
+	ss.clear();
+	ss.str(std::string());
+	ss << "Robot" << argv[1] << "_vel";
+	ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>(
+			ss.str(), 1000);
 
-ros::NodeHandle n;
+//subscribe to listen to messages of other robots
 
-//instantiate an instance of the robot class.
-Robot r1(atoi(argv[1]));
-r1.px = 5.0;
-r1.py = 10.0;
-r1.theta = 315.0;
+	ros::Subscriber RobotNode1_sub = n.subscribe<Project2Sample::R_ID>(
+			"Robot1_msg", 1000, RobotNode_callback);
 
+//subscribe to listen to messages coming from stage
+	ss.clear();
+	ss.str(std::string());
+	ss << "Robot" << argv[1] << "_odo";
+	ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(ss.str(),
+			1000, StageOdom_callback);
+	ss.clear();
+	ss.str(std::string());
+	ss << "Robot" << argv[1] << "_laser";
+	ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(
+			ss.str(), 1000, StageLaser_callback);
+//ros::Subscriber StageTruth_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000,StageTruth_callback);
 
-ros::ServiceClient client = n.serviceClient<Project2Sample::DetermineLeader>("Determine_Leader");
+	ros::Rate loop_rate(10);
 
-Project2Sample::DetermineLeader srv;
-geometry_msgs::Twist RobotNode_cmdvel;
-srv.request.R_ID = r1.R_Id;
-srv.request.x = r1.px;
-srv.request.y = r1.py;
-srv.request.theta = r1.theta;
+//a count of howmany messages we have sent
+	int count = 0;
 
-if (client.call(srv)) {	
-    //if((long int)srv.response.L_ID == r1.R_Id) {
-    //ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>("Robot1_vel",1000); 
-    //ros::Rate loop_rate(10);
-    
-//    while (ros::ok()) {
-//	
-        //messages to stage
-//	RobotNode_cmdvel.linear.x = 0.2;
-//	RobotNode_cmdvel.angular.z = 0.2;
-//        
-	//message to other robots
-//	RobotNode_stage_pub.publish(RobotNode_cmdvel);
-	
-//	ros::spinOnce();
+////messages
+//velocity of this RobotNode
+	geometry_msgs::Twist RobotNode_cmdvel;
+//message object to other robots
+	Project2Sample::R_ID msg;
+	while (ros::ok()) {
 
-//	loop_rate.sleep();
-  //  }
+		//messages to stage
+		RobotNode_cmdvel.linear.x = linear_x;
+		RobotNode_cmdvel.angular.z = angular_z;
 
-    //} 
-} else {
-}
-return 0;
+		//message to other robots
+		msg.R_ID = 0;
+//		msg.life = R0_life;
+		msg.x = px;
+		msg.y = py;
+
+		//publish the message
+		RobotNode_pub.publish(msg);
+		RobotNode_stage_pub.publish(RobotNode_cmdvel);
+
+		//cluster head election
+		if ((R0_life != -1) && (R1_life != -1)) //demo
+				{
+			int highest = R0_life;
+			clusterHead = 0;
+			if (R1_life > highest) {
+				highest = R1_life;
+				clusterHead = 1;
+			};
+//			ROS_INFO("Cluster head is: %i", clusterHead);
+			if (clusterHead == 0) //self
+					{
+				angular_z = 1.0;
+			}
+
+		}
+
+		ros::spinOnce();
+
+		loop_rate.sleep();
+		++count;
+
+	}
+
+	return 0;
 
 }

@@ -35,7 +35,7 @@ rosbuild_gensrv()
 #rosbuild_add_executable(R4 src/RobotNode4.cpp)
 #rosbuild_add_executable(R5 src/RobotNode5.cpp)
 rosbuild_add_executable(RX src/RX.cpp)
-rosbuild_add_executable(RXFactory src/RXFactory.cpp)
+rosbuild_add_executable(Launcher src/Launcher.cpp)
 rosbuild_add_executable(CalculatePositions src/CalculatePositions.cpp)
 rosbuild_add_executable(CalculateAngleToDestination src/CalculateAngleToDestination.cpp)
 

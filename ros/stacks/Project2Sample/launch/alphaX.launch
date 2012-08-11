@@ -1,11 +1,4 @@
 <launch>
 	<node pkg="stage" type="stageros_Project2" name="stageros" args="$(find stage)/bin/Project2Sample.world" /> 
-	<node pkg="Project2Sample" type="RX" args="0"/>
-	<node pkg="Project2Sample" type="R1" args="1"/>
-	<node pkg="Project2Sample" type="R2" args="2"/>
-	<node pkg="Project2Sample" type="R3" args="3"/>
-	<node pkg="Project2Sample" type="R4" args="4"/>
-	<node pkg="Project2Sample" type="R5" args="5"/>
-
 </launch>
 

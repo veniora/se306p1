@@ -299,87 +299,26 @@ int StageNode::SubscribeModels() {
 			return (-1);
 		}
 
-		if (r == 0) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot0_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot0_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot0_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot0_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived, this, r,
-									_1)));
-			ROS_INFO("subscribed to Robot0_vel");
-			ROS_INFO("RobotID: %i", r);
-		} else if (r == 1) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot1_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot1_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot1_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot1_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived2, this, r,
-									_1)));
-			ROS_INFO("subscribed to Robot1_vel");
-			ROS_INFO("RobotID: %i", r);
-		} else if (r == 2) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot2_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot2_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot2_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot2_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived3, this, r,
-									_1)));
-			ROS_INFO("subscribed to Robot2_vel");
-			ROS_INFO("RobotID: %i", r);
-		} else if (r == 3) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot3_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot3_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot3_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot3_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived4, this, r,
-									_1)));
-			ROS_INFO("subscribed to Robot3_vel");
-			ROS_INFO("RobotID: %i", r);
-		} else if (r == 4) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot4_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot4_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot4_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot4_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived5, this, r,
-									_1)));
-			ROS_INFO("subscribed to Robot4_vel");
-			ROS_INFO("RobotID: %i", r);
-		}
+		std::stringstream ss;
+		ss << "Robot" << r << "_laser";
+		laser_pubs_.push_back(
+				n_.advertise<sensor_msgs::LaserScan>(ss.str(), 10));
+		ss.str(""); // clear the stringstream
+		ss << "Robot" << r << "_odo";
+		odom_pubs_.push_back(
+				n_.advertise<nav_msgs::Odometry>(ss.str(), 10));
+		ss.str("");
+		ss << "Robot" << r << "_truth";
+		ground_truth_pubs_.push_back(
+				n_.advertise<nav_msgs::Odometry>(ss.str(), 10));
+		ss.str("");
+		ss << "Robot" << r << "_vel";
+		cmdvel_subs_.push_back(
+				n_.subscribe<geometry_msgs::Twist>(ss.str(), 10,
+						boost::bind(&StageNode::cmdvelReceived, this, r, _1)));
 
-		else if (r == 5) {
-			laser_pubs_.push_back(
-					n_.advertise<sensor_msgs::LaserScan>("Robot5_laser", 10));
-			odom_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot5_odo", 10));
-			ground_truth_pubs_.push_back(
-					n_.advertise<nav_msgs::Odometry>("Robot5_truth", 10));
-			cmdvel_subs_.push_back(
-					n_.subscribe<geometry_msgs::Twist>("Robot5_vel", 10,
-							boost::bind(&StageNode::cmdvelReceived6, this, r,
-									_1)));
-			ROS_INFO("subscribed to cmd_vel4");
-			ROS_INFO("RobotID: %i", r);
-		}
+		ROS_INFO("subscribed to Robot%i_vel", r);
+		ROS_INFO("RobotID: %i", r);
 
 	}
 	clock_pub_ = n_.advertise<rosgraph_msgs::Clock>("/clock", 10);

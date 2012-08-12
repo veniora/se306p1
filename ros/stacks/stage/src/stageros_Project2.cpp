@@ -158,6 +158,7 @@ StageNode::mapName(const char *name, size_t robotID) {
 		return name;
 }
 
+// ghfunc looks like its the function that adds models
 void StageNode::ghfunc(Stg::Model* mod, StageNode* node) {
 	if (dynamic_cast<Stg::ModelLaser *>(mod))
 		node->lasermodels.push_back(dynamic_cast<Stg::ModelLaser *>(mod));
@@ -305,8 +306,7 @@ int StageNode::SubscribeModels() {
 				n_.advertise<sensor_msgs::LaserScan>(ss.str(), 10));
 		ss.str(""); // clear the stringstream
 		ss << "Robot" << r << "_odo";
-		odom_pubs_.push_back(
-				n_.advertise<nav_msgs::Odometry>(ss.str(), 10));
+		odom_pubs_.push_back(n_.advertise<nav_msgs::Odometry>(ss.str(), 10));
 		ss.str("");
 		ss << "Robot" << r << "_truth";
 		ground_truth_pubs_.push_back(

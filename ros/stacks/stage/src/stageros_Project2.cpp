@@ -257,6 +257,13 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
 	// startup on some systems.
 	this->UpdateWorld();
 	this->world->Load(fname);
+	int i;
+	for (i = 1; i < 7; ++i){
+		Stg::Model* pos = this->world->CreateModel(this->world->GetGround(), "position");
+
+		Stg::Model* las = this->world->CreateModel(pos, "laser");
+
+	}
 
 	// We add our callback here, after the Update, so avoid our callback
 	// being invoked before we're ready.

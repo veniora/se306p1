@@ -4,6 +4,7 @@
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
+#include "RobotStates.h"
 
 #include <sstream>
 #include "math.h"
@@ -11,6 +12,9 @@
 /**
  *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
  **/
+
+//namespace
+using namespace std;
 
 //velocity of the robot
 double linear_x;
@@ -28,6 +32,9 @@ int R1_life;
 
 //cluster head
 int clusterHead;
+
+//vector of nodes = x, y, theta, R_ID
+vector <Project2Sample::R_ID> nodes;
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
 
@@ -76,14 +83,12 @@ int main(int argc, char **argv) {
 
 //advertise() function will tell ROS that you want to publish on a given topic_
 //for other robots
-	ss.clear();
-	ss.str(std::string());
+	ss.str("");
 	ss << "Robot" << argv[1] << "_msg";
 	ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>(ss.str(),
 			1000);
 //to stage
-	ss.clear();
-	ss.str(std::string());
+	ss.str("");
 	ss << "Robot" << argv[1] << "_vel";
 	ros::Publisher RobotNode_stage_pub = n.advertise<geometry_msgs::Twist>(
 			ss.str(), 1000);
@@ -94,13 +99,11 @@ int main(int argc, char **argv) {
 			"Robot1_msg", 1000, RobotNode_callback);
 
 //subscribe to listen to messages coming from stage
-	ss.clear();
-	ss.str(std::string());
+	ss.str("");
 	ss << "Robot" << argv[1] << "_odo";
 	ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(ss.str(),
 			1000, StageOdom_callback);
-	ss.clear();
-	ss.str(std::string());
+	ss.str("");
 	ss << "Robot" << argv[1] << "_laser";
 	ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(
 			ss.str(), 1000, StageLaser_callback);

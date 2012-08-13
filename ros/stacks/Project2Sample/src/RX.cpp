@@ -49,7 +49,6 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	if (!alreadyExists) {
 		nodes.push_back(msg);
 	}
-//	R1_life = msg.life;
 }
 
 void StageOdom_callback(nav_msgs::Odometry msg) {

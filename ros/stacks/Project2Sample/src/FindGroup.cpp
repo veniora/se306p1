@@ -38,6 +38,7 @@ public:
 				posID = i / numOfLeaders;
 				robotGroupInfo.push_back(groupID);
 				robotGroupInfo.push_back(posID);
+				robotGroupInfo.push_back(nodes.at(groupID).R_ID);
 				break;
 			}
 		}

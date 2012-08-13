@@ -37,9 +37,19 @@ int clusterHead;
 vector <Project2Sample::R_ID> nodes;
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
-
+	int i;
+	bool alreadyExists = false;
+	for (i = 0; i < nodes.size(); ++i) {
+		if (nodes.at(i).R_ID == msg.R_ID) {
+			nodes.erase(nodes.begin()+i); //deletes the old values
+			nodes.push_back(msg); //adds new values
+			alreadyExists = true;
+		}
+	}
+	if (!alreadyExists) {
+		nodes.push_back(msg);
+	}
 //	R1_life = msg.life;
-
 }
 
 void StageOdom_callback(nav_msgs::Odometry msg) {

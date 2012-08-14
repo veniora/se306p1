@@ -173,8 +173,7 @@ int main(int argc, char **argv) {
 		RobotNode_cmdvel.angular.z = angular_z;
 		ROS_INFO("currentState: %d", currentState);
 		switch (currentState) {
-		    // IDLE = 0
-			case 0:
+			case IDLE:
 						msg.R_ID = Id;
 						//ROS_INFO("id: %d", msg.R_ID);
 						msg.x = px;
@@ -184,8 +183,7 @@ int main(int argc, char **argv) {
 						RobotNode_pub.publish(msg);
 						ros::spinOnce();
 						break;
-		    // FORMING_GROUP = 1
-			case 1:
+			case FORMING_GROUP:
 				       //[leaderID, groupID, posID]
 						Project2Sample::R_ID msg;
 						FindGroup f;
@@ -217,18 +215,14 @@ int main(int argc, char **argv) {
 						ROS_INFO("newY: %f", robotCoordinates.at(1));
 						ROS_INFO("theta: %f", robotCoordinates.at(2));
 						break;
-			// MOVING_INTO_POS = 2
-			/*\case 2:
-				break;
-			// FOLLOWING = 3
-			case 3:
-				break;
-			// CIRCLING = 4
-			case 4:
-				break;
-			// FORM_SQUARE = 5
-			case 5:
-				break;*/
+//			case MOVING_INTO_POS:
+//				break;
+//			case FOLLOWING:
+//				break;
+//			case CIRCLING:
+//				break;
+//			case FORM_SQUARE:
+//				break;
 		}
 
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);

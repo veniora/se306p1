@@ -6,7 +6,7 @@
 #include "sensor_msgs/LaserScan.h"
 #include "Project2Sample/State.h"
 #include "FindGroup.h"
-#include "RobotStates.h"
+//#include "RobotStates.h"
 
 #include <sstream>
 #include "math.h"
@@ -30,7 +30,16 @@ double theta;
 
 int Id;
 
-int currentState = IDLE;
+// states
+enum State {IDLE = 0,
+			FORMING_GROUP = 1,
+			MOVING_INTO_POS = 2,
+			FOLLOWING = 3,
+			CIRCLING = 4,
+			FORM_SQUARE = 5};
+
+State currentState = IDLE;
+
 
 //vector of nodes = x, y, theta, R_ID
 vector <Project2Sample::R_ID> nodes;
@@ -67,22 +76,25 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 
 void RobotState_callback(Project2Sample::State msg) {
 	switch (msg.state) {
-			case 0:
+			// There is an implicit conversion from any enum type to int.
+			// On the other hand, there is not an implicit conversion from int to an enum type.
+			// This means we cant just set currentState to msg.state.
+			case IDLE:
 				currentState = IDLE;
 				break;
-			case 1:
+			case FORMING_GROUP:
 				currentState = FORMING_GROUP;
 				break;
-			case 2:
+			case MOVING_INTO_POS:
 				currentState = MOVING_INTO_POS;
 				break;
-			case 3:
+			case FOLLOWING:
 				currentState = FOLLOWING;
 				break;
-			case 4:
+			case CIRCLING:
 				currentState = CIRCLING;
 				break;
-			case 5:
+			case FORM_SQUARE:
 				currentState = FORM_SQUARE;
 				break;
 			}

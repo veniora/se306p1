@@ -15,32 +15,17 @@ using namespace std;
 int main(int argc, char **argv) {
 	int i;
 	int pid;
-
-//	// alter world file
-//	ofstream worldFile;
-//	worldFile.open("Project2Sample.world", ios::out | ios::app);
-//	int i;
-//	if (worldFile.is_open()){
-//		for (i = 0; i < atoi(argv[1]); ++i){
-//			worldFile << "myRobot( pose [ 15.000 20.000 0 45.000 ] name \"r" << i <<"\" color \"blue\")\n";
-//		}
-//		worldFile.close();
-//	} else {
-//		cout << "unable to open worldfile";
-//		return 0;
-//	}
-
-
-
-//	// start roscore + stage
-//	int pid = fork();
-//	if (pid == 0){
-//		// roscore is not garunteed to be running before the nodes are created
-//		execl("/opt/ros/electric/ros/bin/roslaunch", "/opt/ros/electric/ros/bin/roslaunch",
-//				"Project2Sample", "alphaX.launch", NULL);
-//		cout << "roscore failed to start";
-//		return 0;
-//	}
+	stringstream ss;
+	ss << "numbots:=" << argv[1];
+	// start roscore + stage
+	pid = fork();
+	if (pid == 0){
+		// roscore is not garunteed to be running before the nodes are created
+		execl("/opt/ros/electric/ros/bin/roslaunch", "/opt/ros/electric/ros/bin/roslaunch",
+				"Project2Sample", "alphaX.launch", ss.str().c_str(), NULL);
+		cout << "roscore failed to start";
+		return 0;
+	}
 
 
 	// start robots

@@ -7,7 +7,7 @@ Created on: 6/08/2012
 Author: Charu Wadhwa + Pauline Santos
 */
 
-#include "ros/ros.h"
+/*#include "ros/ros.h"
 #include "std_msgs/String.h"
 #include <Project2Sample/R_ID.h>
 #include <geometry_msgs/Twist.h>
@@ -16,7 +16,6 @@ Author: Charu Wadhwa + Pauline Santos
 #include <sstream>
 #include "math.h"
 #include "Project2Sample/R_ID_Follow.h"
-#include "robot.h"
 #include "Project2Sample/DetermineLeader.h"
 #include "Project2Sample/Rotation.h"
 
@@ -96,3 +95,4 @@ while (ros::ok())
 return 0;
 
 }
+*/

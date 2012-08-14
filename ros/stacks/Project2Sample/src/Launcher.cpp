@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc, char **argv) {
 	int i;
 	int pid;
-	if (argc == 1){
+	if (argc != 2){
 		cout << "To run launcher use ./Launcher X, where X is the number of robots to start\n";
 		return 0;
 	}
@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 			// parent process so continue looping
 		}
 	}
-	while (true){}
+	while (true){} // If this process finishes then all the fork/exec'd process become hard to kill
 	return 0;
 
 }

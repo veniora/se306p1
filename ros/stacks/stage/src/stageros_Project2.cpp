@@ -131,16 +131,6 @@ public:
 	// Message callback for a MsgBaseVel message, which set velocities.
 	void cmdvelReceived(int idx,
 			const boost::shared_ptr<geometry_msgs::Twist const>& msg);
-	void cmdvelReceived2(int idx,
-			const boost::shared_ptr<geometry_msgs::Twist const>& msg2);
-	void cmdvelReceived3(int idx,
-			const boost::shared_ptr<geometry_msgs::Twist const>& msg3);
-	void cmdvelReceived4(int idx,
-			const boost::shared_ptr<geometry_msgs::Twist const>& msg4);
-	void cmdvelReceived5(int idx,
-			const boost::shared_ptr<geometry_msgs::Twist const>& msg5);
-	void cmdvelReceived6(int idx,
-			const boost::shared_ptr<geometry_msgs::Twist const>& msg6);
 
 	// The main simulator object
 	Stg::World* world;
@@ -176,57 +166,6 @@ void StageNode::cmdvelReceived(int idx,
 	this->base_last_cmd = this->sim_time;
 }
 
-void StageNode::cmdvelReceived2(int idx,
-		const boost::shared_ptr<geometry_msgs::Twist const>& msg) {
-	boost::mutex::scoped_lock lock(msg_lock);
-	this->positionmodels[idx]->SetSpeed(msg->linear.x, msg->linear.y,
-			msg->angular.z);
-	//ROS_INFO("cmdvelReceived2 %f", msg->linear.x);
-	//ROS_INFO("RobotID %i", idx);
-	this->base_last_cmd = this->sim_time;
-}
-
-void StageNode::cmdvelReceived3(int idx,
-		const boost::shared_ptr<geometry_msgs::Twist const>& msg) {
-	boost::mutex::scoped_lock lock(msg_lock);
-	this->positionmodels[idx]->SetSpeed(msg->linear.x, msg->linear.y,
-			msg->angular.z);
-	//ROS_INFO("cmdvelReceived3 %f", msg->linear.x);
-	//ROS_INFO("RobotID %i", idx);
-	this->base_last_cmd = this->sim_time;
-}
-
-void StageNode::cmdvelReceived4(int idx,
-		const boost::shared_ptr<geometry_msgs::Twist const>& msg) {
-	boost::mutex::scoped_lock lock(msg_lock);
-	this->positionmodels[idx]->SetSpeed(msg->linear.x, msg->linear.y,
-			msg->angular.z);
-	//ROS_INFO("cmdvelReceived4 %f", msg->linear.x);
-	//ROS_INFO("RobotID %i", idx);
-	this->base_last_cmd = this->sim_time;
-}
-
-void StageNode::cmdvelReceived5(int idx,
-		const boost::shared_ptr<geometry_msgs::Twist const>& msg) {
-	boost::mutex::scoped_lock lock(msg_lock);
-	this->positionmodels[idx]->SetSpeed(msg->linear.x, msg->linear.y,
-			msg->angular.z);
-	//ROS_INFO("cmdvelReceived5 %f", msg->linear.x);
-	//ROS_INFO("RobotID %i", idx);
-	this->base_last_cmd = this->sim_time;
-}
-
-void StageNode::cmdvelReceived6(int idx,
-		const boost::shared_ptr<geometry_msgs::Twist const>& msg) {
-	boost::mutex::scoped_lock lock(msg_lock);
-	this->positionmodels[idx]->SetSpeed(msg->linear.x, msg->linear.y,
-			msg->angular.z);
-	//ROS_INFO("cmdvelReceived6 %f", msg->linear.x);
-	//ROS_INFO("RobotID %i", idx);
-	this->base_last_cmd = this->sim_time;
-
-}
-
 StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
 	this->sim_time.fromSec(0.0);
 	this->base_last_cmd.fromSec(0.0);
@@ -258,12 +197,12 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
 	this->UpdateWorld();
 	this->world->Load(fname);
 	int i;
-	for (i = 1; i < 7; ++i){
-		Stg::Model* pos = this->world->CreateModel(this->world->GetGround(), "position");
-
-		Stg::Model* las = this->world->CreateModel(pos, "laser");
-
-	}
+//	for (i = 1; i < 7; ++i){
+//		Stg::Model* pos = this->world->CreateModel(this->world->GetGround(), "position");
+//
+//		Stg::Model* las = this->world->CreateModel(pos, "laser");
+//
+//	}
 
 	// We add our callback here, after the Update, so avoid our callback
 	// being invoked before we're ready.

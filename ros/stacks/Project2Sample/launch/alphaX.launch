@@ -1,4 +1,5 @@
 <launch>
 	<node pkg="stage" type="stageros_Project2" name="stageros" args="$(find stage)/bin/Project2Sample.world" /> 
+	<node pkg="Project2Sample" type="RX" name="Robot" args="1" />
 </launch>
 

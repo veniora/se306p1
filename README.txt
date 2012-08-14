@@ -26,11 +26,4 @@ rosmake
 
 RUN:
 
-1. Open a terminal and perform this command:
-
-roscore
-
-2. In a NEW terminal perform these commands:
-
-roscd stage/bin/
-rosrun stage stageros_Project2 Project2Sample.world
+roslaunch Project2Sample alphaX.launch

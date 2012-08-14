@@ -15,6 +15,10 @@ using namespace std;
 int main(int argc, char **argv) {
 	int i;
 	int pid;
+	if (argc == 1){
+		cout << "To run launcher use ./Launcher X, where X is the number of robots to start\n";
+		return 0;
+	}
 	stringstream ss;
 	ss << "numbots:=" << argv[1];
 	// start roscore + stage

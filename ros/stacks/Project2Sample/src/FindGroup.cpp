@@ -7,10 +7,15 @@
 
 #include "FindGroup.h"
 #include <vector>
+#include <iostream>
+#include <cmath>
+#include "math.h"
+#include <algorithm>
 
 #define PI 3.14159265
 
 using namespace std;
+
  //checks distance
 bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 	float distance1 = sqrt(pow(robot1.x, 2.0) + pow(robot1.y, 2.0));
@@ -27,15 +32,12 @@ FindGroup::~FindGroup() {
 	// TODO Auto-generated destructor stub
 }
 
-class FindGroup {
-
-public:
-	static vector<int> formGroup(vector<Project2Sample::R_ID> nodes, int robotID) {
+static vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 		vector<int> robotGroupInfo;
 		//find number of leaders
 		int groupID, posID, i;
 		//number of leaders
-		int numOfLeaders = nodes.size() / 6;
+		int numOfLeaders = nodes.size() / 2;
 		sort(nodes.begin(), nodes.end(), sortByDistance);
 		if (fabs(nodes.at(0).x) < 0.0001 && fabs(nodes.at(0).y) < 0.0001) {
 			nodes.insert(nodes.begin()+numOfLeaders+1, nodes.at(0));
@@ -45,16 +47,16 @@ public:
 			if (nodes.at(i).R_ID == robotID) {
 				groupID = i % numOfLeaders;
 				posID = i / numOfLeaders;
-				//robotGroupInfo.push_back(groupID);
 				robotGroupInfo.push_back(nodes.at(groupID).R_ID);
+				robotGroupInfo.push_back(groupID);
 				robotGroupInfo.push_back(posID);
-				robotGroupInfo.push_back(nodes.at(groupID).R_ID);
 				break;
 			}
 		}
-		return robotGroupInfo;      //[LeaderID, posID]
+		return robotGroupInfo;      //[LeaderID, groupID, posID]
 	}
 	//only need values for leader
+
 	static vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 		vector<float> newCoordinates;
 		float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
@@ -67,7 +69,7 @@ public:
 
 		// new value of x and y for the robot in the posID
 
-		int check = 2(leader.x/fabs(leader.x)) + (leader.y/fabs(leader.y));
+		int check = 2 * (leader.x/fabs(leader.x)) + (leader.y/fabs(leader.y));
 
 		switch (check) {
 			case 3: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
@@ -86,9 +88,7 @@ public:
 		newCoordinates.push_back(newX);
 		newCoordinates.push_back(newY);
 		newCoordinates.push_back(leaderTheta);
-		//vector [newX, newY, leadeTheta]
 		return newCoordinates;
 
 	}
-};
 

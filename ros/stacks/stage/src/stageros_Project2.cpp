@@ -27,7 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
+#include <time.h>
 
 // basic file operations
 #include <iostream>
@@ -118,7 +118,7 @@ private:
 public:
 	// Constructor; stage itself needs argc/argv.  fname is the .world file
 	// that stage should load.
-	StageNode(int argc, char** argv, bool gui, const char* fname);
+	StageNode(int argc, char** argv, bool gui, const char* fname, const char* numbots);
 	~StageNode();
 
 	// Subscribe to models of interest.  Currently, we find and subscribe
@@ -171,7 +171,7 @@ void StageNode::cmdvelReceived(int idx,
 	this->base_last_cmd = this->sim_time;
 }
 
-StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
+StageNode::StageNode(int argc, char** argv, bool gui, const char* fname, const char* numBots) {
 	this->sim_time.fromSec(0.0);
 	this->base_last_cmd.fromSec(0.0);
 	double t;
@@ -208,14 +208,15 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
 	ss.str("");
 
 	int i;
+	srand(time(NULL));
 	std::ofstream worldfile;
 	worldfile.open("temp.world", std::ios::out | std::ios::app);
 	if (worldfile.is_open()) {
-		for (i = 0; i < 7; ++i){
+		for (i = 0; i < std::atoi(numBots); ++i){
 			// pose [ x:<float> y:<float> z:<float> heading:<float> ]
 			// myRobot( pose [ 5 10 0 0 ] name "r0" color "blue")
-			float pose_x = 15.0;
-			float pose_y = 10.0;
+			float pose_x = rand()%50;
+			float pose_y = rand()%50;
 			ss << "myRobot( pose [ " << pose_x << " " << pose_y << " 0 0 ] name \"r" << i <<"\" color \"blue\")\n";
 			worldfile << ss.str();
 			ss.str(""); // clear ss
@@ -462,7 +463,7 @@ int main(int argc, char** argv) {
 			gui = false;
 	}
 
-	StageNode sn(argc - 1, argv, gui, argv[argc - 1]);
+	StageNode sn(argc - 1, argv, gui, argv[argc -2], argv[argc - 1]);
 
 	if (sn.SubscribeModels() != 0)
 		exit(-1);

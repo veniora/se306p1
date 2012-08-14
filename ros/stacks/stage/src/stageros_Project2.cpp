@@ -27,6 +27,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
+
+// basic file operations
+#include <iostream>
+#include <fstream>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -192,18 +197,40 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname) {
 	else
 		this->world = new Stg::World();
 
+	std::stringstream ss;
+
+	ss << "cp " << fname << "/bin/Project2Sample.world temp.world";
+	system(ss.str().c_str());
+	ss.str(""); // clear ss
+
+	ss << "cp " << fname << "/bin/swarm_world.pgm swarm_world.pgm";
+	system(ss.str().c_str());
+	ss.str("");
+
+	int i;
+	std::ofstream worldfile;
+	worldfile.open("temp.world", std::ios::out | std::ios::app);
+	if (worldfile.is_open()) {
+		for (i = 0; i < 7; ++i){
+			// pose [ x:<float> y:<float> z:<float> heading:<float> ]
+			// myRobot( pose [ 5 10 0 0 ] name "r0" color "blue")
+			float pose_x = 15.0;
+			float pose_y = 10.0;
+			ss << "myRobot( pose [ " << pose_x << " " << pose_y << " 0 0 ] name \"r" << i <<"\" color \"blue\")\n";
+			worldfile << ss.str();
+			ss.str(""); // clear ss
+		}
+		worldfile.close();
+	} else {
+		std::cout << "Unable to open file";
+	}
+
+
 	// Apparently an Update is needed before the Load to avoid crashes on
 	// startup on some systems.
 	this->UpdateWorld();
-	this->world->Load(fname);
-	int i;
-//	for (i = 1; i < 7; ++i){
-//		Stg::Model* pos = this->world->CreateModel(this->world->GetGround(), "position");
-//
-//		Stg::Model* las = this->world->CreateModel(pos, "laser");
-//
-//	}
-
+	this->world->Load("temp.world");
+	
 	// We add our callback here, after the Update, so avoid our callback
 	// being invoked before we're ready.
 	this->world->AddUpdateCallback((Stg::stg_world_callback_t) s_update, this);

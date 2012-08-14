@@ -11,6 +11,9 @@
 *.la
 *.a
 
+# Temporary files
+*~
+
 # ROS/eclipse files http://answers.ros.org/question/10182/how-to-correctly-use-git-with-ros/
 .cproject
 .project

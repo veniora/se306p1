@@ -26,4 +26,6 @@ rosmake
 
 RUN:
 
-roslaunch Project2Sample alphaX.launch
+roscd Project2Sample/bin
+./Launcher X
+(X is the number of robots you want to run)

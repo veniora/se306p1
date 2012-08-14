@@ -7,16 +7,15 @@
 
 #ifndef FINDGROUP_H_
 #define FINDGROUP_H_
+#include "Project2Sample/R_ID.h"
 
 using namespace std;
 
 class FindGroup {
 public:
-	FindGroup();
-	virtual ~FindGroup();
-	static vector<int> formGroup(vector<Project2Sample::R_ID> nodes, int robotID);
-	bool sortByDistance (int i,int j);
-	static vector<float> calculatePosition(Project2Sample::R_ID leader, int posID);
+	vector<int> formGroup(vector<Project2Sample::R_ID> nodes, int robotID);
+	vector<float> calculatePosition(Project2Sample::R_ID leader, int posID);
+
 };
 
 #endif /* FINDGROUP_H_ */

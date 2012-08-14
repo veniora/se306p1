@@ -23,6 +23,7 @@ struct R_ID_ {
 
   R_ID_()
   : R_ID(0)
+  , Group_ID(0)
   , x(0.0)
   , y(0.0)
   , theta(0.0)
@@ -31,6 +32,7 @@ struct R_ID_ {
 
   R_ID_(const ContainerAllocator& _alloc)
   : R_ID(0)
+  , Group_ID(0)
   , x(0.0)
   , y(0.0)
   , theta(0.0)
@@ -39,6 +41,9 @@ struct R_ID_ {
 
   typedef int64_t _R_ID_type;
   int64_t R_ID;
+
+  typedef int64_t _Group_ID_type;
+  int64_t Group_ID;
 
   typedef double _x_type;
   double x;
@@ -58,7 +63,7 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "178f82395769a92289420dcc17fe2f88"; }
+  static const char* __s_getMD5Sum_() { return "9b97f6ee1bf228a7c2634342e24029db"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
@@ -66,10 +71,10 @@ public:
 
 private:
   static const char* __s_getMessageDefinition_() { return "int64 R_ID\n\
+int64 Group_ID\n\
 float64 x\n\
 float64 y\n\
 float64 theta\n\
-\n\
 "; }
 public:
   ROS_DEPRECATED static const std::string __s_getMessageDefinition() { return __s_getMessageDefinition_(); }
@@ -80,6 +85,7 @@ public:
   {
     ros::serialization::OStream stream(write_ptr, 1000000000);
     ros::serialization::serialize(stream, R_ID);
+    ros::serialization::serialize(stream, Group_ID);
     ros::serialization::serialize(stream, x);
     ros::serialization::serialize(stream, y);
     ros::serialization::serialize(stream, theta);
@@ -90,6 +96,7 @@ public:
   {
     ros::serialization::IStream stream(read_ptr, 1000000000);
     ros::serialization::deserialize(stream, R_ID);
+    ros::serialization::deserialize(stream, Group_ID);
     ros::serialization::deserialize(stream, x);
     ros::serialization::deserialize(stream, y);
     ros::serialization::deserialize(stream, theta);
@@ -100,6 +107,7 @@ public:
   {
     uint32_t size = 0;
     size += ros::serialization::serializationLength(R_ID);
+    size += ros::serialization::serializationLength(Group_ID);
     size += ros::serialization::serializationLength(x);
     size += ros::serialization::serializationLength(y);
     size += ros::serialization::serializationLength(theta);
@@ -134,12 +142,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::Project2Sample::R_ID_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "178f82395769a92289420dcc17fe2f88";
+    return "9b97f6ee1bf228a7c2634342e24029db";
   }
 
   static const char* value(const  ::Project2Sample::R_ID_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x178f82395769a922ULL;
-  static const uint64_t static_value2 = 0x89420dcc17fe2f88ULL;
+  static const uint64_t static_value1 = 0x9b97f6ee1bf228a7ULL;
+  static const uint64_t static_value2 = 0xc2634342e24029dbULL;
 };
 
 template<class ContainerAllocator>
@@ -157,10 +165,10 @@ struct Definition< ::Project2Sample::R_ID_<ContainerAllocator> > {
   static const char* value() 
   {
     return "int64 R_ID\n\
+int64 Group_ID\n\
 float64 x\n\
 float64 y\n\
 float64 theta\n\
-\n\
 ";
   }
 
@@ -181,6 +189,7 @@ template<class ContainerAllocator> struct Serializer< ::Project2Sample::R_ID_<Co
   template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
   {
     stream.next(m.R_ID);
+    stream.next(m.Group_ID);
     stream.next(m.x);
     stream.next(m.y);
     stream.next(m.theta);
@@ -203,6 +212,8 @@ struct Printer< ::Project2Sample::R_ID_<ContainerAllocator> >
   {
     s << indent << "R_ID: ";
     Printer<int64_t>::stream(s, indent + "  ", v.R_ID);
+    s << indent << "Group_ID: ";
+    Printer<int64_t>::stream(s, indent + "  ", v.Group_ID);
     s << indent << "x: ";
     Printer<double>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";

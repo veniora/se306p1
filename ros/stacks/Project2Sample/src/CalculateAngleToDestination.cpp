@@ -7,7 +7,7 @@
 
 
 
-#include <iostream>
+/*#include <iostream>
 #include <vector>
 #include <math.h>
 #include <cmath>
@@ -65,13 +65,13 @@ float setAngle(int id, vector<float> currentPosition, vector<float> newPosition)
 	} else {
 		cout<< "No quadrant found." <<"\n";
 	}
-	/*
+
 	//Calculate time for rotation
 	float rotateTime = deltaTheta / AngularV;
 
 	vector<float> rotateInstructions1(2);
 	rotateInstructions1[0] = AngularV;
-	rotateInstructions1[1] = rotateTime*/
+	rotateInstructions1[1] = rotateTime
         alpha = fmod(alpha, 360.0);
 	return alpha;
 }
@@ -94,3 +94,4 @@ ros::spinOnce();
 
 return 0;
 }
+*/

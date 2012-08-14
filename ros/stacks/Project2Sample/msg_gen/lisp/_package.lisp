@@ -3,6 +3,8 @@
   (:export
    "<VELOCITYINSTRUCTIONS>"
    "VELOCITYINSTRUCTIONS"
+   "<STATE>"
+   "STATE"
    "<R_ID>"
    "R_ID"
    "<R_ID_FOLLOW>"

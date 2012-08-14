@@ -1,10 +1,10 @@
-/*
- * CalculatePositions.cpp
+
+ /* CalculatePositions.cpp
  *
  *  Created on: 6/08/2012
  *      
  */
-
+/*
 #include <iostream>
 #include <vector>
 #include <math.h>
@@ -266,3 +266,4 @@ int main(int argc, char **argv) {
 return 0;	
     return 0;
 }
+*/

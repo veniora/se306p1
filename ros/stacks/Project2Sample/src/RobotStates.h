@@ -7,12 +7,8 @@
 
 #ifndef ROBOTSTATES_H_
 #define ROBOTSTATES_H_
-#define IDLE 0
-#define FORMING_GROUP 1
-#define MOVE_INTO_POS 2
-#define FOLLOWING 3
-#define CIRCLING 4
-#define FORM_SQUARE 5
+
+enum State {IDLE, FORMING_GROUP, MOVING_INTO_POS, FOLLOWING, CIRCLING, FORM_SQUARE};
 
 class RobotStates {
 public:

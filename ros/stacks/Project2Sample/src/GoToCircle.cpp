@@ -27,8 +27,8 @@ bool sortByPosition (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 vector<float> GoToCircle::formCircle(vector<Project2Sample::R_ID> group, int robotID) {
 	vector<float> circleCoord;
 	sort(group.begin(), group.end(), sortByPosition);
-	int numOfRobots = group.size() + 1;
-    float circumference = numOfRobots * 5 * 0.35;
+	int numOfRobots = group.size();
+    float circumference = float(numOfRobots+1) * 5 * 0.35;
     int i, j;
     float radius = circumference / (2*PI);
 

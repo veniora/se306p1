@@ -41,7 +41,7 @@ rosbuild_add_executable(PublishState src/PublishState.cpp)
 #gtest
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I ${PROJECT_SOURCE_DIR}")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-#rosbuild_add_gtest(test/robotTest test/robotTest.cpp)
+rosbuild_add_gtest(test/utest test/utest.cpp)
 
 #rostest
 #rosbuild_add_executable(test/robotTest test/robotTest.cpp src/Robot.cpp)

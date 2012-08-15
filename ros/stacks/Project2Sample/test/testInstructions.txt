@@ -1,1 +1,12 @@
 Each file added in here must also be appended to CMakeLists.txt
+
+FindGroup.cpp
+FindGroup::formGroup
+ - Test Normal Conditions - 3 robots, non leader
+ - Test Normal Conditions - 3 robots, leader find itself
+ - Test Normal with negatives - 3 robots, non leader
+ - Test Normal with negatives - 3 robots, leader find itself
+ - 
+ - Test that 24 robots form 4 groups (just check group No so you can randomise values)
+ - Test more than 6 robots but less than 12 for 1 group only
+ - Test robot at (0,0) not selected

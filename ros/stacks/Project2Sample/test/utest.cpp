@@ -2,10 +2,12 @@
 // Bring in gtest
 #include <gtest/gtest.h>
 
+int fred = 8;
 // Declare a test
 TEST(TestSuite, testCase1)
 {
 	EXPECT_EQ(10, 10 );
+	EXPECT_EQ(8, fred );
 }
 
 // Declare another test

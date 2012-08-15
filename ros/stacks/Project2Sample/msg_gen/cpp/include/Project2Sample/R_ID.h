@@ -24,18 +24,22 @@ struct R_ID_ {
   R_ID_()
   : R_ID(0)
   , Group_ID(0)
+  , Pos_ID(0)
   , x(0.0)
   , y(0.0)
   , theta(0.0)
+  , leaderTheta(0.0)
   {
   }
 
   R_ID_(const ContainerAllocator& _alloc)
   : R_ID(0)
   , Group_ID(0)
+  , Pos_ID(0)
   , x(0.0)
   , y(0.0)
   , theta(0.0)
+  , leaderTheta(0.0)
   {
   }
 
@@ -44,6 +48,9 @@ struct R_ID_ {
 
   typedef int64_t _Group_ID_type;
   int64_t Group_ID;
+
+  typedef int64_t _Pos_ID_type;
+  int64_t Pos_ID;
 
   typedef double _x_type;
   double x;
@@ -54,6 +61,9 @@ struct R_ID_ {
   typedef double _theta_type;
   double theta;
 
+  typedef double _leaderTheta_type;
+  double leaderTheta;
+
 
 private:
   static const char* __s_getDataType_() { return "Project2Sample/R_ID"; }
@@ -63,7 +73,7 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "9b97f6ee1bf228a7c2634342e24029db"; }
+  static const char* __s_getMD5Sum_() { return "0d8e9b56042db3c74c526e12bb684730"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
@@ -72,9 +82,11 @@ public:
 private:
   static const char* __s_getMessageDefinition_() { return "int64 R_ID\n\
 int64 Group_ID\n\
+int64 Pos_ID\n\
 float64 x\n\
 float64 y\n\
 float64 theta\n\
+float64 leaderTheta\n\
 "; }
 public:
   ROS_DEPRECATED static const std::string __s_getMessageDefinition() { return __s_getMessageDefinition_(); }
@@ -86,9 +98,11 @@ public:
     ros::serialization::OStream stream(write_ptr, 1000000000);
     ros::serialization::serialize(stream, R_ID);
     ros::serialization::serialize(stream, Group_ID);
+    ros::serialization::serialize(stream, Pos_ID);
     ros::serialization::serialize(stream, x);
     ros::serialization::serialize(stream, y);
     ros::serialization::serialize(stream, theta);
+    ros::serialization::serialize(stream, leaderTheta);
     return stream.getData();
   }
 
@@ -97,9 +111,11 @@ public:
     ros::serialization::IStream stream(read_ptr, 1000000000);
     ros::serialization::deserialize(stream, R_ID);
     ros::serialization::deserialize(stream, Group_ID);
+    ros::serialization::deserialize(stream, Pos_ID);
     ros::serialization::deserialize(stream, x);
     ros::serialization::deserialize(stream, y);
     ros::serialization::deserialize(stream, theta);
+    ros::serialization::deserialize(stream, leaderTheta);
     return stream.getData();
   }
 
@@ -108,9 +124,11 @@ public:
     uint32_t size = 0;
     size += ros::serialization::serializationLength(R_ID);
     size += ros::serialization::serializationLength(Group_ID);
+    size += ros::serialization::serializationLength(Pos_ID);
     size += ros::serialization::serializationLength(x);
     size += ros::serialization::serializationLength(y);
     size += ros::serialization::serializationLength(theta);
+    size += ros::serialization::serializationLength(leaderTheta);
     return size;
   }
 
@@ -142,12 +160,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::Project2Sample::R_ID_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "9b97f6ee1bf228a7c2634342e24029db";
+    return "0d8e9b56042db3c74c526e12bb684730";
   }
 
   static const char* value(const  ::Project2Sample::R_ID_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x9b97f6ee1bf228a7ULL;
-  static const uint64_t static_value2 = 0xc2634342e24029dbULL;
+  static const uint64_t static_value1 = 0x0d8e9b56042db3c7ULL;
+  static const uint64_t static_value2 = 0x4c526e12bb684730ULL;
 };
 
 template<class ContainerAllocator>
@@ -166,9 +184,11 @@ struct Definition< ::Project2Sample::R_ID_<ContainerAllocator> > {
   {
     return "int64 R_ID\n\
 int64 Group_ID\n\
+int64 Pos_ID\n\
 float64 x\n\
 float64 y\n\
 float64 theta\n\
+float64 leaderTheta\n\
 ";
   }
 
@@ -190,9 +210,11 @@ template<class ContainerAllocator> struct Serializer< ::Project2Sample::R_ID_<Co
   {
     stream.next(m.R_ID);
     stream.next(m.Group_ID);
+    stream.next(m.Pos_ID);
     stream.next(m.x);
     stream.next(m.y);
     stream.next(m.theta);
+    stream.next(m.leaderTheta);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -214,12 +236,16 @@ struct Printer< ::Project2Sample::R_ID_<ContainerAllocator> >
     Printer<int64_t>::stream(s, indent + "  ", v.R_ID);
     s << indent << "Group_ID: ";
     Printer<int64_t>::stream(s, indent + "  ", v.Group_ID);
+    s << indent << "Pos_ID: ";
+    Printer<int64_t>::stream(s, indent + "  ", v.Pos_ID);
     s << indent << "x: ";
     Printer<double>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";
     Printer<double>::stream(s, indent + "  ", v.y);
     s << indent << "theta: ";
     Printer<double>::stream(s, indent + "  ", v.theta);
+    s << indent << "leaderTheta: ";
+    Printer<double>::stream(s, indent + "  ", v.leaderTheta);
   }
 };
 

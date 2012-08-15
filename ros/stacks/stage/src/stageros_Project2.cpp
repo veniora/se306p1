@@ -209,14 +209,20 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname, const c
 
 	int i;
 	srand(time(NULL));
+        //std::random_device rseed;
+	//std::mt19937 rng(rseed());
+	//std::uniform_int<int> dist(-100,2100);
+
 	std::ofstream worldfile;
 	worldfile.open("temp.world", std::ios::out | std::ios::app);
 	if (worldfile.is_open()) {
 		for (i = 0; i < std::atoi(numBots); ++i){
 			// pose [ x:<float> y:<float> z:<float> heading:<float> ]
 			// myRobot( pose [ 5 10 0 0 ] name "r0" color "blue")
-			float pose_x = rand()%50;
-			float pose_y = rand()%50;
+			//float pose_x = rand()%50;
+			//float pose_y = rand()%50;
+			float pose_x = 100 * (double)rand() / (double)RAND_MAX - 50;
+			float pose_y = 100 * (double)rand() / (double)RAND_MAX - 50
 			ss << "myRobot( pose [ " << pose_x << " " << pose_y << " 0 0 ] name \"r" << i <<"\" color \"blue\")\n";
 			worldfile << ss.str();
 			ss.str(""); // clear ss

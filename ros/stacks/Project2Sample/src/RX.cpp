@@ -29,6 +29,7 @@ double py;
 double theta;
 
 int Id;
+int LeaderID;
 
 // states
 enum State {IDLE = 0,
@@ -36,7 +37,8 @@ enum State {IDLE = 0,
 			MOVING_INTO_POS = 2,
 			FOLLOWING = 3,
 			CIRCLING = 4,
-			FORM_SQUARE = 5};
+			FORM_SQUARE = 5,
+			FORM_CIRCLE = 6 };
 
 State currentState = IDLE;
 
@@ -97,6 +99,8 @@ void RobotState_callback(Project2Sample::State msg) {
 			case FORM_SQUARE:
 				currentState = FORM_SQUARE;
 				break;
+			case FORM_CIRCLE:
+				currentState = FORM_CIRCLE;
 			}
 }
 
@@ -104,14 +108,14 @@ int main(int argc, char **argv) {
 
 	//initialize robot parameters
 	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
-	theta = M_PI / 2.0;
+	theta = 45;
 	px = 5;
 	py = 10;
 	Id = atoi(argv[1]);
 
 	//Initial velocity
-	linear_x = 0.2;
-	angular_z = 0.2;
+	linear_x = 0.0;
+	angular_z = 0.0;
 
 //You must call ros::init() first of all. ros::init() function needs to see argc and argv. The third argument is the name of the node
 	std::stringstream ss;
@@ -184,13 +188,14 @@ int main(int argc, char **argv) {
 						ros::spinOnce();
 						break;
 			case FORMING_GROUP:
-				       //[leaderID, groupID, posID]
+
 						Project2Sample::R_ID msg;
 						FindGroup f;
 						int j;
 						for (j = 0; j < nodes.size(); ++j) {
 							ROS_INFO("robots:  %d", nodes.at(j).R_ID);
 						}
+						//[leaderID, groupID, posID]
 						vector<int> robotInfo = f.formGroup(nodes, Id);
 						int i;
 						for (i = 0; i < nodes.size(); ++i) {
@@ -205,15 +210,18 @@ int main(int argc, char **argv) {
 								ROS_INFO("leader theta: %f", msg.theta);
 								msg.Group_ID = robotInfo.at(1);
 								ROS_INFO("group id: %d", msg.Group_ID);
+								msg.Pos_ID = robotInfo.at(2);
+								ROS_INFO("pos id, %d", msg.Pos_ID);
+								LeaderID = robotInfo.at(0);
 								break;
 							}
 						}
 						// [newX, newY, Theta]
-
-						vector<float> robotCoordinates = f.calculatePosition(msg, robotInfo.at(2));
+						vector<float> robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
 						ROS_INFO("newX: %f", robotCoordinates.at(0));
 						ROS_INFO("newY: %f", robotCoordinates.at(1));
 						ROS_INFO("theta: %f", robotCoordinates.at(2));
+						msg.leaderTheta = robotCoordinates.at(2);
 						break;
 //			case MOVING_INTO_POS:
 //				break;
@@ -222,6 +230,8 @@ int main(int argc, char **argv) {
 //			case CIRCLING:
 //				break;
 //			case FORM_SQUARE:
+//				break;
+///			case FORM_CIRCLE:
 //				break;
 		}
 

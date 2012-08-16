@@ -42,6 +42,8 @@ int GroupID;
 int PositionID;
 int FollowID;
 
+bool collision;
+
 
 //boolean to make sure they don't subscribe to follow twice
 bool subscribedFollow;
@@ -306,7 +308,18 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
+    obstacle = false;
 
+    for (int i = 30; i < 150; i++){
+        if ( i < 110 && i >= 70){
+            if (msg.ranges[i] < 2.00){
+                obstacle = true;
+            }
+        }else{
+            if (msg.ranges[i] < 0.8){
+                obstacle = true;
+            } 
+    }
 }
 
 void RobotState_callback(Project2Sample::State msg) {
@@ -427,16 +440,13 @@ int main(int argc, char **argv) {
 //message object to other robots
 	Project2Sample::R_ID msg;
 
-    //HARD CODE FOLLOWFIELD JUST TO TEST
-    followField = 2;
-
     //initialise variables to be used in case statements
     vector<float> robotCoordinates;
     vector<int> robotInfo;
     vector<float> instructionsMove;
 
 	while (ros::ok()) {
-		ROS_INFO("currentState, %d", currentState);
+		//ROS_INFO("currentState, %d", currentState);
 
         //subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
         if (followField != -2 && PositionID != 0 && subscribedFollow == false){
@@ -463,7 +473,7 @@ int main(int argc, char **argv) {
 						//ROS_INFO("id: %f", msg.y);
 						RobotNode_pub.publish(msg);
 						ros::spinOnce();
-                        currentState = MOVING_INTO_POS;
+                        //currentState = MOVING_INTO_POS;
 						break;
             case MOVING_INTO_POS:
                         instructionsMove = moveToNewPoint();

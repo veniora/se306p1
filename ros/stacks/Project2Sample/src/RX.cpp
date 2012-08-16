@@ -35,10 +35,11 @@ int LeaderID;
 enum State {IDLE = 0,
 			FORMING_GROUP = 1,
 			MOVING_INTO_POS = 2,
-			FOLLOWING = 3,
+			FETCH_INSTRUCTIONS = 3,
 			CIRCLING = 4,
 			FORM_SQUARE = 5,
-			FORM_CIRCLE = 6 };
+			FORM_CIRCLE = 6,
+			ADDED_BEHAVIOUR = 7};
 
 State currentState = IDLE;
 
@@ -90,8 +91,8 @@ void RobotState_callback(Project2Sample::State msg) {
 			case MOVING_INTO_POS:
 				currentState = MOVING_INTO_POS;
 				break;
-			case FOLLOWING:
-				currentState = FOLLOWING;
+			case FETCH_INSTRUCTIONS:
+				currentState = FETCH_INSTRUCTIONS;
 				break;
 			case CIRCLING:
 				currentState = CIRCLING;
@@ -101,6 +102,7 @@ void RobotState_callback(Project2Sample::State msg) {
 				break;
 			case FORM_CIRCLE:
 				currentState = FORM_CIRCLE;
+				break;
 			}
 }
 
@@ -225,7 +227,7 @@ int main(int argc, char **argv) {
 						break;
 //			case MOVING_INTO_POS:
 //				break;
-//			case FOLLOWING:
+//			case FETCH_INSTRUCTIONS:
 //				break;
 //			case CIRCLING:
 //				break;

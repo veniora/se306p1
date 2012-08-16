@@ -217,12 +217,26 @@ StageNode::StageNode(int argc, char** argv, bool gui, const char* fname, const c
 			// myRobot( pose [ 5 10 0 0 ] name "r0" color "blue")
 			//float pose_x = rand()%50;
 			//float pose_y = rand()%50;
-			float pose_x= 100 * (double)rand() / (double)RAND_MAX - 50;
-			float pose_y= 100 * (double)rand() / (double)RAND_MAX - 50;
+			float pose_x= 50 * (double)rand() / (double)RAND_MAX - 25;
+			float pose_y= 50 * (double)rand() / (double)RAND_MAX - 25;
 			ss << "myRobot( pose [ " << pose_x << " " << pose_y << " 0 0 ] name \"r" << i <<"\" color \"blue\")\n";
 			worldfile << ss.str();
 			ss.str(""); // clear ss
 		}
+		//command nodes
+		ss << "msgRobot( pose [ 26.00 2.00 1.0 0 ] name \"Circling\" color \"red\")\n";
+		worldfile << ss.str();
+		ss.str("");
+		ss << "msgRobot( pose [ -26.00 2.00 1.0 0 ] name \"GoToCircle\" color \"green\")\n";
+		worldfile << ss.str();
+		ss.str("");
+		ss << "msgRobot( pose [ 26.00 -2.00 1.0 0 ] name \"GoToSquare\" color \"orange\")\n";
+		worldfile << ss.str();
+		ss.str("");
+		ss << "msgRobot( pose [ -26.00 -2.00 1.0 0 ] name \"Added\" color \"yellow\")\n";
+		worldfile << ss.str();
+		ss.str("");
+		
 		worldfile.close();
 	} else {
 		std::cout << "Unable to open file";

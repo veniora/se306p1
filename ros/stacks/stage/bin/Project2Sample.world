@@ -17,6 +17,13 @@ define myRobot position
   mylaser(pose [ 0.050 0.000 0 0.000 ])
 )
 
+define msgRobot position
+(
+  size [1.6 1.6 0.25]
+  drive "diff"
+  mylaser(pose [ 0.050 0.000 0 0.000 ])
+)
+
 define floorplan model
 (
   # sombre, sensible, artistic

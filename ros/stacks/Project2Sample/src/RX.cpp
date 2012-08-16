@@ -6,7 +6,7 @@
 #include "sensor_msgs/LaserScan.h"
 #include "Project2Sample/State.h"
 #include "FindGroup.h"
-//#include "RobotStates.h"
+#include "GetGroup.h"
 
 #include <sstream>
 #include "math.h"
@@ -30,6 +30,9 @@ double theta;
 
 int Id;
 int LeaderID;
+int GroupID;
+int PositionID;
+int FollowID;
 
 // states
 enum State {IDLE = 0,
@@ -38,14 +41,17 @@ enum State {IDLE = 0,
 			FETCH_INSTRUCTIONS = 3,
 			CIRCLING = 4,
 			FORM_SQUARE = 5,
-			FORM_CIRCLE = 6,
-			ADDED_BEHAVIOUR = 7};
+			FORM_CIRCLE = 6};
 
 State currentState = IDLE;
 
 
 //vector of nodes = x, y, theta, R_ID
 vector <Project2Sample::R_ID> nodes;
+//vector of nodes that are in the same group
+vector <Project2Sample::R_ID> group;
+
+int count;
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
 	int i;
@@ -155,6 +161,8 @@ int main(int argc, char **argv) {
 	ss << "Robot" << argv[1] << "_laser";
 	ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(
 			ss.str(), 1000, StageLaser_callback);
+	ss.str("");
+
 //ros::Subscriber StageTruth_sub = n.subscribe<nav_msgs::Odometry>("Robot0_truth",1000,StageTruth_callback);
 
 	//subscribe to listen to their current states
@@ -163,7 +171,7 @@ int main(int argc, char **argv) {
 
 	ros::Rate loop_rate(10);
 
-//a count of howmany messages we have sent
+//a count of how many messages we have sent
 	int count = 0;
 
 ////messages
@@ -173,11 +181,11 @@ int main(int argc, char **argv) {
 	Project2Sample::R_ID msg;
 
 	while (ros::ok()) {
+		ROS_INFO("currentState, %d", currentState);
 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
-		ROS_INFO("currentState: %d", currentState);
 		switch (currentState) {
 			case IDLE:
 						msg.R_ID = Id;
@@ -189,42 +197,42 @@ int main(int argc, char **argv) {
 						RobotNode_pub.publish(msg);
 						ros::spinOnce();
 						break;
-			case FORMING_GROUP:
+			/*case FORMING_GROUP:
 
 						Project2Sample::R_ID msg;
 						FindGroup f;
-						int j;
-						for (j = 0; j < nodes.size(); ++j) {
-							ROS_INFO("robots:  %d", nodes.at(j).R_ID);
-						}
+						GetGroup g;
 						//[leaderID, groupID, posID]
 						vector<int> robotInfo = f.formGroup(nodes, Id);
 						int i;
 						for (i = 0; i < nodes.size(); ++i) {
 							if (nodes.at(i).R_ID == robotInfo.at(0)) {
 								msg.R_ID = nodes.at(i).R_ID;
-								ROS_INFO("leader id: %d", msg.R_ID);
 								msg.x = nodes.at(i).x;
-								ROS_INFO("leader x: %f", msg.x);
 								msg.y = nodes.at(i).y;
-								ROS_INFO("leader y: %f", msg.y);
 								msg.theta = nodes.at(i).theta;
-								ROS_INFO("leader theta: %f", msg.theta);
 								msg.Group_ID = robotInfo.at(1);
-								ROS_INFO("group id: %d", msg.Group_ID);
 								msg.Pos_ID = robotInfo.at(2);
-								ROS_INFO("pos id, %d", msg.Pos_ID);
 								LeaderID = robotInfo.at(0);
+								GroupID = robotInfo.at(1);
+								PositionID = robotInfo.at(2);
+								RobotNode_pub.publish(msg);
 								break;
 							}
 						}
 						// [newX, newY, Theta]
-						vector<float> robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
-						ROS_INFO("newX: %f", robotCoordinates.at(0));
-						ROS_INFO("newY: %f", robotCoordinates.at(1));
-						ROS_INFO("theta: %f", robotCoordinates.at(2));
+						vector<float> robotCoordinates = f.calculatePosition(msg, PositionID);
 						msg.leaderTheta = robotCoordinates.at(2);
-						break;
+						msg.newX = robotCoordinates.at(0);
+						msg.newY = robotCoordinates.at(1);
+						RobotNode_pub.publish(msg);
+						//vector group
+						group = g.getGroup(nodes, Id);
+						ROS_INFO("PositionID %d", PositionID);
+						FollowID = group.at(PositionID-1).R_ID;
+						ROS_INFO("Followid %d", FollowID);
+						break;*/
+
 //			case MOVING_INTO_POS:
 //				break;
 //			case FETCH_INSTRUCTIONS:

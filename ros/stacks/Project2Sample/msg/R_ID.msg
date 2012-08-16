@@ -1,7 +1,10 @@
 int64 R_ID
 int64 Group_ID
 int64 Pos_ID
+int64 Follow_ID
 float64 x
 float64 y
 float64 theta
 float64 leaderTheta
+float64 newX
+float64 newY

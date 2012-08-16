@@ -25,11 +25,14 @@ bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 
 
 vector<int> FindGroup::formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
+
 	vector<int> robotGroupInfo;
 	//find number of leaders
 	int groupID, posID, i;
+
 	//number of leaders
-	int numOfLeaders = nodes.size() /6;
+	ROS_INFO("size, %d", nodes.size());
+	int numOfLeaders = nodes.size()/2;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
 	if ((fabs(nodes.at(0).x) < 0.0001) && (fabs(nodes.at(0).y) < 0.0001)) {
 		nodes.insert(nodes.begin()+numOfLeaders+1, nodes.at(0));

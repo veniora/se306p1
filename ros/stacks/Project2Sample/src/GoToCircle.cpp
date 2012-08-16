@@ -16,17 +16,10 @@
 
 using namespace std;
 
-//checks Position
-bool sortByPosition (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
-	int pos1 = robot1.Pos_ID;
-	int pos2 = robot2.Pos_ID;
-	return (pos1 < pos2);
-}
 
 // returns coordinates [x,y] of a robot as to where they belong in a circle
 vector<float> GoToCircle::formCircle(vector<Project2Sample::R_ID> group, int robotID) {
 	vector<float> circleCoord;
-	sort(group.begin(), group.end(), sortByPosition);
 	int numOfRobots = group.size();
     float circumference = float(numOfRobots+1) * 5 * 0.35;
     int i, j;

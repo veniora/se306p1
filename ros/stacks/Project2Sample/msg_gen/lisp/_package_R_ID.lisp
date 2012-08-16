@@ -5,6 +5,8 @@
           GROUP_ID
           POS_ID-VAL
           POS_ID
+          FOLLOW_ID-VAL
+          FOLLOW_ID
           X-VAL
           X
           Y-VAL
@@ -13,4 +15,8 @@
           THETA
           LEADERTHETA-VAL
           LEADERTHETA
+          NEWX-VAL
+          NEWX
+          NEWY-VAL
+          NEWY
 ))

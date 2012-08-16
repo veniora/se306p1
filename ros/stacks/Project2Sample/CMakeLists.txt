@@ -35,6 +35,7 @@ rosbuild_gensrv()
 #rosbuild_add_executable(R4 src/RobotNode4.cpp)
 #rosbuild_add_executable(R5 src/RobotNode5.cpp)
 rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp)
+rosbuild_add_executable(RX src/RX.cpp src/GetGroup.cpp)
 rosbuild_add_executable(Launcher src/Launcher.cpp)
 rosbuild_add_executable(PublishState src/PublishState.cpp)
 

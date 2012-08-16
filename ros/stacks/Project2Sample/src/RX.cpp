@@ -16,6 +16,8 @@
  *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
  **/
 
+#define PI 3.14159265
+
 //namespace
 using namespace std;
 
@@ -39,7 +41,7 @@ int LeaderID;
 int PositionID;
 
 //boolean to make sure they don't subscribe to follow twice
-bool subscribedFollow
+bool subscribedFollow;
 
 // states
 enum State {IDLE = 0,
@@ -65,7 +67,6 @@ float rotateFinalAngleInstructions(vector<float> currentPosition, vector<float> 
     float deltaX = newPosition[0] - currentPosition[0];
 
 
-    float AngularV;
     float deltaTheta;
 
     // the angle from the origin to the new position and convert to degrees
@@ -131,9 +132,9 @@ void poseCallback(nav_msgs::Odometry msg){
     yField = msg.pose.pose.position.y;
     thetaField = theta;
     // give robots current position
-    ROS_INFO("%f",msg.pose.pose.position.x);
-    ROS_INFO("%f",msg.pose.pose.position.y);
-    ROS_INFO("%f",theta);
+    //ROS_INFO("%f",msg.pose.pose.position.x);
+    //ROS_INFO("%f",msg.pose.pose.position.y);
+    //ROS_INFO("%f",theta);
 
 }
 
@@ -161,7 +162,7 @@ void poseCallbackFollow(Project2Sample::R_ID msg){
     next[1] = msg.y;
     next[2] = msg.theta;
 
-    float rotateInst = rotateFollowInstructions(current, next);
+    float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
 
     //then find linear
     //vector<float> linearInst = linearInstructions(current, next);
@@ -193,14 +194,13 @@ vector<float> moveToNewPoint(){
     current[1] = yField;
     current[2] = thetaField;
 
-    ROS_INFO("THETA field = %f", thetaField);
     vector<float> next(3);
     next[0] = -2.0;
     next[1] = -2.0;
     next[2] = 45.0;
 
     bool rightSpot = false;
-    float linearInst = 0.5;
+    float linearInst = 1.0;
     float deltaAngle = rotateFinalAngleInstructions(current, next);
     float finalAngle = deltaAngle + thetaField;
     
@@ -209,7 +209,7 @@ vector<float> moveToNewPoint(){
     }
     // setting tolerances
     float LINEAR_TOL = 0.2;
-    float ANGULER_TOL = 2.0;
+    float ANGULER_TOL = 2.1;
     float upperX = next[0] + LINEAR_TOL;
     float lowerX = next[0] - LINEAR_TOL;
     float upperY = next[1] + LINEAR_TOL;
@@ -220,24 +220,21 @@ vector<float> moveToNewPoint(){
     float lowerFinalAngle = finalAngle - ANGULER_TOL;
     
     // 
-    ROS_INFO("start of while2 %f", thetaField);
+    //ROS_INFO("start of while2 %f", thetaField);
     if(current[0] >= (upperX) || current[0] <= (lowerX) || current[1] >= (upperY) || current[1] <= (lowerY)){
         //set them to this      
         rightSpot = false;
-        ROS_INFO("BAD SPOT: %f < %f < %f && %f < %f < %f", lowerX, current[0], upperX, lowerY, current[1], upperY);            
+        //ROS_INFO("BAD SPOT: %f < %f < %f && %f < %f < %f", lowerX, current[0], upperX, lowerY, current[1], upperY);            
     }else{
-        rightSpot = true;
-        ROS_INFO(" right spot ");    
+        rightSpot = true;    
     }   
 
     if(!rightSpot){
         if(current[2] >= upperFinalAngle || current[2] <= lowerFinalAngle){
-            float rotateInst = 0.5 * rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-           ROS_INFO("SHOULD CHILL HERE");
+            float rotateInst = 0.1 * rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
           //set them to this
             instructions[0] = 0.0;
             instructions[1] = rotateInst;
-            
             return instructions;
         }else {
             instructions[0] = 1.0;
@@ -246,13 +243,11 @@ vector<float> moveToNewPoint(){
     }
 
       if(! rightSpot){
-        //set them to this      
-        ROS_INFO("GOT HERE");   
+        //set them to this     
         instructions[0] = linearInst;
         instructions[1] = 0;
     } else {
         rightSpot = true;
-        ROS_INFO("right spot ************");
         instructions[0] = 0;
         instructions[1] = 0;
     }
@@ -266,10 +261,9 @@ vector<float> moveToNewPoint(){
             instructions[0] = 0.0;
             instructions[1] = 0.5;
         }else{
-            ROS_INFO("************** END *****************");
             instructions[0] = 0.0;
             instructions[1] = 0.0;
-            inPosition = true;        
+            currentState = IDLE;       
         }
     }
     return instructions;
@@ -419,24 +413,32 @@ int main(int argc, char **argv) {
 //message object to other robots
 	Project2Sample::R_ID msg;
 
+    //HARD CODE FOLLOWFIELD JUST TO TEST
+    followField = 2;
+
+    //initialise variables to be used in case statements
+    vector<float> robotCoordinates;
+    vector<int> robotInfo;
+    vector<float> instructionsMove;
+
 	while (ros::ok()) {
 
         //subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
-    if (followField != -2 && PositionID != 0 && subscribedFollow == false){
+        if (followField != -2 && PositionID != 0 && subscribedFollow == false){
         //subscribe to the robot it should follow's position
-    //note: need to set followField before this can be called
-	ss.str("");
-	ss << "Robot" << PositionID << "_follow";
-	ros::Subscriber Follow_sub = n.subscribe(
+        //note: need to set followField before this can be called
+	        ss.str("");
+	        ss << "Robot" << PositionID << "_follow";
+	        ros::Subscriber Follow_sub = n.subscribe(
 			ss.str(), 1000, &poseCallbackFollow);
-    subscribedFollow = true;
-}
+            subscribedFollow = true;
+        }
         
 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
-		ROS_INFO("currentState: %d", currentState);
+		//ROS_INFO("currentState: %d", currentState);
 		switch (currentState) {
 			case IDLE:
 						msg.R_ID = Id;
@@ -447,17 +449,22 @@ int main(int argc, char **argv) {
 						//ROS_INFO("id: %f", msg.y);
 						RobotNode_pub.publish(msg);
 						ros::spinOnce();
+                        currentState = MOVING_INTO_POS;
 						break;
+			case MOVING_INTO_POS:
+                        instructionsMove = moveToNewPoint();
+                        //set them to this
+                        RobotNode_cmdvel.linear.x = instructionsMove[0];
+                        RobotNode_cmdvel.angular.z = instructionsMove[1];
+				        break;
 			case FORMING_GROUP:
-
-						Project2Sample::R_ID msg;
 						FindGroup f;
 						int j;
 						for (j = 0; j < nodes.size(); ++j) {
 							ROS_INFO("robots:  %d", nodes.at(j).R_ID);
 						}
 						//[leaderID, groupID, posID]
-						vector<int> robotInfo = f.formGroup(nodes, Id);
+						robotInfo = f.formGroup(nodes, Id);
 						int i;
 						for (i = 0; i < nodes.size(); ++i) {
 							if (nodes.at(i).R_ID == robotInfo.at(0)) {
@@ -479,20 +486,14 @@ int main(int argc, char **argv) {
 							}
 						}
 						// [newX, newY, Theta]
-						vector<float> robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
+						robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
 						ROS_INFO("newX: %f", robotCoordinates.at(0));
 						ROS_INFO("newY: %f", robotCoordinates.at(1));
 						ROS_INFO("theta: %f", robotCoordinates.at(2));
 						msg.leaderTheta = robotCoordinates.at(2);
 						break;
-			case MOVING_INTO_POS:
-                vector<float> instructions = moveToNewPoint();
-                //set them to this
-                RobotNode_cmdvel.linear.x = instructions[0];
-                RobotNode_cmdvel.angular.z = instructions[1];
+			case FOLLOWING:
 				break;
-//			case FOLLOWING:
-//				break;
 //			case CIRCLING:
 //				break;
 //			case FORM_SQUARE:
@@ -502,14 +503,13 @@ int main(int argc, char **argv) {
 		}
 
         Project2Sample::R_ID msg;
-        msg.R_ID = r1.R_Id;
+        msg.R_ID = Id;
         msg.x = xField;
         msg.y = yField;
         msg.theta = thetaField;
 
         //broadcast its own position
         Follow_pub.publish(msg);
-
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 
 		ros::spinOnce();

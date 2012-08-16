@@ -38,6 +38,9 @@ int Id;
 int LeaderID;
 int PositionID;
 
+//boolean to make sure they don't subscribe to follow twice
+bool subscribedFollow
+
 // states
 enum State {IDLE = 0,
 			FORMING_GROUP = 1,
@@ -137,7 +140,12 @@ void poseCallback(nav_msgs::Odometry msg){
 //this method is called when the robot in front publishes its coordinates when it moves
 //HARD CODE THE RESULTS FOR NOW
 void poseCallbackFollow(Project2Sample::R_ID msg){
-    //ROS_INFO("start of follow");
+    //check that it should be following, if not then just return
+    if (currentState != FOLLOWING){
+        return;
+    }
+
+
     ros::NodeHandle nb;
     ros::Publisher RobotNode_stage_pub = nb.advertise<geometry_msgs::Twist>("Robot1_vel",1000);
     //gets in a message with the position of who its following
@@ -378,12 +386,7 @@ int main(int argc, char **argv) {
 	ros::Publisher Follow_pub = n.advertise<Project2Sample::R_ID>(
 			ss.str(), 1000);
 
-//subscribe to the robot it should follow's position
-//note: need to set followField before this can be called
-	ss.str("");
-	ss << "Robot" << PositionID << "_follow";
-	ros::Subscriber Follow_sub = n.subscribe(
-			ss.str(), 1000, &poseCallbackFollow);
+
 
 //subscribe to listen to messages coming from stage
 	ss.str("");
@@ -405,6 +408,11 @@ int main(int argc, char **argv) {
 //a count of howmany messages we have sent
 	int count = 0;
 
+    //initialise followField to -2
+    followField = -2;
+    //initialise subscribedFollow field
+    subscribedFollow = false;
+
 ////messages
 //velocity of this RobotNode
 	geometry_msgs::Twist RobotNode_cmdvel;
@@ -412,6 +420,18 @@ int main(int argc, char **argv) {
 	Project2Sample::R_ID msg;
 
 	while (ros::ok()) {
+
+        //subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
+    if (followField != -2 && PositionID != 0 && subscribedFollow == false){
+        //subscribe to the robot it should follow's position
+    //note: need to set followField before this can be called
+	ss.str("");
+	ss << "Robot" << PositionID << "_follow";
+	ros::Subscriber Follow_sub = n.subscribe(
+			ss.str(), 1000, &poseCallbackFollow);
+    subscribedFollow = true;
+}
+        
 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
@@ -466,10 +486,10 @@ int main(int argc, char **argv) {
 						msg.leaderTheta = robotCoordinates.at(2);
 						break;
 			case MOVING_INTO_POS:
-        vector<float> instructions = moveToNewPoint();
-        //set them to this
-        RobotNode_cmdvel.linear.x = instructions[0];
-        RobotNode_cmdvel.angular.z = instructions[1];
+                vector<float> instructions = moveToNewPoint();
+                //set them to this
+                RobotNode_cmdvel.linear.x = instructions[0];
+                RobotNode_cmdvel.angular.z = instructions[1];
 				break;
 //			case FOLLOWING:
 //				break;

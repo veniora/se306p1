@@ -1,0 +1,13 @@
+<launch>
+	<node pkg="Project2Sample" type="RX" name="Robot1" args="1" />
+	
+	<!-- test publication of Robot1_msg topic -->
+	<param name="hztest1/topic" value="Robot1_msg" />  
+	<param name="hztest1/hz" value="10.0" />
+	<param name="hztest1/hzerror" value="0.5" />
+	<param name="hztest1/test_duration" value="1.0" />    
+	<param name="hztest1/wait_time" value="5" />
+	<test test-name="hztest_test" pkg="rostest" type="hztest" name="hztest1" />
+	
+	
+</launch>

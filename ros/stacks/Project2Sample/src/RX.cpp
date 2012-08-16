@@ -308,7 +308,7 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
-    obstacle = false;
+    bool obstacle = false;
 
     for (int i = 30; i < 150; i++){
         if ( i < 110 && i >= 70){
@@ -318,7 +318,8 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
         }else{
             if (msg.ranges[i] < 0.8){
                 obstacle = true;
-            } 
+            }
+        } 
     }
 }
 

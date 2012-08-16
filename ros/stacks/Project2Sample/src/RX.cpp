@@ -41,9 +41,7 @@ int LeaderID;
 int GroupID;
 int PositionID;
 int FollowID;
-
-bool collision;
-
+bool obstacle;
 
 //boolean to make sure they don't subscribe to follow twice
 bool subscribedFollow;
@@ -308,7 +306,7 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
-    bool obstacle = false;
+    obstacle = false;
 
     for (int i = 30; i < 150; i++){
         if ( i < 110 && i >= 70){

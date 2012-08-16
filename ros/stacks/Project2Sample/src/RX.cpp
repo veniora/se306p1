@@ -54,7 +54,8 @@ enum State {IDLE = 0,
 			FETCH_INSTRUCTIONS = 3,
 			CIRCLING = 4,
 			FORM_SQUARE = 5,
-			FORM_CIRCLE = 6};
+			FORM_CIRCLE = 6,
+            FOLLOWING = 7};
 
 State currentState = IDLE;
 
@@ -334,6 +335,9 @@ void RobotState_callback(Project2Sample::State msg) {
 			case FORM_CIRCLE:
 				currentState = FORM_CIRCLE;
 				break;
+			case FOLLOWING:
+				currentState = FOLLOWING;
+				break;
 			}
 }
 
@@ -496,8 +500,8 @@ int main(int argc, char **argv) {
 						ROS_INFO("theta: %f", robotCoordinates.at(2));
 						msg.leaderTheta = robotCoordinates.at(2);
 						break;
-//			case FOLLOWING:
-//				break;
+			case FOLLOWING:
+				break;
 //			case CIRCLING:
 //				break;
 //			case FORM_SQUARE:

@@ -31,7 +31,6 @@ vector<int> FindGroup::formGroup(vector<Project2Sample:: R_ID> nodes, int robotI
 	int groupID, posID, i;
 
 	//number of leaders
-	ROS_INFO("size, %d", nodes.size());
 	int numOfLeaders = nodes.size()/2;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
 	if ((fabs(nodes.at(0).x) < 0.0001) && (fabs(nodes.at(0).y) < 0.0001)) {

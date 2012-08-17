@@ -28,23 +28,13 @@ rosbuild_gensrv()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
-#rosbuild_add_executable(R0 src/RobotNode0.cpp)
-#rosbuild_add_executable(R1 src/RobotNode1.cpp)
-#rosbuild_add_executable(R2 src/RobotNode2.cpp)
-#rosbuild_add_executable(R3 src/RobotNode3.cpp)
-#rosbuild_add_executable(R4 src/RobotNode4.cpp)
-#rosbuild_add_executable(R5 src/RobotNode5.cpp)
-rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp)
-rosbuild_add_executable(RX src/RX.cpp src/GetGroup.cpp)
+
+rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp src/GetGroup.cpp)
+rosbuild_add_executable(test/RX_test test/RX_test.cpp)
+rosbuild_add_gtest_build_flags(test/RX_test)
+
+rosbuild_add_executable(test/Example_test test/Example_test.cpp)
+rosbuild_add_gtest_build_flags(test/Example_test)
+
 rosbuild_add_executable(Launcher src/Launcher.cpp)
 rosbuild_add_executable(PublishState src/PublishState.cpp)
-
-#gtest
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I ${PROJECT_SOURCE_DIR}")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-#rosbuild_add_gtest(test/robotTest test/robotTest.cpp)
-
-#rostest
-#rosbuild_add_executable(test/robotTest test/robotTest.cpp src/Robot.cpp)
-#rosbuild_add_gtest_build_flags(test/robotTest)
-#rosbuild_add_rostest(launch/robotTest.launch)

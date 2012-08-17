@@ -9,5 +9,8 @@
 	<param name="hztest1/wait_time" value="5" />
 	<test test-name="hztest_test" pkg="rostest" type="hztest" name="hztest1" />
 	
+	<test test-name="robotTest" pkg="Project2Sample" type="robotTest"/>
+	<!--<test test-name="Example_test" pkg="Project2Sample" type="Example_test"/>-->	
+	
 	
 </launch>

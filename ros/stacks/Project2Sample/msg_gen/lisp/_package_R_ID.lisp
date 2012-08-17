@@ -1,5 +1,7 @@
 (cl:in-package Project2Sample-msg)
-(cl:export '(R_ID-VAL
+(cl:export '(R_STATE-VAL
+          R_STATE
+          R_ID-VAL
           R_ID
           GROUP_ID-VAL
           GROUP_ID

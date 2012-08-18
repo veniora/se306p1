@@ -2,6 +2,9 @@
 #include <iostream> // cout
 #include <sstream>
 
+#include <sys/types.h>
+#include <sys/wait.h>
+
 #include <ros/ros.h>
 #include "Project2Sample/State.h"
 
@@ -64,6 +67,7 @@ void startSim(int argc, char **argv, int numNodes) {
 
 		// Wait until all X number of robot nodes are running
 		while (state_publisher.getNumSubscribers() != numNodes) {
+			ROS_INFO("waiting for subscribers");
 			loop_rate.sleep();
 		}
 
@@ -71,13 +75,17 @@ void startSim(int argc, char **argv, int numNodes) {
 		Project2Sample::State robot_state;
 		robot_state.state = 1; // 1 == FORMING_GROUP
 		state_publisher.publish(robot_state);
+
+		sleep(1);
+
+		node_handel.shutdown();
+
 	}
 
 	// Sleep for one second to allow the node handel time to publish the message before shutting it down
-//		sleep(1);
 
 	// Shut down the node handel so its not running during the simulation (only stage and RX nodes should be running)
-//		node_handel.shutdown();
+
 }
 
 /**
@@ -101,9 +109,22 @@ int main(int argc, char **argv) {
 	startNodes(numNodes);
 	startSim(argc, argv, numNodes);
 
-	// Loop until crtl+c is entered. This is done because if this process finishes then all the fork/exec'd process become hard to kill
+
+	// Wait for all child processes to finish
 	while (true) {
+	    int status;
+	    pid_t done = wait(&status);
+	    if (done == -1) {
+	        if (errno == ECHILD) break; // no more child processes
+	    }
+//	    else {
+//	        if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
+//	            cerr << "pid " << done << " failed" << endl;
+//	            exit(1);
+//	        }
+//	    }
 	}
+
 	return 0;
 
 }

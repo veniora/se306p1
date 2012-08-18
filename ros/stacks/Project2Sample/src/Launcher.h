@@ -1,6 +1,6 @@
 /*
  * Launcher.h
- *
+ *	Launcher is NOT a node itself!
  *  Created on: 18/08/2012
  *      Author: ubuntu-11-10
  */

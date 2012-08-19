@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Se306p1 : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Se306p1</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/veniora/se306p1">View on GitHub</a>
+
+          <h1 id="project_title">Se306p1</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/veniora/se306p1/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/veniora/se306p1/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>se306p1</p>
+
+<p>SETUP:</p>
+
+<ol>
+<li><p>If it does not already exist create a file named .bashrc in your home directory.
+1.a. Files starting with .* will be hidden, use "ls -a" to show them.
+1.b. "cd" will take you to your home directory.
+1.c. "vim .bashrc" will open .bashrc or create it if it doesnt exist.</p></li>
+<li><p>Append the following lines to .bashrc </p></li>
+</ol><p>source /opt/ros/electric/setup.bash
+export ROS_PACKAGE_PATH=PATH_TO_YOUR_REPO/ros/stacks:$ROS_PACKAGE_PATH</p>
+
+<p>2.a. IMPORTANT! Replace PATH_TO_YOUR_REPO with the path to your repo. For example my repo is in a folder called se306p1 in my home directory so I replace PATH_TO_YOUR_REPO with ~/se306p1
+2.b. "~" points to your home directory.</p>
+
+<ol>
+<li>Run these commands from the command line:</li>
+</ol><p>roscd stage
+make
+roscd Project2Sample
+rosmake test</p>
+
+<ol>
+<li>Setup is now complete</li>
+</ol><p>RUN:</p>
+
+<p>roscd Project2Sample/bin
+./Launcher X
+(X is the number of robots you want to run)</p>
+
+<p>TEST:</p>
+
+<p>rostest Project2Sample RXTestSuite.test</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Se306p1 maintained by <a href="https://github.com/veniora">veniora</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -11,6 +11,7 @@
 #include <cmath>
 #include "math.h"
 #include <algorithm>
+#include "ros/ros.h"
 
 #define PI 3.14159265
 
@@ -25,22 +26,32 @@ bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 
 
 vector<int> FindGroup::formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
-
+	//ROS_INFO("hi");
 	vector<int> robotGroupInfo;
+	//ROS_INFO("bye");
 	//find number of leaders
 	int groupID, posID, i;
 
 	//number of leaders
 	int numOfLeaders = nodes.size()/6;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
+
+	/*for(i = 0; i<nodes.size(); i++) {
+		ROS_INFO("id : %d", nodes.at(i).R_ID);
+		ROS_INFO("x : %f", nodes.at(i).x);
+		ROS_INFO("y: %f", nodes.at(i).y);
+	}*/
+
 	if ((fabs(nodes.at(0).x) < 0.0001) && (fabs(nodes.at(0).y) < 0.0001)) {
 		nodes.insert(nodes.begin()+numOfLeaders+1, nodes.at(0));
 		nodes.erase(nodes.begin());
 	}
-	for (i = 0; i < nodes.size(); ++i) {
+	for (i = 0; i < nodes.size(); i++) {
 		if (nodes.at(i).R_ID == robotID) {
 			groupID = i % numOfLeaders;
 			posID = i / numOfLeaders;
+			//ROS_INFO("posID : %d", posID);
+			//ROS_INFO("groupID : %d", groupID);
 			robotGroupInfo.push_back(nodes.at(groupID).R_ID);
 			robotGroupInfo.push_back(groupID);
 			robotGroupInfo.push_back(posID);

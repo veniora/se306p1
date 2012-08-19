@@ -67,7 +67,7 @@ void startSim(int argc, char **argv, int numNodes) {
 
 		// Wait until all X number of robot nodes are running
 		while (state_publisher.getNumSubscribers() != numNodes) {
-			ROS_INFO("waiting for subscribers");
+			//ROS_INFO("waiting for subscribers");
 			loop_rate.sleep();
 		}
 
@@ -106,8 +106,10 @@ int main(int argc, char **argv) {
 	numNodes = atoi(argv[1]);
 
 	startStage(numNodes);
+	usleep(1000);
 	startNodes(numNodes);
-	startSim(argc, argv, numNodes);
+	usleep(1000);
+	//startSim(argc, argv, numNodes);
 
 
 	// Wait for all child processes to finish

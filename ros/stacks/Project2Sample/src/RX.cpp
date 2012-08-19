@@ -39,7 +39,7 @@ int GroupID;
 int PositionID;
 int FollowID = -2;
 
-
+int numRobots = 6;
 
 //boolean to make sure they don't subscribe to follow twice
 bool subscribedFollow;
@@ -61,6 +61,8 @@ State currentState = IDLE;
 vector <Project2Sample::R_ID> nodes;
 //vector of nodes that are in the same group
 vector <Project2Sample::R_ID> group;
+vector <int> allready;
+bool everyoneready = false;
 
 int count;
 
@@ -159,7 +161,7 @@ float rotateDirectionInstructions(float deltaTheta){
 	//then move
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 }
-*/
+ */
 
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint(){
@@ -254,9 +256,6 @@ vector<float> moveToNewPoint(){
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
 	int i;
-	if(!(((msg.x < 0.00001) && (msg.x > -0.00001)) && ((msg.y < 0.00001) && (msg.y > -0.00001)))){
-		ready = true;
-	}
 	//ROS_INFO("x: %f", tx);
 	bool alreadyExists = false;
 	for (i = 0; i < nodes.size(); i++) {
@@ -265,8 +264,8 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 			nodes.push_back(msg); //adds new values
 			//if(ready) {
 			//ROS_INFO("id: %d", nodes.at(i).R_ID);
-		    //ROS_INFO("x: %f", nodes.at(i).x);
-		    //ROS_INFO("y: %f", nodes.at(i).y);
+			//ROS_INFO("x: %f", nodes.at(i).x);
+			//ROS_INFO("y: %f", nodes.at(i).y);
 			//}
 			alreadyExists = true;
 		}
@@ -299,6 +298,30 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
+
+}
+
+void CheckReady_callback(Project2Sample::R_ID msg) {
+	int i;
+	if(!(((msg.x < 0.00001) && (msg.x > -0.00001)) && ((msg.y < 0.00001) && (msg.y > -0.00001)))){
+		ready = true;
+	}
+	if(ready) {
+		bool alreadyExists = false;
+		for (i = 0; i < allready.size(); i++) {
+			if (allready.at(i) == msg.R_ID) {
+				alreadyExists = true;
+				break;
+			}
+		}
+		if (!alreadyExists) {
+			allready.push_back(msg.R_ID);
+		}
+
+		if(allready.size() == numRobots) {
+			everyoneready = true;
+		}
+	}
 
 }
 
@@ -383,6 +406,11 @@ int main(int argc, char **argv) {
 			ss.str(), 1000);
 
 	ss.str("");
+	ss << "Check_ready";
+	ros::Publisher AmIReady = n.advertise<Project2Sample::R_ID>(
+			ss.str(), 1000);
+
+	ss.str("");
 	ss << "Robot" << argv[1] << "_truth";
 	ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(ss.str(),
 			1000, StageOdom_callback);
@@ -392,19 +420,23 @@ int main(int argc, char **argv) {
 	ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(
 			ss.str(), 1000, StageLaser_callback);
 
+	ss.str("");
+	ss << "Check_ready";
+	ros::Subscriber ready_sub  = n.subscribe<Project2Sample::R_ID>(
+			ss.str(), 1000, CheckReady_callback);
 
 	/*ss.str("");
 	//subscribe to listen to their current states
 	ros::Subscriber Robot_state = n.subscribe<Project2Sample::State>("Robot_state",
 			1000, RobotState_callback);
-*/
+	 */
 	ros::Rate loop_rate(10);
 
 	//a count of how many messages we have sent
 	int count = 0;
 
 	subscribedFollow = false;
-
+	int l = 0;
 	////messages
 	//velocity of this RobotNode
 	geometry_msgs::Twist RobotNode_cmdvel;
@@ -418,7 +450,7 @@ int main(int argc, char **argv) {
 	vector<float> robotCoordinates;
 	vector<int> robotInfo;
 	vector<float> instructionsMove;
-
+	Project2Sample::R_ID leadermsg;
 	while (ros::ok()) {
 		//ROS_INFO("currentState, %d", currentState);
 
@@ -432,7 +464,7 @@ int main(int argc, char **argv) {
 					ss.str(), 1000, &poseCallbackFollow);
 			subscribedFollow = true;
 		}
-		*/
+		 */
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
@@ -447,52 +479,57 @@ int main(int argc, char **argv) {
 			//ROS_INFO("x: %f", msg.x);
 			msg.y = py;
 			//ROS_INFO("y: %f", msg.y);
-			RobotNode_pub.publish(msg);
 			//ros::spinOnce();
 			//currentState = FORMING_GROUP;
-			if(ready) {
+			AmIReady.publish(msg);
+			RobotNode_pub.publish(msg);
+			//ROS_INFO("size: %d", nodes.size());
+			if((nodes.size() == numRobots) && (everyoneready)) {
 				currentState = FORMING_GROUP;
-				//ROS_INFO("id: %d", msg.R_ID);
-				//ROS_INFO("px %f", px);
-				//ROS_INFO("py %f", py);
 			} else {
 				currentState = IDLE;
 			}
 			break;
 		case FORMING_GROUP:
+			ROS_INFO("Into FORMING_GROUP");
 			FindGroup f;
 			GetGroup g;
-			//[leaderID, groupID, posID]
-			robotInfo = f.formGroup(nodes, Id);
+			int k;
 			int i;
-			for (i = 0; i < nodes.size(); ++i) {
-				if (nodes.at(i).R_ID == robotInfo.at(0)) {
+			robotInfo = f.formGroup(nodes, Id);
+			for(i = 0; i < nodes.size(); i++) {
+				if (nodes.at(i).R_ID == Id) {
 					msg.R_ID = nodes.at(i).R_ID;
 					msg.x = nodes.at(i).x;
 					msg.y = nodes.at(i).y;
 					msg.theta = nodes.at(i).theta;
 					msg.Group_ID = robotInfo.at(1);
-					PositionID = robotInfo.at(2);
-					//ROS_INFO("group id: %d", msg.Group_ID);
 					msg.Pos_ID = robotInfo.at(2);
 					LeaderID = robotInfo.at(0);
 					GroupID = robotInfo.at(1);
 					PositionID = robotInfo.at(2);
-					//ROS_INFO("Id %d", Id);
-					//ROS_INFO("LeaderId %d", LeaderID);
-					//ROS_INFO("GroupID %d", GroupID);
-					//ROS_INFO("PositionID %d", PositionID);
+					//ROS_INFO("Id: %d", nodes.at(i).R_ID);
+					//ROS_INFO("GroupID: %d", nodes.at(i).Group_ID);
+					//ROS_INFO("POSID: %d", nodes.at(i).Pos_ID);
+					//ROS_INFO("Leader: %d", LeaderID);
 					RobotNode_pub.publish(msg);
 					break;
 				}
+
 			}
-			robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
+
+			for(i = 0; i< nodes.size(); i++){
+				if(nodes.at(i).R_ID == LeaderID){
+					leadermsg = nodes.at(i);
+				}
+			}
+
+			robotCoordinates = f.calculatePosition(leadermsg, msg.Pos_ID);
 			msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);
 			newXPOS = robotCoordinates.at(0);
 			newYPOS = robotCoordinates.at(1) ;
-			ROS_INFO("id: %d, newX: %f , newY %f",Id,msg.newX, msg.newY);
 			finalTheta = robotCoordinates.at(2);
 
 			//ROS_INFO("Id %d", Id);
@@ -501,24 +538,41 @@ int main(int argc, char **argv) {
 			//ROS_INFO("leaderTheta %f", msg.leaderTheta);
 			RobotNode_pub.publish(msg);
 			//vector group
-			//ROS_INFO("leader id %d", LeaderID);
+
 			group = g.getGroup(nodes, Id);
+			//for(k = 0; k<group.size(); k++) {
+				/*if(group.at(i).R_ID == Id) {
+					if(group.at(i).Pos_ID == 0) {
+						FollowID = -1;
+						ROS_INFO("id: %d, newX: %f , newY %f, FollowID %d",Id,msg.newX, msg.newY, FollowID);
+					} else {
+						FollowID = group.at(i - 1).Pos_ID;
+						ROS_INFO("id: %d, newX: %f , newY %f, FollowID %d",Id,msg.newX, msg.newY, FollowID);
+					}
+				}*/
+				//ROS_INFO("Id %d, pos: %d", group.at(k).R_ID, PositionID);
+				//ROS_INFO("leader id %d", LeaderID);
+				//ROS_INFO("GroupID %d", group.at(k).Group_ID);
+			//}
 			if (PositionID == 0) {
 				FollowID = -1;
-				//ROS_INFO("FollowID %d", FollowID);
+				//ROS_INFO("id: %d, newX: %f , newY %f, FollowID %d",Id,msg.newX, msg.newY, FollowID);
+
 			} else {
 				FollowID = group.at(PositionID-1).R_ID;
-				//ROS_INFO("FollowID %d", FollowID);
+				//ROS_INFO("id: %d, newX: %f , newY %f, FollowID %d",Id,msg.newX, msg.newY, FollowID);
 			}
 			currentState = MOVING_INTO_POS;
+
+
 			break;
-			case MOVING_INTO_POS:
-					instructionsMove = moveToNewPoint();
-					//set them to this
-					RobotNode_cmdvel.linear.x = instructionsMove[0];
-					RobotNode_cmdvel.angular.z = instructionsMove[1];
-					break;
-		/*case FOLLOWING:
+		case MOVING_INTO_POS:
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			break;
+			/*case FOLLOWING:
 			break;
 			//			case CIRCLING:
 			//				break;
@@ -526,7 +580,7 @@ int main(int argc, char **argv) {
 			//				break;
 			///			case FORM_CIRCLE:
 			//				break;
-		*/
+			 */
 		}
 		/*Project2Sample::R_ID msg;
 		msg.R_ID = Id;
@@ -536,7 +590,7 @@ int main(int argc, char **argv) {
 
 		//broadcast its own position
 		Follow_pub.publish(msg);
-		*/
+		 */
 
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 

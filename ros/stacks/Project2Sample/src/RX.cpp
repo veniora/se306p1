@@ -29,6 +29,9 @@ double angular_z;
 double px;
 double py;
 double theta;
+double newXPOS;
+double newYPOS;
+double finalTheta;
 
 int Id;
 int LeaderID;
@@ -37,9 +40,10 @@ int PositionID;
 int FollowID = -2;
 
 
+
 //boolean to make sure they don't subscribe to follow twice
 bool subscribedFollow;
-
+bool ready = false;
 
 // states
 enum State {IDLE = 0,
@@ -117,7 +121,7 @@ float rotateDirectionInstructions(float deltaTheta){
 
 //this method is called when the robot in front publishes its coordinates when it moves
 //HARD CODE THE RESULTS FOR NOW
-void poseCallbackFollow(Project2Sample::R_ID msg){
+/*void poseCallbackFollow(Project2Sample::R_ID msg){
 	//check that it should be following, if not then just return
 	if (currentState != FOLLOWING){
 		return;
@@ -155,6 +159,7 @@ void poseCallbackFollow(Project2Sample::R_ID msg){
 	//then move
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
 }
+*/
 
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint(){
@@ -172,9 +177,9 @@ vector<float> moveToNewPoint(){
 	current[2] = theta;
 
 	vector<float> next(3);
-	next[0] = -2.0;
-	next[1] = -2.0;
-	next[2] = 45.0;
+	next[0] = newXPOS;
+	next[1] = newYPOS;
+	next[2] = finalTheta;
 
 	bool rightSpot = false;
 	float linearInst = 1.0;
@@ -240,7 +245,7 @@ vector<float> moveToNewPoint(){
 		}else{
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			currentState = IDLE;
+			currentState = FORM_SQUARE;
 		}
 	}
 	return instructions;
@@ -249,15 +254,25 @@ vector<float> moveToNewPoint(){
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
 	int i;
+	if(!(((msg.x < 0.00001) && (msg.x > -0.00001)) && ((msg.y < 0.00001) && (msg.y > -0.00001)))){
+		ready = true;
+	}
+	//ROS_INFO("x: %f", tx);
 	bool alreadyExists = false;
-	for (i = 0; i < nodes.size(); ++i) {
+	for (i = 0; i < nodes.size(); i++) {
 		if (nodes.at(i).R_ID == msg.R_ID) {
 			nodes.erase(nodes.begin()+i); //deletes the old values
 			nodes.push_back(msg); //adds new values
+			//if(ready) {
+			//ROS_INFO("id: %d", nodes.at(i).R_ID);
+		    //ROS_INFO("x: %f", nodes.at(i).x);
+		    //ROS_INFO("y: %f", nodes.at(i).y);
+			//}
 			alreadyExists = true;
 		}
 	}
 	if (!alreadyExists) {
+		//ROS_INFO("x--: %f", tx);
 		nodes.push_back(msg);
 	}
 
@@ -267,6 +282,8 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 void StageOdom_callback(nav_msgs::Odometry msg) {
 	px = msg.pose.pose.position.x;
 	py = msg.pose.pose.position.y;
+	//ROS_INFO("px: %f", px);
+	//ROS_INFO("py: %f", py);
 	double thetaRadians = msg.pose.pose.position.z+ PI/2;
 	if (fabs(thetaRadians) < 0.0001) {
 		theta = 0.0;
@@ -285,7 +302,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 
 }
 
-void RobotState_callback(Project2Sample::State msg) {
+/*void RobotState_callback(Project2Sample::State msg) {
 	switch (msg.state) {
 	// There is an implicit conversion from any enum type to int.
 	// On the other hand, there is not an implicit conversion from int to an enum type.
@@ -316,14 +333,14 @@ void RobotState_callback(Project2Sample::State msg) {
 		break;
 	}
 }
-
+*/
 int main(int argc, char **argv) {
 
 	//initialize robot parameters
 	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
-	theta = 45;
-	px = 5;
-	py = 10;
+	//theta = 45;
+	//px = 5;
+	//py = 10;
 	Id = atoi(argv[1]);
 
 	//Initial velocity
@@ -372,11 +389,11 @@ int main(int argc, char **argv) {
 			ss.str(), 1000, StageLaser_callback);
 
 
-	ss.str("");
+	/*ss.str("");
 	//subscribe to listen to their current states
 	ros::Subscriber Robot_state = n.subscribe<Project2Sample::State>("Robot_state",
 			1000, RobotState_callback);
-
+*/
 	ros::Rate loop_rate(10);
 
 	//a count of how many messages we have sent
@@ -402,7 +419,7 @@ int main(int argc, char **argv) {
 		//ROS_INFO("currentState, %d", currentState);
 
 		//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
-		if (FollowID != -2 && PositionID != 0 && subscribedFollow == false){
+		/*if (FollowID != -2 && PositionID != 0 && subscribedFollow == false){
 			//subscribe to the robot it should follow's position
 			//note: need to set FollowID before this can be called
 			ss.str("");
@@ -411,26 +428,32 @@ int main(int argc, char **argv) {
 					ss.str(), 1000, &poseCallbackFollow);
 			subscribedFollow = true;
 		}
+		*/
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
+
 		switch (currentState) {
 		case IDLE:
 			msg.R_ID = Id;
 			//ROS_INFO("id: %d", msg.R_ID);
+			//ROS_INFO("px %f", px);
+			//ROS_INFO("py %f", py);
 			msg.x = px;
-			//ROS_INFO("id: %f", msg.x);
+			//ROS_INFO("x: %f", msg.x);
 			msg.y = py;
-			//ROS_INFO("id: %f", msg.y);
+			//ROS_INFO("y: %f", msg.y);
 			RobotNode_pub.publish(msg);
-			ros::spinOnce();
-			currentState = MOVING_INTO_POS;
-			break;
-		case MOVING_INTO_POS:
-			instructionsMove = moveToNewPoint();
-			//set them to this
-			RobotNode_cmdvel.linear.x = instructionsMove[0];
-			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			//ros::spinOnce();
+			//currentState = FORMING_GROUP;
+			if(ready) {
+				currentState = FORMING_GROUP;
+				//ROS_INFO("id: %d", msg.R_ID);
+				//ROS_INFO("px %f", px);
+				//ROS_INFO("py %f", py);
+			} else {
+				currentState = IDLE;
+			}
 			break;
 		case FORMING_GROUP:
 			FindGroup f;
@@ -446,11 +469,15 @@ int main(int argc, char **argv) {
 					msg.theta = nodes.at(i).theta;
 					msg.Group_ID = robotInfo.at(1);
 					PositionID = robotInfo.at(2);
-					ROS_INFO("group id: %d", msg.Group_ID);
+					//ROS_INFO("group id: %d", msg.Group_ID);
 					msg.Pos_ID = robotInfo.at(2);
 					LeaderID = robotInfo.at(0);
 					GroupID = robotInfo.at(1);
 					PositionID = robotInfo.at(2);
+					//ROS_INFO("Id %d", Id);
+					//ROS_INFO("LeaderId %d", LeaderID);
+					//ROS_INFO("GroupID %d", GroupID);
+					//ROS_INFO("PositionID %d", PositionID);
 					RobotNode_pub.publish(msg);
 					break;
 				}
@@ -459,17 +486,35 @@ int main(int argc, char **argv) {
 			msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);
+			newXPOS = robotCoordinates.at(0);
+			newYPOS = robotCoordinates.at(1) ;
+			ROS_INFO("id: %d, newX: %f , newY %f",Id,msg.newX, msg.newY);
+			finalTheta = robotCoordinates.at(2);
+
+			//ROS_INFO("Id %d", Id);
+			//ROS_INFO("newX %f", msg.newX);
+			//ROS_INFO("newY %f", msg.newY);
+			//ROS_INFO("leaderTheta %f", msg.leaderTheta);
 			RobotNode_pub.publish(msg);
 			//vector group
+			//ROS_INFO("leader id %d", LeaderID);
 			group = g.getGroup(nodes, Id);
-			ROS_INFO("leader id %d", LeaderID);
 			if (PositionID == 0) {
 				FollowID = -1;
+				//ROS_INFO("FollowID %d", FollowID);
 			} else {
 				FollowID = group.at(PositionID-1).R_ID;
+				//ROS_INFO("FollowID %d", FollowID);
 			}
+			currentState = MOVING_INTO_POS;
 			break;
-		case FOLLOWING:
+			case MOVING_INTO_POS:
+					instructionsMove = moveToNewPoint();
+					//set them to this
+					RobotNode_cmdvel.linear.x = instructionsMove[0];
+					RobotNode_cmdvel.angular.z = instructionsMove[1];
+					break;
+		/*case FOLLOWING:
 			break;
 			//			case CIRCLING:
 			//				break;
@@ -477,9 +522,9 @@ int main(int argc, char **argv) {
 			//				break;
 			///			case FORM_CIRCLE:
 			//				break;
+		*/
 		}
-
-		Project2Sample::R_ID msg;
+		/*Project2Sample::R_ID msg;
 		msg.R_ID = Id;
 		msg.x = px;
 		msg.y = py;
@@ -487,6 +532,8 @@ int main(int argc, char **argv) {
 
 		//broadcast its own position
 		Follow_pub.publish(msg);
+		*/
+
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 
 		ros::spinOnce();

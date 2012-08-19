@@ -36,5 +36,17 @@ rosbuild_add_gtest_build_flags(test/RX_test)
 rosbuild_add_executable(test/Example_test test/Example_test.cpp)
 rosbuild_add_gtest_build_flags(test/Example_test)
 
+rosbuild_add_executable(test/FindGroup_test test/FindGroup_test.cpp)
+rosbuild_add_gtest_build_flags(test/FindGroup_test)
+
+rosbuild_add_executable(test/GetGroup_test test/GetGroup_test.cpp)
+rosbuild_add_gtest_build_flags(test/GetGroup_test)
+
+rosbuild_add_executable(test/GoToCircle_test test/GoToCircle_test.cpp)
+rosbuild_add_gtest_build_flags(test/GoToCircle_test)
+
+rosbuild_add_executable(test/GoToSquare_test test/GoToSquare_test.cpp)
+rosbuild_add_gtest_build_flags(test/GoToSquare_test)
+
 rosbuild_add_executable(Launcher src/Launcher.cpp)
-rosbuild_add_executable(PublishState src/PublishState.cpp)
+rosbuild_add_executable(ChangeStateTo src/ChangeStateTo.cpp)

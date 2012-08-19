@@ -302,7 +302,11 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 
 }
 
-/*void RobotState_callback(Project2Sample::State msg) {
+
+void RobotState_callback(Project2Sample::State msg) {
+	std::stringstream ss;
+	ss << "Robot "<< Id << " changed state from " << currentState << " to " << msg.state;
+	ROS_INFO(ss.str().c_str());
 	switch (msg.state) {
 	// There is an implicit conversion from any enum type to int.
 	// On the other hand, there is not an implicit conversion from int to an enum type.
@@ -333,7 +337,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 		break;
 	}
 }
-*/
+
 int main(int argc, char **argv) {
 
 	//initialize robot parameters

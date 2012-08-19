@@ -1,3 +1,4 @@
+int64 R_State
 int64 R_ID
 int64 Group_ID
 int64 Pos_ID

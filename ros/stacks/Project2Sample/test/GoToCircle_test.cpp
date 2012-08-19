@@ -13,7 +13,7 @@
  * that can go wrong.
  */
 TEST(StationaryCircleTests, PositiveQuadrant) {
-	// Create 4 nodes
+	ASSERT_EQ(1,1);
 }
 
 

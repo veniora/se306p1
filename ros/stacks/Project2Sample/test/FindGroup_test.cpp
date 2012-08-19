@@ -191,6 +191,7 @@ TEST(SelectLeader, RobotsAtSameDistanceToOrigin) {
 
 /*
  * FAILINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+ * Breaks when formGroup is /6 rather than /2
  * Test 24 robots form 4 groups
  * Call from robot 23
  * Expect back id=?; group=3,
@@ -212,30 +213,6 @@ TEST(PutInGroups, TwentyFourRobotsFourGroups) {
 
 }
 
-/*
- * Resolve multiple robots at the same distance to origin
- * It doesn't matter what order they go in
- * Called by furtherest robot away
- */
-TEST(CalculatePosition, RobotsAtSameDistanceToOrigin) {
-	vector<Project2Sample::R_ID> nodes;
-
-	Project2Sample::R_ID msg1;
-	msg1.R_ID = 0; msg1.x = 20.0; msg1.y = 20.0;
-	nodes.push_back(msg1);
-	Project2Sample::R_ID msg2;
-	msg2.R_ID = 1; msg2.x = 10.0; msg2.y = -10.0;
-	nodes.push_back(msg2);
-	Project2Sample::R_ID msg3;
-	msg3.R_ID = 2; msg3.x = 10.0; msg3.y = 10.0;
-	nodes.push_back(msg3);
-
-	vector<int> robotGroupInfo = formGroup(nodes, 0);
-
-	EXPECT_EQ(1, robotGroupInfo.at(0));
-	EXPECT_EQ(0, robotGroupInfo.at(1));
-	EXPECT_EQ(2, robotGroupInfo.at(2));
-};
 
 
 int main(int argc, char **argv) {

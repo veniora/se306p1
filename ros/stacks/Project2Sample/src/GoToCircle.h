@@ -11,9 +11,8 @@
 
 using namespace std;
 
-class GoToCircle {
-public:
+
 	vector<float> formCircle(vector<Project2Sample::R_ID> group, int robotID);
-};
+
 
 #endif /* GOTOCIRCLE_H_ */

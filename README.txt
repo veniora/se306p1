@@ -20,7 +20,7 @@ export ROS_PACKAGE_PATH=PATH_TO_YOUR_REPO/ros/stacks:$ROS_PACKAGE_PATH
 roscd stage
 make
 roscd Project2Sample
-rosmake
+rosmake test
 
 4. Setup is now complete
 
@@ -29,3 +29,7 @@ RUN:
 roscd Project2Sample/bin
 ./Launcher X
 (X is the number of robots you want to run)
+
+TEST:
+
+rostest Project2Sample RXTestSuite.test

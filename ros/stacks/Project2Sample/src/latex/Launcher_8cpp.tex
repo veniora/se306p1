@@ -1,0 +1,66 @@
+\hypertarget{Launcher_8cpp}{
+\section{Launcher.cpp File Reference}
+\label{Launcher_8cpp}\index{Launcher.cpp@{Launcher.cpp}}
+}
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$sstream$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$sys/wait.h$>$}\par
+{\ttfamily \#include $<$ros/ros.h$>$}\par
+{\ttfamily \#include \char`\"{}Project2Sample/State.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Launcher.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Launcher_8cpp_ae4247746adc0242570810cf40e2e65a8}{startStage} (int numNodes)
+\item 
+void \hyperlink{Launcher_8cpp_ae79f51ee47064f00844656eb8f593f1e}{startNodes} (int numNodes)
+\item 
+void \hyperlink{Launcher_8cpp_aa1ab80698c8f5a2ec552ecdaa96848d1}{startSim} (int argc, char $\ast$$\ast$argv, int numNodes)
+\item 
+int \hyperlink{Launcher_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{Launcher_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{
+\index{Launcher.cpp@{Launcher.cpp}!main@{main}}
+\index{main@{main}!Launcher.cpp@{Launcher.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}
+\label{Launcher_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+This program performs three operations: 1. Starts roscore and stage 2. Starts X many RX robot nodes where X is the input arg for this program 3. Publishes a single message to change the state of the nodes from IDLE to FORMING\_\-GROUP \hypertarget{Launcher_8cpp_ae79f51ee47064f00844656eb8f593f1e}{
+\index{Launcher.cpp@{Launcher.cpp}!startNodes@{startNodes}}
+\index{startNodes@{startNodes}!Launcher.cpp@{Launcher.cpp}}
+\subsubsection[{startNodes}]{\setlength{\rightskip}{0pt plus 5cm}void startNodes (
+\begin{DoxyParamCaption}
+\item[{int}]{numNodes}
+\end{DoxyParamCaption}
+)}}
+\label{Launcher_8cpp_ae79f51ee47064f00844656eb8f593f1e}
+\hypertarget{Launcher_8cpp_aa1ab80698c8f5a2ec552ecdaa96848d1}{
+\index{Launcher.cpp@{Launcher.cpp}!startSim@{startSim}}
+\index{startSim@{startSim}!Launcher.cpp@{Launcher.cpp}}
+\subsubsection[{startSim}]{\setlength{\rightskip}{0pt plus 5cm}void startSim (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{int}]{numNodes}
+\end{DoxyParamCaption}
+)}}
+\label{Launcher_8cpp_aa1ab80698c8f5a2ec552ecdaa96848d1}
+\hypertarget{Launcher_8cpp_ae4247746adc0242570810cf40e2e65a8}{
+\index{Launcher.cpp@{Launcher.cpp}!startStage@{startStage}}
+\index{startStage@{startStage}!Launcher.cpp@{Launcher.cpp}}
+\subsubsection[{startStage}]{\setlength{\rightskip}{0pt plus 5cm}void startStage (
+\begin{DoxyParamCaption}
+\item[{int}]{numNodes}
+\end{DoxyParamCaption}
+)}}
+\label{Launcher_8cpp_ae4247746adc0242570810cf40e2e65a8}
+Start roscore and stage 

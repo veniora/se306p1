@@ -1,0 +1,325 @@
+\hypertarget{RX_8cpp}{
+\section{RX.cpp File Reference}
+\label{RX_8cpp}\index{RX.cpp@{RX.cpp}}
+}
+{\ttfamily \#include \char`\"{}ros/ros.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}std\_\-msgs/String.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Project2Sample/R\_\-ID.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}geometry\_\-msgs/Twist.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}nav\_\-msgs/Odometry.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}sensor\_\-msgs/LaserScan.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Project2Sample/State.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}FindGroup.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}GetGroup.h\char`\"{}}\par
+{\ttfamily \#include $<$sstream$>$}\par
+{\ttfamily \#include \char`\"{}math.h\char`\"{}}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}~3.14159265
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8}{State} \{ \par
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8afd6a0e4343048b10646dd2976cc5ad18}{IDLE} =  0, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ad0079d8020df99c779dd767d0671542c}{FORMING\_\-GROUP} =  1, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a9369692a9ca95b25b3c28cf5b8d2165a}{MOVING\_\-INTO\_\-POS} =  2, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a752f797e0ad40d7f44daafbcdbb3391a}{FETCH\_\-INSTRUCTIONS} =  3, 
+\par
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8adf0f8454553307de94f6faf44f4a1e2a}{CIRCLING} =  4, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a588db82d6c05b9bb3dbbebf42d0d5d91}{FORM\_\-SQUARE} =  5, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ab1413cbe24a5bd2d8c7a7ae02afb5238}{FORM\_\-CIRCLE} =  6, 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ac241aecbe2e3eba2f42ce28777f6ab65}{FOLLOWING} =  7
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}{rotateFinalAngleInstructions} (vector$<$ float $>$ currentPosition, vector$<$ float $>$ newPosition)
+\item 
+float \hyperlink{RX_8cpp_a01b18e0a48c3ac27c8892b03b591790c}{rotateDirectionInstructions} (float deltaTheta)
+\item 
+vector$<$ float $>$ \hyperlink{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}{moveToNewPoint} ()
+\item 
+void \hyperlink{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}{RobotNode\_\-callback} (Project2Sample::R\_\-ID msg)
+\item 
+void \hyperlink{RX_8cpp_ab7e30a89a91430192b67c967740996e0}{StageOdom\_\-callback} (nav\_\-msgs::Odometry msg)
+\item 
+void \hyperlink{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}{StageLaser\_\-callback} (sensor\_\-msgs::LaserScan msg)
+\item 
+void \hyperlink{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}{RobotState\_\-callback} (\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8}{Project2Sample::State} msg)
+\item 
+int \hyperlink{RX_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{RX_8cpp_a8c55654c18f2203fee186cf5f9fccc6e}{linear\_\-x}
+\item 
+double \hyperlink{RX_8cpp_a109ab892fd9dbffc641e0dbf80972a79}{angular\_\-z}
+\item 
+double \hyperlink{RX_8cpp_a9c1e50fd3234caf28c5f65a912b5c16a}{px}
+\item 
+double \hyperlink{RX_8cpp_ad29ba68eddcdfabc5dd4e8e213a0f5cd}{py}
+\item 
+double \hyperlink{RX_8cpp_aca81c35c21e3a5f7f3a8d24504e76664}{theta}
+\item 
+double \hyperlink{RX_8cpp_aee0aa633e128e47cb95894502bb7516a}{newXPOS}
+\item 
+double \hyperlink{RX_8cpp_a617cb91190faba02f1fe4759d9057f4b}{newYPOS}
+\item 
+double \hyperlink{RX_8cpp_a91954ace32e43d91c9f641c1eddb609c}{finalTheta}
+\item 
+int \hyperlink{RX_8cpp_afe0b47b3c92f2f69ea3da50cb72553eb}{Id}
+\item 
+int \hyperlink{RX_8cpp_a035076e17aac41fb8b4dc8c4de5ee16a}{LeaderID}
+\item 
+int \hyperlink{RX_8cpp_adaacbc113eb3a8eb51e1b7a0328c47df}{GroupID}
+\item 
+int \hyperlink{RX_8cpp_a66e2a9c19e982e62ed9810643b781f04}{PositionID}
+\item 
+int \hyperlink{RX_8cpp_a55c15a61ae3b510f298ce354862cf212}{FollowID} = -\/2
+\item 
+bool \hyperlink{RX_8cpp_aaa9baae90228a3ec03b25a97f7806c88}{subscribedFollow}
+\item 
+bool \hyperlink{RX_8cpp_a65cf7d7f8e531611b245355ab91fd749}{ready} = false
+\item 
+\hyperlink{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8}{State} \hyperlink{RX_8cpp_a62d920a9a06d7ac5b8c98e175defd014}{currentState} = IDLE
+\item 
+vector$<$ Project2Sample::R\_\-ID $>$ \hyperlink{RX_8cpp_a652e770ce8f07e29674ec989f2c75ab4}{nodes}
+\item 
+vector$<$ Project2Sample::R\_\-ID $>$ \hyperlink{RX_8cpp_af6cfc2aa22000d00840df61e1997b882}{group}
+\item 
+int \hyperlink{RX_8cpp_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}{
+\index{RX.cpp@{RX.cpp}!PI@{PI}}
+\index{PI@{PI}!RX.cpp@{RX.cpp}}
+\subsubsection[{PI}]{\setlength{\rightskip}{0pt plus 5cm}\#define PI~3.14159265}}
+\label{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}
+This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8}{
+\index{RX.cpp@{RX.cpp}!State@{State}}
+\index{State@{State}!RX.cpp@{RX.cpp}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf State}}}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{IDLE@{IDLE}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!IDLE@{IDLE}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8afd6a0e4343048b10646dd2976cc5ad18}{
+IDLE}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8afd6a0e4343048b10646dd2976cc5ad18}
+}]\index{FORMING\_\-GROUP@{FORMING\_\-GROUP}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!FORMING\_\-GROUP@{FORMING\_\-GROUP}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ad0079d8020df99c779dd767d0671542c}{
+FORMING\_\-GROUP}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ad0079d8020df99c779dd767d0671542c}
+}]\index{MOVING\_\-INTO\_\-POS@{MOVING\_\-INTO\_\-POS}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!MOVING\_\-INTO\_\-POS@{MOVING\_\-INTO\_\-POS}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a9369692a9ca95b25b3c28cf5b8d2165a}{
+MOVING\_\-INTO\_\-POS}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a9369692a9ca95b25b3c28cf5b8d2165a}
+}]\index{FETCH\_\-INSTRUCTIONS@{FETCH\_\-INSTRUCTIONS}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!FETCH\_\-INSTRUCTIONS@{FETCH\_\-INSTRUCTIONS}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a752f797e0ad40d7f44daafbcdbb3391a}{
+FETCH\_\-INSTRUCTIONS}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a752f797e0ad40d7f44daafbcdbb3391a}
+}]\index{CIRCLING@{CIRCLING}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!CIRCLING@{CIRCLING}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8adf0f8454553307de94f6faf44f4a1e2a}{
+CIRCLING}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8adf0f8454553307de94f6faf44f4a1e2a}
+}]\index{FORM\_\-SQUARE@{FORM\_\-SQUARE}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!FORM\_\-SQUARE@{FORM\_\-SQUARE}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a588db82d6c05b9bb3dbbebf42d0d5d91}{
+FORM\_\-SQUARE}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8a588db82d6c05b9bb3dbbebf42d0d5d91}
+}]\index{FORM\_\-CIRCLE@{FORM\_\-CIRCLE}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!FORM\_\-CIRCLE@{FORM\_\-CIRCLE}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ab1413cbe24a5bd2d8c7a7ae02afb5238}{
+FORM\_\-CIRCLE}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ab1413cbe24a5bd2d8c7a7ae02afb5238}
+}]\index{FOLLOWING@{FOLLOWING}!RX.cpp@{RX.cpp}}\index{RX.cpp@{RX.cpp}!FOLLOWING@{FOLLOWING}}\item[{\em 
+\hypertarget{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ac241aecbe2e3eba2f42ce28777f6ab65}{
+FOLLOWING}
+\label{RX_8cpp_a5d74787dedbc4e11c1ab15bf487e61f8ac241aecbe2e3eba2f42ce28777f6ab65}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\hypertarget{RX_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{
+\index{RX.cpp@{RX.cpp}!main@{main}}
+\index{main@{main}!RX.cpp@{RX.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+\hypertarget{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}{
+\index{RX.cpp@{RX.cpp}!moveToNewPoint@{moveToNewPoint}}
+\index{moveToNewPoint@{moveToNewPoint}!RX.cpp@{RX.cpp}}
+\subsubsection[{moveToNewPoint}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ moveToNewPoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}
+\hypertarget{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}{
+\index{RX.cpp@{RX.cpp}!RobotNode\_\-callback@{RobotNode\_\-callback}}
+\index{RobotNode\_\-callback@{RobotNode\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{RobotNode\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void RobotNode\_\-callback (
+\begin{DoxyParamCaption}
+\item[{Project2Sample::R\_\-ID}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}
+\hypertarget{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}{
+\index{RX.cpp@{RX.cpp}!RobotState\_\-callback@{RobotState\_\-callback}}
+\index{RobotState\_\-callback@{RobotState\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{RobotState\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void RobotState\_\-callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Project2Sample::State}}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}
+\hypertarget{RX_8cpp_a01b18e0a48c3ac27c8892b03b591790c}{
+\index{RX.cpp@{RX.cpp}!rotateDirectionInstructions@{rotateDirectionInstructions}}
+\index{rotateDirectionInstructions@{rotateDirectionInstructions}!RX.cpp@{RX.cpp}}
+\subsubsection[{rotateDirectionInstructions}]{\setlength{\rightskip}{0pt plus 5cm}float rotateDirectionInstructions (
+\begin{DoxyParamCaption}
+\item[{float}]{deltaTheta}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_a01b18e0a48c3ac27c8892b03b591790c}
+\hypertarget{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}{
+\index{RX.cpp@{RX.cpp}!rotateFinalAngleInstructions@{rotateFinalAngleInstructions}}
+\index{rotateFinalAngleInstructions@{rotateFinalAngleInstructions}!RX.cpp@{RX.cpp}}
+\subsubsection[{rotateFinalAngleInstructions}]{\setlength{\rightskip}{0pt plus 5cm}float rotateFinalAngleInstructions (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$}]{currentPosition, }
+\item[{vector$<$ float $>$}]{newPosition}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}
+\hypertarget{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}{
+\index{RX.cpp@{RX.cpp}!StageLaser\_\-callback@{StageLaser\_\-callback}}
+\index{StageLaser\_\-callback@{StageLaser\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{StageLaser\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void StageLaser\_\-callback (
+\begin{DoxyParamCaption}
+\item[{sensor\_\-msgs::LaserScan}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}
+\hypertarget{RX_8cpp_ab7e30a89a91430192b67c967740996e0}{
+\index{RX.cpp@{RX.cpp}!StageOdom\_\-callback@{StageOdom\_\-callback}}
+\index{StageOdom\_\-callback@{StageOdom\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{StageOdom\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void StageOdom\_\-callback (
+\begin{DoxyParamCaption}
+\item[{nav\_\-msgs::Odometry}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_ab7e30a89a91430192b67c967740996e0}
+
+
+\subsection{Variable Documentation}
+\hypertarget{RX_8cpp_a109ab892fd9dbffc641e0dbf80972a79}{
+\index{RX.cpp@{RX.cpp}!angular\_\-z@{angular\_\-z}}
+\index{angular\_\-z@{angular\_\-z}!RX.cpp@{RX.cpp}}
+\subsubsection[{angular\_\-z}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf angular\_\-z}}}
+\label{RX_8cpp_a109ab892fd9dbffc641e0dbf80972a79}
+\hypertarget{RX_8cpp_ad43c3812e6d13e0518d9f8b8f463ffcf}{
+\index{RX.cpp@{RX.cpp}!count@{count}}
+\index{count@{count}!RX.cpp@{RX.cpp}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf count}}}
+\label{RX_8cpp_ad43c3812e6d13e0518d9f8b8f463ffcf}
+\hypertarget{RX_8cpp_a62d920a9a06d7ac5b8c98e175defd014}{
+\index{RX.cpp@{RX.cpp}!currentState@{currentState}}
+\index{currentState@{currentState}!RX.cpp@{RX.cpp}}
+\subsubsection[{currentState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} {\bf currentState} = IDLE}}
+\label{RX_8cpp_a62d920a9a06d7ac5b8c98e175defd014}
+\hypertarget{RX_8cpp_a91954ace32e43d91c9f641c1eddb609c}{
+\index{RX.cpp@{RX.cpp}!finalTheta@{finalTheta}}
+\index{finalTheta@{finalTheta}!RX.cpp@{RX.cpp}}
+\subsubsection[{finalTheta}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf finalTheta}}}
+\label{RX_8cpp_a91954ace32e43d91c9f641c1eddb609c}
+\hypertarget{RX_8cpp_a55c15a61ae3b510f298ce354862cf212}{
+\index{RX.cpp@{RX.cpp}!FollowID@{FollowID}}
+\index{FollowID@{FollowID}!RX.cpp@{RX.cpp}}
+\subsubsection[{FollowID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FollowID} = -\/2}}
+\label{RX_8cpp_a55c15a61ae3b510f298ce354862cf212}
+\hypertarget{RX_8cpp_af6cfc2aa22000d00840df61e1997b882}{
+\index{RX.cpp@{RX.cpp}!group@{group}}
+\index{group@{group}!RX.cpp@{RX.cpp}}
+\subsubsection[{group}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$Project2Sample::R\_\-ID$>$ {\bf group}}}
+\label{RX_8cpp_af6cfc2aa22000d00840df61e1997b882}
+\hypertarget{RX_8cpp_adaacbc113eb3a8eb51e1b7a0328c47df}{
+\index{RX.cpp@{RX.cpp}!GroupID@{GroupID}}
+\index{GroupID@{GroupID}!RX.cpp@{RX.cpp}}
+\subsubsection[{GroupID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf GroupID}}}
+\label{RX_8cpp_adaacbc113eb3a8eb51e1b7a0328c47df}
+\hypertarget{RX_8cpp_afe0b47b3c92f2f69ea3da50cb72553eb}{
+\index{RX.cpp@{RX.cpp}!Id@{Id}}
+\index{Id@{Id}!RX.cpp@{RX.cpp}}
+\subsubsection[{Id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Id}}}
+\label{RX_8cpp_afe0b47b3c92f2f69ea3da50cb72553eb}
+\hypertarget{RX_8cpp_a035076e17aac41fb8b4dc8c4de5ee16a}{
+\index{RX.cpp@{RX.cpp}!LeaderID@{LeaderID}}
+\index{LeaderID@{LeaderID}!RX.cpp@{RX.cpp}}
+\subsubsection[{LeaderID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf LeaderID}}}
+\label{RX_8cpp_a035076e17aac41fb8b4dc8c4de5ee16a}
+\hypertarget{RX_8cpp_a8c55654c18f2203fee186cf5f9fccc6e}{
+\index{RX.cpp@{RX.cpp}!linear\_\-x@{linear\_\-x}}
+\index{linear\_\-x@{linear\_\-x}!RX.cpp@{RX.cpp}}
+\subsubsection[{linear\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf linear\_\-x}}}
+\label{RX_8cpp_a8c55654c18f2203fee186cf5f9fccc6e}
+\hypertarget{RX_8cpp_aee0aa633e128e47cb95894502bb7516a}{
+\index{RX.cpp@{RX.cpp}!newXPOS@{newXPOS}}
+\index{newXPOS@{newXPOS}!RX.cpp@{RX.cpp}}
+\subsubsection[{newXPOS}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf newXPOS}}}
+\label{RX_8cpp_aee0aa633e128e47cb95894502bb7516a}
+\hypertarget{RX_8cpp_a617cb91190faba02f1fe4759d9057f4b}{
+\index{RX.cpp@{RX.cpp}!newYPOS@{newYPOS}}
+\index{newYPOS@{newYPOS}!RX.cpp@{RX.cpp}}
+\subsubsection[{newYPOS}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf newYPOS}}}
+\label{RX_8cpp_a617cb91190faba02f1fe4759d9057f4b}
+\hypertarget{RX_8cpp_a652e770ce8f07e29674ec989f2c75ab4}{
+\index{RX.cpp@{RX.cpp}!nodes@{nodes}}
+\index{nodes@{nodes}!RX.cpp@{RX.cpp}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$Project2Sample::R\_\-ID$>$ {\bf nodes}}}
+\label{RX_8cpp_a652e770ce8f07e29674ec989f2c75ab4}
+\hypertarget{RX_8cpp_a66e2a9c19e982e62ed9810643b781f04}{
+\index{RX.cpp@{RX.cpp}!PositionID@{PositionID}}
+\index{PositionID@{PositionID}!RX.cpp@{RX.cpp}}
+\subsubsection[{PositionID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf PositionID}}}
+\label{RX_8cpp_a66e2a9c19e982e62ed9810643b781f04}
+\hypertarget{RX_8cpp_a9c1e50fd3234caf28c5f65a912b5c16a}{
+\index{RX.cpp@{RX.cpp}!px@{px}}
+\index{px@{px}!RX.cpp@{RX.cpp}}
+\subsubsection[{px}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf px}}}
+\label{RX_8cpp_a9c1e50fd3234caf28c5f65a912b5c16a}
+\hypertarget{RX_8cpp_ad29ba68eddcdfabc5dd4e8e213a0f5cd}{
+\index{RX.cpp@{RX.cpp}!py@{py}}
+\index{py@{py}!RX.cpp@{RX.cpp}}
+\subsubsection[{py}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf py}}}
+\label{RX_8cpp_ad29ba68eddcdfabc5dd4e8e213a0f5cd}
+\hypertarget{RX_8cpp_a65cf7d7f8e531611b245355ab91fd749}{
+\index{RX.cpp@{RX.cpp}!ready@{ready}}
+\index{ready@{ready}!RX.cpp@{RX.cpp}}
+\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf ready} = false}}
+\label{RX_8cpp_a65cf7d7f8e531611b245355ab91fd749}
+\hypertarget{RX_8cpp_aaa9baae90228a3ec03b25a97f7806c88}{
+\index{RX.cpp@{RX.cpp}!subscribedFollow@{subscribedFollow}}
+\index{subscribedFollow@{subscribedFollow}!RX.cpp@{RX.cpp}}
+\subsubsection[{subscribedFollow}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf subscribedFollow}}}
+\label{RX_8cpp_aaa9baae90228a3ec03b25a97f7806c88}
+\hypertarget{RX_8cpp_aca81c35c21e3a5f7f3a8d24504e76664}{
+\index{RX.cpp@{RX.cpp}!theta@{theta}}
+\index{theta@{theta}!RX.cpp@{RX.cpp}}
+\subsubsection[{theta}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf theta}}}
+\label{RX_8cpp_aca81c35c21e3a5f7f3a8d24504e76664}

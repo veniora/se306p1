@@ -37,7 +37,8 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 		nodes.insert(nodes.begin()+numOfLeaders+1, nodes.at(0));
 		nodes.erase(nodes.begin());
 	}
-	for (i = 0; i < nodes.size(); ++i) {
+	// Find the robot instance in the vector
+	for (i = 0; i < nodes.size(); i++) {
 		if (nodes.at(i).R_ID == robotID) {
 			groupID = i % numOfLeaders;
 			posID = i / numOfLeaders;

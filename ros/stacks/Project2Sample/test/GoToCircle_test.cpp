@@ -7,14 +7,16 @@
 #include <gtest/gtest.h>
 #include <ros/ros.h>
 #include "../src/GoToCircle.h"
-
-TEST(Example_tests, test1) {
-	// Assert stuff here
+/*
+ * Tests in each quadrant. Each one can have different behaviour. This algorithm
+ * has been visually inspected many times and there are limited variations
+ * that can go wrong.
+ */
+TEST(StationaryCircleTests, PositiveQuadrant) {
+	// Create 4 nodes
 }
 
-TEST(Example_tests, test2) {
 
-}
 
 int main(int argc, char **argv) {
 	testing::InitGoogleTest(&argc, argv);

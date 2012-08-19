@@ -36,7 +36,7 @@ rosbuild_add_gtest_build_flags(test/RX_test)
 rosbuild_add_executable(test/Example_test test/Example_test.cpp)
 rosbuild_add_gtest_build_flags(test/Example_test)
 
-rosbuild_add_executable(test/FindGroup_test test/FindGroup_test.cpp)
+rosbuild_add_executable(test/FindGroup_test test/FindGroup_test.cpp src/FindGroup.cpp)
 rosbuild_add_gtest_build_flags(test/FindGroup_test)
 
 rosbuild_add_executable(test/GetGroup_test test/GetGroup_test.cpp)

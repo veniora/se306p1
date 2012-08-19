@@ -492,11 +492,11 @@ int main(int argc, char **argv) {
 			break;
 		case FORMING_GROUP:
 			ROS_INFO("Into FORMING_GROUP");
-			FindGroup f;
+			//FindGroup f;
 			GetGroup g;
-			int k;
 			int i;
-			robotInfo = f.formGroup(nodes, Id);
+			int k;
+			robotInfo = formGroup(nodes, Id);
 			for(i = 0; i < nodes.size(); i++) {
 				if (nodes.at(i).R_ID == Id) {
 					msg.R_ID = nodes.at(i).R_ID;
@@ -523,8 +523,7 @@ int main(int argc, char **argv) {
 					leadermsg = nodes.at(i);
 				}
 			}
-
-			robotCoordinates = f.calculatePosition(leadermsg, msg.Pos_ID);
+			robotCoordinates = calculatePosition(leadermsg, msg.Pos_ID);
 			msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);

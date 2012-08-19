@@ -2,10 +2,10 @@
 *.slo
 *.lo
 *.o
-
+	  	
 # Compiled Dynamic libraries
 *.so
-
+	  	
 # Compiled Static libraries
 *.lai
 *.la
@@ -16,16 +16,18 @@
 
 # ROS/eclipse files http://answers.ros.org/question/10182/how-to-correctly-use-git-with-ros/
 .cproject
-.project
-.pydevproject
+.project	  	
+.pydevproject	  	
 cmake_install.cmake
 build/
 bin/
 lib/
-msg_gen/
+msg_gen/	  	
 srv_gen/
-
-#Exclusions
-!Project2Sample.world
-!swarm_world.pgm
+	  	
+#Exclusions	  	
+!Project2Sample.world	  	
+!swarm_world.pgm	  	
 !bin/test_package.lisp
+
+html/

@@ -30,9 +30,9 @@ void startNodes(int numNodes) {
 	int pid;
 
 	for (i = 0; i < numNodes; ++i) {
-//		Fork clones the calling process, creating an exact copy.
-//		Returns -1 for errors, 0 to the new process,
-//		and the process ID of the new process to the old process.
+		// Fork clones the calling process, creating an exact copy.
+		// Returns -1 for errors, 0 to the new process,
+		// and the process ID of the new process to the old process.
 		pid = fork();
 		if (pid == 0) {
 			// this is new process
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
 	// Check input arguments
 	if (argc != 2) {
 		cout
-				<< "To run launcher use ./Launcher X, where X is the number of robots to start\n";
+		<< "To run launcher use ./Launcher X, where X is the number of robots to start\n";
 		return 0;
 	}
 	numNodes = atoi(argv[1]);
@@ -112,17 +112,17 @@ int main(int argc, char **argv) {
 
 	// Wait for all child processes to finish
 	while (true) {
-	    int status;
-	    pid_t done = wait(&status);
-	    if (done == -1) {
-	        if (errno == ECHILD) break; // no more child processes
-	    }
-//	    else {
-//	        if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-//	            cerr << "pid " << done << " failed" << endl;
-//	            exit(1);
-//	        }
-//	    }
+		int status;
+		pid_t done = wait(&status);
+		if (done == -1) {
+			if (errno == ECHILD) break; // no more child processes
+		}
+		// else {
+		// if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
+		// cerr << "pid " << done << " failed" << endl;
+		// exit(1);
+		// }
+		// }
 	}
 
 	return 0;

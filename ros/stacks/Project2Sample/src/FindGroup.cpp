@@ -24,7 +24,7 @@ bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 }
 
 
-vector<int> FindGroup::formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
+vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 
 	vector<int> robotGroupInfo;
 	//find number of leaders
@@ -51,7 +51,7 @@ vector<int> FindGroup::formGroup(vector<Project2Sample:: R_ID> nodes, int robotI
 }
 //only need values for leader
 
-vector<float> FindGroup::calculatePosition(Project2Sample::R_ID leader, int posID) {
+vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
 	float newX, newY;

@@ -436,10 +436,10 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 			break;
 		case FORMING_GROUP:
-			FindGroup f;
+			//FindGroup f;
 			GetGroup g;
 			//[leaderID, groupID, posID]
-			robotInfo = f.formGroup(nodes, Id);
+			robotInfo = formGroup(nodes, Id);
 			int i;
 			for (i = 0; i < nodes.size(); ++i) {
 				if (nodes.at(i).R_ID == robotInfo.at(0)) {
@@ -458,7 +458,7 @@ int main(int argc, char **argv) {
 					break;
 				}
 			}
-			robotCoordinates = f.calculatePosition(msg, msg.Pos_ID);
+			robotCoordinates = calculatePosition(msg, msg.Pos_ID);
 			msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);

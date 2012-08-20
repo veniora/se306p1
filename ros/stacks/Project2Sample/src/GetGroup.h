@@ -11,6 +11,9 @@
 
 using namespace std;
 
-map<int, Project2Sample::R_ID> getGroup(map<int, Project2Sample::R_ID> nodes, int robotID);
+class GetGroup {
+public:
+	vector<Project2Sample::R_ID> getGroup(vector<Project2Sample::R_ID> nodes, int robotID);
+};
 
 #endif /* GETGROUP_H_ */

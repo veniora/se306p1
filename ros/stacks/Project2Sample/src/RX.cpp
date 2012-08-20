@@ -44,7 +44,7 @@ int follow_id = -2;
 bool subscribed_follow;
 bool robot_pos_found = false;
 
-// States
+// states
 enum State {
 	IDLE = 0,
 	FORMING_GROUP = 1,
@@ -58,9 +58,10 @@ enum State {
 
 State current_state = IDLE;
 
-// The swarm represents all the robots within the simulation
-map<int, Project2Sample::R_ID> swarm;
-map<int, Project2Sample::R_ID> group;
+//vector of nodes = x, y, theta, R_ID
+vector<Project2Sample::R_ID> nodes;
+//vector of nodes that are in the same group
+vector<Project2Sample::R_ID> group;
 
 /**
  * A utility method for creating R_ID messages from RX variables
@@ -271,20 +272,23 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	if (robot_pos_found == false) {
 		return;
 	}
-	// Try and find the node in the swarm
-	map<int, Project2Sample::R_ID>::iterator it = swarm.find(msg.R_ID);
-	if (it != swarm.end()) {
-		//element found so update it
-		swarm[msg.R_ID] = msg;
-
-	} else {
-		// element not currently in map so add it
-		swarm.insert(pair<int, Project2Sample::R_ID>(msg.R_ID, msg));
+	int i;
+	bool alreadyExists = false;
+	for (i = 0; i < nodes.size(); i++) {
+		if (nodes.at(i).R_ID == msg.R_ID) {
+			nodes.erase(nodes.begin() + i); //deletes the old values
+			nodes.push_back(msg); //adds new values
+			//if(ready) {
+			//ROS_INFO("id: %d", nodes.at(i).R_ID);
+			//ROS_INFO("x: %f", nodes.at(i).x);
+			//ROS_INFO("y: %f", nodes.at(i).y);
+			//}
+			alreadyExists = true;
+		}
 	}
-
-	if (msg.Group_ID == group_id) {
-		// node in this nodes group so update group
-		group[msg.R_ID] = msg;
+	if (!alreadyExists) {
+		//ROS_INFO("x--: %f", tx);
+		nodes.push_back(msg);
 	}
 
 }
@@ -411,6 +415,7 @@ int main(int argc, char **argv) {
 	follow_id = 2;
 
 	//initialise variables to be used in case statements
+	vector<float> robotCoordinates;
 	vector<float> instructionsMove;
 
 	while (ros::ok()) {
@@ -436,24 +441,47 @@ int main(int argc, char **argv) {
 			// By definition this state does nothing!
 			break;
 		case FORMING_GROUP:
-			// Get group information
-			int* group_info = formGroup(swarm, id);
+			//FindGroup f;
+			GetGroup g;
+
+			//[leaderID, groupID, posID]
+			int* group_info = formGroup(nodes, id);
 			leader_id = group_info[0];
 			group_id = group_info[1];
 			position_id = group_info[2];
 
-			// Get coordinates to move to
-			map<int, Project2Sample::R_ID>::iterator leader_it = swarm.find(leader_id);
-			float* new_coordinates = calculatePosition(leader_it->second, position_id);
-			new_x_pos = new_coordinates[0];
-			new_y_pos = new_coordinates[1];
-			final_theta = new_coordinates[1];
+			int i;
+			for (i = 0; i < nodes.size(); ++i) {
+				if (nodes.at(i).R_ID == robotInfo.at(0)) {
+					position_id = robotInfo.at(2);
+					//ROS_INFO("group id: %d", msg.Group_ID);
+					leader_id = robotInfo.at(0);
+					group_id = robotInfo.at(1);
+					position_id = robotInfo.at(2);
+					//ROS_INFO("Id %d", Id);
+					//ROS_INFO("LeaderId %d", LeaderID);
+					//ROS_INFO("GroupID %d", GroupID);
+					//ROS_INFO("PositionID %d", PositionID);
+					break;
+				}
+			}
+			robotCoordinates = calculatePosition(msg, position_id);
+			msg.newX = robotCoordinates.at(0);
+			msg.newY = robotCoordinates.at(1);
+			msg.leaderTheta = robotCoordinates.at(2);
+			new_x_pos = robotCoordinates.at(0);
+			new_y_pos = robotCoordinates.at(1);
+			ROS_INFO("id: %d, newX: %f , newY %f", id, msg.newX, msg.newY);
+			final_theta = robotCoordinates.at(2);
 
-			ROS_INFO("id: %d, newX: %f , newY %f", id, new_x_pos, new_y_pos);
-
+			//ROS_INFO("Id %d", Id);
+			//ROS_INFO("newX %f", msg.newX);
+			//ROS_INFO("newY %f", msg.newY);
+			//ROS_INFO("leaderTheta %f", msg.leaderTheta);
+			RobotNode_pub.publish(msg);
+			//vector group
 			//ROS_INFO("leader id %d", LeaderID);
-			group = getGroup(swarm, group_id);
-
+			group = g.getGroup(nodes, id);
 			if (position_id == 0) {
 				follow_id = -1;
 				//ROS_INFO("FollowID %d", FollowID);

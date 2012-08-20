@@ -45,7 +45,7 @@ int follow_id = -2;
 
 //boolean to make sure they don't subscribe to follow twice
 bool subscribed_follow;
-bool ready = false;
+bool robot_pos_found = false;
 
 // states
 enum State {IDLE = 0,
@@ -255,11 +255,10 @@ vector<float> moveToNewPoint(){
 }
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
-	int i;
-	if(!(((msg.x < 0.00001) && (msg.x > -0.00001)) && ((msg.y < 0.00001) && (msg.y > -0.00001)))){
-		ready = true;
+	if (robot_pos_found == false){
+		return;
 	}
-	//ROS_INFO("x: %f", tx);
+	int i;
 	bool alreadyExists = false;
 	for (i = 0; i < nodes.size(); i++) {
 		if (nodes.at(i).R_ID == msg.R_ID) {
@@ -282,6 +281,7 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 
 //This is the call back function to process odometry messages coming from Stage
 void StageOdom_callback(nav_msgs::Odometry msg) {
+	robot_pos_found = true;
 	px = msg.pose.pose.position.x;
 	py = msg.pose.pose.position.y;
 	//ROS_INFO("px: %f", px);
@@ -395,11 +395,11 @@ int main(int argc, char **argv) {
 			ss.str(), 1000, StageLaser_callback);
 
 
-	/*ss.str("");
+	ss.str("");
 	//subscribe to listen to their current states
 	ros::Subscriber Robot_state = n.subscribe<Project2Sample::State>("Robot_state",
 			1000, RobotState_callback);
-*/
+
 	ros::Rate loop_rate(10);
 
 	//a count of how many messages we have sent

@@ -276,9 +276,15 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	if (it != swarm.end()) {
 		//element found so update it
 		swarm[msg.R_ID] = msg;
+
 	} else {
 		// element not currently in map so add it
 		swarm.insert(pair<int, Project2Sample::R_ID>(msg.R_ID, msg));
+	}
+
+	if (msg.Group_ID == group_id) {
+		// node in this nodes group so update group
+		group[msg.R_ID] = msg;
 	}
 
 }
@@ -430,11 +436,8 @@ int main(int argc, char **argv) {
 			// By definition this state does nothing!
 			break;
 		case FORMING_GROUP:
-			//FindGroup f;
-			GetGroup g;
-
 			// Get group information
-			int* group_info = formGroup(nodes, id);
+			int* group_info = formGroup(swarm, id);
 			leader_id = group_info[0];
 			group_id = group_info[1];
 			position_id = group_info[2];
@@ -448,10 +451,9 @@ int main(int argc, char **argv) {
 
 			ROS_INFO("id: %d, newX: %f , newY %f", id, new_x_pos, new_y_pos);
 
-			RobotNode_pub.publish(msg);
-			//vector group
 			//ROS_INFO("leader id %d", LeaderID);
-			group = g.getGroup(nodes, id);
+			group = getGroup(swarm, group_id);
+
 			if (position_id == 0) {
 				follow_id = -1;
 				//ROS_INFO("FollowID %d", FollowID);

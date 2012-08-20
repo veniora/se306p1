@@ -22,7 +22,7 @@ bool sortByPosition (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 }
 
 //returns a vector of all robots that are in the same group
-vector<Project2Sample::R_ID> GetGroup::getGroup(vector<Project2Sample::R_ID> nodes, int robotID) {
+map<int, Project2Sample::R_ID> getGroup(map<int, Project2Sample::R_ID> nodes, int robotID) {
 	vector<Project2Sample::R_ID> group;
 	int i,j,groupID;
 	for (j = 0; j < nodes.size(); j++) {
@@ -38,7 +38,6 @@ vector<Project2Sample::R_ID> GetGroup::getGroup(vector<Project2Sample::R_ID> nod
 	}
 	sort(group.begin(), group.end(), sortByPosition);
 	return group;
-
 }
 
 

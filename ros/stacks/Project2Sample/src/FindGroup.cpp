@@ -24,9 +24,13 @@ bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 }
 
 
-vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
+/**
+ * Returns an array of integers representing the leaderID, groupID and posID.
+ * format: [leaderID, groupID, posID]
+ */
+int* formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 
-	vector<int> robotGroupInfo;
+	int* robotGroupInfo;
 	//find number of leaders
 	int groupID, posID, i;
 
@@ -42,9 +46,9 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 		if (nodes.at(i).R_ID == robotID) {
 			groupID = i % numOfLeaders;
 			posID = i / numOfLeaders;
-			robotGroupInfo.push_back(nodes.at(groupID).R_ID);
-			robotGroupInfo.push_back(groupID);
-			robotGroupInfo.push_back(posID);
+			robotGroupInfo[0] = nodes.at(groupID).R_ID;
+			robotGroupInfo[1] = groupID;
+			robotGroupInfo[2] = posID;
 			break;
 		}
 	}

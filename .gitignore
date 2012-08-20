@@ -15,9 +15,9 @@
 *~
 
 # ROS/eclipse files http://answers.ros.org/question/10182/how-to-correctly-use-git-with-ros/
-.cproject
-.project
-.pydevproject
+*.cproject
+*.project
+*.pydevproject
 cmake_install.cmake
 build/
 bin/

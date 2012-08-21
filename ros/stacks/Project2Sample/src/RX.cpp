@@ -20,6 +20,8 @@
 
 //namespace
 using namespace std;
+// number of robots (NEEDS TO BE SET FROM LAUNCHER)
+int num_robots = 6;
 
 //velocity of the robot
 double linear_x;
@@ -258,22 +260,33 @@ vector<float> moveToNewPoint() {
 void RobotNode_callback(Project2Sample::R_ID msg) {
 	int i;
 	bool alreadyExists = false;
+    //ROS_INFO(" size = %d", nodes.size());
 	for (i = 0; i < nodes.size(); i++) {
-		if (nodes.at(i).R_ID == msg.R_ID) {
-			nodes.erase(nodes.begin() + i); //deletes the old values
+	    if (nodes.at(i).R_ID == msg.R_ID) {
+            alreadyExists = true;
+            nodes[i] = msg;   
+        }    
+    }
+
+    if (!alreadyExists) {
+   //ROS_INFO(" add one size = %d", nodes.size());
+		//ROS_INFO("x--: %f", tx);
+		nodes.push_back(msg);
+	}
+            // changing vector length is not a good idea, may cause dying robots    
+            //ROS_INFO("access number = %d, vector length = %d", nodes.begin() + i, nodes.size());
+			/*nodes.erase(nodes.begin() + i); //deletes the old values
 			nodes.push_back(msg); //adds new values
+*/
 			//if(ready) {
 			//ROS_INFO("id: %d", nodes.at(i).R_ID);
 			//ROS_INFO("x: %f", nodes.at(i).x);
 			//ROS_INFO("y: %f", nodes.at(i).y);
 			//}
-			alreadyExists = true;
-		}
-	}
-	if (!alreadyExists) {
-		//ROS_INFO("x--: %f", tx);
-		nodes.push_back(msg);
-	}
+
+
+	//}
+	
 
 }
 
@@ -307,7 +320,7 @@ void RobotState_callback(Project2Sample::State msg) {
 	std::stringstream ss;
 	ss << "Robot " << id << " changed state from " << current_state << " to "
 			<< msg.state;
-	ROS_INFO(ss.str().c_str());
+	
 	switch (msg.state) {
 	// There is an implicit conversion from any enum type to int.
 	// On the other hand, there is not an implicit conversion from int to an enum type.
@@ -357,7 +370,7 @@ int main(int argc, char **argv) {
 	ss << "RobotNode" << argv[1];
 	ros::init(argc, argv, ss.str());
 	ss << " running";
-	ROS_INFO(ss.str().c_str());
+	//ROS_INFO(ss.str().c_str());
 	//NodeHandle is the main access point to communicate with ros.
 	ros::NodeHandle n;
 
@@ -368,7 +381,7 @@ int main(int argc, char **argv) {
 
 	while (ros::ok()) {
 		if (robot_pos_found == true) {
-            ROS_INFO("node %d found robo pos" , id);			
+            //ROS_INFO("node %d found robo pos" , id);			
             break;
 		}
 		ros::spinOnce();
@@ -462,11 +475,14 @@ int main(int argc, char **argv) {
 		}
 		case FORMING_GROUP: {
 			//FindGroup f;
+            ROS_INFO("in forming group");
 			GetGroup g;
 			//[leaderID, groupID, posID]
 			robotInfo = formGroup(nodes, id);
 			int i;
-            for (i = 0; i < nodes.size(); ++i) {
+            //changed to i++
+            for (i = 0; i < nodes.size(); i++) {
+                //ROS_INFO("form group loop %i",i);
 				if (nodes.at(i).R_ID == robotInfo.at(0)) {
 					msg.R_ID = nodes.at(i).R_ID;
 					msg.x = nodes.at(i).x;
@@ -496,32 +512,31 @@ int main(int argc, char **argv) {
 			msg.leaderTheta = robotCoordinates.at(2);
 			new_x_pos = robotCoordinates.at(0);
 			new_y_pos = robotCoordinates.at(1);
-			ROS_INFO("id: %d, newX: %f , newY %f", id, msg.newX, msg.newY);
+			//ROS_INFO("id: %d, newX: %f , newY %f", id, msg.newX, msg.newY);
 			final_theta = robotCoordinates.at(2);
 
 			RobotNode_pub.publish(msg);
 			//vector group
 			//ROS_INFO("leader id %d", LeaderID);
 			group = g.getGroup(nodes, id);
-            for (i = 0; i < group.size();i++){
-                ROS_INFO("id = %d", id);            
-                
-            }			
+            //for (i = 0; i < group.size();i++){
+            //    ROS_INFO("id = %d", id);            
+            //}			
 
             if (position_id == 0) { 
 				follow_id = -1;
 				//ROS_INFO("FollowID %d", FollowID);
 			} else {
 				follow_id = group.at(position_id - 1).R_ID;
-				ROS_INFO("FollowID %d", follow_id);
+				//ROS_INFO("FollowID %d", follow_id);
 			}
             ROS_INFO(" %d in position %d is following %d", id, position_id, follow_id);
 			current_state = MOVING_INTO_POS;
-            //ROS_INFO("should be movinng nowwww!");
+            ROS_INFO("should be movinng nowwww!");
 			break;
 		}
 		case MOVING_INTO_POS: {
-
+            ROS_INFO(" MOVING " );    
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];

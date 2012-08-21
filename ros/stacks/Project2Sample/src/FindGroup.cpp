@@ -84,7 +84,7 @@ vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 	}
 	newCoordinates.push_back(newX);
 	newCoordinates.push_back(newY);
-    ROS_INFO("calculate position: x = %f, y = %f", newX, newY);
+//    ROS_INFO("calculate position: x = %f, y = %f", newX, newY);
 	newCoordinates.push_back(leaderTheta);
 	return newCoordinates;
 

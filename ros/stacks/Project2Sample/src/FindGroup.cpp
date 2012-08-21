@@ -34,7 +34,7 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	int groupID, posID, i;
 
 	//number of leaders
-	int numOfLeaders = nodes.size()/2;
+	int numOfLeaders = nodes.size()/6;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
 
 	// Find the robot instance in the vector
@@ -53,6 +53,8 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 //only need values for leader
 
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
+    ROS_INFO("CalculatePosition() method");
+
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
 	float newX, newY;
@@ -82,6 +84,7 @@ vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 	}
 	newCoordinates.push_back(newX);
 	newCoordinates.push_back(newY);
+    ROS_INFO("calculate position: x = %f, y = %f", newX, newY);
 	newCoordinates.push_back(leaderTheta);
 	return newCoordinates;
 

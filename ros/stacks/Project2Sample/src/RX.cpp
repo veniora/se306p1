@@ -122,9 +122,9 @@ float rotateDirectionInstructions(float d_theta) {
 
 //this method is called when the robot in front publishes its coordinates when it moves
 //HARD CODE THE RESULTS FOR NOW
-/*void poseCallbackFollow(Project2Sample::R_ID msg){
+void poseCallbackFollow(Project2Sample::R_ID msg){
  //check that it should be following, if not then just return
- if (currentState != FOLLOWING){
+ if (current_state != FOLLOWING){
  return;
  }
 
@@ -160,7 +160,7 @@ float rotateDirectionInstructions(float d_theta) {
  //then move
  RobotNode_stage_pub.publish(RobotNode_cmdvel);
  }
- */
+
 
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint() {
@@ -248,7 +248,7 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			current_state = FORM_SQUARE;
+			current_state = IDLE;
 		}
 	}
 	return instructions;
@@ -279,9 +279,10 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 
 //This is the call back function to process odometry messages coming from Stage
 void StageOdom_callback(nav_msgs::Odometry msg) {
-	robot_pos_found = true;
+    robot_pos_found = true;
 	px = msg.pose.pose.position.x;
 	py = msg.pose.pose.position.y;
+    
 	//ROS_INFO("px: %f", px);
 	//ROS_INFO("py: %f", py);
 	double thetaRadians = msg.pose.pose.position.z + PI / 2;
@@ -339,7 +340,7 @@ void RobotState_callback(Project2Sample::State msg) {
 }
 
 int main(int argc, char **argv) {
-
+    
 	//initialize robot parameters
 	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
 	//theta = 45;
@@ -367,7 +368,8 @@ int main(int argc, char **argv) {
 
 	while (ros::ok()) {
 		if (robot_pos_found == true) {
-			break;
+            ROS_INFO("node %d found robo pos" , id);			
+            break;
 		}
 		ros::spinOnce();
 		ros::Rate(10).sleep();
@@ -416,34 +418,44 @@ int main(int argc, char **argv) {
 	//message object to other robots
 	Project2Sample::R_ID msg;
 
-	//HARD CODE FollowID JUST TO TEST
-	follow_id = 2;
+
+    //HARD CODE FOLLOW ID TO TEST
+    //follow_id = 0;
+
 
 	//initialise variables to be used in case statements
 	vector<float> robotCoordinates;
 	vector<int> robotInfo;
 	vector<float> instructionsMove;
-
+    Project2Sample::R_ID leader_msg;
 	while (ros::ok()) {
-		//ROS_INFO("currentState, %d", currentState);
+		
 
 		//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
-		/*if (FollowID != -2 && PositionID != 0 && subscribedFollow == false){
+		if (follow_id != -2 && position_id != 0 && subscribed_follow == false){
 		 //subscribe to the robot it should follow's position
 		 //note: need to set FollowID before this can be called
 		 ss.str("");
-		 ss << "Robot" << PositionID << "_follow";
+		 ss << "Robot" << position_id << "_follow";
 		 ros::Subscriber Follow_sub = n.subscribe(
 		 ss.str(), 1000, &poseCallbackFollow);
-		 subscribedFollow = true;
+		 subscribed_follow = true;
 		 }
-		 */
+		 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
-
+        
 		switch (current_state) {
 		case IDLE: {
+            // idle does nothing but continually publish its own position
+            // we need this for the nodes array to be properly created
+            msg.R_ID = id;
+            msg.x = px;
+            msg.y = py;
+            RobotNode_pub.publish(msg);
+
+
 			// By definition this state does nothing!
 			// (note the R_ID message is published after this switch statement)
 			break;
@@ -454,7 +466,7 @@ int main(int argc, char **argv) {
 			//[leaderID, groupID, posID]
 			robotInfo = formGroup(nodes, id);
 			int i;
-			for (i = 0; i < nodes.size(); ++i) {
+            for (i = 0; i < nodes.size(); ++i) {
 				if (nodes.at(i).R_ID == robotInfo.at(0)) {
 					msg.R_ID = nodes.at(i).R_ID;
 					msg.x = nodes.at(i).x;
@@ -462,21 +474,24 @@ int main(int argc, char **argv) {
 					msg.theta = nodes.at(i).theta;
 					msg.Group_ID = robotInfo.at(1);
 					position_id = robotInfo.at(2);
-					//ROS_INFO("group id: %d", msg.Group_ID);
 					msg.Pos_ID = robotInfo.at(2);
 					leader_id = robotInfo.at(0);
 					group_id = robotInfo.at(1);
 					position_id = robotInfo.at(2);
-					//ROS_INFO("Id %d", Id);
-					//ROS_INFO("LeaderId %d", LeaderID);
-					//ROS_INFO("GroupID %d", GroupID);
-					//ROS_INFO("PositionID %d", PositionID);
 					RobotNode_pub.publish(msg);
 					break;
 				}
 			}
-			robotCoordinates = calculatePosition(msg, msg.Pos_ID);
-			msg.newX = robotCoordinates.at(0);
+
+            for( i = 0; i < nodes.size(); i++){
+                if(nodes.at(i).R_ID == leader_id){
+                    leader_msg = nodes.at(i);
+                }
+            }
+            
+			robotCoordinates = calculatePosition(leader_msg, msg.Pos_ID);
+            // maybe not needed as now assigned to feilds of robot...			
+            msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);
 			new_x_pos = robotCoordinates.at(0);
@@ -484,33 +499,42 @@ int main(int argc, char **argv) {
 			ROS_INFO("id: %d, newX: %f , newY %f", id, msg.newX, msg.newY);
 			final_theta = robotCoordinates.at(2);
 
-			//ROS_INFO("Id %d", Id);
-			//ROS_INFO("newX %f", msg.newX);
-			//ROS_INFO("newY %f", msg.newY);
-			//ROS_INFO("leaderTheta %f", msg.leaderTheta);
 			RobotNode_pub.publish(msg);
 			//vector group
 			//ROS_INFO("leader id %d", LeaderID);
 			group = g.getGroup(nodes, id);
-			if (position_id == 0) {
+            for (i = 0; i < group.size();i++){
+                ROS_INFO("id = %d", id);            
+                
+            }			
+
+            if (position_id == 0) { 
 				follow_id = -1;
 				//ROS_INFO("FollowID %d", FollowID);
 			} else {
 				follow_id = group.at(position_id - 1).R_ID;
-				//ROS_INFO("FollowID %d", FollowID);
+				ROS_INFO("FollowID %d", follow_id);
 			}
+            ROS_INFO(" %d in position %d is following %d", id, position_id, follow_id);
 			current_state = MOVING_INTO_POS;
+            //ROS_INFO("should be movinng nowwww!");
 			break;
 		}
 		case MOVING_INTO_POS: {
+
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 			break;
 		}
-		case FOLLOWING: {
-			break;
+		case FOLLOWING: { 
+            //ROS_INFO("current state = FOLLOWING");
+	            if(position_id == 0){
+        			RobotNode_cmdvel.linear.x = 1.0;
+		        	RobotNode_cmdvel.angular.z = 0.5;
+                }
+		break;
 		}
 		case CIRCLING: {
 			break;

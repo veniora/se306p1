@@ -67,7 +67,7 @@ void startSim(int argc, char **argv, int numNodes) {
 
 		// Wait until all X number of robot nodes are running
 		while (state_publisher.getNumSubscribers() != numNodes) {
-			ROS_INFO("waiting for subscribers");
+//			ROS_INFO("waiting for subscribers");
 			loop_rate.sleep();
 		}
 

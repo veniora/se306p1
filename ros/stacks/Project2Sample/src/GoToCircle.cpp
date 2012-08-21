@@ -18,7 +18,7 @@ using namespace std;
 
 
 // returns coordinates [x,y] of a robot as to where they belong in a circle
-vector<float> GoToCircle::formCircle(vector<Project2Sample::R_ID> group, int robotID) {
+vector<float> formCircle(vector<Project2Sample::R_ID> group, int robotID) {
 	vector<float> circleCoord;
 	int numOfRobots = group.size();
     float circumference = float(numOfRobots+1) * 5 * 0.35;

@@ -140,9 +140,9 @@ TEST(SelectLeader, OutOfOrder3Robot) {
 
 /*
  * Test that it works when a robot is at the origin
- * It must not be selected as leader but assigned to the number 2 position
+ * Robots at origin now assigned to back of queue
  * Called from robot_id=0
- * Should return leader=1, group=0, position=1
+ * Should return leader=1, group=0, position=2
  */
 TEST(SelectLeader, EnsureLeaderNotAtOrigin) {
 	vector<Project2Sample::R_ID> nodes;
@@ -161,7 +161,7 @@ TEST(SelectLeader, EnsureLeaderNotAtOrigin) {
 
 	EXPECT_EQ(1, robotGroupInfo.at(0));
 	EXPECT_EQ(0, robotGroupInfo.at(1));
-	EXPECT_EQ(1, robotGroupInfo.at(2));
+	EXPECT_EQ(2, robotGroupInfo.at(2));
 };
 
 /*
@@ -212,8 +212,79 @@ TEST(PutInGroups, TwentyFourRobotsFourGroups) {
 		//EXPECT_EQ(2, robotGroupInfo.at(2));
 
 }
+/////////////////////////////////////////////////////////////////////////////////
+// Calculate Positions tests
+// Input: R_ID of leader and position ID
 
+/*
+ * Test +x/+y quadrant of leader
+ */
+TEST(AssignPositions, RotateLeader) {
+	Project2Sample::R_ID leader;
+	leader.R_ID = 0; leader.x = 10.0; leader.y = 10.0;
 
+	vector<float> robotGroupInfo = calculatePosition(leader, 0);
+
+	EXPECT_EQ(10, robotGroupInfo.at(0)); //newX
+	EXPECT_EQ(10, robotGroupInfo.at(1)); //newY
+	EXPECT_EQ(225, robotGroupInfo.at(2)); //leaderTheta
+}
+
+/*
+ * Test +x/+y quadrant
+ */
+TEST(AssignPositions, PosXYFindFifth) {
+	Project2Sample::R_ID leader;
+	leader.R_ID = 0; leader.x = 10.0; leader.y = 10.0;
+
+	vector<float> robotGroupInfo = calculatePosition(leader, 5);
+
+	EXPECT_FLOAT_EQ(16.187184, robotGroupInfo.at(0)); //newX
+	EXPECT_FLOAT_EQ(16.187184, robotGroupInfo.at(1)); //newY
+	EXPECT_FLOAT_EQ(225, robotGroupInfo.at(2)); //leaderTheta
+}
+
+/*
+ * Test +x/-y quadrant
+ */
+TEST(AssignPositions, PosXNegYFindFifth) {
+	Project2Sample::R_ID leader;
+	leader.R_ID = 0; leader.x = 10.0; leader.y = -10.0;
+
+	vector<float> robotGroupInfo = calculatePosition(leader, 5);
+
+	EXPECT_FLOAT_EQ(16.187184, robotGroupInfo.at(0)); //newX
+	EXPECT_FLOAT_EQ(-16.187184, robotGroupInfo.at(1)); //newY
+	EXPECT_FLOAT_EQ(135, robotGroupInfo.at(2)); //leaderTheta
+}
+
+/*
+ * Test -x/+y quadrant
+ */
+TEST(AssignPositions, NegXPosYFindFifth) {
+	Project2Sample::R_ID leader;
+	leader.R_ID = 0; leader.x = -10.0; leader.y = 10.0;
+
+	vector<float> robotGroupInfo = calculatePosition(leader, 5);
+
+	EXPECT_FLOAT_EQ(-16.187184, robotGroupInfo.at(0)); //newX
+	EXPECT_FLOAT_EQ(16.187184, robotGroupInfo.at(1)); //newY
+	EXPECT_FLOAT_EQ(315, robotGroupInfo.at(2)); //leaderTheta
+}
+
+/*
+ * Test +x/+y quadrant
+ */
+TEST(AssignPositions, NegXNegYFindFifth) {
+	Project2Sample::R_ID leader;
+	leader.R_ID = 0; leader.x = -10.0; leader.y = -10.0;
+
+	vector<float> robotGroupInfo = calculatePosition(leader, 5);
+
+	EXPECT_FLOAT_EQ(-16.187184, robotGroupInfo.at(0)); //newX
+	EXPECT_FLOAT_EQ(-16.187184, robotGroupInfo.at(1)); //newY
+	EXPECT_FLOAT_EQ(45, robotGroupInfo.at(2)); //leaderTheta
+}
 
 int main(int argc, char **argv) {
 	testing::InitGoogleTest(&argc, argv);

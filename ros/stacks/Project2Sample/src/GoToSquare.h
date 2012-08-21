@@ -11,9 +11,7 @@
 
 using namespace std;
 
-class GoToSquare {
-public:
 	vector<float> formSquare(vector<Project2Sample::R_ID> group, int robotID);
-};
+
 
 #endif /* GOTOSQUARE_H_ */

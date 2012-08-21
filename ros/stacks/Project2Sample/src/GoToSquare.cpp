@@ -15,7 +15,7 @@
 using namespace std;
 
 // returns coordinates [x,y] of a robot as to where they belong in a square
-vector<float> GoToSquare::formSquare(vector<Project2Sample::R_ID> group, int robotID) {
+vector<float> formSquare(vector<Project2Sample::R_ID> group, int robotID) {
 	vector<float> squareCoord;
 	int numOfRobots = group.size();
 	float spacing0 =  5 * 0.35;

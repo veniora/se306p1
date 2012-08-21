@@ -20,8 +20,9 @@ using namespace std;
 bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 	float distance1 = sqrt(pow(robot1.x, 2.0) + pow(robot1.y, 2.0));
 	float distance2 = sqrt(pow(robot2.x, 2.0) + pow(robot2.y, 2.0));
-	if ( distance1 < 0.0001){
-		return false; // meaning robot1 will be placed after robot2
+	//	ROS_INFO("Distance1: %f", distance1);
+	if ( fabs(distance1) < 0.001){ // If within a tolerance of the origin, put at the end
+		distance1 = 0.0; // meaning robot1 will be placed after robot2
 	}
 	return (distance1 < distance2);
 }
@@ -55,34 +56,60 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
-	float newX, newY;
+	float newX, newY, leaderTheta;
+	float deltaX, deltaY;
 	//calculate the angle the robot position vector makes with the positive x axis
 	// Angles in radians
-	float lineAngle = atan(leader.y/leader.x);
-	lineAngle = lineAngle * 180 / PI;
-	float leaderTheta = 180 + lineAngle;
+	double lineAngle = atan2(fabs(leader.y),fabs(leader.x));
+	//lineAngle = lineAngle * 180 / PI; // convert to degrees
+	//float leaderTheta = PI + lineAngle; // keep in radians
 
-	// new value of x and y for the robot in the posID
+	// These are the changes in each coordinate based on the angle it makes with the origin
+	deltaX = (posID * fiveRobots * cos(lineAngle));
+	deltaY = (posID * fiveRobots * sin(lineAngle));
 
-	int check = 2 * (leader.x/fabs(leader.x)) + (leader.y/fabs(leader.y));
+	// Find new position based on position on the leader
 
-	switch (check) {
-	case 3: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
-	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
-	break;
-	case 1: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
-	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
-	break;
-	case -1: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
-	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
-	break;
-	case -3: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
-	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
-	break;
+	if (leader.x >= 0){ // leader is on the right side
+		if (leader.y >= 0) { // leader on top right
+			newX = leader.x + deltaX;
+			newY = leader.y + deltaY;
+			leaderTheta = lineAngle + PI;
+		} else { // leader on bottom right
+			newX = leader.x + deltaX;
+			newY = leader.y - deltaY;
+			leaderTheta = -lineAngle + PI;
+		}
+	} else { // leader is on the left side
+		if (leader.y >= 0) { // leader on top left
+			newX = leader.x - deltaX;
+			newY = leader.y + deltaY;
+			leaderTheta = lineAngle + 3*PI/2;
+		} else { // leader on bottom left
+			newX = leader.x - deltaX;
+			newY = leader.y - deltaY;
+			leaderTheta = lineAngle;
+		}
 	}
+//	int check = 2 * (leader.x/fabs(leader.x)) + (leader.y/fabs(leader.y));
+//
+//	switch (check) {
+//	case 3: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
+//	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
+//	break;
+//	case 1: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
+//	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
+//	break;
+//	case -1: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
+//	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
+//	break;
+//	case -3: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
+//	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
+//	break;
+//	}
 	newCoordinates.push_back(newX);
 	newCoordinates.push_back(newY);
-	newCoordinates.push_back(leaderTheta);
+	newCoordinates.push_back(leaderTheta*180/PI);
 	return newCoordinates;
 
 }

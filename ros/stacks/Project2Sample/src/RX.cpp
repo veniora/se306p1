@@ -45,6 +45,8 @@ int follow_id = -2;
 //boolean to make sure they don't subscribe to follow twice
 bool subscribed_follow;
 bool robot_pos_found = false;
+//boolean to check whether or not the robot has been added to the array or not
+bool already_exists = false;
 
 // states
 enum State {
@@ -258,35 +260,21 @@ vector<float> moveToNewPoint() {
 }
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
-	int i;
-	bool alreadyExists = false;
-    //ROS_INFO(" size = %d", nodes.size());
-	for (i = 0; i < nodes.size(); i++) {
-	    if (nodes.at(i).R_ID == msg.R_ID) {
-            alreadyExists = true;
-            nodes[i] = msg;   
-        }    
-    }
-
-    if (!alreadyExists) {
-   //ROS_INFO(" add one size = %d", nodes.size());
-		//ROS_INFO("x--: %f", tx);
-		nodes.push_back(msg);
-	}
-            // changing vector length is not a good idea, may cause dying robots    
-            //ROS_INFO("access number = %d, vector length = %d", nodes.begin() + i, nodes.size());
-			/*nodes.erase(nodes.begin() + i); //deletes the old values
-			nodes.push_back(msg); //adds new values
-*/
-			//if(ready) {
-			//ROS_INFO("id: %d", nodes.at(i).R_ID);
-			//ROS_INFO("x: %f", nodes.at(i).x);
-			//ROS_INFO("y: %f", nodes.at(i).y);
-			//}
-
-
-	//}
 	
+    //if it is not already on the nodes array, add it
+    if (already_exists == false){
+        nodes.push_back(msg);
+        already_exists = true;
+        ROS_INFO("push back");
+    //otherwise find it and update it's value
+    } else {
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes[i].R_ID == msg.R_ID){
+                nodes[i] = msg;
+                ROS_INFO("updated a node");
+            }
+        }
+    }
 
 }
 
@@ -536,7 +524,7 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case MOVING_INTO_POS: {
-            ROS_INFO(" MOVING " );    
+            //ROS_INFO(" MOVING " );    
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];

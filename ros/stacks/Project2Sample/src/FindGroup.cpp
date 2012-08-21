@@ -35,7 +35,7 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	int groupID, posID, i;
 
 	//number of leaders
-	int numOfLeaders = nodes.size()/2;
+	int numOfLeaders = nodes.size()/6;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
 
 	// Find the robot instance in the vector
@@ -54,6 +54,8 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 //only need values for leader
 
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
+    ROS_INFO("CalculatePosition() method");
+
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
 	float newX, newY, leaderTheta;
@@ -91,25 +93,11 @@ vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 			leaderTheta = lineAngle;
 		}
 	}
-//	int check = 2 * (leader.x/fabs(leader.x)) + (leader.y/fabs(leader.y));
-//
-//	switch (check) {
-//	case 3: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
-//	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
-//	break;
-//	case 1: newX = (fiveRobots * cos(lineAngle)* posID) + leader.x;
-//	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
-//	break;
-//	case -1: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
-//	newY = (fiveRobots * sin(lineAngle)* posID) + leader.y;
-//	break;
-//	case -3: newX = -(fiveRobots * cos(lineAngle)* posID) + leader.x;
-//	newY = -(fiveRobots * sin(lineAngle)* posID) + leader.y;
-//	break;
-//	}
+
 	newCoordinates.push_back(newX);
 	newCoordinates.push_back(newY);
 	newCoordinates.push_back(leaderTheta*180/PI);
+
 	return newCoordinates;
 
 }

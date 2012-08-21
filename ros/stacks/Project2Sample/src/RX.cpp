@@ -369,6 +369,8 @@ int main(int argc, char **argv) {
 		if (robot_pos_found == true) {
 			break;
 		}
+		ros::spinOnce();
+		ros::Rate(10).sleep();
 	}
 
 	//advertise() function will tell ROS that you want to publish on a given topic_

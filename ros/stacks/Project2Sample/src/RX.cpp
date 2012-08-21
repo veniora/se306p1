@@ -256,9 +256,6 @@ vector<float> moveToNewPoint() {
 }
 
 void RobotNode_callback(Project2Sample::R_ID msg) {
-	if (robot_pos_found == false) {
-		return;
-	}
 	int i;
 	bool alreadyExists = false;
 	for (i = 0; i < nodes.size(); i++) {
@@ -363,6 +360,19 @@ int main(int argc, char **argv) {
 	//NodeHandle is the main access point to communicate with ros.
 	ros::NodeHandle n;
 
+	ss.str("");
+	ss << "Robot" << argv[1] << "_truth";
+	ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(ss.str(),
+			1000, StageOdom_callback);
+
+	while (ros::ok()) {
+		if (robot_pos_found == true) {
+			break;
+		}
+		ros::spinOnce();
+		ros::Rate(10).sleep();
+	}
+
 	//advertise() function will tell ROS that you want to publish on a given topic_
 	//for other robots
 	ss.str("");
@@ -384,11 +394,6 @@ int main(int argc, char **argv) {
 	ss << "Robot" << argv[1] << "_follow";
 	ros::Publisher Follow_pub = n.advertise<Project2Sample::R_ID>(ss.str(),
 			1000);
-
-	ss.str("");
-	ss << "Robot" << argv[1] << "_truth";
-	ros::Subscriber StageOdo_sub = n.subscribe<nav_msgs::Odometry>(ss.str(),
-			1000, StageOdom_callback);
 
 	ss.str("");
 	ss << "Robot" << argv[1] << "_laser";

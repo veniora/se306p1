@@ -20,6 +20,9 @@ using namespace std;
 bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 	float distance1 = sqrt(pow(robot1.x, 2.0) + pow(robot1.y, 2.0));
 	float distance2 = sqrt(pow(robot2.x, 2.0) + pow(robot2.y, 2.0));
+	if ( distance1 < 0.0001){
+		return false; // meaning robot1 will be placed after robot2
+	}
 	return (distance1 < distance2);
 }
 
@@ -33,10 +36,7 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	//number of leaders
 	int numOfLeaders = nodes.size()/2;
 	sort(nodes.begin(), nodes.end(), sortByDistance);
-	if ((fabs(nodes.at(0).x) < 0.0001) && (fabs(nodes.at(0).y) < 0.0001)) {
-		nodes.insert(nodes.begin()+numOfLeaders+1, nodes.at(0));
-		nodes.erase(nodes.begin());
-	}
+
 	// Find the robot instance in the vector
 	for (i = 0; i < nodes.size(); i++) {
 		if (nodes.at(i).R_ID == robotID) {

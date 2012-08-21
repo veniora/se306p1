@@ -35,20 +35,27 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	int groupID, posID, i;
 
 	//number of leaders
+    ROS_INFO("nodes size: %i",nodes.size());
 	int numOfLeaders = nodes.size()/6;
+
 	sort(nodes.begin(), nodes.end(), sortByDistance);
 
 	// Find the robot instance in the vector
 	for (i = 0; i < nodes.size(); i++) {
-		if (nodes.at(i).R_ID == robotID) {
+		if (nodes[i].R_ID == robotID) {
 			groupID = i % numOfLeaders;
-			posID = i / numOfLeaders;
-			robotGroupInfo.push_back(nodes.at(groupID).R_ID);
+            ROS_INFO("groupID: %d",groupID);
+			posID = floor(i / numOfLeaders);
+            ROS_INFO("posID: %d",posID);
+
+			robotGroupInfo.push_back(nodes[groupID].R_ID);
 			robotGroupInfo.push_back(groupID);
 			robotGroupInfo.push_back(posID);
+            ROS_INFO("avocado");
 			break;
 		}
 	}
+    ROS_INFO("leader id %d, group id %d, posID %d",robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
 	return robotGroupInfo;      //[LeaderID, groupID, posID]
 }
 //only need values for leader

@@ -46,7 +46,7 @@ int follow_id = -2;
 bool subscribed_follow;
 bool robot_pos_found = false;
 //boolean to check whether or not the robot has been added to the array or not
-bool already_exists = false;
+int exist_robots = 0;
 
 // states
 enum State {
@@ -259,19 +259,18 @@ vector<float> moveToNewPoint() {
 
 }
 
-void RobotNode_callback(Project2Sample::R_ID msg) {
-	
+
+void RobotNode_callback(Project2Sample::R_ID msg) {    
+
     //if it is not already on the nodes array, add it
-    if (already_exists == false){
+    
+    if (exist_robots < num_robots){
         nodes.push_back(msg);
-        already_exists = true;
-        ROS_INFO("push back");
     //otherwise find it and update it's value
     } else {
         for (int i = 0; i < nodes.size(); i++) {
             if (nodes[i].R_ID == msg.R_ID){
                 nodes[i] = msg;
-                ROS_INFO("updated a node");
             }
         }
     }
@@ -466,9 +465,11 @@ int main(int argc, char **argv) {
             ROS_INFO("in forming group");
 			GetGroup g;
 			//[leaderID, groupID, posID]
+
 			robotInfo = formGroup(nodes, id);
 			int i;
             //changed to i++
+            ROS_INFO("nodes size %d",nodes.size());
             for (i = 0; i < nodes.size(); i++) {
                 //ROS_INFO("form group loop %i",i);
 				if (nodes.at(i).R_ID == robotInfo.at(0)) {

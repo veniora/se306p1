@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 		cout << "FORM_SQUARE = 5\n";
 		cout << "FORM_CIRCLE = 6\n";
 		cout << "FOLLOWING = 7\n";
+		cout << "IN_POSITION = 8\n";
 		return 0;
 	}
 

@@ -5,6 +5,7 @@ Prerequisites
 2. Must have the electric version of ROS (Robot Operating System) installed on Ubuntu 11.04 or 11.10.  See the ROS installation guide for more details (http://www.ros.org/wiki/electric/Installation/Ubuntu) 
 
 
+
 Setup
 
 1. Open an instance of the terminal (Ctrl + Alt + t) in Ubuntu.  Navigate to the directory of your choice and clone the repository "veniora/se306p1" onto your local machine from Github by typing:
@@ -24,6 +25,7 @@ Setup
    While it is not necessary to be appending "source /opt/ros/electric/setup.bash" to the ".bashrc" file, it is recommended. Alternatively, with every instance of the terminal, the "setup.bash" file must be sourced to use any ROS commands.
 
 4. Save changes to the ".bashrc" file and close it.  
+
 
 
 Running the application

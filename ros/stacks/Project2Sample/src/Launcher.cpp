@@ -107,6 +107,7 @@ int main(int argc, char **argv) {
 
 	startStage(numNodes);
 	startNodes(numNodes);
+    sleep(12);
 	startSim(argc, argv, numNodes);
 
 

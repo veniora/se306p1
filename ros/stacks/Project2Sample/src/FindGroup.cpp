@@ -94,7 +94,7 @@ vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
 		if (leader.y >= 0) { // leader on top left
 			newX = leader.x - deltaX;
 			newY = leader.y + deltaY;
-			leaderTheta = lineAngle + 3*PI/2;
+			leaderTheta = 2*PI - lineAngle;
 		} else { // leader on bottom left
 			newX = leader.x - deltaX;
 			newY = leader.y - deltaY;

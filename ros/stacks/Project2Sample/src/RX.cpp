@@ -128,11 +128,9 @@ float rotateDirectionInstructions(float d_theta) {
 //this method is called when the robot in front publishes its coordinates when it moves
 //HARD CODE THE RESULTS FOR NOW
 void poseCallbackFollow(Project2Sample::R_ID msg){
+	ROS_INFO("start of follow callback");
 	//check that it should be following, if not then just return
-	if (current_state != FOLLOWING){
-		return;
-	}
-
+	if (current_state == FOLLOWING){
 
 	ros::NodeHandle nb;
 	ros::Publisher RobotNode_stage_pub = nb.advertise<geometry_msgs::Twist>("Robot1_vel",1000);
@@ -150,7 +148,7 @@ void poseCallbackFollow(Project2Sample::R_ID msg){
 	next[2] = msg.theta;
 
 	float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-
+	ROS_INFO("rotate instructions are %f",rotateInst);
 	//then find linear
 	//vector<float> linearInst = linearInstructions(current, next);
 
@@ -164,6 +162,7 @@ void poseCallbackFollow(Project2Sample::R_ID msg){
 
 	//then move
 	RobotNode_stage_pub.publish(RobotNode_cmdvel);
+	}
 }
 
 
@@ -458,7 +457,7 @@ int main(int argc, char **argv) {
 	Project2Sample::R_ID leader_msg;
 
 	while (ros::ok()) {
-//		ROS_INFO("Current state: %d",current_state);
+		//		ROS_INFO("Current state: %d",current_state);
 
 		//publish all robot info to nodes array
 		msg.R_ID = id;
@@ -467,16 +466,8 @@ int main(int argc, char **argv) {
 		msg.R_State = current_state;
 		RobotNode_pub.publish(msg);
 
-		//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
-		if (follow_id != -2 && position_id != 0 && subscribed_follow == false){
-			//subscribe to the robot it should follow's position
-			//note: need to set FollowID before this can be called
-			ss.str("");
-			ss << "Robot" << position_id << "_follow";
-			ros::Subscriber Follow_sub = n.subscribe(
-					ss.str(), 1000, &poseCallbackFollow);
-			subscribed_follow = true;
-		}
+
+
 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
@@ -532,7 +523,7 @@ int main(int argc, char **argv) {
 			}
 
 			robotCoordinates = calculatePosition(leader_msg, msg.Pos_ID);
-			// maybe not needed as now assigned to feilds of robot...
+			// maybe not needed as now assigned to fields of robot...
 			msg.newX = robotCoordinates.at(0);
 			msg.newY = robotCoordinates.at(1);
 			msg.leaderTheta = robotCoordinates.at(2);
@@ -583,27 +574,25 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case IN_POSITION:{
-			ROS_INFO("In Position");
+			//			ROS_INFO("In Position");
 			bool group_ready = true;
 
 			for (int i = 0; i<nodes.size(); i++){
-					if (nodes[i].Group_ID == group_id){ //if it is in the same group
-						//ROS_INFO("Group_ID: %d", nodes[i].Group_ID);
-						//if a group member is in the wrong state
-						ROS_INFO("R_State: %d", nodes[i].R_State);
-						if (nodes[i].R_State != IN_POSITION && nodes[i].R_State != FOLLOWING && nodes[i].R_State != CIRCLING ){
-							//some group member is not ready
-							group_ready = false;
-							ROS_INFO("Group not ready");
-							break;
-						}
-						ROS_INFO("CORRECT STATE");
+				if (nodes[i].Group_ID == group_id){ //if it is in the same group
+					//ROS_INFO("Group_ID: %d", nodes[i].Group_ID);
+					//if a group member is in the wrong state
+					//ROS_INFO("R_State: %d", nodes[i].R_State);
+					if (nodes[i].R_State != IN_POSITION && nodes[i].R_State != FOLLOWING && nodes[i].R_State != CIRCLING ){
+						//some group member is not ready
+						group_ready = false;
+						ROS_INFO("Group not ready");
+						break;
 					}
+				}
 			}
 
 			//if the group is ready, move on
 			if (group_ready){
-				ROS_INFO("group ready, so about to assign task");
 				//the leader is given one task, which later will be getting a message
 				if (position_id == 0){
 					current_state = CIRCLING;
@@ -619,16 +608,35 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FOLLOWING: { 
-			//ROS_INFO("current state = FOLLOWING");
-			if(position_id == 0){
-				RobotNode_cmdvel.linear.x = 1.0;
-				RobotNode_cmdvel.angular.z = 0.5;
-			}
-			break;
+			//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
+			if (subscribed_follow == false){
+				if (position_id == 0){
+					follow_id = -1;
+					subscribed_follow = true;
+					break;
+				} else {
+					for (int i=0; i<nodes.size(); i++){
+						if (nodes[i].Group_ID == group_id){
+							if (nodes[i].Pos_ID == (position_id-1)){
+								follow_id = nodes[i].R_ID;
+								ROS_INFO("Set follow id to %d", follow_id);
+							}
+						}
+					}
+				}
+				//subscribe to the robot it should follow's position
+				//note: need to set FollowID before this can be called
+				ss.str("");
+				ss << "Robot" << follow_id << "_follow";
+				ROS_INFO("robot %d is subscribed to Robot%d_follow",id,follow_id);
+				ros::Subscriber Follow_sub = n.subscribe(
+						ss.str(), 1000, &poseCallbackFollow);
+				subscribed_follow = true;
+			}			break;
 		}
 		case CIRCLING: {
 			RobotNode_cmdvel.linear.x = 1;
-			RobotNode_cmdvel.angular.z = 0.5;
+			RobotNode_cmdvel.angular.z = 0.2;
 			break;
 		}
 		case FORM_SQUARE: {

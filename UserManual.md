@@ -16,6 +16,7 @@ Setup
 3. To the ".bashrc" file, append the following lines:
 
    source /opt/ros/electric/setup.bash
+   
    export ROS_PACKAGE_PATH=PATH_TO_YOUR_REPO/ros/stacks:$ROS_PACKAGE_PATH
 
    NOTE: PATH_TO_YOUR_REPO must be replaced by the path of the directory in which the repository was cloned in step 1 of the setup process.  

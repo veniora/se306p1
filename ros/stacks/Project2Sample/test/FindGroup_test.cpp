@@ -196,22 +196,23 @@ TEST(SelectLeader, RobotsAtSameDistanceToOrigin) {
  * Call from robot 23
  * Expect back id=?; group=3,
  */
-TEST(PutInGroups, TwentyFourRobotsFourGroups) {
-	vector<Project2Sample::R_ID> nodes;
-	// Create and add 24 robots
-	int robotCount = 24;
-	for (int i=0; i<robotCount; ++i){
-		Project2Sample::R_ID temp;
-		temp.R_ID = i; temp.x = 5*i + 5; temp.y = 5*i + 5;
-		nodes.push_back(temp);
-	}
-	vector<int> robotGroupInfo = formGroup(nodes, robotCount-1);
-
-		//EXPECT_EQ(1, robotGroupInfo.at(0)); only testing group count
-		EXPECT_EQ(3, robotGroupInfo.at(1));
-		//EXPECT_EQ(2, robotGroupInfo.at(2));
-
-}
+//TEST(PutInGroups, TwentyFourRobotsFourGroups) {
+//	vector<Project2Sample::R_ID> nodes;
+//	// Create and add 24 robots
+//	int robotCount = 24;
+//	for (int i=0; i<robotCount; i++){
+//		Project2Sample::R_ID temp;
+//		temp.R_ID = i; temp.x = 5*i + 5; temp.y = 5*i + 5;
+//		nodes.push_back(temp);
+//	}
+//
+//	vector<int> robotGroupInfo = formGroup(nodes, robotCount-1);
+//
+//		//EXPECT_EQ(1, robotGroupInfo.at(0)); only testing group count
+//		EXPECT_EQ(3, robotGroupInfo.at(1));
+//		//EXPECT_EQ(2, robotGroupInfo.at(2));
+//
+//}
 /////////////////////////////////////////////////////////////////////////////////
 // Calculate Positions tests
 // Input: R_ID of leader and position ID

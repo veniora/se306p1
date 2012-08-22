@@ -21,7 +21,7 @@
 //namespace
 using namespace std;
 // number of robots (NEEDS TO BE SET FROM LAUNCHER)
-int num_robots = 24;
+//int num_robots = 24;
 
 //velocity of the robot
 double linear_x;
@@ -253,7 +253,7 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			current_state = IDLE;
+			current_state = IN_POSITION;
 		}
 	}
 	return instructions;
@@ -456,8 +456,16 @@ int main(int argc, char **argv) {
 	vector<int> robotInfo;
 	vector<float> instructionsMove;
 	Project2Sample::R_ID leader_msg;
-	while (ros::ok()) {
 
+	while (ros::ok()) {
+//		ROS_INFO("Current state: %d",current_state);
+
+		//publish all robot info to nodes array
+		msg.R_ID = id;
+		msg.x = px;
+		msg.y = py;
+		msg.R_State = current_state;
+		RobotNode_pub.publish(msg);
 
 		//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
 		if (follow_id != -2 && position_id != 0 && subscribed_follow == false){
@@ -478,12 +486,10 @@ int main(int argc, char **argv) {
 		case IDLE: {
 			// idle does nothing but continually publish its own position
 			// we need this for the nodes array to be properly created
-			msg.R_ID = id;
-			msg.x = px;
-			msg.y = py;
+
 			// shouldnt moce on till all robots have reported in
 			// debugging attempt, shouldnt stop publishing/ leave idle until all robots have checked in
-			RobotNode_pub.publish(msg);
+
 			//         RobotNode_pub.publish(msg);
 
 
@@ -560,8 +566,6 @@ int main(int argc, char **argv) {
 			//ROS_INFO(" MOVING " );
 			// After moving, set new behaviour
 			// If its current coordinates equal the target coords, change state
-			ROS_INFO("current_t: %f, new_t: %f, diff_theta: %f", theta, final_theta, fabs(final_theta - theta));
-
 			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
 				if (fabs(new_y_pos - py)< 0.01){
 					if (fabs(final_theta - theta)< 2.1){
@@ -579,7 +583,39 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case IN_POSITION:{
-			ROS_INFO("IN_POSITION");
+			ROS_INFO("In Position");
+			bool group_ready = true;
+
+			for (int i = 0; i<nodes.size(); i++){
+					if (nodes[i].Group_ID == group_id){ //if it is in the same group
+						//ROS_INFO("Group_ID: %d", nodes[i].Group_ID);
+						//if a group member is in the wrong state
+						ROS_INFO("R_State: %d", nodes[i].R_State);
+						if (nodes[i].R_State != IN_POSITION && nodes[i].R_State != FOLLOWING && nodes[i].R_State != CIRCLING ){
+							//some group member is not ready
+							group_ready = false;
+							ROS_INFO("Group not ready");
+							break;
+						}
+						ROS_INFO("CORRECT STATE");
+					}
+			}
+
+			//if the group is ready, move on
+			if (group_ready){
+				ROS_INFO("group ready, so about to assign task");
+				//the leader is given one task, which later will be getting a message
+				if (position_id == 0){
+					current_state = CIRCLING;
+					ROS_INFO("SWITCHING LEADER TO CIRCLING");
+					//other members can go to another state here, or wait for instructions
+				} else {
+					current_state = FOLLOWING;
+					ROS_INFO("SWITCHING TO FOLLOWING");
+
+				}
+			}
+
 			break;
 		}
 		case FOLLOWING: { 
@@ -591,6 +627,8 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case CIRCLING: {
+			RobotNode_cmdvel.linear.x = 1;
+			RobotNode_cmdvel.angular.z = 0.5;
 			break;
 		}
 		case FORM_SQUARE: {

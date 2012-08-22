@@ -44,25 +44,26 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	for (i = 0; i < nodes.size(); i++) {
 		if (nodes[i].R_ID == robotID) {
 			groupID = i % numOfLeaders;
-            ROS_INFO("groupID: %d",groupID);
+        //    ROS_INFO("groupID: %d",groupID);
 			posID = floor(i / numOfLeaders);
-            ROS_INFO("posID: %d",posID);
+      //      ROS_INFO("posID: %d",posID);
 
 			robotGroupInfo.push_back(nodes[groupID].R_ID);
 			robotGroupInfo.push_back(groupID);
 			robotGroupInfo.push_back(posID);
-            ROS_INFO("avocado");
+    //        ROS_INFO("size: %d, id: %d, leader id %d, group id %d, posID %d",nodes.size(),nodes[i].R_ID, robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
+    //        ROS_INFO("avocado");
 			break;
 		}
 	}
-    ROS_INFO("leader id %d, group id %d, posID %d",robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
+    //ROS_INFO("leader id %d, group id %d, posID %d",robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
 	return robotGroupInfo;      //[LeaderID, groupID, posID]
 }
 //only need values for leader
 
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
     ROS_INFO("CalculatePosition() method");
-
+    
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
 	float newX, newY, leaderTheta;

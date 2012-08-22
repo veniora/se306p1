@@ -1,0 +1,34 @@
+[ INFO] [1345591396             .014992004]: size: 24, id: 19, leader id 4, group id 3, posID 2, newx 13.879638, newy -13.031152
+[ INFO] [1345591396             .016253467]: size: 23, id: 3, leader id 15, group id 1, posID 4, newx 7.919631, newy 15.401928
+[ INFO] [1345591396             .016880491]: size: 24, id: 15, leader id 15, group id 1, posID 0, newx 4.718630, newy 9.176690
+[ INFO] [1345591396             .015133916]: size: 23, id: 17, leader id 16, group id 2, posID 2, newx 15.588225, newy -2.077487
+[ INFO] [1345591396.015257468, 6.800000000]: size: 23, id: 7, leader id 16, group id 2, posID 5, newx 20.792213, newy -2.771037
+[ INFO] [1345591396             .016413238]: size: 24, id: 4, leader id 4, group id 3, posID 0, newx 11.328000, newy -10.635500
+[ INFO] [1345591396             .016517135]: size: 24, id: 12, leader id 16, group id 2, posID 5, newx 20.792213, newy -2.771037
+[ INFO] [1345591396.016638771, 6.800000000]: size: 24, id: 2, leader id 4, group id 3, posID 4, newx 16.431274, newy -15.426804
+[ INFO] [1345591396.017660132, 6.800000000]: size: 23, id: 16, leader id 16, group id 2, posID 0, newx 12.118900, newy -1.615120
+[ INFO] [1345591396.033715851, 6.800000000]: size: 21, id: 22, leader id 5, group id 0, posID 3, newx 4.918880, newy 7.176613
+[ INFO] [1345591396.033312206, 6.800000000]: size: 21, id: 10, leader id 16, group id 2, posID 6, newx 22.526875, newy -3.002220
+[ INFO] [1345591396.033531496, 6.800000000]: size: 21, id: 14, leader id 5, group id 0, posID 6, newx 7.886991, newy 11.507066
+[ INFO] [1345591396.033849694, 6.800000000]: size: 24, id: 23, leader id 5, group id 0, posID 2, newx 3.929510, newy 5.733129
+[ INFO] [1345591396.036619009, 6.800000000]: size: 23, id: 1, leader id 15, group id 1, posID 4, newx 7.919631, newy 15.401928
+[ INFO] [1345591396.040598955, 6.800000000]: size: 23, id: 18, leader id 15, group id 1, posID 2, newx 6.319130, newy 12.289310
+[ INFO] [1345591396             .048757478]: size: 24, id: 11, leader id 15, group id 1, posID 4, newx 7.919631, newy 15.401928
+[ INFO] [1345591396             .056758181]: size: 23, id: 9, leader id 15, group id 1, posID 1, newx 5.518880, newy 10.733000
+[ INFO] [1345591396.059777822, 6.800000000]: size: 23, id: 0, leader id 5, group id 0, posID 5, newx 6.897621, newy 10.063581
+[ INFO] [1345591396.068079986, 6.800000000]: size: 23, id: 21, leader id 16, group id 2, posID 4, newx 19.057550, newy -2.539854
+[ INFO] [1345591396.097464095, 6.800000000]: size: 23, id: 13, leader id 16, group id 2, posID 6, newx 22.526875, newy -3.002220
+[ INFO] [1345591396.099759793, 6.800000000]: size: 22, id: 6, leader id 5, group id 0, posID 4, newx 5.908251, newy 8.620097
+[ INFO] [1345591396             .119134913]: size: 24, id: 20, leader id 16, group id 2, posID 1, newx 13.853562, newy -1.846303
+[ INFO] [1345591396.129650590, 6.900000000]: size: 22, id: 8, leader id 16, group id 2, posID 1, newx 13.853562, newy -1.846
+[ INFO] [1345591396.145354515, 6.900000000]: size: 23, id: 5, leader id 5, group id 0, posID 0, newx 1.950770, newy 2.846160
+
+
+So we need:
+all robots check in orig location
+create vector of these
+return this vector to all! robots
+
+idea 
+- separate call back for creating array and editing it???
+- 

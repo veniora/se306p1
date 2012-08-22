@@ -1,8 +1,8 @@
 Prerequisites
 
-1. Must have an account on Github configured and be made a collaborator to "veniora/se306p1" repository.  
+1. Must have an account on Github (https://github.com/) configured and be made a collaborator to "veniora/se306p1" repository.  
 
-2. Must have the electric version of ROS (Robot Operating System) installed on Ubuntu 11.04 or 11.10.  See the ROS installation guide for more details.  
+2. Must have the electric version of ROS (Robot Operating System) installed on Ubuntu 11.04 or 11.10.  See the ROS installation guide for more details (http://www.ros.org/wiki/electric/Installation/Ubuntu) 
 
 Setup
 

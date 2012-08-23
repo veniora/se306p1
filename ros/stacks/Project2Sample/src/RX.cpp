@@ -76,8 +76,6 @@ enum State {
 };
 Project2Sample::State state;
 State current_state = IDLE;
-State previous_state = IDLE;
-
 
 //vector of nodes = x, y, theta, R_ID UPDATE THIS WITH ALL THE VALUES
 vector<Project2Sample::R_ID> nodes;
@@ -227,14 +225,11 @@ vector<float> moveToNewPoint() { // no arguments but uses global variables :(
 			instructions[1] = 0.0;
 			if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
 				ROS_INFO("made square should stop moving");
-				previous_state = current_state;
 				current_state = IDLE;
 			} else if(final_move){
 				ROS_INFO("made square should stop moving");
-				previous_state = current_state;
 				current_state = IDLE;                
 			}else{
-				previous_state = current_state;
 				current_state = IN_POSITION;
 			}
 
@@ -772,9 +767,23 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 			break;
 		}
+		/*
+		 * These last four states are used firstly by the leader to tell the other robots to change state
+		 * and secondly to calculate the positions for each robot to go to.
+		 */
 		case CIRCLING: {
+			// Leader only state
+			// Step1: Set the leader to move in a circle
 			RobotNode_cmdvel.linear.x = 0.8;
-			RobotNode_cmdvel.angular.z = 0.2;
+			RobotNode_cmdvel.angular.z = 0.1;
+			// Step2: Tell the other members of the group to change their state to FOLLOWING
+			state.group = group_id; // ALWAYS LEADER
+			state.state = FOLLOWING;
+			// Publish state here
+			/*
+			 * STATE PUBLISHING MUST GO HERE AS IT IS NOT ALWAYS INVOKED AND ONLY EVER BY THE LEADER
+			 */
+			RobotNodeState_pub.publish(state);
 			break;
 		}
 		case FORM_SQUARE: {
@@ -830,6 +839,8 @@ int main(int argc, char **argv) {
 
 		RobotNode_pub.publish(msg);
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
+
+
 
 		ros::spinOnce();
 		ros::Rate(10).sleep();

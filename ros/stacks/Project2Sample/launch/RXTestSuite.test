@@ -1,6 +1,7 @@
 <launch>
 	<!-- INTERGRATION TESTS -->
-	<node pkg="Project2Sample" type="RX" name="RX_test_node" args="1" />
+	<node pkg="Project2Sample" type="RX" name="testStateChange" args="1" />
+	<node pkg="Project2Sample" type="RX" name="testTruth" args="2" />
 	<test test-name="RX_test" pkg="Project2Sample" type="RX_test"/>
 	
 	<!-- UNIT TESTS -->

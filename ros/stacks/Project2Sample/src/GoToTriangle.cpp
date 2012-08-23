@@ -52,7 +52,7 @@ vector<float> formTriangle(Project2Sample::R_ID inputs) {
 					x0 = cos(angle)*spacing0;
 					y0 = sin(angle)*spacing0;
 					triangleCoord.push_back(leaderX + x0);
-					triangleCoord.push_back(group.at(0).y + y0);
+					triangleCoord.push_back(leaderY + y0);
 					spacing0 = spacing0 + (fiveRobotLength);
 				}
 				break;
@@ -60,22 +60,22 @@ vector<float> formTriangle(Project2Sample::R_ID inputs) {
 				topCorner = sqrt(pow(lengthOfSide, 2) - pow((lengthOfSide/2), 2));
 				if (posID == 1) {
 					triangleCoord.push_back(leaderX + lengthOfSide/2);
-					triangleCoord.push_back(group.at(0).y + topCorner);
+					triangleCoord.push_back(leaderY + topCorner);
 				} else {
 					x1 = sin(angle/2.0)*spacing1;
 					y1 = cos(angle/2.0)*spacing1;
 					triangleCoord.push_back(leaderX + lengthOfSide/2 + x0);
-					triangleCoord.push_back(group.at(0).y + topCorner - y1);
+					triangleCoord.push_back(leaderY + topCorner - y1);
 					spacing1 = spacing1 + (fiveRobotLength);
 				}
 				break;
 			case 2:
 				if (posID == 2) {
 					triangleCoord.push_back(leaderX + lengthOfSide);
-					triangleCoord.push_back(group.at(0).y);
+					triangleCoord.push_back(leaderY);
 				} else {
 					triangleCoord.push_back(leaderX + spacing2);
-					triangleCoord.push_back(group.at(0).y);
+					triangleCoord.push_back(leaderY);
 					spacing2 = spacing2 + (fiveRobotLength);
 				}
 				break;

@@ -35,7 +35,6 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 	int groupID, posID, i, tempGroup;
 	int groupCount = 0;
 	//number of leaders
-    ROS_INFO("nodes size: %i",nodes.size());
 	int numOfLeaders = nodes.size()/6;
 
 	sort(nodes.begin(), nodes.end(), sortByDistance);

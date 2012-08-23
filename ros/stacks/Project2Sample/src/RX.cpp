@@ -462,7 +462,7 @@ int main(int argc, char **argv) {
 			group_id = robotInfo[1];
 			position_id = robotInfo[2];
 			group_size = robotInfo[3];
-			ROS_INFO("Robot %d is in group %d after running formGroup and group size is %d", id, group_id, group_size);
+			ROS_INFO("ROBOT ID: %d, GROUP ID: %d, POS ID: %d, GROUP SIZE: %d", id, group_id, position_id, group_size);
 
 			// Find the message of the leader
 			for (int i = 0; i<nodes.size(); i++){

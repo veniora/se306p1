@@ -24,8 +24,8 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 	int posID = inputs.Pos_ID;
 	float fiveRobotLength = 5 * 0.35;
 
-	float leaderX = 3*inputs.x; // random scaling factor to move them away from the origin a bit
-	float leaderY = 3*inputs.y;
+	float leaderX = 2*inputs.x; // random scaling factor to move them away from the origin a bit
+	float leaderY = 2*inputs.y;
 	float leaderTheta = inputs.theta;
 
 		//Spacings

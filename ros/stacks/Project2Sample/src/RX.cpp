@@ -83,7 +83,6 @@ vector<Project2Sample::R_ID> nodes;
 vector<Project2Sample::R_ID> group;
 
 int count;
-
 /*
  * Returns the angle a robot will have to turn in order to face the right direction
  */
@@ -359,10 +358,6 @@ void RobotState_callback(Project2Sample::State msg) {
 int main(int argc, char **argv) {
 
 	//initialize robot parameters
-	//Initial pose. This is same as the pose that you used in the world file to set	the robot pose.
-	//theta = 45;
-	//px = 5;
-	//py = 10;
 	id = atoi(argv[1]);
 
 	//Initial velocity
@@ -374,7 +369,6 @@ int main(int argc, char **argv) {
 	ss << "RobotNode" << argv[1];
 	ros::init(argc, argv, ss.str());
 	ss << " running";
-	//ROS_INFO(ss.str().c_str());
 	//NodeHandle is the main access point to communicate with ros.
 	ros::NodeHandle n;
 
@@ -456,7 +450,6 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FORMING_GROUP: {
-			GetGroup g;
 			/*
 			 * Input the list of known nodes and receive back:
 			 * leaderID
@@ -497,8 +490,8 @@ int main(int argc, char **argv) {
 			/*
 			 * This attempts to retrieve the vector of all nodes in a particular group
 			 */
-			group = g.getGroup(nodes, id);
-			ROS_INFO("Group %d has %d members", group_id, group.size());
+			//group = g.getGroup(nodes, id);
+			//ROS_INFO("Group %d has %d members", group_id, group.size());
 			// Currently all robots getting assigned to all groups
 
 			// All numbers are calculated and fields assign so move into the move state
@@ -593,48 +586,6 @@ int main(int argc, char **argv) {
 
 					}
 				}
-
-				//				} else if(position_id == 0 && has_instructions){
-				//					previous_state = current_state;
-				//					switch (group_id % 4) {
-				//					case 0:{
-				//						if (position_id == 0) {
-				//							state.group = group_id;
-				//							state.state = 4;
-				//						} else {
-				//							state.group = group_id;
-				//							state.state = 7;
-				//						}
-				//						break;
-				//					}
-				//					case 1:{
-				//						//FormSquare
-				//						state.group = group_id;
-				//						state.state = 5;
-				//						break;
-				//					}
-				//					case 2:{
-				//						//FormCircle
-				//						state.group = group_id;
-				//						state.state = 6;
-				//						break;
-				//					}
-				//					case 3:{
-				//						//FormTriangle
-				//						state.group = group_id;
-				//						state.state = 9;
-				//						break;
-				//					}
-				//					}
-				//					final_move = true;
-				//					RobotNodeState_pub.publish(state);
-				//
-				//				}else {
-				//					previous_state = current_state;
-				//					current_state = IN_POSITION;
-				//				}
-				//				//other members can go to another state here, or wait for instructions
-				//				//ROS_INFO("SWITCHING TO FOLLOWING");
 			}
 			break; // It is no longer IN_POSITION as it has new instructions to carry out
 		}
@@ -817,6 +768,7 @@ int main(int argc, char **argv) {
 			Project2Sample::R_ID inputs;
 			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;inputs.theta = lineHeadTheta;
 			vector<float> Coord = formCircle(inputs);
+
 			// Update global variables
 			new_x_pos = Coord[0];
 			new_y_pos = Coord[1];
@@ -831,14 +783,22 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FORM_TRIANGLE: {
-			shape = formTriangle(group);
-			new_x_pos = shape[2*position_id];
-			new_y_pos = shape[2*position_id + 1];
+			// Get coordinates from position_id and leader coords
+			Project2Sample::R_ID inputs;
+			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;inputs.theta = lineHeadTheta;
+			vector<float> Coord = formTriangle(inputs);
+
+			// Update global variables
+			new_x_pos = Coord[0];
+			new_y_pos = Coord[1];
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
-			//current_state = IDLE;
+
+			state.group = group_id;
+			state.state = FORM_TRIANGLE;
+			RobotNodeState_pub.publish(state);
 			break;
 		}
 		}

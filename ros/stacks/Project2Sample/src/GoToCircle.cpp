@@ -20,8 +20,8 @@ using namespace std;
 // returns coordinates [x,y] of a robot as to where they belong in a circle
 vector<float> formCircle(Project2Sample::R_ID inputs) {
 	int posID = inputs.Pos_ID;
-	float leaderX = inputs.x;
-	float leaderY = inputs.y;
+	float leaderX = 3*inputs.x; //random scaling factor to move them away from the origin
+	float leaderY = 3*inputs.y;
 	float leaderTheta = inputs.theta;
 	// Outputs
 	vector<float> circleCoord;

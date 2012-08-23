@@ -23,8 +23,8 @@ using namespace std;
 vector<float> formSquare(Project2Sample::R_ID inputs) {
 	vector<float> squareCoord;
 	int posID = inputs.Pos_ID;
-	float leaderX = inputs.x;
-	float leaderY = inputs.y;
+	float leaderX = 2*inputs.x;
+	float leaderY = 2*inputs.y;
 	float fiveRobotLength = 5 * 0.35;
 	float spacing0 =  fiveRobotLength;
 	float spacing1 =  fiveRobotLength;

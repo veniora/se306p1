@@ -11,7 +11,7 @@
 
 using namespace std;
 
-	vector<float> formSquare(Project2Sample::R_ID inputs);
+	vector<float> formSquare(Project2Sample::R_ID inputs, int groupsize);
 
 
 #endif /* GOTOSQUARE_H_ */

@@ -47,6 +47,7 @@ int leader_id;
 int group_id = -1;
 int position_id;
 int follow_id = -2;
+int group_size;
 
 bool robot_pos_found = false;
 bool obstacle; 
@@ -462,7 +463,8 @@ int main(int argc, char **argv) {
 			leader_id = robotInfo[0];
 			group_id = robotInfo[1];
 			position_id = robotInfo[2];
-			ROS_INFO("Robot %d is in group %d after running formGroup", id, group_id);
+			group_size = robotInfo[3];
+			ROS_INFO("Robot %d is in group %d after running formGroup and group size is %d", id, group_id, group_size);
 
 			// Find the message of the leader
 			for (int i = 0; i<nodes.size(); i++){
@@ -729,7 +731,7 @@ int main(int argc, char **argv) {
 			// Leader only state
 			// Step1: Set the leader to move in a circle
 			RobotNode_cmdvel.linear.x = 0.8;
-			RobotNode_cmdvel.angular.z = 0.1;
+			RobotNode_cmdvel.angular.z = 0.2;
 			// Step2: Tell the other members of the group to change their state to FOLLOWING
 			state.group = group_id; // ALWAYS LEADER
 			state.state = FOLLOWING;
@@ -749,7 +751,7 @@ int main(int argc, char **argv) {
 			// LineHead is the position of the leader when it is in line
 			Project2Sample::R_ID inputs;
 			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;
-			vector<float> Coord = formSquare(inputs);
+			vector<float> Coord = formSquare(inputs, group_size);
 			// Update global variables
 			new_x_pos = Coord[0];
 			new_y_pos = Coord[1];
@@ -768,7 +770,7 @@ int main(int argc, char **argv) {
 			// Get coordinates from position_id and leader coords
 			Project2Sample::R_ID inputs;
 			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;inputs.theta = lineHeadTheta;
-			vector<float> Coord = formCircle(inputs);
+			vector<float> Coord = formCircle(inputs, group_size);
 
 			// Update global variables
 			new_x_pos = Coord[0];
@@ -787,7 +789,7 @@ int main(int argc, char **argv) {
 			// Get coordinates from position_id and leader coords
 			Project2Sample::R_ID inputs;
 			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;inputs.theta = lineHeadTheta;
-			vector<float> Coord = formTriangle(inputs);
+			vector<float> Coord = formTriangle(inputs, group_size);
 
 			// Update global variables
 			new_x_pos = Coord[0];

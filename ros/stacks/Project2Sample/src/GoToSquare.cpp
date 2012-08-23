@@ -20,7 +20,7 @@ using namespace std;
  * Inputs are its position_id, and leader's x value and y value
  * Size will be hardcoded to a size suitable for up to 11 robots
  */
-vector<float> formSquare(Project2Sample::R_ID inputs) {
+vector<float> formSquare(Project2Sample::R_ID inputs, int groupsize) {
 	vector<float> squareCoord;
 	int posID = inputs.Pos_ID;
 	float leaderX = 2*inputs.x;
@@ -30,10 +30,11 @@ vector<float> formSquare(Project2Sample::R_ID inputs) {
 	float spacing1 =  fiveRobotLength;
 	float spacing2 =  fiveRobotLength;
 	float spacing3 =  fiveRobotLength;
+	int numOfRobots = groupsize;
 
 	//get length of sides
-	//float lengthOfSide = ceil((float)numOfRobots / 4.0) * 5.0* 0.35;
-	float lengthOfSide = 5.5; // Hardcoded based on 11 robots
+	float lengthOfSide = ceil((float)numOfRobots / 4.0) * 5.0* 0.35;
+	//float lengthOfSide = 5.5; // Hardcoded based on 11 robots
 	int squareSide;
 
 	// j keeps track of which side of the square the robot will belong to

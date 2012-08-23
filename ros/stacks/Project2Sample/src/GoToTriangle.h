@@ -11,7 +11,7 @@
 
 using namespace std;
 
-	vector<float> formTriangle(Project2Sample::R_ID inputs);
+	vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize);
 
 
 #endif /* GOTOTRIANGLE_H_ */

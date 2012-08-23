@@ -18,14 +18,14 @@ using namespace std;
 
 
 // returns coordinates [x,y] of a robot as to where they belong in a circle
-vector<float> formCircle(Project2Sample::R_ID inputs) {
+vector<float> formCircle(Project2Sample::R_ID inputs, int groupsize) {
 	int posID = inputs.Pos_ID;
-	float leaderX = 3*inputs.x; //random scaling factor to move them away from the origin
-	float leaderY = 3*inputs.y;
+	float leaderX = 2*inputs.x; //random scaling factor to move them away from the origin
+	float leaderY = 2*inputs.y;
 	float leaderTheta = inputs.theta;
 	// Outputs
 	vector<float> circleCoord;
-	int numOfRobots = 6; //Hard code for now
+	int numOfRobots = groupsize; //Hard code for now - not anymore ;)
 	float fiveRobotLength = 5 * 0.35;
 	float circumference = float(numOfRobots+1) * fiveRobotLength;
 	float radius = circumference / (2*PI);

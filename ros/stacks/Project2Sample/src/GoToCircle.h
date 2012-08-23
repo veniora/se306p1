@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 	vector<float> formCircle(vector<Project2Sample::R_ID> group, int robotID);
 
 

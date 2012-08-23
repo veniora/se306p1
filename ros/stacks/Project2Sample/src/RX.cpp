@@ -545,24 +545,20 @@ int main(int argc, char **argv) {
 		}
 		case FOLLOWING: { 
 			//If the follow_id has not been found, find it
-			if (found_follow_id == false){
+			if (follow_id == -2){
 				if (position_id == 0){ // if leader
 					follow_id = -1;
-					found_follow_id = true; // no need to assign a follow id
 				} else {
 					for (int i=0; i<nodes.size(); i++){
 						if (nodes[i].Group_ID == group_id){ // if in same group
 							if (nodes[i].Pos_ID == (position_id-1)){ // before it in the group
 								follow_id = nodes[i].R_ID; //set follow id to the prevous id
-                                found_follow_id = true;
 							}
 						}
 					}
 				}
-			}
-
+			} else {
             //if it has found the follow_id already, then do the following behaviour
-            if (found_follow_id == true){
                 //ask for velocity instructions
 	    	    vector<float> current(3);
 	    	    current[0] = px;
@@ -596,7 +592,6 @@ int main(int argc, char **argv) {
 	        	RobotNode_cmdvel.linear.x = linearInst;
 	        	RobotNode_cmdvel.angular.z = rotateInst;
             }
-
 			break;
 		}
 		case CIRCLING: {

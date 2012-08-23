@@ -795,12 +795,12 @@ int main(int argc, char **argv) {
 			 * Leader will enter first and tell its henchmen to be squares too
 			 */
 			// Get coordinates from position_id and leader coords
-			Project2Sample::R_ID squareInputs;
-			squareInputs.Pos_ID = position_id; squareInputs.x = lineHeadX; squareInputs.y = lineHeadY;
-			vector<float>Coords = formSquare(squareInputs);
+			Project2Sample::R_ID inputs;
+			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;
+			vector<float> Coord = formSquare(inputs);
 			// Update global variables
-			new_x_pos = Coords[0];
-			new_y_pos = Coords[1];
+			new_x_pos = Coord[0];
+			new_y_pos = Coord[1];
 			ROS_INFO("Robot %d should go to x coordinate: %f", id, new_x_pos);
 			instructionsMove = moveToNewPoint();
 			//set them to this

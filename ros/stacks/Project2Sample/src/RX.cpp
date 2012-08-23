@@ -463,7 +463,7 @@ int main(int argc, char **argv) {
 			 * groupID
 			 * positionID
 			 */
-			ROS_INFO("Before forming group, nodes has %d robots", nodes.size());
+			//ROS_INFO("Before forming group, nodes has %d robots", nodes.size());
 			robotInfo = formGroup(nodes, id);
 			// Store the 3 return values as fields
 			leader_id = robotInfo[0];
@@ -476,9 +476,12 @@ int main(int argc, char **argv) {
 				// if the id of that element is the same as the leader_id, we want to store it
 				if (nodes[i].R_ID == leader_id){
 					leader_msg = nodes[i];
+					// Store these globally
+					lineHeadX = leader_msg.x;
+					lineHeadY = leader_msg.y;
+					lineHeadTheta = leader_msg.theta;
 				}
 			}
-
 			/*
 			 * Finds the vector of 3 coordinates that the robot wants to move to
 			 * x
@@ -538,12 +541,6 @@ int main(int argc, char **argv) {
 			 * In this case it will cause each robot to check whether its group mates
 			 * are also in position and once they are, the leader will go get a message (change state)
 			 */
-			//			if (previous_state == FETCH_INSTRUCTIONS) {
-			//				previous_state = current_state;
-			//				current_state = RETURN_INSTRUCTIONS;
-			//				ROS_INFO("Leader returning instructions");
-			//			}
-
 			bool group_ready = true; // Is every other robot also in position
 
 			// Check each robot in nodes
@@ -685,12 +682,10 @@ int main(int argc, char **argv) {
 					//HARD CODED LINEAR VELOCITY
 					linearInst = 0.6;
 				}
-
 				//set them to this
 				RobotNode_cmdvel.linear.x = linearInst;
 				RobotNode_cmdvel.angular.z = rotateInst;
 			}
-
 			break;
 		}
 		case FETCH_INSTRUCTIONS: {
@@ -727,7 +722,7 @@ int main(int argc, char **argv) {
 				break;
 			}
 			}
-			ROS_INFO("Robot %d received the %d instruction", id, group_id%4);
+			//ROS_INFO("Robot %d received the %d instruction", id, group_id%4);
 
 			// Check if the robot has arrived
 			// If it has, change its state to RETURN_INSTRUCTIONS
@@ -795,14 +790,26 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FORM_SQUARE: {
-			shape = formSquare(group);
-			new_x_pos = shape[2*position_id];
-			new_y_pos = shape[2*position_id + 1];
+			/*
+			 * All access
+			 * Leader will enter first and tell its henchmen to be squares too
+			 */
+			// Get coordinates from position_id and leader coords
+			Project2Sample::R_ID squareInputs;
+			squareInputs.Pos_ID = position_id; squareInputs.x = lineHeadX; squareInputs.y = lineHeadY;
+			vector<float>Coords = formSquare(squareInputs);
+			// Update global variables
+			new_x_pos = Coords[0];
+			new_y_pos = Coords[1];
+			ROS_INFO("Robot %d should go to x coordinate: %f", id, new_x_pos);
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
-			//current_state = IDLE;
+			// Change the rest of the group
+			state.group = group_id;
+			state.state = FORM_SQUARE;
+			RobotNodeState_pub.publish(state);
 			break;
 		}
 		case FORM_CIRCLE: {

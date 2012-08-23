@@ -408,9 +408,6 @@ int main(int argc, char **argv) {
 		msg.Follow_ID = follow_id;
 		RobotNode_pub.publish(msg);
 
-		//broadcast its own position
-		Follow_pub.publish(msg);
-
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
@@ -586,9 +583,14 @@ int main(int argc, char **argv) {
                 }
                 //use the next position to get velocity instructions
 	    	    float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-
+                
+                float linearInst;
+                if (obstacle){
+                    linearInst = 0;
+                } else {
 	    	    //HARD CODED LINEAR VELOCITY
-	    	    float linearInst = 0.6;
+	    	    linearInst = 0.6;
+                }
 
 	        	//set them to this
 	        	RobotNode_cmdvel.linear.x = linearInst;
@@ -620,9 +622,6 @@ int main(int argc, char **argv) {
 		msgb.Follow_ID = follow_id;
 		msgb.Group_ID = group_id;
 		msgb.Pos_ID = position_id;
-
-		//broadcast its own position
-		Follow_pub.publish(msgb);
 
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 

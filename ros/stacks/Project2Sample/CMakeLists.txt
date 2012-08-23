@@ -33,9 +33,6 @@ rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp src/GetGroup.cpp src/GoT
 rosbuild_add_executable(test/RX_test test/RX_test.cpp)
 rosbuild_add_gtest_build_flags(test/RX_test)
 
-rosbuild_add_executable(test/Example_test test/Example_test.cpp)
-rosbuild_add_gtest_build_flags(test/Example_test)
-
 rosbuild_add_executable(test/FindGroup_test test/FindGroup_test.cpp src/FindGroup.cpp)
 rosbuild_add_gtest_build_flags(test/FindGroup_test)
 

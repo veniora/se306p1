@@ -137,20 +137,8 @@ float rotateDirectionInstructions(float d_theta) {
 	return AngularV;
 }
 
-/*
-void RobotCheckState_callback(Project2Sample::R_ID msg){
-	ROS_INFO("boo");
-	group[0] = msg;
-}*/
-
-
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint() {
-
-	// NEED TO ADD GLOBAL BOOLEAN
-	// aka in position and only calls this while
-	// its not in final position
-	// or just use states?
 
 	vector<float> instructions(2);
 	//ask for velocity instructions
@@ -250,8 +238,10 @@ vector<float> moveToNewPoint() {
 	return instructions;
 
 }
-
-
+/*
+ * Adds robots into nodes vector from callback
+ * It lags and will only happen once per while loop
+ */
 void RobotNode_callback(Project2Sample::R_ID msg) {    
 	int i;
 
@@ -308,7 +298,9 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 
 
 }
-
+/*
+ * Changes state
+ */
 void RobotState_callback(Project2Sample::State msg) {
 	std::stringstream ss;
 	ss << "Robot " << id << " changed state from " << current_state << " to "
@@ -319,47 +311,36 @@ void RobotState_callback(Project2Sample::State msg) {
 		// On the other hand, there is not an implicit conversion from int to an enum type.
 		// This means we cant just set currentState to msg.state.
 		case IDLE:
-			previous_state = current_state;
 			current_state = IDLE;
 			break;
 		case FORMING_GROUP:
-			previous_state = current_state;
 			current_state = FORMING_GROUP;
 			break;
 		case MOVING_INTO_POS:
-			previous_state = current_state;
 			current_state = MOVING_INTO_POS;
 			break;
 		case FETCH_INSTRUCTIONS:
-			previous_state = current_state;
 			current_state = FETCH_INSTRUCTIONS;
 			break;
 		case CIRCLING:
-			previous_state = current_state;
 			current_state = CIRCLING;
 			break;
 		case FORM_SQUARE:
-			previous_state = current_state;
 			current_state = FORM_SQUARE;
 			break;
 		case FORM_CIRCLE:
-			previous_state = current_state;
 			current_state = FORM_CIRCLE;
 			break;
 		case FOLLOWING:
-			previous_state = current_state;
 			current_state = FOLLOWING;
 			break;
 		case IN_POSITION:
-			previous_state = current_state;
 			current_state = IN_POSITION;
 			break;
 		case FORM_TRIANGLE:
-			previous_state = current_state;
 			current_state = FORM_TRIANGLE;
 			break;
 		case RETURN_INSTRUCTIONS:
-			previous_state = current_state;
 			current_state = RETURN_INSTRUCTIONS;
 			break;
 		}
@@ -451,16 +432,19 @@ int main(int argc, char **argv) {
 	vector<float> instructionsMove;
 	Project2Sample::R_ID leader_msg;
 
+	/*
+	 * This is the main loop which will run and update everthing
+	 */
 	while (ros::ok()) {
 		//ROS_INFO("Current state: %d",current_state);
 
-		//publish all robot info to nodes array
-		msg.R_ID = id;
-		msg.x = px;
-		msg.y = py;
-		msg.R_State = current_state;
-		msg.Follow_ID = follow_id;
-		RobotNode_pub.publish(msg);
+//		//publish all robot info to nodes array
+//		msg.R_ID = id;
+//		msg.x = px;
+//		msg.y = py;
+//		msg.R_State = current_state;
+//		msg.Follow_ID = follow_id;
+//		RobotNode_pub.publish(msg);
 
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
@@ -468,67 +452,45 @@ int main(int argc, char **argv) {
 
 		switch (current_state) {
 		case IDLE: {
-			// idle does nothing but continually publish its own position
-			// we need this for the nodes array to be properly created
-
-			// shouldnt moce on till all robots have reported in
-			// debugging attempt, shouldnt stop publishing/ leave idle until all robots have checked in
-
-			//         RobotNode_pub.publish(msg);
-
-
-			// By definition this state does nothing!
-			// (note the R_ID message is published after this switch statement)
+			// Currently does nothing but robots are initialsied like this
 			break;
 		}
 		case FORMING_GROUP: {
-			//FindGroup f;
-			//ROS_INFO("in forming group");
 			GetGroup g;
-			//[leaderID, groupID, posID]
-
+			/*
+			 * Input the list of known nodes and receive back:
+			 * leaderID
+			 * groupID
+			 * positionID
+			 */
+			ROS_INFO("Before forming group, nodes has %d robots", nodes.size());
 			robotInfo = formGroup(nodes, id);
-			int i;
-			//changed to i++
-			//ROS_INFO("nodes size %d",nodes.size());
-			for (i = 0; i < nodes.size(); i++) {
-				//ROS_INFO("form group loop %i",i);
-				if (nodes.at(i).R_ID == robotInfo.at(0)) {
-					msg.R_ID = nodes.at(i).R_ID;
-					msg.x = nodes.at(i).x;
-					msg.y = nodes.at(i).y;
-					msg.theta = nodes.at(i).theta;
-					msg.Group_ID = robotInfo.at(1);
-					position_id = robotInfo.at(2);
-					msg.Pos_ID = robotInfo.at(2);
-					leader_id = robotInfo.at(0);
-					group_id = robotInfo.at(1);
-					position_id = robotInfo.at(2);
-					RobotNode_pub.publish(msg);
-					break;
+			// Store the 3 return values as fields
+			leader_id = robotInfo[0];
+			group_id = robotInfo[1];
+			position_id = robotInfo[2];
+			ROS_INFO("Robot %d is in group %d after running formGroup", id, group_id);
+
+			// Find the message of the leader
+			for (int i = 0; i<nodes.size(); i++){
+				// if the id of that element is the same as the leader_id, we want to store it
+				if (nodes[i].R_ID == leader_id){
+					leader_msg = nodes[i];
 				}
 			}
 
-			for( i = 0; i < nodes.size(); i++){
-				if(nodes.at(i).R_ID == leader_id){
-					leader_msg = nodes.at(i);
-				}
-			}
+			/*
+			 * Finds the vector of 3 coordinates that the robot wants to move to
+			 * x
+			 * y
+			 * theta
+			 */
+			robotCoordinates = calculatePosition(leader_msg, position_id);
+			// Store fields
+			new_x_pos = robotCoordinates[0];
+			new_y_pos = robotCoordinates[1];
+			final_theta = robotCoordinates[2];
 
-			robotCoordinates = calculatePosition(leader_msg, msg.Pos_ID);
-			// maybe not needed as now assigned to fields of robot...
-			msg.newX = robotCoordinates.at(0);
-			msg.newY = robotCoordinates.at(1);
-			msg.leaderTheta = robotCoordinates.at(2);
-			new_x_pos = robotCoordinates.at(0);
-			new_y_pos = robotCoordinates.at(1);
-			//ROS_INFO("size: %d, id: %d, leader id %d, group id %d, posID %d, newx %f, newy %f",nodes.size(),id, leader_id, group_id, position_id,new_x_pos, new_y_pos);
-			//ROS_INFO("id: %d, newX: %f , newY %f, pos: %d, group: %d, leader: %d", id, new_x_pos, new_y_pos, position_id, group_id, leader_id);
-			final_theta = robotCoordinates.at(2);
-
-			RobotNode_pub.publish(msg);
-			//vector group
-			//ROS_INFO("leader id %d", LeaderID);
 			group = g.getGroup(nodes, id);
 			//for (i = 0; i < group.size();i++){
 			//    ROS_INFO("id = %d", id);
@@ -541,8 +503,6 @@ int main(int argc, char **argv) {
 				//follow_id = group.at(position_id - 1).R_ID;
 				//ROS_INFO("FollowID %d", follow_id);
 			}
-			// ROS_INFO(" %d in position %d is following %d", id, position_id, follow_id);
-			previous_state = current_state;
 			current_state = MOVING_INTO_POS;
 			// ROS_INFO("should be movinng nowwww!");
 			break;
@@ -808,16 +768,22 @@ int main(int argc, char **argv) {
 		}
 		}
 
-		// Broadcast updated position now
-		Project2Sample::R_ID msgb;
-		msgb.R_ID = id;
-		msgb.x = px;
-		msgb.y = py;
-		msgb.theta = theta;
-		msgb.R_State = current_state;
-		msgb.Follow_ID = follow_id;
-		msgb.Group_ID = group_id;
-		msgb.Pos_ID = position_id;
+		/*
+		 * Broadcast new details
+		 */
+		Project2Sample::R_ID msg;
+		msg.R_ID = id;
+		msg.x = px;
+		msg.y = py;
+		msg.theta = theta;
+		msg.R_State = current_state;
+		msg.Follow_ID = follow_id;
+		msg.Group_ID = group_id;
+		msg.Pos_ID = position_id;
+		msg.newX = new_x_pos;
+		msg.newY = new_y_pos;
+		msg.leaderTheta = final_theta;
+		RobotNode_pub.publish(msg);
 
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 

@@ -178,7 +178,7 @@ vector<float> moveToNewPoint() {
 
 	if (!rightSpot) {
 		if (current[2] >= upperFinalAngle || current[2] <= lowerFinalAngle) {
-			float rotateInst = 0.1
+			float rotateInst = 0.2
 					* rotateDirectionInstructions(
 							rotateFinalAngleInstructions(current, next));
 			//set them to this
@@ -493,11 +493,6 @@ int main(int argc, char **argv) {
 		case MOVING_INTO_POS: {
 			//ROS_INFO(" MOVING " );
 			// check for collisions and avoid them
-            if (obstacle){
-                RobotNode_cmdvel.linear.x = -1;
-			    RobotNode_cmdvel.angular.z = 0.2;s
-            } else {
-
 
 			// If its current coordinates equal the target coords, change state
 			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
@@ -514,7 +509,11 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 
+            //Set it to go half the speed if there is an obstacle
+            if (obstacle) {
+                RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
             }
+
 			break;
 		}
 		case IN_POSITION:{
@@ -587,7 +586,7 @@ int main(int argc, char **argv) {
                 
                 float linearInst;
                 if (obstacle){
-                    linearInst = 0;
+                    linearInst = 0.2;
                 } else {
 	    	    //HARD CODED LINEAR VELOCITY
 	    	    linearInst = 0.6;

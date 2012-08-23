@@ -54,6 +54,8 @@ bool robot_pos_found = false;
 
 //boolean to check whether or not the robot has been added to the array or not
 int exist_robots = 0;
+bool has_instructions = false;
+bool final_move = false;
 
 // states
 enum State {
@@ -72,6 +74,7 @@ enum State {
 Project2Sample::State state;
 State current_state = IDLE;
 State previous_state = IDLE;
+
 
 //vector of nodes = x, y, theta, R_ID
 vector<Project2Sample::R_ID> nodes;
@@ -207,6 +210,7 @@ vector<float> moveToNewPoint() {
 	if (finalAngle < 0) {
 		finalAngle = 360 + finalAngle;
 	}
+
 	// setting tolerances
 	float LINEAR_TOL = 0.2;
 	float ANGULAR_TOL = 2.1;
@@ -266,14 +270,15 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			if (current_state == RETURN_INSTRUCTIONS) {
-				previous_state = current_state;
-				state.group = group_id;
-				state.state = 5;
-			} else if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
+            if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
+                ROS_INFO("made square should stop moving");
 				previous_state = current_state;
 				current_state = IDLE;
-			} else {
+			} else if(final_move){
+                ROS_INFO("made square should stop moving");
+				previous_state = current_state;
+				current_state = IDLE;                
+            }else{
 				previous_state = current_state;
 				current_state = IN_POSITION;
 			}
@@ -300,30 +305,6 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	if(!already_exists){
 		nodes.push_back(msg);
 	}
-
-	// May not have needed to change
-	/*
-    //if it is not already on the nodes array, add it
-    // set to false   
-    if(nodes.size() < num_robots){
-    nodes.push_back(msg);
-    }
-
-//            ROS_INFO(" my id = %d, adding = %d, size = %d", id, msg.R_ID, size);
-    // go through array to see if seen
-    for (int i = 0; i < nodes.size(); i++) {
-        if (nodes[i].R_ID == msg.R_ID){
-
-           // already_exists = true;
-            nodes[i] = msg; 
-        }
-    }
-
-    //if(!already_exists){
-        //ROS_INFO(" my id = %d, adding = %d", id, msg.R_ID);
-        //nodes.push_back(msg);
-    //}
-	 */
 }
 
 //This is the call back function to process odometry messages coming from Stage
@@ -651,14 +632,22 @@ int main(int argc, char **argv) {
 			//if the group is ready, move on
 			if (group_ready){
 				//the leader is given one task, which later will be getting a message
-				if (position_id == 0) {
+				if (position_id == 0 && !has_instructions) {
 					tempx = px;
 					tempy = py;
 					temptheta = theta;
 					previous_state = current_state;
 					current_state = FETCH_INSTRUCTIONS;
 					ROS_INFO("SWITCHING LEADER TO FETCH INSTRUCTIONS");
-				} else {
+				} else if(position_id == 0 && has_instructions){
+                        previous_state = current_state;
+				        state.group = group_id;
+				        state.state = 6;
+                        ROS_INFO("SHAPE TIMEEEEE");
+                        final_move = true;                        
+                        RobotNodeState_pub.publish(state);    
+                                        
+                }else {
 					previous_state = current_state;
 					current_state = IN_POSITION;
 				}
@@ -720,23 +709,26 @@ int main(int argc, char **argv) {
 
 		}
 		case RETURN_INSTRUCTIONS: {
+            has_instructions = true;
 			new_x_pos = tempx;
 			new_y_pos = tempy;
 			final_theta = temptheta;
-			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
+			/*if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
 				if (fabs(new_y_pos - py)< 0.01){
 					if (fabs(final_theta - theta)< 2.1){
 						//switch statements
-
-						break;
+                        previous_state = current_state;
+				        state.group = group_id;
+				        state.state = 6;
+                        RobotNodeState_pub.publish(state);						             
+                        break;
 					}
 				}
-			};
+			};*/
 			instructionsMove = moveToNewPoint();
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
-			RobotNodeState_pub.publish(state);
 			break;
 		}
 		case CIRCLING: {

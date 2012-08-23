@@ -7,6 +7,7 @@ define mylaser laser
   # generic model properties
   color "black"
   size [ 0.05 0.05 0.1 ]
+  obstacle_return 0
   
 )
 
@@ -15,6 +16,7 @@ define myRobot position
   size [0.35 0.35 0.25]
   drive "diff"
   mylaser(pose [ 0.050 0.000 0 0.000 ])
+  obstacle_return 0
 )
 
 define msgRobot position

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-	vector<float> formCircle(vector<Project2Sample::R_ID> group);
+	vector<float> formCircle(Project2Sample::R_ID inputs, int groupsize);
 
 
 #endif /* GOTOCIRCLE_H_ */

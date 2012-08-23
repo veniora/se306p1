@@ -32,8 +32,8 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 
 	vector<int> robotGroupInfo;
 	//find number of leaders
-	int groupID, posID, i;
-
+	int groupID, posID, i, tempGroup;
+	int groupCount = 0;
 	//number of leaders
     ROS_INFO("nodes size: %i",nodes.size());
 	int numOfLeaders = nodes.size()/6;
@@ -56,6 +56,14 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 			break;
 		}
 	}
+
+	for (i=0; i<nodes.size(); i++) {
+		tempGroup = i % numOfLeaders;
+		if (groupID == tempGroup) {
+			groupCount = groupCount + 1;
+		}
+	}
+	robotGroupInfo.push_back(groupCount);
     //ROS_INFO("leader id %d, group id %d, posID %d",robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
 	return robotGroupInfo;      //[LeaderID, groupID, posID]
 }

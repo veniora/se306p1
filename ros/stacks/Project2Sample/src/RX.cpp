@@ -42,8 +42,6 @@ int group_id;
 int position_id;
 int follow_id = -2;
 
-//boolean to make sure they don't subscribe to follow twice
-bool found_follow_id = false;
 bool robot_pos_found = false;
 bool obstacle; 
 //boolean to check whether or not the robot has been added to the array or not

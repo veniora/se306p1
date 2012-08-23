@@ -642,7 +642,7 @@ int main(int argc, char **argv) {
 				} else if(position_id == 0 && has_instructions){
                         previous_state = current_state;
 				        state.group = group_id;
-				        state.state = 6;
+				        state.state = 9;
                         ROS_INFO("SHAPE TIMEEEEE");
                         final_move = true;                        
                         RobotNodeState_pub.publish(state);    

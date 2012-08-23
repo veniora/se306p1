@@ -26,7 +26,7 @@ vector<float> formTriangle(vector<Project2Sample::R_ID> group) {
 	float spacing2 =  5 * 0.35;
 	float angle = 60.0/180.0* PI;
 	//get length of sides
-	float lengthOfSide = ceil((float)numOfRobots / 4.0) * 5.0* 0.35;
+	float lengthOfSide = ceil((float)numOfRobots / 3.0) * 5.0* 0.35;
 	float x0,y0,x1,y1,topCorner;
 	int i, j;
 	//change coordinates to make square

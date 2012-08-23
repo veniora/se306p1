@@ -43,7 +43,7 @@ int position_id;
 int follow_id = -2;
 
 //boolean to make sure they don't subscribe to follow twice
-bool subscribed_follow = false;
+bool found_follow_id = false;
 bool robot_pos_found = false;
 //boolean to check whether or not the robot has been added to the array or not
 int exist_robots = 0;
@@ -437,8 +437,6 @@ int main(int argc, char **argv) {
 	//a count of how many messages we have sent
 	int count = 0;
 
-	subscribed_follow = false;
-
 	////messages
 	//velocity of this RobotNode
 	geometry_msgs::Twist RobotNode_cmdvel;
@@ -457,7 +455,7 @@ int main(int argc, char **argv) {
 	Project2Sample::R_ID leader_msg;
 
 	while (ros::ok()) {
-		ROS_INFO("Current state: %d",current_state);
+		//ROS_INFO("Current state: %d",current_state);
 
 		//publish all robot info to nodes array
 		msg.R_ID = id;
@@ -606,34 +604,58 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FOLLOWING: { 
-			//subscribe to follow the one in front of it if this has been found, it is not the leader, and it hasn't subscribed already
-			if (subscribed_follow == false){
+			//If the follow_id has not been found, find it
+			if (found_follow_id == false){
 				if (position_id == 0){ // if leader
 					follow_id = -1;
-					subscribed_follow = true; // no need to assign a follow id
-					break;
+					found_follow_id = true; // no need to assign a follow id
 				} else {
 					for (int i=0; i<nodes.size(); i++){
 						if (nodes[i].Group_ID == group_id){ // if in same group
 							if (nodes[i].Pos_ID == (position_id-1)){ // before it in the group
 								follow_id = nodes[i].R_ID; //set follow id to the prevous id
 								//ROS_INFO("Set follow id to %d", follow_id);
+                                found_follow_id = true;
 							}
 						}
 					}
 				}
-				//subscribe to the robot it should follow's position
-				//note: need to set FollowID before this can be called
-				ss.str("");
-				ss << "Robot" << follow_id << "_follow";
-				ROS_INFO("robot %d is subscribed to Robot%d_follow",id,follow_id);
-
-				ros::Subscriber Follow_sub = n.subscribe<Project2Sample::R_ID>(
-						ss.str(), 1000, poseCallbackFollow);
-				//string mystr = ss.str();
-				//ROS_INFO("%s", mystr.c_str());
-				subscribed_follow = true;
 			}
+
+            //if it has, then do the following behaviour
+            if (found_follow_id == true){
+                //ask for velocity instructions
+	    	    vector<float> current(3);
+	    	    current[0] = px;
+	    	    current[1] = py;
+	    	    current[2] = theta;
+
+                //find the position of the next one
+	    	    vector<float> next(3);
+
+                for (int k = 0; k < nodes.size(); k++){ //loop through nodes
+                    //need to check group maybe??
+                    if (nodes[k].R_ID == follow_id){
+                    //if the node is of the robot it should be following
+                    //set the next position to its position
+                        next[0] = nodes[k].x;
+                        next[1] = nodes[k].y;
+                        next[2] = nodes[k].theta;
+                    }
+                }
+                //use the next position to get velocity instructions
+	    	    float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
+	    	    //ROS_INFO("rotate instructions are %f",rotateInst);
+	    	    //then find linear
+	    	    //vector<float> linearInst = linearInstructions(current, next);
+
+	    	    //HARD CODED LINEAR VELOCITY FOR NOW
+	    	    float linearInst = 0.5;
+
+	        	//set them to this
+	        	RobotNode_cmdvel.linear.x = linearInst;
+	        	RobotNode_cmdvel.angular.z = rotateInst;
+            }
 
 			break;
 		}

@@ -24,8 +24,8 @@ vector<float> formTriangle(Project2Sample::R_ID inputs) {
 	int posID = inputs.Pos_ID;
 	float fiveRobotLength = 5 * 0.35;
 
-	float leaderX = -3*inputs.x; // random scaling factor to move them away from the origin a bit
-	float leaderY = -3*inputs.y;
+	float leaderX = 3*inputs.x; // random scaling factor to move them away from the origin a bit
+	float leaderY = 3*inputs.y;
 	float leaderTheta = inputs.theta;
 
 		//Spacings
@@ -57,7 +57,7 @@ vector<float> formTriangle(Project2Sample::R_ID inputs) {
 				}
 				break;
 			case 1:
-				topCorner = sqrt(pow(lengthOfSide, 2) - pow((lengthOfSide/2),2));
+				topCorner = sqrt(pow(lengthOfSide, 2) - pow((lengthOfSide/2), 2));
 				if (posID == 1) {
 					triangleCoord.push_back(leaderX + lengthOfSide/2);
 					triangleCoord.push_back(group.at(0).y + topCorner);

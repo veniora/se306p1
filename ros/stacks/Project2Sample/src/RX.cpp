@@ -746,6 +746,7 @@ int main(int argc, char **argv) {
 			 * Leader will enter first and tell its henchmen to be squares too
 			 */
 			// Get coordinates from position_id and leader coords
+			// LineHead is the position of the leader when it is in line
 			Project2Sample::R_ID inputs;
 			inputs.Pos_ID = position_id; inputs.x = lineHeadX; inputs.y = lineHeadY;
 			vector<float> Coord = formSquare(inputs);

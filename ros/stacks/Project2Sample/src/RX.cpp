@@ -125,46 +125,6 @@ float rotateDirectionInstructions(float d_theta) {
 	return AngularV;
 }
 
-//this method is called when the robot in front publishes its coordinates when it moves
-//HARD CODE THE RESULTS FOR NOW
-void poseCallbackFollow(Project2Sample::R_ID msg){
-	ROS_INFO("start of follow callback");
-	//check that it should be following, if not then just return
-	if (current_state == FOLLOWING){
-
-		ros::NodeHandle nb;
-		ros::Publisher RobotNode_stage_pub = nb.advertise<geometry_msgs::Twist>("Robot1_vel",1000);
-		//gets in a message with the position of who its following
-
-		//ask for velocity instructions
-		vector<float> current(3);
-		current[0] = px;
-		current[1] = py;
-		current[2] = theta;
-
-		vector<float> next(3);
-		next[0] = msg.x;
-		next[1] = msg.y;
-		next[2] = msg.theta;
-
-		float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-		ROS_INFO("rotate instructions are %f",rotateInst);
-		//then find linear
-		//vector<float> linearInst = linearInstructions(current, next);
-
-		//HARD CODED LINEAR VELOCITY FOR NOW
-		float linearInst = 0.5;
-
-		//set them to this
-		geometry_msgs::Twist RobotNode_cmdvel;
-		RobotNode_cmdvel.linear.x = linearInst;
-		RobotNode_cmdvel.angular.z = rotateInst;
-
-		//then move
-		RobotNode_stage_pub.publish(RobotNode_cmdvel);
-	}
-}
-
 
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint() {
@@ -172,6 +132,7 @@ vector<float> moveToNewPoint() {
 	// NEED TO ADD GLOBAL BOOLEAN
 	// aka in position and only calls this while
 	// its not in final position
+    // or just use states?
 
 	vector<float> instructions(2);
 	//ask for velocity instructions
@@ -276,29 +237,6 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 		nodes.push_back(msg);
 	}
 
-	// May not have needed to change
-	/*
-    //if it is not already on the nodes array, add it
-    // set to false   
-    if(nodes.size() < num_robots){
-    nodes.push_back(msg);
-    }
-
-//            ROS_INFO(" my id = %d, adding = %d, size = %d", id, msg.R_ID, size);
-    // go through array to see if seen
-    for (int i = 0; i < nodes.size(); i++) {
-        if (nodes[i].R_ID == msg.R_ID){
-
-           // already_exists = true;
-            nodes[i] = msg; 
-        }
-    }
-
-    //if(!already_exists){
-        //ROS_INFO(" my id = %d, adding = %d", id, msg.R_ID);
-        //nodes.push_back(msg);
-    //}
-	 */
 }
 
 //This is the call back function to process odometry messages coming from Stage
@@ -418,12 +356,6 @@ int main(int argc, char **argv) {
 	ros::Subscriber RobotNode_sub = n.subscribe<Project2Sample::R_ID>(
 			"Robot_msg", 1000, RobotNode_callback);
 
-	//publish its own position for other robots to follow
-	ss.str("");
-	ss << "Robot" << argv[1] << "_follow";
-	ros::Publisher Follow_pub = n.advertise<Project2Sample::R_ID>(ss.str(),
-			1000);
-
 	ss.str("");
 	ss << "Robot" << argv[1] << "_laser";
 	ros::Subscriber StageLaser_sub = n.subscribe<sensor_msgs::LaserScan>(
@@ -442,10 +374,6 @@ int main(int argc, char **argv) {
 	geometry_msgs::Twist RobotNode_cmdvel;
 	//message object to other robots
 	Project2Sample::R_ID msg;
-
-
-	//HARD CODE FOLLOW ID TO TEST
-	//follow_id = 0;
 
 
 	//initialise variables to be used in case statements
@@ -614,7 +542,6 @@ int main(int argc, char **argv) {
 						if (nodes[i].Group_ID == group_id){ // if in same group
 							if (nodes[i].Pos_ID == (position_id-1)){ // before it in the group
 								follow_id = nodes[i].R_ID; //set follow id to the prevous id
-								//ROS_INFO("Set follow id to %d", follow_id);
                                 found_follow_id = true;
 							}
 						}
@@ -622,7 +549,7 @@ int main(int argc, char **argv) {
 				}
 			}
 
-            //if it has, then do the following behaviour
+            //if it has found the follow_id already, then do the following behaviour
             if (found_follow_id == true){
                 //ask for velocity instructions
 	    	    vector<float> current(3);
@@ -634,7 +561,6 @@ int main(int argc, char **argv) {
 	    	    vector<float> next(3);
 
                 for (int k = 0; k < nodes.size(); k++){ //loop through nodes
-                    //need to check group maybe??
                     if (nodes[k].R_ID == follow_id){
                     //if the node is of the robot it should be following
                     //set the next position to its position
@@ -645,12 +571,9 @@ int main(int argc, char **argv) {
                 }
                 //use the next position to get velocity instructions
 	    	    float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-	    	    //ROS_INFO("rotate instructions are %f",rotateInst);
-	    	    //then find linear
-	    	    //vector<float> linearInst = linearInstructions(current, next);
 
-	    	    //HARD CODED LINEAR VELOCITY FOR NOW
-	    	    float linearInst = 0.5;
+	    	    //HARD CODED LINEAR VELOCITY
+	    	    float linearInst = 0.6;
 
 	        	//set them to this
 	        	RobotNode_cmdvel.linear.x = linearInst;
@@ -660,7 +583,7 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case CIRCLING: {
-			RobotNode_cmdvel.linear.x = 1;
+			RobotNode_cmdvel.linear.x = 0.8;
 			RobotNode_cmdvel.angular.z = 0.2;
 			break;
 		}
@@ -690,7 +613,7 @@ int main(int argc, char **argv) {
 
 		ros::spinOnce();
 		ros::Rate(10).sleep();
-		++count;
+		count++;
 
 	}
 

@@ -62,7 +62,7 @@ enum State {
 
 State current_state = IDLE;
 
-//vector of nodes = x, y, theta, R_ID
+//vector of nodes = x, y, theta, R_ID UPDATE THIS WITH ALL THE VALUES
 vector<Project2Sample::R_ID> nodes;
 //vector of nodes that are in the same group
 vector<Project2Sample::R_ID> group;
@@ -492,7 +492,13 @@ int main(int argc, char **argv) {
 		}
 		case MOVING_INTO_POS: {
 			//ROS_INFO(" MOVING " );
-			// After moving, set new behaviour
+			// check for collisions and avoid them
+            if (obstacle){
+                RobotNode_cmdvel.linear.x = -1;
+			    RobotNode_cmdvel.angular.z = 0.2;s
+            } else {
+
+
 			// If its current coordinates equal the target coords, change state
 			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
 				if (fabs(new_y_pos - py)< 0.01){
@@ -508,6 +514,7 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 
+            }
 			break;
 		}
 		case IN_POSITION:{

@@ -56,6 +56,10 @@ int exist_robots = 0;
 bool has_instructions = false;
 bool final_move = false;
 
+// Movement tolerances
+float LINEAR_TOL = 0.2;
+float ANGULAR_TOL = 2.1;
+
 // states
 enum State {
 	IDLE = 0,
@@ -82,14 +86,13 @@ vector<Project2Sample::R_ID> group;
 
 int count;
 
-// returns the angle needed to reach next position.
-float rotateFinalAngleInstructions(vector<float> currentPosition,
-		vector<float> newPosition) {
+/*
+ * Returns the angle a robot will have to turn in order to face the right direction
+ */
+float rotateFinalAngleInstructions(vector<float> currentPosition, vector<float> newPosition) {
 
-	//ROS_INFO("start of rotate instructions");
-
-	float delta_y = newPosition[1] - currentPosition[1];
 	float delta_x = newPosition[0] - currentPosition[0];
+	float delta_y = newPosition[1] - currentPosition[1];
 
 	float delta_theta;
 
@@ -110,7 +113,7 @@ float rotateFinalAngleInstructions(vector<float> currentPosition,
 		ROS_INFO("no quadrant found");
 	}
 
-	//modulate deltaTheta
+	//modulate deltaTheta to -360 to 360
 	delta_theta = fmodf(delta_theta, 360.0);
 	return delta_theta;
 }
@@ -137,29 +140,34 @@ float rotateDirectionInstructions(float d_theta) {
 	return AngularV;
 }
 
-// passeed in new position , x y theta in a msg
-vector<float> moveToNewPoint() {
+/*
+ * This is the all purpose move function which can only be called from within the MOVING_INTO_POS state
+ */
+vector<float> moveToNewPoint() { // no arguments but uses global variables :(
 
-	vector<float> instructions(2);
-	//ask for velocity instructions
-	vector<float> current(3);
+	vector<float> instructions(2); // prepare output
+
+	// prepare inputs
+	vector<float> current(3); // Current position
 	current[0] = px;
 	current[1] = py;
 	current[2] = theta;
 
-	vector<float> next(3);
+	vector<float> next(3); // Target position
 	next[0] = new_x_pos;
 	next[1] = new_y_pos;
 	next[2] = final_theta;
 
+	// Used to check if it is in position
 	bool rightSpot = false;
+	// Default linear velocity
 	float linearInst = 1.0;
+	/*
+	 * Calculate the change in angle the robot will have to rotate through
+	 */
 	float deltaAngle = rotateFinalAngleInstructions(current, next);
+	// The final angle
 	float finalAngle = deltaAngle + theta;
-
-	if (finalAngle < 0) {
-		finalAngle = 360 + finalAngle;
-	}
 
 	// setting tolerances
 	float LINEAR_TOL = 0.2;
@@ -173,19 +181,16 @@ vector<float> moveToNewPoint() {
 	float upperFinalAngle = finalAngle + ANGULAR_TOL;
 	float lowerFinalAngle = finalAngle - ANGULAR_TOL;
 
-	//
-	//ROS_INFO("start of while2 %f", theta);
-	if (current[0] >= (upperX) || current[0] <= (lowerX)
-			|| current[1] >= (upperY) || current[1] <= (lowerY)) {
-		//set them to this
-		rightSpot = false;
-		//ROS_INFO("BAD SPOT: %f < %f < %f && %f < %f < %f", lowerX, current[0], upperX, lowerY, current[1], upperY);
+
+	if (current[0] >= (upperX) || current[0] <= (lowerX) // Checking tolerances in x
+			|| current[1] >= (upperY) || current[1] <= (lowerY)) { // in y
+		rightSpot = false; // beyond ranges
 	} else {
 		rightSpot = true;
 	}
 
 	if (!rightSpot) {
-		if (current[2] >= upperFinalAngle || current[2] <= lowerFinalAngle) {
+		if (current[2] >= upperFinalAngle || current[2] <= lowerFinalAngle) { //angular tolerances
 			float rotateInst = 0.12
 					* rotateDirectionInstructions(
 							rotateFinalAngleInstructions(current, next));
@@ -438,14 +443,6 @@ int main(int argc, char **argv) {
 	while (ros::ok()) {
 		//ROS_INFO("Current state: %d",current_state);
 
-//		//publish all robot info to nodes array
-//		msg.R_ID = id;
-//		msg.x = px;
-//		msg.y = py;
-//		msg.R_State = current_state;
-//		msg.Follow_ID = follow_id;
-//		RobotNode_pub.publish(msg);
-
 		//messages to stage
 		RobotNode_cmdvel.linear.x = linear_x;
 		RobotNode_cmdvel.angular.z = angular_z;
@@ -491,47 +488,44 @@ int main(int argc, char **argv) {
 			new_y_pos = robotCoordinates[1];
 			final_theta = robotCoordinates[2];
 
+			/*
+			 * This attempts to retrieve the vector of all nodes in a particular group
+			 */
 			group = g.getGroup(nodes, id);
-			//for (i = 0; i < group.size();i++){
-			//    ROS_INFO("id = %d", id);
-			//}
+			ROS_INFO("Group %d has %d members", group_id, group.size());
+			// Currently all robots getting assigned to all groups
 
-			if (position_id == 0) {
-				follow_id = -1;
-				//ROS_INFO("FollowID %d", FollowID);
-			} else {
-				//follow_id = group.at(position_id - 1).R_ID;
-				//ROS_INFO("FollowID %d", follow_id);
-			}
+			// All numbers are calculated and fields assign so move into the move state
 			current_state = MOVING_INTO_POS;
-			// ROS_INFO("should be movinng nowwww!");
 			break;
 		}
 		case MOVING_INTO_POS: {
-			//ROS_INFO(" MOVING " );
-			// check for collisions and avoid them
+			/*
+			 * This is an all purpose movement state. It compares the current coordinates to the
+			 * desired ones
+			 */
 
-			// If its current coordinates equal the target coords, change state
-			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
-				if (fabs(new_y_pos - py)< 0.01){
-					if (fabs(final_theta - theta)< 2.1){
-						previous_state = current_state;
+			// Check if it is within range of the target position
+			if (fabs(new_x_pos - px)< LINEAR_TOL){ // check x coordinate
+				if (fabs(new_y_pos - py)< LINEAR_TOL){ // check y
+					if (fabs(final_theta - theta)< ANGULAR_TOL){ // check angle
 						current_state = IN_POSITION;
-						break;
+						break; // It is no longer moving so it is in position
 					}
 				}
 			};
-			// If not in position, give new instructions
+			// If it gets to here, it is not in position and should ask for new instructions
+			// They are in the form: angular and linear velocity
 			instructionsMove = moveToNewPoint();
-			//set them to this
+			// Prepare to publish to the stage
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 
 			//Set it to go half the speed if there is an obstacle
-			if (obstacle) {
-				RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
-			}
-
+//			if (obstacle) {
+//				RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
+//			}
+			// State can only be left once it is in position
 			break;
 		}
 		case IN_POSITION:{
@@ -783,8 +777,8 @@ int main(int argc, char **argv) {
 		msg.newX = new_x_pos;
 		msg.newY = new_y_pos;
 		msg.leaderTheta = final_theta;
-		RobotNode_pub.publish(msg);
 
+		RobotNode_pub.publish(msg);
 		RobotNode_stage_pub.publish(RobotNode_cmdvel);
 
 		ros::spinOnce();

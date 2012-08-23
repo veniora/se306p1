@@ -266,8 +266,18 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			previous_state = current_state;
-			current_state = IN_POSITION;
+			if (current_state == RETURN_INSTRUCTIONS) {
+				previous_state = current_state;
+				state.group = group_id;
+				state.state = 5;
+			} else if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
+				previous_state = current_state;
+				current_state = IDLE;
+			} else {
+				previous_state = current_state;
+				current_state = IN_POSITION;
+			}
+
 		}
 	}
 	return instructions;
@@ -372,7 +382,6 @@ void RobotState_callback(Project2Sample::State msg) {
 			current_state = CIRCLING;
 			break;
 		case FORM_SQUARE:
-			ROS_INFO("%d", previous_state);
 			previous_state = current_state;
 			current_state = FORM_SQUARE;
 			break;
@@ -718,9 +727,7 @@ int main(int argc, char **argv) {
 				if (fabs(new_y_pos - py)< 0.01){
 					if (fabs(final_theta - theta)< 2.1){
 						//switch statements
-						state.group = group_id;
-						state.state = 5;
-						RobotNodeState_pub.publish(state);
+
 						break;
 					}
 				}
@@ -729,6 +736,7 @@ int main(int argc, char **argv) {
 			//set them to this
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			RobotNodeState_pub.publish(state);
 			break;
 		}
 		case CIRCLING: {
@@ -768,7 +776,7 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 			//current_state = IDLE;
 			break;
-			}
+		}
 		}
 
 		// Broadcast updated position now

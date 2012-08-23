@@ -18,7 +18,7 @@
 using namespace std;
 
 // returns coordinates [x,y] of a robot as to where they belong in a square
-vector<float> formTriangle(vector<Project2Sample::R_ID> group, int robotID) {
+vector<float> formTriangle(vector<Project2Sample::R_ID> group) {
 	vector<float> triangleCoord;
 	int numOfRobots = group.size();
 	float spacing0 =  5 * 0.35;
@@ -31,7 +31,7 @@ vector<float> formTriangle(vector<Project2Sample::R_ID> group, int robotID) {
 	int i, j;
 	//change coordinates to make square
 	for (i=0; i<group.size(); ++i) {
-		if (group.at(i).R_ID == robotID) {
+
 			j = i % 3;
 			switch (j) {
 			case 0:
@@ -70,7 +70,7 @@ vector<float> formTriangle(vector<Project2Sample::R_ID> group, int robotID) {
 				}
 				break;
 			}
-		}
+
 	}
 	return triangleCoord;
 }

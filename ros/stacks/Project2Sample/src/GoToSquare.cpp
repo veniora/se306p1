@@ -15,7 +15,7 @@
 using namespace std;
 
 // returns coordinates [x,y] of a robot as to where they belong in a square
-vector<float> formSquare(vector<Project2Sample::R_ID> group, int robotID) {
+vector<float> formSquare(vector<Project2Sample::R_ID> group) {
 	vector<float> squareCoord;
 	int numOfRobots = group.size();
 	float spacing0 =  5 * 0.35;
@@ -28,7 +28,7 @@ vector<float> formSquare(vector<Project2Sample::R_ID> group, int robotID) {
 	int i, j;
 	//change coordinates to make square
 	for (i=0; i<group.size(); ++i) {
-		if (group.at(i).R_ID == robotID) {
+		//if (group.at(i).R_ID == robotID) {
 			j = i % 4;
 			switch (j) {
 			case 0:
@@ -71,7 +71,7 @@ vector<float> formSquare(vector<Project2Sample::R_ID> group, int robotID) {
 					spacing3 = spacing3 + (0.35*5.0);
 				}
 				break;
-			}
+			//}
 		}
 	}
 	return squareCoord;

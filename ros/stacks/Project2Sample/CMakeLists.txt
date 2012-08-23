@@ -29,7 +29,7 @@ rosbuild_gensrv()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp src/GetGroup.cpp)
+rosbuild_add_executable(RX src/RX.cpp src/FindGroup.cpp src/GetGroup.cpp src/GoToSquare.cpp src/GoToCircle.cpp  src/GoToTriangle.cpp)
 rosbuild_add_executable(test/RX_test test/RX_test.cpp)
 rosbuild_add_gtest_build_flags(test/RX_test)
 

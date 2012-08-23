@@ -178,7 +178,7 @@ vector<float> moveToNewPoint() {
 
 	if (!rightSpot) {
 		if (current[2] >= upperFinalAngle || current[2] <= lowerFinalAngle) {
-			float rotateInst = 0.2
+			float rotateInst = 0.12
 					* rotateDirectionInstructions(
 							rotateFinalAngleInstructions(current, next));
 			//set them to this
@@ -586,7 +586,7 @@ int main(int argc, char **argv) {
                 
                 float linearInst;
                 if (obstacle){
-                    linearInst = 0.2;
+                    linearInst = 0.4;
                 } else {
 	    	    //HARD CODED LINEAR VELOCITY
 	    	    linearInst = 0.6;

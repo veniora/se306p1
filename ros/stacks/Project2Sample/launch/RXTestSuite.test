@@ -5,7 +5,6 @@
 	<test test-name="RX_test" pkg="Project2Sample" type="RX_test"/>
 	
 	<!-- UNIT TESTS -->
-	<test test-name="Example_test" pkg="Project2Sample" type="Example_test"/>
 	<test test-name="FindGroup_test" pkg="Project2Sample" type="FindGroup_test"/>	
 	<test test-name="GetGroup_test" pkg="Project2Sample" type="GetGroup_test"/>	
 	<test test-name="GoToCircle_test" pkg="Project2Sample" type="GoToCircle_test"/>	

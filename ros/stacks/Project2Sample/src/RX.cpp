@@ -224,10 +224,8 @@ vector<float> moveToNewPoint() { // no arguments but uses global variables :(
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
 			if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
-				ROS_INFO("made square should stop moving");
 				current_state = IDLE;
 			} else if(final_move){
-				ROS_INFO("made square should stop moving");
 				current_state = IDLE;                
 			}else{
 				current_state = IN_POSITION;
@@ -286,7 +284,7 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 
 	for (int i = 30; i < 150; i++){
 		if ( i < 110 && i >= 70){
-			if (msg.ranges[i] < 2.00){
+			if (msg.ranges[i] < 1.50){
 				obstacle = true;
 			}
 		}else{
@@ -730,8 +728,8 @@ int main(int argc, char **argv) {
 		case CIRCLING: {
 			// Leader only state
 			// Step1: Set the leader to move in a circle
-			RobotNode_cmdvel.linear.x = 0.8;
-			RobotNode_cmdvel.angular.z = 0.2;
+			RobotNode_cmdvel.linear.x = 0.6;
+			RobotNode_cmdvel.angular.z = 0.1;
 			// Step2: Tell the other members of the group to change their state to FOLLOWING
 			state.group = group_id; // ALWAYS LEADER
 			state.state = FOLLOWING;

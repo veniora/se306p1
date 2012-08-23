@@ -36,10 +36,18 @@ vector<float> formCircle(Project2Sample::R_ID inputs) {
 	float centreY = (radius*sin(newTheta)) + leaderY;
 	float angle = (360.0/(float)numOfRobots)/180.00 * PI;
 
+
+	// Needs to be changed, leader position is wrong.
+	if(posID == 0){
+		circleCoord.push_back(leaderX);
+		circleCoord.push_back(leaderY);
+	}else{
+		circleCoord.push_back((radius*(cos((posID+1)*angle))) + centreX);
+		circleCoord.push_back((radius*(sin((posID+1)*angle))) + centreY);
+	}
 	// Use the position id to find the correct coordinates
 
-	circleCoord.push_back((radius*(cos(posID*angle))) + centreX);
-	circleCoord.push_back((radius*(sin(posID*angle))) + centreY);
+
 
 	return circleCoord;
 }

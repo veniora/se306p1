@@ -1,0 +1,7 @@
+This document exist only so git is able to exclude the test folder.
+Without this folder the bin folder and all it contains would be ignored by git.
+By exluding this document from .gitignore the the bin/test/ path remains (as 
+well as this document) while everything else that is generated and store in
+the folder is not. This require because the tests will not be created unless
+the bin/test/ folder exists.
+

@@ -9,3 +9,4 @@ float64 theta
 float64 leaderTheta
 float64 newX
 float64 newY
+int64 inPos

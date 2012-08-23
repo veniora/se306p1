@@ -2,16 +2,17 @@
 #include "std_msgs/String.h"
 #include "Project2Sample/R_ID.h"
 #include "geometry_msgs/Twist.h"
-#include "nav_msgs/Odometry.h"
 #include "sensor_msgs/LaserScan.h"
+#include "nav_msgs/Odometry.h"
 #include "Project2Sample/State.h"
 #include "FindGroup.h"
 #include "GetGroup.h"
-
+#include "GoToSquare.h"
+#include "GoToCircle.h"
 #include <sstream>
 #include "math.h"
 #include <stdlib.h>
-
+#include "GoToTriangle.h"
 /**
  *This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages
  **/
@@ -34,18 +35,26 @@ double theta;
 double new_x_pos;
 double new_y_pos;
 double final_theta;
+double tempx;
+double tempy;
+double temptheta;
+
+vector<float> shape;
 
 // DONT START VARIABLE NAMES WITH CAPITALS!
 int id;
 int leader_id;
-int group_id;
+int group_id = -1;
 int position_id;
 int follow_id = -2;
 
 bool robot_pos_found = false;
 bool obstacle; 
+
 //boolean to check whether or not the robot has been added to the array or not
 int exist_robots = 0;
+bool has_instructions = false;
+bool final_move = false;
 
 // states
 enum State {
@@ -58,9 +67,13 @@ enum State {
 	FORM_CIRCLE = 6,
 	FOLLOWING = 7,
 	IN_POSITION = 8,
+	FORM_TRIANGLE = 9,
+	RETURN_INSTRUCTIONS = 10,
 };
-
+Project2Sample::State state;
 State current_state = IDLE;
+State previous_state = IDLE;
+
 
 //vector of nodes = x, y, theta, R_ID UPDATE THIS WITH ALL THE VALUES
 vector<Project2Sample::R_ID> nodes;
@@ -124,6 +137,12 @@ float rotateDirectionInstructions(float d_theta) {
 	return AngularV;
 }
 
+/*
+void RobotCheckState_callback(Project2Sample::R_ID msg){
+	ROS_INFO("boo");
+	group[0] = msg;
+}*/
+
 
 // passeed in new position , x y theta in a msg
 vector<float> moveToNewPoint() {
@@ -153,6 +172,7 @@ vector<float> moveToNewPoint() {
 	if (finalAngle < 0) {
 		finalAngle = 360 + finalAngle;
 	}
+
 	// setting tolerances
 	float LINEAR_TOL = 0.2;
 	float ANGULAR_TOL = 2.1;
@@ -212,7 +232,19 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-			current_state = IN_POSITION;
+            if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
+                ROS_INFO("made square should stop moving");
+				previous_state = current_state;
+				current_state = IDLE;
+			} else if(final_move){
+                ROS_INFO("made square should stop moving");
+				previous_state = current_state;
+				current_state = IDLE;                
+            }else{
+				previous_state = current_state;
+				current_state = IN_POSITION;
+			}
+
 		}
 	}
 	return instructions;
@@ -235,7 +267,6 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	if(!already_exists){
 		nodes.push_back(msg);
 	}
-
 }
 
 //This is the call back function to process odometry messages coming from Stage
@@ -282,39 +313,58 @@ void RobotState_callback(Project2Sample::State msg) {
 	std::stringstream ss;
 	ss << "Robot " << id << " changed state from " << current_state << " to "
 			<< msg.state;
-
-	switch (msg.state) {
-	// There is an implicit conversion from any enum type to int.
-	// On the other hand, there is not an implicit conversion from int to an enum type.
-	// This means we cant just set currentState to msg.state.
-	case IDLE:
-		current_state = IDLE;
-		break;
-	case FORMING_GROUP:
-		current_state = FORMING_GROUP;
-		break;
-	case MOVING_INTO_POS:
-		current_state = MOVING_INTO_POS;
-		break;
-	case FETCH_INSTRUCTIONS:
-		current_state = FETCH_INSTRUCTIONS;
-		break;
-	case CIRCLING:
-		current_state = CIRCLING;
-		break;
-	case FORM_SQUARE:
-		current_state = FORM_SQUARE;
-		break;
-	case FORM_CIRCLE:
-		current_state = FORM_CIRCLE;
-		break;
-	case FOLLOWING:
-		current_state = FOLLOWING;
-		break;
-	case IN_POSITION:
-		current_state = IN_POSITION;
-		break;
+	if (msg.group == -1 || msg.group == group_id) {
+		switch (msg.state) {
+		// There is an implicit conversion from any enum type to int.
+		// On the other hand, there is not an implicit conversion from int to an enum type.
+		// This means we cant just set currentState to msg.state.
+		case IDLE:
+			previous_state = current_state;
+			current_state = IDLE;
+			break;
+		case FORMING_GROUP:
+			previous_state = current_state;
+			current_state = FORMING_GROUP;
+			break;
+		case MOVING_INTO_POS:
+			previous_state = current_state;
+			current_state = MOVING_INTO_POS;
+			break;
+		case FETCH_INSTRUCTIONS:
+			previous_state = current_state;
+			current_state = FETCH_INSTRUCTIONS;
+			break;
+		case CIRCLING:
+			previous_state = current_state;
+			current_state = CIRCLING;
+			break;
+		case FORM_SQUARE:
+			previous_state = current_state;
+			current_state = FORM_SQUARE;
+			break;
+		case FORM_CIRCLE:
+			previous_state = current_state;
+			current_state = FORM_CIRCLE;
+			break;
+		case FOLLOWING:
+			previous_state = current_state;
+			current_state = FOLLOWING;
+			break;
+		case IN_POSITION:
+			previous_state = current_state;
+			current_state = IN_POSITION;
+			break;
+		case FORM_TRIANGLE:
+			previous_state = current_state;
+			current_state = FORM_TRIANGLE;
+			break;
+		case RETURN_INSTRUCTIONS:
+			previous_state = current_state;
+			current_state = RETURN_INSTRUCTIONS;
+			break;
+		}
 	}
+
 }
 
 int main(int argc, char **argv) {
@@ -356,8 +406,12 @@ int main(int argc, char **argv) {
 	//advertise() function will tell ROS that you want to publish on a given topic_
 	//for other robots
 	ss.str("");
+	ros::Publisher RobotNodeState_pub = n.advertise<Project2Sample::State>(
+			"Robot_state", 1000);
+	ss.str("");
 	ros::Publisher RobotNode_pub = n.advertise<Project2Sample::R_ID>(
 			"Robot_msg", 1000);
+
 	//to stage
 	ss.str("");
 	ss << "Robot" << argv[1] << "_vel";
@@ -378,6 +432,8 @@ int main(int argc, char **argv) {
 	//subscribe to listen to their current states
 	ros::Subscriber Robot_state = n.subscribe<Project2Sample::State>(
 			"Robot_state", 1000, RobotState_callback);
+
+	ss.str("");
 
 	//a count of how many messages we have sent
 	int count = 0;
@@ -466,7 +522,7 @@ int main(int argc, char **argv) {
 			msg.leaderTheta = robotCoordinates.at(2);
 			new_x_pos = robotCoordinates.at(0);
 			new_y_pos = robotCoordinates.at(1);
-			ROS_INFO("size: %d, id: %d, leader id %d, group id %d, posID %d, newx %f, newy %f",nodes.size(),id, leader_id, group_id, position_id,new_x_pos, new_y_pos);
+			//ROS_INFO("size: %d, id: %d, leader id %d, group id %d, posID %d, newx %f, newy %f",nodes.size(),id, leader_id, group_id, position_id,new_x_pos, new_y_pos);
 			//ROS_INFO("id: %d, newX: %f , newY %f, pos: %d, group: %d, leader: %d", id, new_x_pos, new_y_pos, position_id, group_id, leader_id);
 			final_theta = robotCoordinates.at(2);
 
@@ -486,6 +542,7 @@ int main(int argc, char **argv) {
 				//ROS_INFO("FollowID %d", follow_id);
 			}
 			// ROS_INFO(" %d in position %d is following %d", id, position_id, follow_id);
+			previous_state = current_state;
 			current_state = MOVING_INTO_POS;
 			// ROS_INFO("should be movinng nowwww!");
 			break;
@@ -498,6 +555,7 @@ int main(int argc, char **argv) {
 			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
 				if (fabs(new_y_pos - py)< 0.01){
 					if (fabs(final_theta - theta)< 2.1){
+						previous_state = current_state;
 						current_state = IN_POSITION;
 						break;
 					}
@@ -517,6 +575,11 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case IN_POSITION:{
+			if (previous_state == FETCH_INSTRUCTIONS) {
+				previous_state = current_state;
+				current_state = RETURN_INSTRUCTIONS;
+				ROS_INFO("Leader returning instructions");
+			}
 			//			ROS_INFO("In Position");
 			bool group_ready = true;
 
@@ -525,7 +588,7 @@ int main(int argc, char **argv) {
 					//ROS_INFO("Group_ID: %d", nodes[i].Group_ID);
 					//if a group member is in the wrong state
 					//ROS_INFO("R_State: %d", nodes[i].R_State);
-					if (nodes[i].R_State != IN_POSITION && nodes[i].R_State != FOLLOWING && nodes[i].R_State != CIRCLING ){
+					if (nodes[i].R_State != IN_POSITION){
 						//some group member is not ready
 						group_ready = false;
 						//ROS_INFO("Group not ready");
@@ -536,14 +599,27 @@ int main(int argc, char **argv) {
 			//if the group is ready, move on
 			if (group_ready){
 				//the leader is given one task, which later will be getting a message
-				if (position_id == 0){
-					current_state = CIRCLING;
-					ROS_INFO("SWITCHING LEADER TO CIRCLING");
-					//other members can go to another state here, or wait for instructions
-				} else {
-					current_state = FOLLOWING;
-					ROS_INFO("SWITCHING TO FOLLOWING");
+				if (position_id == 0 && !has_instructions) {
+					tempx = px;
+					tempy = py;
+					temptheta = theta;
+					previous_state = current_state;
+					current_state = FETCH_INSTRUCTIONS;
+					ROS_INFO("SWITCHING LEADER TO FETCH INSTRUCTIONS");
+				} else if(position_id == 0 && has_instructions){
+                        previous_state = current_state;
+				        state.group = group_id;
+				        state.state = 9;
+                        ROS_INFO("SHAPE TIMEEEEE");
+                        final_move = true;                        
+                        RobotNodeState_pub.publish(state);    
+                                        
+                }else {
+					previous_state = current_state;
+					current_state = IN_POSITION;
 				}
+				//other members can go to another state here, or wait for instructions
+				//ROS_INFO("SWITCHING TO FOLLOWING");
 			}
 			break;
 		}
@@ -596,6 +672,50 @@ int main(int argc, char **argv) {
 	        	RobotNode_cmdvel.linear.x = linearInst;
 	        	RobotNode_cmdvel.angular.z = rotateInst;
             }
+
+			break;
+		}
+		case FETCH_INSTRUCTIONS: {
+			new_x_pos = 26.0;
+			new_y_pos = 2.0;
+			final_theta = 0.0;
+			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
+				if (fabs(new_y_pos - py)< 0.01){
+					if (fabs(final_theta - theta)< 2.1){
+						previous_state = current_state;
+						current_state = IN_POSITION;
+						break;
+					}
+				}
+			};
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			break;
+
+		}
+		case RETURN_INSTRUCTIONS: {
+            has_instructions = true;
+			new_x_pos = tempx;
+			new_y_pos = tempy;
+			final_theta = temptheta;
+			/*if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
+				if (fabs(new_y_pos - py)< 0.01){
+					if (fabs(final_theta - theta)< 2.1){
+						//switch statements
+                        previous_state = current_state;
+				        state.group = group_id;
+				        state.state = 6;
+                        RobotNodeState_pub.publish(state);						             
+                        break;
+					}
+				}
+			};*/
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
 			break;
 		}
 		case CIRCLING: {
@@ -604,9 +724,36 @@ int main(int argc, char **argv) {
 			break;
 		}
 		case FORM_SQUARE: {
+			shape = formSquare(group);
+			new_x_pos = shape[2*position_id];
+			new_y_pos = shape[2*position_id + 1];
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			//current_state = IDLE;
 			break;
 		}
 		case FORM_CIRCLE: {
+			shape = formCircle(group);
+			new_x_pos = shape[2*position_id];
+			new_y_pos = shape[2*position_id + 1];
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			//current_state = IDLE;
+			break;
+		}
+		case FORM_TRIANGLE: {
+			shape = formTriangle(group);
+			new_x_pos = shape[2*position_id];
+			new_y_pos = shape[2*position_id + 1];
+			instructionsMove = moveToNewPoint();
+			//set them to this
+			RobotNode_cmdvel.linear.x = instructionsMove[0];
+			RobotNode_cmdvel.angular.z = instructionsMove[1];
+			//current_state = IDLE;
 			break;
 		}
 		}

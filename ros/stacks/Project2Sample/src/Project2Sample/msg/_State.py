@@ -4,13 +4,14 @@ import struct
 
 
 class State(roslib.message.Message):
-  _md5sum = "979940cbf4c11dcaa39d4ce8683ecc86"
+  _md5sum = "d01cedc5c59aefcb9044c6459cea03de"
   _type = "Project2Sample/State"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int64 state
+int64 group
 """
-  __slots__ = ['state']
-  _slot_types = ['int64']
+  __slots__ = ['state','group']
+  _slot_types = ['int64','int64']
 
   def __init__(self, *args, **kwds):
     """
@@ -20,7 +21,7 @@ class State(roslib.message.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       state
+       state,group
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -31,8 +32,11 @@ class State(roslib.message.Message):
       #message fields cannot be None, assign default values for those that are
       if self.state is None:
         self.state = 0
+      if self.group is None:
+        self.group = 0
     else:
       self.state = 0
+      self.group = 0
 
   def _get_types(self):
     """
@@ -47,7 +51,8 @@ class State(roslib.message.Message):
     @type  buff: StringIO
     """
     try:
-      buff.write(_struct_q.pack(self.state))
+      _x = self
+      buff.write(_struct_2q.pack(_x.state, _x.group))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -59,9 +64,10 @@ class State(roslib.message.Message):
     """
     try:
       end = 0
+      _x = self
       start = end
-      end += 8
-      (self.state,) = _struct_q.unpack(str[start:end])
+      end += 16
+      (_x.state, _x.group,) = _struct_2q.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -76,7 +82,8 @@ class State(roslib.message.Message):
     @type  numpy module
     """
     try:
-      buff.write(_struct_q.pack(self.state))
+      _x = self
+      buff.write(_struct_2q.pack(_x.state, _x.group))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -90,12 +97,13 @@ class State(roslib.message.Message):
     """
     try:
       end = 0
+      _x = self
       start = end
-      end += 8
-      (self.state,) = _struct_q.unpack(str[start:end])
+      end += 16
+      (_x.state, _x.group,) = _struct_2q.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_q = struct.Struct("<q")
+_struct_2q = struct.Struct("<2q")

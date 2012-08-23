@@ -74,6 +74,7 @@ void startSim(int argc, char **argv, int numNodes) {
 		// Publish a message to change all robot states from IDLE to FORMING_GROUP.
 		Project2Sample::State robot_state;
 		robot_state.state = 1; // 1 == FORMING_GROUP
+		robot_state.group = -1;
 		state_publisher.publish(robot_state);
 
 		sleep(1);

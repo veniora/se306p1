@@ -4,7 +4,7 @@ import struct
 
 
 class R_ID(roslib.message.Message):
-  _md5sum = "25bc6e5c8b7cce4a7c6d38bbbc972924"
+  _md5sum = "7b70751b0b66e88fdaa00ba36a5201fe"
   _type = "Project2Sample/R_ID"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int64 R_State
@@ -18,9 +18,10 @@ float64 theta
 float64 leaderTheta
 float64 newX
 float64 newY
+int64 inPos
 """
-  __slots__ = ['R_State','R_ID','Group_ID','Pos_ID','Follow_ID','x','y','theta','leaderTheta','newX','newY']
-  _slot_types = ['int64','int64','int64','int64','int64','float64','float64','float64','float64','float64','float64']
+  __slots__ = ['R_State','R_ID','Group_ID','Pos_ID','Follow_ID','x','y','theta','leaderTheta','newX','newY','inPos']
+  _slot_types = ['int64','int64','int64','int64','int64','float64','float64','float64','float64','float64','float64','int64']
 
   def __init__(self, *args, **kwds):
     """
@@ -30,7 +31,7 @@ float64 newY
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       R_State,R_ID,Group_ID,Pos_ID,Follow_ID,x,y,theta,leaderTheta,newX,newY
+       R_State,R_ID,Group_ID,Pos_ID,Follow_ID,x,y,theta,leaderTheta,newX,newY,inPos
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -61,6 +62,8 @@ float64 newY
         self.newX = 0.
       if self.newY is None:
         self.newY = 0.
+      if self.inPos is None:
+        self.inPos = 0
     else:
       self.R_State = 0
       self.R_ID = 0
@@ -73,6 +76,7 @@ float64 newY
       self.leaderTheta = 0.
       self.newX = 0.
       self.newY = 0.
+      self.inPos = 0
 
   def _get_types(self):
     """
@@ -88,7 +92,7 @@ float64 newY
     """
     try:
       _x = self
-      buff.write(_struct_5q6d.pack(_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY))
+      buff.write(_struct_5q6dq.pack(_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY, _x.inPos))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -102,8 +106,8 @@ float64 newY
       end = 0
       _x = self
       start = end
-      end += 88
-      (_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY,) = _struct_5q6d.unpack(str[start:end])
+      end += 96
+      (_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY, _x.inPos,) = _struct_5q6dq.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -119,7 +123,7 @@ float64 newY
     """
     try:
       _x = self
-      buff.write(_struct_5q6d.pack(_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY))
+      buff.write(_struct_5q6dq.pack(_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY, _x.inPos))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -135,11 +139,11 @@ float64 newY
       end = 0
       _x = self
       start = end
-      end += 88
-      (_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY,) = _struct_5q6d.unpack(str[start:end])
+      end += 96
+      (_x.R_State, _x.R_ID, _x.Group_ID, _x.Pos_ID, _x.Follow_ID, _x.x, _x.y, _x.theta, _x.leaderTheta, _x.newX, _x.newY, _x.inPos,) = _struct_5q6dq.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_5q6d = struct.Struct("<5q6d")
+_struct_5q6dq = struct.Struct("<5q6dq")

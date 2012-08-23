@@ -18,25 +18,28 @@ using namespace std;
 
 
 // returns coordinates [x,y] of a robot as to where they belong in a circle
-vector<float> formCircle(vector<Project2Sample::R_ID> group) {
+vector<float> formCircle(Project2Sample::R_ID inputs) {
+	int posID = inputs.Pos_ID;
+	float leaderX = inputs.x;
+	float leaderY = inputs.y;
+	float leaderTheta = inputs.theta;
+	// Outputs
 	vector<float> circleCoord;
-	int numOfRobots = group.size();
-	float circumference = float(numOfRobots+1) * 5 * 0.35;
-	int i, j;
+	int numOfRobots = 6; //Hard code for now
+	float fiveRobotLength = 5 * 0.35;
+	float circumference = float(numOfRobots+1) * fiveRobotLength;
 	float radius = circumference / (2*PI);
 
 	//get new theta to find [x,y] of radius
-	float newTheta = (group.at(0).leaderTheta) - 180.00;
-	float centreX = (radius*cos(newTheta)) + group.at(0).x;
-	float centreY = (radius*sin(newTheta)) + group.at(0).y;
+	float newTheta = leaderTheta - 180.00;
+	float centreX = (radius*cos(newTheta)) + leaderX;
+	float centreY = (radius*sin(newTheta)) + leaderY;
 	float angle = (360.0/(float)numOfRobots)/180.00 * PI;
 
-	//change coordinates to make circle
-	for (j=0; j<group.size(); ++j) {
+	// Use the position id to find the correct coordinates
 
-		circleCoord.push_back((radius*(cos(j*angle))) + centreX);
-		circleCoord.push_back((radius*(sin(j*angle))) + centreY);
-	}
+	circleCoord.push_back((radius*(cos(posID*angle))) + centreX);
+	circleCoord.push_back((radius*(sin(posID*angle))) + centreY);
 
 	return circleCoord;
 }

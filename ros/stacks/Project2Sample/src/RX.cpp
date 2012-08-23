@@ -150,7 +150,7 @@ vector<float> moveToNewPoint() {
 	// NEED TO ADD GLOBAL BOOLEAN
 	// aka in position and only calls this while
 	// its not in final position
-    // or just use states?
+	// or just use states?
 
 	vector<float> instructions(2);
 	//ask for velocity instructions
@@ -232,15 +232,15 @@ vector<float> moveToNewPoint() {
 		} else {
 			instructions[0] = 0.0;
 			instructions[1] = 0.0;
-            if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
-                ROS_INFO("made square should stop moving");
+			if (current_state == FORM_SQUARE || current_state == FORM_CIRCLE || current_state == FORM_TRIANGLE) {
+				ROS_INFO("made square should stop moving");
 				previous_state = current_state;
 				current_state = IDLE;
 			} else if(final_move){
-                ROS_INFO("made square should stop moving");
+				ROS_INFO("made square should stop moving");
 				previous_state = current_state;
 				current_state = IDLE;                
-            }else{
+			}else{
 				previous_state = current_state;
 				current_state = IN_POSITION;
 			}
@@ -292,19 +292,19 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
-    obstacle = false;
+	obstacle = false;
 
-    for (int i = 30; i < 150; i++){
-        if ( i < 110 && i >= 70){
-            if (msg.ranges[i] < 2.00){
-                obstacle = true;
-            }
-        }else{
-            if (msg.ranges[i] < 0.8){
-                obstacle = true;
-            }
-        } 
-    }
+	for (int i = 30; i < 150; i++){
+		if ( i < 110 && i >= 70){
+			if (msg.ranges[i] < 2.00){
+				obstacle = true;
+			}
+		}else{
+			if (msg.ranges[i] < 0.8){
+				obstacle = true;
+			}
+		}
+	}
 
 
 }
@@ -567,10 +567,10 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.linear.x = instructionsMove[0];
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 
-            //Set it to go half the speed if there is an obstacle
-            if (obstacle) {
-                RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
-            }
+			//Set it to go half the speed if there is an obstacle
+			if (obstacle) {
+				RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
+			}
 
 			break;
 		}
@@ -607,14 +607,41 @@ int main(int argc, char **argv) {
 					current_state = FETCH_INSTRUCTIONS;
 					ROS_INFO("SWITCHING LEADER TO FETCH INSTRUCTIONS");
 				} else if(position_id == 0 && has_instructions){
-                        previous_state = current_state;
-				        state.group = group_id;
-				        state.state = 9;
-                        ROS_INFO("SHAPE TIMEEEEE");
-                        final_move = true;                        
-                        RobotNodeState_pub.publish(state);    
-                                        
-                }else {
+					previous_state = current_state;
+					switch (group_id % 4) {
+					case 0:{
+						if (position_id == 0) {
+							state.group = group_id;
+							state.state = 4;
+						} else {
+							state.group = group_id;
+							state.state = 7;
+						}
+						break;
+					}
+					case 1:{
+						//FormSquare
+						state.group = group_id;
+						state.state = 5;
+						break;
+					}
+					case 2:{
+						//FormCircle
+						state.group = group_id;
+						state.state = 6;
+						break;
+					}
+					case 3:{
+						//FormTriangle
+						state.group = group_id;
+						state.state = 9;
+						break;
+					}
+					}
+					final_move = true;
+					RobotNodeState_pub.publish(state);
+
+				}else {
 					previous_state = current_state;
 					current_state = IN_POSITION;
 				}
@@ -638,47 +665,70 @@ int main(int argc, char **argv) {
 					}
 				}
 			} else {
-            //if it has found the follow_id already, then do the following behaviour
-                //ask for velocity instructions
-	    	    vector<float> current(3);
-	    	    current[0] = px;
-	    	    current[1] = py;
-	    	    current[2] = theta;
+				//if it has found the follow_id already, then do the following behaviour
+				//ask for velocity instructions
+				vector<float> current(3);
+				current[0] = px;
+				current[1] = py;
+				current[2] = theta;
 
-                //find the position of the next one
-	    	    vector<float> next(3);
+				//find the position of the next one
+				vector<float> next(3);
 
-                for (int k = 0; k < nodes.size(); k++){ //loop through nodes
-                    if (nodes[k].R_ID == follow_id){
-                    //if the node is of the robot it should be following
-                    //set the next position to its position
-                        next[0] = nodes[k].x;
-                        next[1] = nodes[k].y;
-                        next[2] = nodes[k].theta;
-                    }
-                }
-                //use the next position to get velocity instructions
-	    	    float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
-                
-                float linearInst;
-                if (obstacle){
-                    linearInst = 0.4;
-                } else {
-	    	    //HARD CODED LINEAR VELOCITY
-	    	    linearInst = 0.6;
-                }
+				for (int k = 0; k < nodes.size(); k++){ //loop through nodes
+					if (nodes[k].R_ID == follow_id){
+						//if the node is of the robot it should be following
+						//set the next position to its position
+						next[0] = nodes[k].x;
+						next[1] = nodes[k].y;
+						next[2] = nodes[k].theta;
+					}
+				}
+				//use the next position to get velocity instructions
+				float rotateInst = rotateDirectionInstructions(rotateFinalAngleInstructions(current, next));
 
-	        	//set them to this
-	        	RobotNode_cmdvel.linear.x = linearInst;
-	        	RobotNode_cmdvel.angular.z = rotateInst;
-            }
+				float linearInst;
+				if (obstacle){
+					linearInst = 0.4;
+				} else {
+					//HARD CODED LINEAR VELOCITY
+					linearInst = 0.6;
+				}
+
+				//set them to this
+				RobotNode_cmdvel.linear.x = linearInst;
+				RobotNode_cmdvel.angular.z = rotateInst;
+			}
 
 			break;
 		}
 		case FETCH_INSTRUCTIONS: {
-			new_x_pos = 26.0;
-			new_y_pos = 2.0;
-			final_theta = 0.0;
+			switch (group_id % 4) {
+			case 0:{
+				//Circling
+				new_x_pos = 26.0;
+				new_y_pos = 2.0;
+				break;
+			}
+			case 1:{
+				//FormSquare
+				new_x_pos = 26.0;
+				new_y_pos = -2.0;
+				break;
+			}
+			case 2:{
+				//FormCircle
+				new_x_pos = -26.0;
+				new_y_pos = 2.0;
+				break;
+			}
+			case 3:{
+				//FormTriangle
+				new_x_pos = -26.0;
+				new_y_pos = -2.0;
+				break;
+			}
+			}
 			if (fabs(new_x_pos - px)< 0.01){ // check x coordinate
 				if (fabs(new_y_pos - py)< 0.01){
 					if (fabs(final_theta - theta)< 2.1){
@@ -696,7 +746,7 @@ int main(int argc, char **argv) {
 
 		}
 		case RETURN_INSTRUCTIONS: {
-            has_instructions = true;
+			has_instructions = true;
 			new_x_pos = tempx;
 			new_y_pos = tempy;
 			final_theta = temptheta;

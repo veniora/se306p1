@@ -295,8 +295,6 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 			}
 		}
 	}
-
-
 }
 /*
  * Changes state
@@ -305,6 +303,14 @@ void RobotState_callback(Project2Sample::State msg) {
 	std::stringstream ss;
 	ss << "Robot " << id << " changed state from " << current_state << " to "
 			<< msg.state;
+
+	/*
+	 * These change in state commands will only ever come from a leader
+	 * The leader has its state changed independently and so must be excluded from this callback
+	 * Note: it will run fine for every behaviour but Following as the leader must be in
+	 * the CIRCLING state on its own
+	 */
+	// Change if in default state or if it is a broadcast from a robot in the same group
 	if (msg.group == -1 || msg.group == group_id) {
 		switch (msg.state) {
 		// There is an implicit conversion from any enum type to int.
@@ -332,7 +338,10 @@ void RobotState_callback(Project2Sample::State msg) {
 			current_state = FORM_CIRCLE;
 			break;
 		case FOLLOWING:
-			current_state = FOLLOWING;
+			// The leader cannot be allowed to go into this state
+			if (position_id != 0){
+				current_state = FOLLOWING;
+			}
 			break;
 		case IN_POSITION:
 			current_state = IN_POSITION;
@@ -345,7 +354,6 @@ void RobotState_callback(Project2Sample::State msg) {
 			break;
 		}
 	}
-
 }
 
 int main(int argc, char **argv) {
@@ -517,9 +525,9 @@ int main(int argc, char **argv) {
 			RobotNode_cmdvel.angular.z = instructionsMove[1];
 
 			//Set it to go half the speed if there is an obstacle
-//			if (obstacle) {
-//				RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
-//			}
+			//			if (obstacle) {
+			//				RobotNode_cmdvel.linear.x = RobotNode_cmdvel.linear.x/2;
+			//			}
 			// State can only be left once it is in position
 			break;
 		}
@@ -530,11 +538,11 @@ int main(int argc, char **argv) {
 			 * In this case it will cause each robot to check whether its group mates
 			 * are also in position and once they are, the leader will go get a message (change state)
 			 */
-//			if (previous_state == FETCH_INSTRUCTIONS) {
-//				previous_state = current_state;
-//				current_state = RETURN_INSTRUCTIONS;
-//				ROS_INFO("Leader returning instructions");
-//			}
+			//			if (previous_state == FETCH_INSTRUCTIONS) {
+			//				previous_state = current_state;
+			//				current_state = RETURN_INSTRUCTIONS;
+			//				ROS_INFO("Leader returning instructions");
+			//			}
 
 			bool group_ready = true; // Is every other robot also in position
 
@@ -568,68 +576,68 @@ int main(int argc, char **argv) {
 						 * THIS IS ALL STILL JUST FOR THE LEADER
 						 */
 						switch(group_id % 4){
-							case 0:{ // Following! Change leader to CIRCLING and its other group members to follow
-								current_state = CIRCLING;
-								break;
-							}
-							case 1:{ // Form a square
-								current_state = FORM_SQUARE;
-								break;
-							}
-							case 2:{ // Form a circle
-								current_state = FORM_CIRCLE;
-								break;
-							}
-							case 3:{ // Form a triangle
-								current_state = FORM_TRIANGLE;
-								break;
-							}
+						case 0:{ // Following! Change leader to CIRCLING and its other group members to follow
+							current_state = CIRCLING;
+							break;
+						}
+						case 1:{ // Form a square
+							current_state = FORM_SQUARE;
+							break;
+						}
+						case 2:{ // Form a circle
+							current_state = FORM_CIRCLE;
+							break;
+						}
+						case 3:{ // Form a triangle
+							current_state = FORM_TRIANGLE;
+							break;
+						}
 						}
 
 					}
 				}
 
-//				} else if(position_id == 0 && has_instructions){
-//					previous_state = current_state;
-//					switch (group_id % 4) {
-//					case 0:{
-//						if (position_id == 0) {
-//							state.group = group_id;
-//							state.state = 4;
-//						} else {
-//							state.group = group_id;
-//							state.state = 7;
-//						}
-//						break;
-//					}
-//					case 1:{
-//						//FormSquare
-//						state.group = group_id;
-//						state.state = 5;
-//						break;
-//					}
-//					case 2:{
-//						//FormCircle
-//						state.group = group_id;
-//						state.state = 6;
-//						break;
-//					}
-//					case 3:{
-//						//FormTriangle
-//						state.group = group_id;
-//						state.state = 9;
-//						break;
-//					}
-//					}
-//					final_move = true;
-//					RobotNodeState_pub.publish(state);
-//
-//				}else {
-//					previous_state = current_state;
-//					current_state = IN_POSITION;
-//				}
-//				//other members can go to another state here, or wait for instructions
-//				//ROS_INFO("SWITCHING TO FOLLOWING");
+				//				} else if(position_id == 0 && has_instructions){
+				//					previous_state = current_state;
+				//					switch (group_id % 4) {
+				//					case 0:{
+				//						if (position_id == 0) {
+				//							state.group = group_id;
+				//							state.state = 4;
+				//						} else {
+				//							state.group = group_id;
+				//							state.state = 7;
+				//						}
+				//						break;
+				//					}
+				//					case 1:{
+				//						//FormSquare
+				//						state.group = group_id;
+				//						state.state = 5;
+				//						break;
+				//					}
+				//					case 2:{
+				//						//FormCircle
+				//						state.group = group_id;
+				//						state.state = 6;
+				//						break;
+				//					}
+				//					case 3:{
+				//						//FormTriangle
+				//						state.group = group_id;
+				//						state.state = 9;
+				//						break;
+				//					}
+				//					}
+				//					final_move = true;
+				//					RobotNodeState_pub.publish(state);
+				//
+				//				}else {
+				//					previous_state = current_state;
+				//					current_state = IN_POSITION;
+				//				}
+				//				//other members can go to another state here, or wait for instructions
+				//				//ROS_INFO("SWITCHING TO FOLLOWING");
 			}
 			break; // It is no longer IN_POSITION as it has new instructions to carry out
 		}
@@ -753,11 +761,11 @@ int main(int argc, char **argv) {
 			if (fabs(new_x_pos - px)< LINEAR_TOL){ // check x coordinate
 				if (fabs(new_y_pos - py)< LINEAR_TOL){ // y coord
 					if (fabs(final_theta - theta)< ANGULAR_TOL){ // check robot at correct rotation
-					    // Congratulations! You are back at the head of the line with
+						// Congratulations! You are back at the head of the line with
 						// A tasty new message to share
 						// Better get back into position
 						current_state = IN_POSITION;
-                        break;
+						break;
 					}
 				}
 			};

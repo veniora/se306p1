@@ -45,6 +45,7 @@ int follow_id = -2;
 //boolean to make sure they don't subscribe to follow twice
 bool found_follow_id = false;
 bool robot_pos_found = false;
+bool obstacle; 
 //boolean to check whether or not the robot has been added to the array or not
 int exist_robots = 0;
 
@@ -262,7 +263,7 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
 	//This is the callback function to process laser scan messages
 	//you can access the range data from msg.ranges[i]. i = sample number
-    bool obstacle = false;
+    obstacle = false;
 
     for (int i = 30; i < 150; i++){
         if ( i < 110 && i >= 70){

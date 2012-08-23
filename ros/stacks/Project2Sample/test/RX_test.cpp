@@ -36,7 +36,7 @@ TEST(TestSuite, testDefaultValues) {
 	state_publisher.publish(robot_state);
 
 	ros::Subscriber RobotNode_sub = node_handel.subscribe<Project2Sample::R_ID>(
-			"Robot1_msg", 1000, test_callback);
+			"Robot_msg", 1000, test_callback);
 
 //	while (ros::ok()) {
 //		loop_rate.sleep();

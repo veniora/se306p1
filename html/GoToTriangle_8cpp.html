@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>GoToSquare.h Source File</title>
+<title>GoToTriangle.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,29 +42,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Defines</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GoToSquare.h</div>  </div>
+<div class="title">GoToTriangle.cpp File Reference</div>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
-<a name="l00002"></a>00002 <span class="comment"> * GoToSquare.h</span>
-<a name="l00003"></a>00003 <span class="comment"> *</span>
-<a name="l00004"></a>00004 <span class="comment"> *  Created on: Aug 15, 2012</span>
-<a name="l00005"></a>00005 <span class="comment"> *      Author: charu</span>
-<a name="l00006"></a>00006 <span class="comment"> */</span>
-<a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="preprocessor">#ifndef GOTOSQUARE_H_</span>
-<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define GOTOSQUARE_H_</span>
-<a name="l00010"></a>00010 <span class="preprocessor"></span><span class="preprocessor">#include &quot;Project2Sample/R_ID.h&quot;</span>
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="keyword">using namespace </span>std;
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014         vector&lt;float&gt; <a class="code" href="GoToSquare_8cpp.html#a4b829acb8937469e236f15040053381d">formSquare</a>(Project2Sample::R_ID inputs, <span class="keywordtype">int</span> groupsize);
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#endif </span><span class="comment">/* GOTOSQUARE_H_ */</span>
-</pre></div></div>
+
+<p>this file is used to calculate the positions of the robots in the triangle  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;GoToTriangle.h&quot;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;cmath&gt;</code><br/>
+<code>#include &quot;math.h&quot;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a598a3330b3c21701223ee0ca14316eca"></a><!-- doxytag: member="GoToTriangle.cpp::PI" ref="a598a3330b3c21701223ee0ca14316eca" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PI</b>&#160;&#160;&#160;3.14159265</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GoToTriangle_8cpp.html#adbf4e1b1ae309f9344e984465f24fbf9">formTriangle</a> (Project2Sample::R_ID inputs, int groupsize)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>this file is used to calculate the positions of the robots in the triangle </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>team brett</dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>16/08/12 </dd></dl>
+</div><hr/><h2>Function Documentation</h2>
+<a class="anchor" id="adbf4e1b1ae309f9344e984465f24fbf9"></a><!-- doxytag: member="GoToTriangle.cpp::formTriangle" ref="adbf4e1b1ae309f9344e984465f24fbf9" args="(Project2Sample::R_ID inputs, int groupsize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;float&gt; formTriangle </td>
+          <td>(</td>
+          <td class="paramtype">Project2Sample::R_ID&#160;</td>
+          <td class="paramname"><em>inputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>groupsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>This method returns the positions in the triangle for all of the group members </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>team brett </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>vector of robots in group </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>21/08/2012 </dd></dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

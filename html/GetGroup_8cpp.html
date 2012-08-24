@@ -51,7 +51,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GetGroup.cpp File Reference</div>  </div>
 </div>
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="GetGroup_8h_source.html">GetGroup.h</a>&quot;</code><br/>
+
+<p>this file is used to find robots positions in the line and tell them the coordinates of their spot as well as their angle to face the origin  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;GetGroup.h&quot;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;cmath&gt;</code><br/>
@@ -60,43 +63,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GetGroup_8cpp.html#aaff99762405a46f89877b64483b8f154">sortByPosition</a> (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaff99762405a46f89877b64483b8f154"></a><!-- doxytag: member="GetGroup.cpp::sortByPosition" ref="aaff99762405a46f89877b64483b8f154" args="(Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)" -->
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>sortByPosition</b> (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9673b8581c95b1947793e462a0dde17e"></a><!-- doxytag: member="GetGroup.cpp::sortByDistance1" ref="a9673b8581c95b1947793e462a0dde17e" args="(Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)" -->
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>sortByDistance1</b> (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)</td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="aaff99762405a46f89877b64483b8f154"></a><!-- doxytag: member="GetGroup.cpp::sortByPosition" ref="aaff99762405a46f89877b64483b8f154" args="(Project2Sample::R_ID robot1, Project2Sample::R_ID robot2)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sortByPosition </td>
-          <td>(</td>
-          <td class="paramtype">Project2Sample::R_ID&#160;</td>
-          <td class="paramname"><em>robot1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Project2Sample::R_ID&#160;</td>
-          <td class="paramname"><em>robot2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-</div>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>this file is used to find robots positions in the line and tell them the coordinates of their spot as well as their angle to face the origin </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>team brett</dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>12/08/12 </dd></dl>
+</div></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,7 +87,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Aug 19 2012 18:16:23 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Aug 24 2012 12:15:14 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

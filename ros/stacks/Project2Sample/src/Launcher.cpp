@@ -1,3 +1,13 @@
+/** 
+* @file Launcher.cpp
+* @brief this file is used to launch stage, create a defined number of robots and run them
+*
+* @author team brett
+*
+* @date 15/08/12
+*/
+
+
 #include <stdlib.h> // atoi
 #include <iostream> // cout
 #include <sstream>
@@ -12,6 +22,13 @@
 
 using namespace std;
 
+
+/**
+* This method runs stage with the number of robots defined by the user
+* @author team brett
+* @param int number of robots
+* @date 15/08/2012
+*/
 void startStage(int numNodes) {
 	stringstream ss;
 	ss << "numbots:=" << numNodes;
@@ -24,6 +41,13 @@ void startStage(int numNodes) {
 	}
 }
 
+
+/**
+* This method creates an RX instance for each robot
+* @author team brett
+* @param int number of robots
+* @date 15/08/2012
+*/
 void startNodes(int numNodes) {
 	// Start X number of robot nodes
 	int i;
@@ -53,6 +77,14 @@ void startNodes(int numNodes) {
 	}
 }
 
+
+/**
+* This method starts the simulation by pushing robots out of IDLE state once all robots have been initialised
+* this method runs on a fork because not doing so had the side affect of stopping ctrl+c from killing stage and the RX nodes
+* @author team brett
+* @param int number of nodes
+* @date 15/08/2012
+*/
 void startSim(int argc, char **argv, int numNodes) {
 	// Start the simulation by pushing robots out of IDLE state
 	// this method runs on a fork because not doing so had the side affect of stopping ctrl+c from killing stage and the RX nodes

@@ -1,9 +1,12 @@
-/*
- * FindGroup.cpp
- *
- *  Created on: Aug 13, 2012
- *      Author: pauline
- */
+/** 
+* @file FindGroup.cpp
+* @brief this file is used to find robots positions in the line and tell them the 
+* coordinates of their spot as well as their angle to face the origin
+*
+* @author team brett
+*
+* @date 12/08/12
+*/
 
 #include "FindGroup.h"
 #include <vector>
@@ -16,7 +19,11 @@
 
 using namespace std;
 
-//checks distance
+/**
+* This function sorts the robots with respect to their distance from the origin
+* @author team brett
+* @date 11/08/2012
+*/
 bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 	float distance1 = sqrt(pow(robot1.x, 2.0) + pow(robot1.y, 2.0));
 	float distance2 = sqrt(pow(robot2.x, 2.0) + pow(robot2.y, 2.0));
@@ -27,7 +34,11 @@ bool sortByDistance (Project2Sample::R_ID robot1, Project2Sample::R_ID robot2) {
 	return (distance1 < distance2);
 }
 
-
+/**
+* This function sorts the robots into their groups
+* @author team brett
+* @date 11/08/2012
+*/
 vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 
 	vector<int> robotGroupInfo;
@@ -66,8 +77,13 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
     //ROS_INFO("leader id %d, group id %d, posID %d",robotGroupInfo[0], robotGroupInfo[1],robotGroupInfo[2]);
 	return robotGroupInfo;      //[LeaderID, groupID, posID]
 }
-//only need values for leader
 
+
+/**
+* This function  calculates the coordinates for the robots in their lines
+* @author team brett
+* @date 11/08/2012
+*/
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
     ROS_INFO("CalculatePosition() method");
     

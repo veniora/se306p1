@@ -1,9 +1,11 @@
-/*
- * GoToTriangle.cpp
- *
- *  Created on: Aug 23, 2012
- *      Author: charu
- */
+/** 
+* @file GoToTriangle.cpp
+* @brief this file is used to calculate the positions of the robots in the triangle
+*
+* @author team brett
+*
+* @date 16/08/12
+*/
 
 #include "GoToTriangle.h"
 
@@ -17,7 +19,12 @@
 
 using namespace std;
 
-// returns coordinates [x,y] of a robot as to where they belong in a square
+/**
+* This method returns the positions in the triangle for all of the group members
+* @author team brett
+* @param vector vector of robots in group
+* @date 21/08/2012
+*/
 vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 	vector<float> triangleCoord; //  Outputs
 	//int numOfRobots = 6; //Hard code for now

@@ -1,0 +1,366 @@
+\hypertarget{RX_8cpp}{
+\section{RX.cpp File Reference}
+\label{RX_8cpp}\index{RX.cpp@{RX.cpp}}
+}
+
+
+this file contains most of the logic for an individual robot  
+
+
+{\ttfamily \#include $<$ros/ros.h$>$}\par
+{\ttfamily \#include \char`\"{}std\_\-msgs/String.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Project2Sample/R\_\-ID.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}geometry\_\-msgs/Twist.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}sensor\_\-msgs/LaserScan.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}nav\_\-msgs/Odometry.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Project2Sample/State.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}FindGroup.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}GetGroup.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}GoToSquare.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}GoToCircle.h\char`\"{}}\par
+{\ttfamily \#include $<$sstream$>$}\par
+{\ttfamily \#include \char`\"{}math.h\char`\"{}}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}GoToTriangle.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}~3.14159265
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries State} \{ \par
+{\bfseries IDLE} =  0, 
+{\bfseries FORMING\_\-GROUP} =  1, 
+{\bfseries MOVING\_\-INTO\_\-POS} =  2, 
+{\bfseries FETCH\_\-INSTRUCTIONS} =  3, 
+\par
+{\bfseries CIRCLING} =  4, 
+{\bfseries FORM\_\-SQUARE} =  5, 
+{\bfseries FORM\_\-CIRCLE} =  6, 
+{\bfseries FOLLOWING} =  7, 
+\par
+{\bfseries IN\_\-POSITION} =  8, 
+{\bfseries FORM\_\-TRIANGLE} =  9, 
+{\bfseries RETURN\_\-INSTRUCTIONS} =  10
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}{rotateFinalAngleInstructions} (vector$<$ float $>$ currentPosition, vector$<$ float $>$ newPosition)
+\item 
+float \hyperlink{RX_8cpp_a1d935d2e4b02a985482e2a0a2bf9a884}{rotateDirectionInstructions} (float d\_\-theta)
+\item 
+vector$<$ float $>$ \hyperlink{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}{moveToNewPoint} ()
+\item 
+void \hyperlink{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}{RobotNode\_\-callback} (Project2Sample::R\_\-ID msg)
+\item 
+void \hyperlink{RX_8cpp_ab7e30a89a91430192b67c967740996e0}{StageOdom\_\-callback} (nav\_\-msgs::Odometry msg)
+\item 
+void \hyperlink{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}{StageLaser\_\-callback} (sensor\_\-msgs::LaserScan msg)
+\item 
+void \hyperlink{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}{RobotState\_\-callback} (Project2Sample::State msg)
+\item 
+\hypertarget{RX_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)}
+\label{RX_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{RX_8cpp_a8c55654c18f2203fee186cf5f9fccc6e}{
+double {\bfseries linear\_\-x}}
+\label{RX_8cpp_a8c55654c18f2203fee186cf5f9fccc6e}
+
+\item 
+\hypertarget{RX_8cpp_a109ab892fd9dbffc641e0dbf80972a79}{
+double {\bfseries angular\_\-z}}
+\label{RX_8cpp_a109ab892fd9dbffc641e0dbf80972a79}
+
+\item 
+\hypertarget{RX_8cpp_a9c1e50fd3234caf28c5f65a912b5c16a}{
+double {\bfseries px}}
+\label{RX_8cpp_a9c1e50fd3234caf28c5f65a912b5c16a}
+
+\item 
+\hypertarget{RX_8cpp_ad29ba68eddcdfabc5dd4e8e213a0f5cd}{
+double {\bfseries py}}
+\label{RX_8cpp_ad29ba68eddcdfabc5dd4e8e213a0f5cd}
+
+\item 
+\hypertarget{RX_8cpp_aca81c35c21e3a5f7f3a8d24504e76664}{
+double {\bfseries theta}}
+\label{RX_8cpp_aca81c35c21e3a5f7f3a8d24504e76664}
+
+\item 
+\hypertarget{RX_8cpp_a76f5778e70f39f1f87e21086d7a8a4cc}{
+double {\bfseries new\_\-x\_\-pos}}
+\label{RX_8cpp_a76f5778e70f39f1f87e21086d7a8a4cc}
+
+\item 
+\hypertarget{RX_8cpp_a2dd34d1f21abb7c98e535e69c3bc50af}{
+double {\bfseries new\_\-y\_\-pos}}
+\label{RX_8cpp_a2dd34d1f21abb7c98e535e69c3bc50af}
+
+\item 
+\hypertarget{RX_8cpp_af5cc4530d790b08f58f6c32a6f2d1b5c}{
+double {\bfseries final\_\-theta}}
+\label{RX_8cpp_af5cc4530d790b08f58f6c32a6f2d1b5c}
+
+\item 
+\hypertarget{RX_8cpp_a457c03e3e003746ad46c40ca884755fb}{
+double {\bfseries lineHeadX}}
+\label{RX_8cpp_a457c03e3e003746ad46c40ca884755fb}
+
+\item 
+\hypertarget{RX_8cpp_a166f2b85f3a2f29eda54e9e6d4027be1}{
+double {\bfseries lineHeadY}}
+\label{RX_8cpp_a166f2b85f3a2f29eda54e9e6d4027be1}
+
+\item 
+\hypertarget{RX_8cpp_a8d0a5aa5eb6e398fd2380f1f578e50e8}{
+double {\bfseries lineHeadTheta}}
+\label{RX_8cpp_a8d0a5aa5eb6e398fd2380f1f578e50e8}
+
+\item 
+\hypertarget{RX_8cpp_a7aecd324af0dacdab66a39f5d9696eeb}{
+vector$<$ float $>$ {\bfseries shape}}
+\label{RX_8cpp_a7aecd324af0dacdab66a39f5d9696eeb}
+
+\item 
+\hypertarget{RX_8cpp_a7441ef0865bcb3db9b8064dd7375c1ea}{
+int {\bfseries id}}
+\label{RX_8cpp_a7441ef0865bcb3db9b8064dd7375c1ea}
+
+\item 
+\hypertarget{RX_8cpp_adf5c2f96a3b0652ae9f4d219800bb34c}{
+int {\bfseries leader\_\-id}}
+\label{RX_8cpp_adf5c2f96a3b0652ae9f4d219800bb34c}
+
+\item 
+\hypertarget{RX_8cpp_ad803d60c93177bb1ed9133d86d9dc378}{
+int {\bfseries group\_\-id} = -\/1}
+\label{RX_8cpp_ad803d60c93177bb1ed9133d86d9dc378}
+
+\item 
+\hypertarget{RX_8cpp_ad75dd943e481a94cf878886dd6eeb540}{
+int {\bfseries position\_\-id}}
+\label{RX_8cpp_ad75dd943e481a94cf878886dd6eeb540}
+
+\item 
+\hypertarget{RX_8cpp_a9fb4eda7d9517f8c6bc828e8973cd185}{
+int {\bfseries follow\_\-id} = -\/2}
+\label{RX_8cpp_a9fb4eda7d9517f8c6bc828e8973cd185}
+
+\item 
+\hypertarget{RX_8cpp_a939f3969e8c4745952f2c64b3ab5aed8}{
+int {\bfseries group\_\-size}}
+\label{RX_8cpp_a939f3969e8c4745952f2c64b3ab5aed8}
+
+\item 
+\hypertarget{RX_8cpp_a425aa0f238b678965664c7f036b738b8}{
+bool {\bfseries robot\_\-pos\_\-found} = false}
+\label{RX_8cpp_a425aa0f238b678965664c7f036b738b8}
+
+\item 
+\hypertarget{RX_8cpp_a1b401ea465ca0dd6bb511da49387775c}{
+bool {\bfseries obstacle}}
+\label{RX_8cpp_a1b401ea465ca0dd6bb511da49387775c}
+
+\item 
+\hypertarget{RX_8cpp_afbc8cea3b914f5246b0ecd4194428cb4}{
+int {\bfseries exist\_\-robots} = 0}
+\label{RX_8cpp_afbc8cea3b914f5246b0ecd4194428cb4}
+
+\item 
+\hypertarget{RX_8cpp_a18bd8c7fdc2199bea18569c8d81233bf}{
+bool {\bfseries has\_\-instructions} = false}
+\label{RX_8cpp_a18bd8c7fdc2199bea18569c8d81233bf}
+
+\item 
+\hypertarget{RX_8cpp_a24d3cab6e0259bb0ae81d09a48db9865}{
+bool {\bfseries final\_\-move} = false}
+\label{RX_8cpp_a24d3cab6e0259bb0ae81d09a48db9865}
+
+\item 
+\hypertarget{RX_8cpp_acb5b2077cb26fc3c6b5b3fe4b1d3b4d0}{
+float {\bfseries LINEAR\_\-TOL} = 0.2}
+\label{RX_8cpp_acb5b2077cb26fc3c6b5b3fe4b1d3b4d0}
+
+\item 
+\hypertarget{RX_8cpp_a2b2b48892b4191820b530198dba703f5}{
+float {\bfseries ANGULAR\_\-TOL} = 2.1}
+\label{RX_8cpp_a2b2b48892b4191820b530198dba703f5}
+
+\item 
+\hypertarget{RX_8cpp_a396cf37610c1aa60bf92d79e9764f0a8}{
+Project2Sample::State {\bfseries state}}
+\label{RX_8cpp_a396cf37610c1aa60bf92d79e9764f0a8}
+
+\item 
+\hypertarget{RX_8cpp_a54138d08678dd972a2c9b13e069fd91a}{
+State {\bfseries current\_\-state} = IDLE}
+\label{RX_8cpp_a54138d08678dd972a2c9b13e069fd91a}
+
+\item 
+\hypertarget{RX_8cpp_a652e770ce8f07e29674ec989f2c75ab4}{
+vector$<$ Project2Sample::R\_\-ID $>$ {\bfseries nodes}}
+\label{RX_8cpp_a652e770ce8f07e29674ec989f2c75ab4}
+
+\item 
+\hypertarget{RX_8cpp_af6cfc2aa22000d00840df61e1997b882}{
+vector$<$ Project2Sample::R\_\-ID $>$ {\bfseries group}}
+\label{RX_8cpp_af6cfc2aa22000d00840df61e1997b882}
+
+\item 
+\hypertarget{RX_8cpp_ad43c3812e6d13e0518d9f8b8f463ffcf}{
+int {\bfseries count}}
+\label{RX_8cpp_ad43c3812e6d13e0518d9f8b8f463ffcf}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+this file contains most of the logic for an individual robot \begin{DoxyAuthor}{Author}
+team brett
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23/08/12 
+\end{DoxyDate}
+
+
+\subsection{Define Documentation}
+\hypertarget{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}{
+\index{RX.cpp@{RX.cpp}!PI@{PI}}
+\index{PI@{PI}!RX.cpp@{RX.cpp}}
+\subsubsection[{PI}]{\setlength{\rightskip}{0pt plus 5cm}\#define PI~3.14159265}}
+\label{RX_8cpp_a598a3330b3c21701223ee0ca14316eca}
+This is a single robot in a robot swarm. The robot will be simulated on stage by sending messages 
+
+\subsection{Function Documentation}
+\hypertarget{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}{
+\index{RX.cpp@{RX.cpp}!moveToNewPoint@{moveToNewPoint}}
+\index{moveToNewPoint@{moveToNewPoint}!RX.cpp@{RX.cpp}}
+\subsubsection[{moveToNewPoint}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ moveToNewPoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_a5525d6e13b52c4a613f410708513a0d6}
+This method moves the robots to their new positions which they are passed via a message. \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}{
+\index{RX.cpp@{RX.cpp}!RobotNode\_\-callback@{RobotNode\_\-callback}}
+\index{RobotNode\_\-callback@{RobotNode\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{RobotNode\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void RobotNode\_\-callback (
+\begin{DoxyParamCaption}
+\item[{Project2Sample::R\_\-ID}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_ad6b0b9408bfc7b9755dde44872bb0f87}
+this callback Adds robots into nodes vector from callback \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em float} & angle to destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}{
+\index{RX.cpp@{RX.cpp}!RobotState\_\-callback@{RobotState\_\-callback}}
+\index{RobotState\_\-callback@{RobotState\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{RobotState\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void RobotState\_\-callback (
+\begin{DoxyParamCaption}
+\item[{Project2Sample::State}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_af3689c7f5bb32a1d17d1727cdf59cfdb}
+This is the callback function to process the state changes of the robots \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_a1d935d2e4b02a985482e2a0a2bf9a884}{
+\index{RX.cpp@{RX.cpp}!rotateDirectionInstructions@{rotateDirectionInstructions}}
+\index{rotateDirectionInstructions@{rotateDirectionInstructions}!RX.cpp@{RX.cpp}}
+\subsubsection[{rotateDirectionInstructions}]{\setlength{\rightskip}{0pt plus 5cm}float rotateDirectionInstructions (
+\begin{DoxyParamCaption}
+\item[{float}]{d\_\-theta}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_a1d935d2e4b02a985482e2a0a2bf9a884}
+This method returns velocity direction to rotate for next position. \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em float} & angle to destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}{
+\index{RX.cpp@{RX.cpp}!rotateFinalAngleInstructions@{rotateFinalAngleInstructions}}
+\index{rotateFinalAngleInstructions@{rotateFinalAngleInstructions}!RX.cpp@{RX.cpp}}
+\subsubsection[{rotateFinalAngleInstructions}]{\setlength{\rightskip}{0pt plus 5cm}float rotateFinalAngleInstructions (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$}]{currentPosition, }
+\item[{vector$<$ float $>$}]{newPosition}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_aef9a1184ba3ed8e3f5439cb95dd62dda}
+This method returns the angle needed to reach next position. \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & current positon \\
+\hline
+{\em vector} & new position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+16/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}{
+\index{RX.cpp@{RX.cpp}!StageLaser\_\-callback@{StageLaser\_\-callback}}
+\index{StageLaser\_\-callback@{StageLaser\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{StageLaser\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void StageLaser\_\-callback (
+\begin{DoxyParamCaption}
+\item[{sensor\_\-msgs::LaserScan}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_af05e3d380abf5d93d57222dac170e39a}
+This is the callback function to process laser scan messages used to detect objects and potential obstacles for the robots. \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/08/2012 
+\end{DoxyDate}
+\hypertarget{RX_8cpp_ab7e30a89a91430192b67c967740996e0}{
+\index{RX.cpp@{RX.cpp}!StageOdom\_\-callback@{StageOdom\_\-callback}}
+\index{StageOdom\_\-callback@{StageOdom\_\-callback}!RX.cpp@{RX.cpp}}
+\subsubsection[{StageOdom\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}void StageOdom\_\-callback (
+\begin{DoxyParamCaption}
+\item[{nav\_\-msgs::Odometry}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{RX_8cpp_ab7e30a89a91430192b67c967740996e0}
+This is the call back function to process odometry messages coming from Stage \begin{DoxyAuthor}{Author}
+team brett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/08/2012 
+\end{DoxyDate}

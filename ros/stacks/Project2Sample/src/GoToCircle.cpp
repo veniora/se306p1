@@ -1,9 +1,11 @@
-/*
- * GoToCircle.cpp
- *
- *  Created on: Aug 15, 2012
- *      Author: charu
- */
+/** 
+* @file GoToCircle.cpp
+* @brief this file is used to calculate the positions of the robots in the circle
+*
+* @author team brett
+*
+* @date 21/08/12
+*/
 
 #include "GoToCircle.h"
 #include <vector>
@@ -17,7 +19,12 @@
 using namespace std;
 
 
-// returns coordinates [x,y] of a robot as to where they belong in a circle
+/**
+* This method returns the positions in the circle for all of the group members
+* @author team brett
+* @param vector vector of robots in group
+* @date 21/08/2012
+*/
 vector<float> formCircle(Project2Sample::R_ID inputs, int groupsize) {
 	int posID = inputs.Pos_ID;
 	float leaderX = 2*inputs.x; //random scaling factor to move them away from the origin

@@ -36,9 +36,6 @@ rosbuild_add_gtest_build_flags(test/RX_test)
 rosbuild_add_executable(test/FindGroup_test test/FindGroup_test.cpp src/FindGroup.cpp)
 rosbuild_add_gtest_build_flags(test/FindGroup_test)
 
-rosbuild_add_executable(test/GetGroup_test test/GetGroup_test.cpp)
-rosbuild_add_gtest_build_flags(test/GetGroup_test)
-
 rosbuild_add_executable(test/GoToCircle_test test/GoToCircle_test.cpp)
 rosbuild_add_gtest_build_flags(test/GoToCircle_test)
 

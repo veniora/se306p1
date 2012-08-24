@@ -36,9 +36,7 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 	float leaderTheta = inputs.theta;
 
 		//Spacings
-	float spacing0 =  fiveRobotLength;
-	float spacing1 =  fiveRobotLength;
-	float spacing2 =  fiveRobotLength;
+	float spacing =  fiveRobotLength;
 	float angle = 60.0/180.0* PI;
 	int numOfRobots = groupsize;
 	//get length of sides
@@ -46,7 +44,7 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 	//float lengthOfSide = 7; //Based on a maximum of 11 robots
 	float x0,y0,x1,y1,topCorner;
 	int triangleSide; // Track which of the three sides it is on
-
+	int nodeSpace; 	//checks how many spaces needed for the robot
 	//change coordinates to make triangle
 
 			triangleSide = posID % 3;
@@ -56,11 +54,11 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 					triangleCoord.push_back(leaderX);
 					triangleCoord.push_back(leaderY);
 				} else {
-					x0 = cos(angle)*spacing0;
-					y0 = sin(angle)*spacing0;
+					nodeSpace = posID/3;
+					x0 = cos(angle)*spacing*nodeSpace;
+					y0 = sin(angle)*spacing*nodeSpace;
 					triangleCoord.push_back(leaderX + x0);
 					triangleCoord.push_back(leaderY + y0);
-					spacing0 = spacing0 + (fiveRobotLength);
 				}
 				break;
 			case 1:
@@ -69,12 +67,11 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 					triangleCoord.push_back(leaderX + lengthOfSide/2);
 					triangleCoord.push_back(leaderY + topCorner);
 				} else {
-					x1 = sin(angle/2.0)*spacing1;
-					ROS_INFO("x1: %f", x1);
-					y1 = cos(angle/2.0)*spacing1;
-					triangleCoord.push_back(leaderX + lengthOfSide/2.0 + x0);
+					nodeSpace = posID/3;
+					x1 = cos(angle)*spacing*nodeSpace;
+					y1 = cos(angle/2.0)*spacing*nodeSpace;
+					triangleCoord.push_back(leaderX + lengthOfSide/2.0 + x1);
 					triangleCoord.push_back(leaderY + topCorner - y1);
-					spacing1 = spacing1 + (fiveRobotLength);
 				}
 				break;
 			case 2:
@@ -82,9 +79,9 @@ vector<float> formTriangle(Project2Sample::R_ID inputs, int groupsize) {
 					triangleCoord.push_back(leaderX + lengthOfSide);
 					triangleCoord.push_back(leaderY);
 				} else {
-					triangleCoord.push_back(leaderX + spacing2);
+					nodeSpace = posID/3;
+					triangleCoord.push_back(leaderX + spacing*nodeSpace);
 					triangleCoord.push_back(leaderY);
-					spacing2 = spacing2 + (fiveRobotLength);
 				}
 				break;
 			}

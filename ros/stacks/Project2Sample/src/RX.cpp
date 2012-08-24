@@ -16,7 +16,6 @@
 #include "nav_msgs/Odometry.h"
 #include "Project2Sample/State.h"
 #include "FindGroup.h"
-#include "GetGroup.h"
 #include "GoToSquare.h"
 #include "GoToCircle.h"
 #include <sstream>
@@ -498,7 +497,7 @@ int main(int argc, char **argv) {
 			group_id = robotInfo[1];
 			position_id = robotInfo[2];
 			group_size = robotInfo[3];
-			ROS_INFO("ROBOT ID: %d, GROUP ID: %d, POS ID: %d, GROUP SIZE: %d", id, group_id, position_id, group_size);
+			//ROS_INFO("ROBOT ID: %d, GROUP ID: %d, POS ID: %d, GROUP SIZE: %d", id, group_id, position_id, group_size);
 
 			// Find the message of the leader
 			for (int i = 0; i<nodes.size(); i++){
@@ -604,7 +603,7 @@ int main(int argc, char **argv) {
 						switch(group_id % 4){
 						case 0:{ // Following! Change leader to CIRCLING and its other group members to follow
 							//current_state = CIRCLING;
-							current_state = FORM_SQUARE;
+							current_state = FORM_TRIANGLE;
 							break;
 						}
 						case 1:{ // Form a square

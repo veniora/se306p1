@@ -1,0 +1,26 @@
+/**
+\mainpage TEAM BRETT SWARM ROBOTICS
+*
+*
+* How to operate code
+*            <p/> <br/>
+*
+*
+* \section setup_sec Setup
+* \subsection step1 Step 1: roscd stage
+* \subsection step2 Step 2: make
+* \subsection step3 Step 3: roscd Project2Sample
+* \subsection step4 Step 4: rosmake
+*            <p/> <br/>
+
+* \section runnin_sec Running
+* \subsection step5 Step 1: roscd Project2Sample/bin
+* \subsection step6 Step 2: ./Launcher X
+(X is the number of robots you want to run)
+*            <p/> <br/>
+
+
+* \section testing_sec Testing
+* \subsection step7 Step 1: rostest Project2Sample RXTestSuite.test
+*/
+

@@ -1,9 +1,11 @@
-/*
- * GoToSquare.cpp
- *
- *  Created on: Aug 15, 2012
- *      Author: charu
- */
+/** 
+* @file GoToSquare.cpp
+* @brief this file is used to calculate the positions of the robots in the square
+*
+* @author team brett
+*
+* @date 21/08/12
+*/
 
 #include "GoToSquare.h"
 #include <vector>
@@ -14,12 +16,13 @@
 
 using namespace std;
 
-// returns coordinates [x,y] of a robot as to where they belong in a square
-/*
- * Must work for a single robot
- * Inputs are its position_id, and leader's x value and y value
- * Size will be hardcoded to a size suitable for up to 11 robots
- */
+
+/**
+* This method returns the positions in the square for all of the group members
+* @author team brett
+* @param vector vector of robots in group
+* @date 21/08/2012
+*/
 vector<float> formSquare(Project2Sample::R_ID inputs, int groupsize) {
 	vector<float> squareCoord;
 	int posID = inputs.Pos_ID;

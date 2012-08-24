@@ -1,3 +1,13 @@
+/** 
+* @file RX.cpp
+* @brief this file contains most of the logic for an individual robot
+*
+* @author team brett
+*
+* @date 23/08/12
+*/
+
+
 #include <ros/ros.h>
 #include "std_msgs/String.h"
 #include "Project2Sample/R_ID.h"
@@ -84,9 +94,14 @@ vector<Project2Sample::R_ID> nodes;
 vector<Project2Sample::R_ID> group;
 
 int count;
-/*
- * Returns the angle a robot will have to turn in order to face the right direction
- */
+
+/**
+* This method returns the angle needed to reach next position.
+* @author team brett
+* @param vector current positon
+* @param vector new position
+* @date 16/08/2012
+*/
 float rotateFinalAngleInstructions(vector<float> currentPosition, vector<float> newPosition) {
 
 	float delta_x = newPosition[0] - currentPosition[0];
@@ -115,7 +130,13 @@ float rotateFinalAngleInstructions(vector<float> currentPosition, vector<float> 
 	delta_theta = fmodf(delta_theta, 360.0);
 	return delta_theta;
 }
-// returns velocity direction to rotate for next position
+
+/**
+* This method returns velocity direction to rotate for next position.
+* @author team brett
+* @param float angle to destination
+* @date 7/08/2012
+*/
 float rotateDirectionInstructions(float d_theta) {
 	d_theta = fmodf(d_theta, 360.0);
 	float AngularV = 0;
@@ -138,9 +159,11 @@ float rotateDirectionInstructions(float d_theta) {
 	return AngularV;
 }
 
-/*
- * This is the all purpose move function which can only be called from within the MOVING_INTO_POS state
- */
+/**
+* This method moves the robots to their new positions which they are passed via a message.
+* @author team brett
+* @date 18/08/2012
+*/
 vector<float> moveToNewPoint() { // no arguments but uses global variables :(
 
 	vector<float> instructions(2); // prepare output
@@ -236,10 +259,13 @@ vector<float> moveToNewPoint() { // no arguments but uses global variables :(
 	return instructions;
 
 }
-/*
- * Adds robots into nodes vector from callback
- * It lags and will only happen once per while loop
- */
+
+/**
+* this callback Adds robots into nodes vector from callback
+* @author team brett
+* @param float angle to destination
+* @date 7/08/2012
+*/
 void RobotNode_callback(Project2Sample::R_ID msg) {    
 	int i;
 
@@ -257,7 +283,11 @@ void RobotNode_callback(Project2Sample::R_ID msg) {
 	}
 }
 
-//This is the call back function to process odometry messages coming from Stage
+/**
+* This is the call back function to process odometry messages coming from Stage
+* @author team brett
+* @date 11/08/2012
+*/
 void StageOdom_callback(nav_msgs::Odometry msg) {
 	robot_pos_found = true;
 	px = msg.pose.pose.position.x;
@@ -277,9 +307,13 @@ void StageOdom_callback(nav_msgs::Odometry msg) {
 	}
 }
 
+/**
+* This is the callback function to process laser scan messages 
+* used to detect objects and potential obstacles for the robots.
+* @author team brett
+* @date 11/08/2012
+*/
 void StageLaser_callback(sensor_msgs::LaserScan msg) {
-	//This is the callback function to process laser scan messages
-	//you can access the range data from msg.ranges[i]. i = sample number
 	obstacle = false;
 
 	for (int i = 30; i < 150; i++){
@@ -294,9 +328,11 @@ void StageLaser_callback(sensor_msgs::LaserScan msg) {
 		}
 	}
 }
-/*
- * Changes state
- */
+/**
+* This is the callback function to process the state changes of the robots
+* @author team brett
+* @date 11/08/2012
+*/
 void RobotState_callback(Project2Sample::State msg) {
 	std::stringstream ss;
 	ss << "Robot " << id << " changed state from " << current_state << " to "

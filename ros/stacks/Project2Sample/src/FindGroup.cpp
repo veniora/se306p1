@@ -85,8 +85,6 @@ vector<int> formGroup(vector<Project2Sample:: R_ID> nodes, int robotID) {
 * @date 11/08/2012
 */
 vector<float> calculatePosition(Project2Sample::R_ID leader, int posID) {
-    ROS_INFO("CalculatePosition() method");
-    
 	vector<float> newCoordinates;
 	float fiveRobots = 5 * 0.35; // Assuming robot length of 0.35
 	float newX, newY, leaderTheta;

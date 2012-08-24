@@ -602,8 +602,7 @@ int main(int argc, char **argv) {
 						 */
 						switch(group_id % 4){
 						case 0:{ // Following! Change leader to CIRCLING and its other group members to follow
-							//current_state = CIRCLING;
-							current_state = FORM_TRIANGLE;
+							current_state = CIRCLING;
 							break;
 						}
 						case 1:{ // Form a square
